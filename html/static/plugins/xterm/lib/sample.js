@@ -3,16 +3,16 @@ function createTerminate(target, onKey){
 
     let term ;
     term = new Terminal({
-        rendererType: "canvas", //渲染类型
-        convertEol: true, //启用时，光标将设置为下一行的开头
-        scrollback: 100, //终端中的回滚量
-        disableStdin: false, //是否应禁用输入。
-        cursorStyle: "underline", //光标样式
-        cursorBlink: true, //光标闪烁
+        rendererType: "canvas", //渲染Type
+        convertEol: true, //When enabled，光标将Settings为下一行的Start
+        scrollback: 100, //Rollback in Terminal
+        disableStdin: false, //Whether input should be disabled。
+        cursorStyle: "underline", //Cursor Style
+        cursorBlink: true, //Cursor Flash
         theme: {
-            foreground: "#7e9192", //字体
-            background: "#002833", //背景色
-            cursor: "help", //设置光标
+            foreground: "#7e9192", //Fonts
+            background: "#002833", //Background Colour
+            cursor: "help", //Settings光标
             lineHeight: 16
         },
         bellStyle:'sound',
@@ -47,17 +47,17 @@ function createTerminate2(target, onData, onKey, width){
 
     let term ;
     term = new Terminal({
-        rendererType: "canvas", //渲染类型
-        convertEol: true, //启用时，光标将设置为下一行的开头
-        //   scrollback: 50, //终端中的回滚量
-        disableStdin: false, //是否应禁用输入。
-        cursorStyle: "underline", //光标样式
+        rendererType: "canvas", //渲染Type
+        convertEol: true, //When enabled，光标将Settings为下一行的Start
+        //   scrollback: 50, //Rollback in Terminal
+        disableStdin: false, //Whether input should be disabled。
+        cursorStyle: "underline", //Cursor Style
         width:width,
-        cursorBlink: true, //光标闪烁
+        cursorBlink: true, //Cursor Flash
         theme: {
-            foreground: "#7e9192", //字体
-            background: "#002833", //背景色
-            cursor: "help", //设置光标
+            foreground: "#7e9192", //Fonts
+            background: "#002833", //Background Colour
+            cursor: "help", //Settings光标
             lineHeight: 16
         },
         bellStyle:'sound',

@@ -1,34 +1,34 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Boolean / Function(treeId, treeNodes, targetNode)</span><span class="path">setting.edit.drag.</span>inner</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.exedit</span> 扩展 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.exedit</span> Extension js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>拖拽到目标节点时，设置是否允许成为目标节点的子节点。<span class="highlight_red">[setting.edit.enable = true 时生效]</span></p>
-			<p class="highlight_red">拖拽目标是 根 的时候，不触发 prev 和 next，只会触发 inner</p>
-			<p class="highlight_red">此功能主要作用是对拖拽进行适当限制（辅助箭头），需要结合 prev、next 一起使用，才能实现完整功能。</p>
-			<p>默认值：true</p>
+			<p>Drag到ObjectiveNodes时，Settings是否Allow成为ObjectiveNodes的子Nodes。<span class="highlight_red">[setting.edit.enable = true Effective on time]</span></p>
+			<p class="highlight_red">DragObjective是 根 When，Do not trigger prev 和 next，只会Trigger inner</p>
+			<p class="highlight_red">此Functions主要作用是对Drag进行适当限制（辅助Arrow），Need to combine prev、next 一起Use，才能Achieved完整Functions。</p>
+			<p>Default value：true</p>
 		</div>
 	</div>
-	<h3>Boolean 格式说明</h3>
+	<h3>Boolean Format说明</h3>
 	<div class="desc">
-	<p> true / false 分别表示 允许 / 不允许 成为目标节点的子节点</p>
+	<p> true / false Separately Allow / Not permitted 成为ObjectiveNodes的子Nodes</p>
 	</div>
-	<h3>Function 参数说明</h3>
+	<h3>Function Parameters说明</h3>
 	<div class="desc">
 	<h4><b>treeId</b><span>String</span></h4>
-	<p>对应 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控（多棵树拖拽时，是目标节点所在树的 treeId）</p>
+	<p>Correspond zTree 的 <b class="highlight_red">treeId</b>，便于User操控（多棵树Drag时，是ObjectiveNodes所在树的 treeId）</p>
 	<h4 class="topLine"><b>treeNodes</b><span>Array(JSON)</span></h4>
-	<p>被拖拽的节点 JSON 数据集合</p>
+	<p>被Drag的Nodes JSON DataGather</p>
 	<h4 class="topLine"><b>targetNode</b><span>JSON</span></h4>
-	<p>拖拽时的目标节点 JSON 数据对象</p>
-	<p class="highlight_red">如果拖拽的节点要成为根节点，则 targetNode = null</p>
-	<h4 class="topLine"><b>返回值</b><span>Boolean</span></h4>
-	<p>返回值同 Boolean 格式的数据</p>
+	<p>Drag时的ObjectiveNodes JSON DataObject</p>
+	<p class="highlight_red">IfDrag的Nodes要成为根Nodes，则 targetNode = null</p>
+	<h4 class="topLine"><b>Back值</b><span>Boolean</span></h4>
+	<p>Back值同 Boolean Format的Data</p>
 	</div>
-	<h3>setting & function 举例</h3>
-	<h4>1. 禁止拖拽成为目标节点的子节点</h4>
+	<h3>setting & function Example</h3>
+	<h4>1. BanDrag成为ObjectiveNodes的子Nodes</h4>
 	<pre xmlns=""><code>var setting = {
 	edit: {
 		enable: true,
@@ -40,7 +40,7 @@
 	}
 };
 ......</code></pre>
-	<h4>2. 禁止拖拽成为根节点的子节点</h4>
+	<h4>2. BanDrag成为根Nodes的子Nodes</h4>
 	<pre xmlns=""><code>function canInner(treeId, nodes, targetNode) {
 	return !(targetNode && targetNode.level === 0);
 }

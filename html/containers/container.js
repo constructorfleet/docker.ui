@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 300, formatter:leaseOperateFormatter},
                 {field: 'Name', title: 'NAME', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -71,25 +71,25 @@ function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
 
     //superpowers
-    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="inspectContainer(\'' + row.ID + '\')">查看</button>';
+    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="inspectContainer(\'' + row.ID + '\')">View</button>';
 
 
 
     if(row.Running==1){
-        htmlstr += '<button class="layui-btn-ivory layui-btn layui-btn-xs" onclick="restartContainer(\'' + row.ID + '\')">重启</button>';
-        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="stopLease(\'' + row.ID + '\', \'' + index + '\')">停止</button>';
-        htmlstr += '<button class="layui-btn-dodgerblue layui-btn layui-btn-xs" onclick="killLease(\'' + row.ID + '\', \'' + index + '\')">强止</button>';
-        htmlstr += '<button class="layui-btn-olive layui-btn layui-btn-xs" onclick="showConsole(\'' + row.ID + '\', \'' + index + '\')">控制台</button>';
-        htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="execContainer(\'' + row.ID + '\')">执行</button>';
+        htmlstr += '<button class="layui-btn-ivory layui-btn layui-btn-xs" onclick="restartContainer(\'' + row.ID + '\')">Restart</button>';
+        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="stopLease(\'' + row.ID + '\', \'' + index + '\')">Stop</button>';
+        htmlstr += '<button class="layui-btn-dodgerblue layui-btn layui-btn-xs" onclick="killLease(\'' + row.ID + '\', \'' + index + '\')">Strong</button>';
+        htmlstr += '<button class="layui-btn-olive layui-btn layui-btn-xs" onclick="showConsole(\'' + row.ID + '\', \'' + index + '\')">Control台</button>';
+        htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="execContainer(\'' + row.ID + '\')">Implementation</button>';
     }else{
-        htmlstr += '<button disabled class="layui-btn-ivory layui-btn layui-btn-xs disabled" onclick="restartContainer(\'' + row.ID + '\')">重启</button>';
-        htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="startLease(\'' + row.ID + '\', \'' + index + '\')">启动</button>';
-        htmlstr += '<button disabled class="layui-btn-dodgerblue layui-btn layui-btn-xs disabled" onclick="killLease(\'' + row.ID + '\', \'' + index + '\')">强止</button>';
-        htmlstr += '<button disabled class="layui-btn-olive layui-btn layui-btn-xs disabled" onclick="showConsole(\'' + row.ID + '\', \'' + index + '\')">控制台</button>';
-        htmlstr += '<button disabled class="layui-btn-gray layui-btn layui-btn-xs disabled" onclick="execContainer(\'' + row.ID + '\')">执行</button>';
+        htmlstr += '<button disabled class="layui-btn-ivory layui-btn layui-btn-xs disabled" onclick="restartContainer(\'' + row.ID + '\')">Restart</button>';
+        htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="startLease(\'' + row.ID + '\', \'' + index + '\')">Start</button>';
+        htmlstr += '<button disabled class="layui-btn-dodgerblue layui-btn layui-btn-xs disabled" onclick="killLease(\'' + row.ID + '\', \'' + index + '\')">Strong</button>';
+        htmlstr += '<button disabled class="layui-btn-olive layui-btn layui-btn-xs disabled" onclick="showConsole(\'' + row.ID + '\', \'' + index + '\')">Control台</button>';
+        htmlstr += '<button disabled class="layui-btn-gray layui-btn layui-btn-xs disabled" onclick="execContainer(\'' + row.ID + '\')">Implementation</button>';
     }
-    htmlstr += '<button class="layui-btn-red layui-btn layui-btn-xs" onclick="removeLease(\'' + index + '\', \'' + row.ID + '\')">删除</button>';
-    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="showLog(\'' + row.ID + '\', \'' + index + '\')">日志</button>';
+    htmlstr += '<button class="layui-btn-red layui-btn layui-btn-xs" onclick="removeLease(\'' + index + '\', \'' + row.ID + '\')">Delete</button>';
+    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="showLog(\'' + row.ID + '\', \'' + index + '\')">Log</button>';
 
     return htmlstr;
 }
@@ -110,9 +110,9 @@ function runContainer(){
             reloadDg();
 
             if($.extends.isEmpty(response.Warnings)){
-                $.app.show('容器{0}运行成功'.format(info.Name));
+                $.app.show('Containers{0}RunSuccess'.format(info.Name));
             }else{
-                $.app.show('容器{0}运行成功, 出现警告信息{0}'.format(response.Warnings.join(",").htmlEncode()))
+                $.app.show('Containers{0}RunSuccess, Warning message appears{0}'.format(response.Warnings.join(",").htmlEncode()))
             }
             //$('#layout').layout('collapse', 'east');
         }, node, response.Id);
@@ -162,12 +162,12 @@ function cloneContainer(id, flag){
 function cloneContainerPanel(){
     let rows = $('#containersDg').datagrid('getChecked');
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器进行克隆');
+        $.app.show('本Version仅SupportSelection一个ContainersConductCloning');
         return ;
     }
 
     if(rows.length==0){
-        $.app.show('选择一个容器进行克隆');
+        $.app.show('Selection一个ContainersConductCloning');
         return ;
     }
 
@@ -180,15 +180,15 @@ function createContainerPanel(data, flag){
     let node = local_node;
     removePanel();
 
-    let title = '创建容器';
+    let title = 'Create Container';
     let iconCls = 'fa fa-info-circle';
 
     if(flag == 2){
-        title = '运行容器';
+        title = 'Run Container';
         iconCls = 'fa fa-play-circle-o';
     }
     else if(flag == 3){
-        title = '执行命令';
+        title = 'ImplementationCommand';
         iconCls = 'fa fa-random';
     }
 
@@ -198,7 +198,7 @@ function createContainerPanel(data, flag){
         iconCls:iconCls,
         collapsible:false,
         showHeader1:false,
-        titleformat:title, title:'创建容器',
+        titleformat:title, title:'Create Container',
         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
         footerHtml: $.templates(create_panel_buttons_html).render({Flag:flag}),
         // render1:$.templates(html_template).render(rowData),
@@ -266,7 +266,7 @@ function showContainerPanel(id){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:'{0}-容器信息'.format(row.Name, row.ID), title:'容器',
+            titleformat:'{0}-ContainersInformation'.format(row.Name, row.ID), title:'Containers',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerHtml: panel_buttons_html.format(row.ID, row.Repository, row.Tag, index),
             onBeforeDestroy:function () {
@@ -368,7 +368,7 @@ function showLogTab(id){
     let logXhr = $('#layout').layout('options').logXhr;
 
     addPanel({
-        title:"日志",
+        title:"Log",
         id:'eastTab3',
         iconCls:'fa fa-history',
         fit:true,
@@ -391,14 +391,14 @@ function showLogTab(id){
                     });
 
                     scrollBottom($(panelTarget));
-                    $(panelTarget).find('t').html('[已启动]');
+                    $(panelTarget).find('t').html('[Started]');
                 }
 
             }, function (xhr, state) {
                 console.log('onSend')
             }, function (xhr, state){
                 console.log("Log is finished")
-                $(panel).find('t').html('[已停止]');
+                $(panel).find('t').html('[Stopped]');
                 $('#layout').layout('options').logXhr = null;
             })
 
@@ -413,7 +413,7 @@ function showLogTab(id){
 function pauseLease(id){
     let node = local_node;
     $.docker.request.container.pause(function(response){
-        $.app.show('暂停容器所有进程完成');
+        $.app.show('PauseContainersAllProcess完成');
         showProcess(id)
     }, node, id)
 }
@@ -421,7 +421,7 @@ function pauseLease(id){
 function resumeLease(id){
     let node = local_node;
     $.docker.request.container.unpause(function(response){
-        $.app.show('恢复容器所有进程完成');
+        $.app.show('RestoreContainersAllProcess完成');
         showProcess(id)
     }, node, id)
 }
@@ -432,7 +432,7 @@ function showUsage(id){
     let statXhr = $('#layout').layout('options').statXhr;
 
     addPanel({
-        title:"状况",
+        title:"Status",
         iconCls:'fa fa-thermometer-half',
         fit:true,
         selected:true,
@@ -616,7 +616,7 @@ function stopContainer(id){
 
     let node = local_node;
     $.docker.request.container.stop(function(){
-        $.app.show('容器停止成功');
+        $.app.show('ContainersStopSuccess');
         reloadDg();
         $('#tab_start_btn').show();
         $('#tab_stop_btn').hide();
@@ -627,13 +627,13 @@ function exportContainer2(){
 
     let rows = $('#containersDg').datagrid('getChecked');
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器导出tarball');
+        $.app.show('本Version仅SupportSelection一个ContainersExporttarball');
         return ;
     }
 
 
     if(rows.length==0){
-        $.app.show('选择一个容器导出tarball');
+        $.app.show('Selection一个ContainersExporttarball');
         return ;
     }
 
@@ -644,7 +644,7 @@ function exportContainer(id){
 
     let node = local_node;
     let bytes =  new ByteArray();
-    $.app.showProgress("导出数据获取中......")
+    $.app.showProgress("ExportDataAccess中......")
     $.docker.request.container.export(node, id, function(data, xhr, state, flag){
         if(flag==1){
             let uint8View = new Uint8Array(data);
@@ -665,7 +665,7 @@ function exportContainer(id){
 
             //$.extends.downloadStream(xhr.responseText.bytes2(), id+'.tar', 'octet/stream');
         }else{
-            $.app.show('容器导出失败')
+            $.app.show('ContainersExportFailed')
         }
 
 
@@ -678,7 +678,7 @@ function startContainer(id){
 
     let node = local_node;
     $.docker.request.container.start(function(){
-        $.app.show('启动成功');
+        $.app.show('StartSuccess');
         showLogTab(id);
         reloadDg();
         $('#tab_start_btn').hide();
@@ -690,7 +690,7 @@ function restartContainer(id){
 
     let node = local_node;
     $.docker.request.container.restart(function(){
-        $.app.show('重启成功');
+        $.app.show('RestartSuccess');
         reloadDg();
         $('#tab_start_btn').hide();
         $('#tab_stop_btn').show();
@@ -714,7 +714,7 @@ function showChangesTab(id){
     }
     
     addPanel({
-        title:"变更",
+        title:"Change",
         iconCls:'fa fa-random',
         fit:true,
         selected:true,
@@ -872,7 +872,7 @@ function consoleDg(response, fn){
 
     return $.iDialog.openDialog({
         id:dgId,
-        title: '{0}-命令行控制台'.format(response.Name),
+        title: '{0}-Command行Control台'.format(response.Name),
         minimizable:true,
         modal:false,
         containerId:response.ID,
@@ -927,7 +927,7 @@ function consoleDg(response, fn){
                         function(key, ev){
                             //ws.send(key)
                             if(!sendWs(ws, key)){
-                                alert('控制端已经失去通信，请重新打开');
+                                alert('Control端已经失去通信，请重新Open');
                             }
                     });
 
@@ -945,7 +945,7 @@ function consoleDg(response, fn){
                     closeConsoleDg(dgId, false);
                 }, function (e) {
                     console.log(e);
-                    $.app.show("错误消息{0}".format(e.reason))
+                    $.app.show("Error消息{0}".format(e.reason))
                 }, [local_node.node_host, local_node.node_port, local_node.node_version])
         },
         onBeforeClose:function(){
@@ -954,14 +954,14 @@ function consoleDg(response, fn){
                 return true;
             }
 
-            // 属性值        属性常量        描述
+            // Properties值        Properties常量        Description
             // ————————————————————————————————————
-            // 0        CONNECTING        连接尚未建立
-            // 1        OPEN            WebSocket的链接已经建立
-            // 2        CLOSING            连接正在关闭
-            // 3        CLOSED            连接已经关闭或不可用
+            // 0        CONNECTING        Connection尚未Create
+            // 1        OPEN            WebSocket的Link已经Create
+            // 2        CLOSING            Connection正在Close
+            // 3        CLOSED            Connection已经Close或Not Available
             if(ws!=null && ws.readyState == 1){
-                $.app.confirm("关闭控制台", "控制台通信还没有关闭，点击确定，将关闭控制台通信后关闭控制台窗口，否则 保持当前控制台状态", function () {
+                $.app.confirm("CloseControl台", "Control台通信还NothingClose，ClickSure，将CloseControl台通信后CloseControl台Window，Otherwise.. HoldCurrentControl台Status", function () {
                     closeConsoleDg(dgId, true);
                     closeWs(ws);
                     // try{
@@ -975,7 +975,7 @@ function consoleDg(response, fn){
                 })
             }else{
                 return true;
-                $.app.confirm("通道关闭", "控制台通道已经关闭，点击确定，将关闭控制台窗口，否则点击，取消", function () {
+                $.app.confirm("通道Close", "Control台通道已经Close，ClickSure，将CloseControl台Window，Otherwise..Click，Cancel", function () {
                     closeConsoleDg(dgId, true);
                 })
             }
@@ -1018,31 +1018,31 @@ function showExecConfirmation(id, fn){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>执行选项</legend>
+                        <legend>ImplementationOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">  
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="执行命令">执行命令:</label>
+                            <label class="cubeui-form-label" title="ImplementationCommand">ImplementationCommand:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="cmd" value="/bin/sh" data-toggle="cubeui-textbox"
                                            data-options="
                                                     required:true,
-                                                    prompt:'执行命令'
+                                                    prompt:'ImplementationCommand'
                                            ">
                             </div>       
                         </div>    
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="当前用户">当前用户:</label>
+                            <label class="cubeui-form-label" title="Current User">Current User:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="user" value="root" data-toggle="cubeui-textbox"
                                            data-options="
                                                     required:false,
-                                                    prompt:'执行命令的当前用户'
+                                                    prompt:'ImplementationCommand的Current User'
                                            ">
                             </div>        
                         </div>
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="工作目录">工作目录:</label>
+                            <label class="cubeui-form-label" title="Working Directory">Working Directory:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="work_dir" value="" data-toggle="cubeui-textbox"
                                            data-options="
@@ -1052,7 +1052,7 @@ function showExecConfirmation(id, fn){
                         </div>
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm3">
-                                <label class="cubeui-form-label" title="使用标准输出">标准输出:</label>
+                                <label class="cubeui-form-label" title="UseStandardOutput">StandardOutput:</label>
                                 <div class="cubeui-input-block">
                                     <input data-toggle="cubeui-switchbutton" 
                                         name="AttachStdout" value="1" checked data-options="onText:'',offText:'',width:60">
@@ -1061,7 +1061,7 @@ function showExecConfirmation(id, fn){
                         </div>
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm3">
-                                <label class="cubeui-form-label" title="使用错误输出">错误输出:</label>
+                                <label class="cubeui-form-label" title="UseErrorOutput">ErrorOutput:</label>
                                 <div class="cubeui-input-block">
                                     <input data-toggle="cubeui-switchbutton" 
                                         name="AttachStderr" value="1" checked data-options="onText:'',offText:'',width:60">
@@ -1070,7 +1070,7 @@ function showExecConfirmation(id, fn){
                         </div>
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm3">
-                                <label class="cubeui-form-label" title="使用标准输入">标准输入:</label>
+                                <label class="cubeui-form-label" title="UseStandard输入">Standard输入:</label>
                                 <div class="cubeui-input-block">
                                     <input data-toggle="cubeui-switchbutton" 
                                         name="AttachStdin" value="1" checked data-options="onText:'',offText:'',width:60">
@@ -1079,7 +1079,7 @@ function showExecConfirmation(id, fn){
                         </div>
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm3">
-                                <label class="cubeui-form-label" title="仿真TTY">仿真TTY:</label>
+                                <label class="cubeui-form-label" title="SimulateTTY">SimulateTTY:</label>
                                 <div class="cubeui-input-block">
                                     <input data-toggle="cubeui-switchbutton" disabled
                                         name="Tty" value="1" checked readonly data-options="onText:'',offText:'',width:60">
@@ -1090,7 +1090,7 @@ function showExecConfirmation(id, fn){
                 </div>
         `;
 
-            $.docker.utils.optionConfirm('执行容器命令', null, html,
+            $.docker.utils.optionConfirm('ImplementationContainersCommand', null, html,
                 function(param, closeFn){
                     if(fn){
                         fn.call(response, param, closeFn)
@@ -1098,7 +1098,7 @@ function showExecConfirmation(id, fn){
                 }, null, 450, 800);
 
         }else{
-            $.app.show('当前容器{0}还没有启动执行容器命令'.format(response.Name));
+            $.app.show('CurrentContainers{0}还NothingStartImplementationContainersCommand'.format(response.Name));
         }
     }, node, id)
 }
@@ -1121,7 +1121,7 @@ function execContainer(id){
 
                     return $.iDialog.openDialog({
                         id:dgId,
-                        title: '{0}-命令行控制台'.format(response.Name),
+                        title: '{0}-Command行Control台'.format(response.Name),
                         minimizable:true,
                         modal:false,
                         containerId:response.ID,
@@ -1147,11 +1147,11 @@ function execContainer(id){
 
                                         //ws.send(key)
                                         if(!sendWs(ws, key)){
-                                            alert('控制端已经失去通信，请重新打开');
+                                            alert('Control端已经失去通信，请重新Open');
                                         }
                                     });
                             }catch (e) {
-                                $.app.show('控制台创建失败，请刷新后重试');
+                                $.app.show('Control台CreateFailed，请RefreshTry again after');
                             }
                         },
                         onBeforeClose:function(){
@@ -1162,13 +1162,13 @@ function execContainer(id){
                             }
 
                             if(ws!=null && ws.readyState == 1){
-                                $.app.confirm("关闭执行窗口", "执行通信还没有关闭，点击确定，将关闭控制台通信后关闭执行控制台窗口，否则 保持当前执行控制台状态", function () {
+                                $.app.confirm("CloseImplementationWindow", "Implementation通信还NothingClose，ClickSure，将CloseControl台通信后CloseImplementationControl台Window，Otherwise.. HoldCurrentImplementationControl台Status", function () {
                                     closeConsoleDg(dgId, true);
                                     closeWs(ws);
                                 }, function () {})
                             }else{
                                 return true;
-                                // $.app.confirm("执行通道关闭", "执行通道已经关闭，点击确定，将关闭执行控制台窗口，否则点击，取消", function () {
+                                // $.app.confirm("Implementation通道Close", "Implementation通道已经Close，ClickSure，将CloseImplementationControl台Window，Otherwise..Click，Cancel", function () {
                                 //     closeConsoleDg(dgId, true);
                                 // })
                             }
@@ -1189,7 +1189,7 @@ function execContainer(id){
                     closeConsoleDg(dgId, false);
                 },
                 onerror:function(e, id, data){
-                    $.app.show("错误消息{0}".format(e.reason))
+                    $.app.show("Error消息{0}".format(e.reason))
                     this.close();
                 },
             }, node, id, param.cmd, param.user, param.work_dir
@@ -1212,15 +1212,15 @@ function showConsoleConfirm(id, fn){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>命令行选项</legend>
+                        <legend>Command行Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">  
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="控制台命令方式">控制台命令方式:</label>
+                            <label class="cubeui-form-label" title="Control台CommandModalities">Control台CommandModalities:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="cmd" value="sh" data-toggle="cubeui-combobox"
                                            data-options="
-                                                    required:false,prompt:'控制台命令方式，选择填写，默认为/bin/sh',
+                                                    required:false,prompt:'Control台CommandModalities，Select Fill，Default as/bin/sh',
                                                     valueField:'KEY',
                                                     textField:'TEXT',
                                                     data:[
@@ -1231,22 +1231,22 @@ function showConsoleConfirm(id, fn){
                             </div>        
                         </div>    
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="当前用户">当前用户:</label>
+                            <label class="cubeui-form-label" title="Current User">Current User:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="user" value="root" data-toggle="cubeui-textbox"
                                            data-options="
                                                     required:false,
-                                                    prompt:'执行命令的当前用户'
+                                                    prompt:'ImplementationCommand的Current User'
                                            ">
                             </div>        
                         </div>
                         <div class="cubeui-row">
-                            <label class="cubeui-form-label" title="工作目录">工作目录:</label>
+                            <label class="cubeui-form-label" title="Working Directory">Working Directory:</label>
                             <div class="cubeui-input-block">                
                                     <input type="text" name="work_dir" value="" data-toggle="cubeui-textbox"
                                            data-options="
                                                     required:false,
-                                                    prompt:'执行命令的工作目录'
+                                                    prompt:'ImplementationCommand的Working Directory'
                                            ">
                             </div>        
                         </div>
@@ -1254,7 +1254,7 @@ function showConsoleConfirm(id, fn){
                 </div>
         `;
 
-            $.docker.utils.optionConfirm('运行控制台', null, html,
+            $.docker.utils.optionConfirm('RunControl台', null, html,
                 function(param, closeFn){
                     if(fn){
                         fn.call(response, param, closeFn)
@@ -1262,7 +1262,7 @@ function showConsoleConfirm(id, fn){
                 }, null, 300);
 
         }else{
-            $.app.show('当前容器{0}还没有启动不能打开命令行'.format(response.Name));
+            $.app.show('CurrentContainers{0}还NothingStartI can\'tOpenCommand行'.format(response.Name));
         }
     }, node, id)
 }
@@ -1296,16 +1296,16 @@ function importFolder(id){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>导入归档选项</legend>
+                        <legend>ImportArchiveOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">          
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">归档文件:</label>
+                                    <label class="cubeui-form-label">ArchiveDocumentation:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-filebox" id="import_file" data-options="
-                                            prompt:'必须是使用以下算法之一压缩的tar存档：identity（无压缩）、gzip、bzip2或xz。',
-                                            buttonText: '选择文件',
+                                            prompt:'Must beUse以下算法之一压缩的tarArchive：identity（No compression）、gzip、bzip2或xz。',
+                                            buttonText: 'Select File',
                                             accept:'.tar',
                                             required:true,
                                             " style="width:100%">  
@@ -1316,7 +1316,7 @@ function importFolder(id){
                             
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；解压缩给定内容相同文件覆盖目时录，将会出现错误；不选中；可以用文件覆盖目录">非目录不覆盖:</label>
+                                    <label class="cubeui-form-label" title="If selected；解压缩给定ContentsSameDocumentation覆盖目时录，Will出现Error；Uncheck；Yeah用Documentation覆盖Contents">Non Directory不覆盖:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked 
                                             name="noOverwriteDirNonDir" value="1" data-options="onText:'',offText:'',width:60">
@@ -1325,7 +1325,7 @@ function importFolder(id){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；将UID/GID映射复制到目标文件或目录；不选中；不复制UID/GID映射">复制UID/GID:</label>
+                                    <label class="cubeui-form-label" title="If selected；将UID/GIDMapCopy到ObjectiveDocumentation或Contents；Uncheck；不CopyUID/GIDMap">CopyUID/GID:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked
                                             name="copyUIDGID" value="1" data-options="onText:'',offText:'',width:60">
@@ -1336,7 +1336,7 @@ function importFolder(id){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('导入容器目录系统归档文件', '导入已归档文件至容器文件系统目录`{0}`？'.format(path), import_html,
+    $.docker.utils.optionConfirm('ImportContainersContentsSystemArchiveDocumentation', 'Import已ArchiveDocumentation至ContainersDocumentationSystemContents`{0}`？'.format(path), import_html,
         function(param, closeFn) {
             console.log(param)
             let files = $('#import_file').filebox('files');
@@ -1347,7 +1347,7 @@ function importFolder(id){
 
                 $.docker.request.container.extract(function (response) {
 
-                    $.app.show('归档导入容器目录{0}成功'.format(path.htmlEncode()));
+                    $.app.show('ArchiveImportContainersContents{0}Success'.format(path.htmlEncode()));
                     // closeFn();
                     reloadDg();
                     currentLs(id);
@@ -1373,10 +1373,10 @@ function exportFolder(id){
     id = $('#dirDg').datagrid('options').queryParams.ID;
     let path = $('#dirDg').datagrid('options').CURRENT_DIR;
 
-    $.app.confirm("导出目录", "确定导出目录'{0}'，点击确定继续导出，否则点击取消?".format(path.htmlEncode()), function(){
+    $.app.confirm("ExportContents", "SureExportContents'{0}'，ClickSureGo onExport，Otherwise..ClickCancel?".format(path.htmlEncode()), function(){
 
         let node = local_node;
-        $.app.showProgress('获取归档数据中......');
+        $.app.showProgress('AccessArchiveData中......');
 
         let bytes = new ByteArray();
         $.docker.request.container.archive(node, id, path, function (data, xhr, state, flag) {
@@ -1393,18 +1393,18 @@ function exportFolder(id){
 
             if (xhr.status < 400) {
                 console.log(xhr)
-                $.app.show('目录{0}已经准备成功，请等待下载'.format(path.htmlEncode()))
+                $.app.show('Contents{0}已经准备Success，Please waitDownload'.format(path.htmlEncode()))
             } else {
 
                 if(xhr.data!=null){
                     if(xhr.data.binary!=null){
                         let msg = ab2str(xhr.data.binary);
-                        $.app.show('目录导出失败:{0}'.format(msg.htmlEncode()));
+                        $.app.show('ContentsExportFailed:{0}'.format(msg.htmlEncode()));
                     }else{
-                        $.app.show('目录导出失败:{0}'.format((xhr.data+"").htmlEncode()));
+                        $.app.show('ContentsExportFailed:{0}'.format((xhr.data+"").htmlEncode()));
                     }
                 }else{
-                    $.app.show('目录导出失败')
+                    $.app.show('ContentsExportFailed')
                 }
             }
         }, function (xhr, state) {
@@ -1502,7 +1502,7 @@ function lsContainer(id){
             $.docker.request.exec.ls(function (msg) {
 
                 addPanel({
-                    title:"文件系统",
+                    title:"DocumentationSystem",
                     iconCls:'fa fa-clone',
                     fit:true,
                     selected:true,
@@ -1538,7 +1538,7 @@ function lsContainer(id){
                         });
 
                         $('#search_dir').textbox('textbox').bind('keydown', function(e){
-                            if (e.keyCode == 13){   // 当按下回车键时接受输入的值。
+                            if (e.keyCode == 13){   // 当PressBack to the car键时Accept输入Value。
                                 $('#search-dirbtn').trigger('click');
                             }
                         });
@@ -1553,7 +1553,7 @@ function lsContainer(id){
                 console.log(error);
             }, node, id, "/", null);
         }else{
-            $.app.show('当前容器{0}还没有启动,不嫩执行容器命令'.format(response.Name));
+            $.app.show('CurrentContainers{0}还NothingStart,不嫩ImplementationContainersCommand'.format(response.Name));
         }
     }, node, id)
 }
@@ -1576,7 +1576,7 @@ function showConsole(id){
 }
 
 function showConsolePanel(id){
-    let title = "控制台";
+    let title = "Control台";
     let tabObj = $('#eastTabs')
 
     $.docker.getHtml('./console.html', null, function(html){
@@ -1654,7 +1654,7 @@ function showConsolePanel(id){
 
                                 //ws.send(key)
                                 if(!sendWs(ws, key)){
-                                    alert('控制端已经失去通信，请重新打开');
+                                    alert('Control端已经失去通信，请重新Open');
                                 }
                             });
                         panel.panel('resize');
@@ -1668,13 +1668,13 @@ function showConsolePanel(id){
                 },
                 onclose:function(e, id, data){
                     console.log(e);
-                    $.app.confirm("关闭控制台", "控制台通道已经关闭，点击确定，关闭当前tab， 否则点击取消。", function () {
+                    $.app.confirm("CloseControl台", "Control台通道已经Close，ClickSure，CloseCurrenttab， Otherwise..ClickCancel。", function () {
                         $('#eastTabs').tabs('close', title);
                     })
                 },
                 onerror:function(e, id, data){
                     console.log(e);
-                    $.app.show("错误消息{0}".format(e.reason))
+                    $.app.show("Error消息{0}".format(e.reason))
                     term.disable();
                 },
             }, node, id, "/bin/"+param.cmd, param.user, param.work_dir)
@@ -1686,7 +1686,7 @@ function showConsolePanel(id){
 
 function showProcess(id){
     addPanel({
-        title:"进程",
+        title:"Process",
         iconCls:'fa fa-spinner',
         fit:true,
         selected:true,
@@ -1749,11 +1749,11 @@ function reloadDg(){
 }
 
 function killLease(id, idx){
-    $.app.confirm("确定强制终止当前的容器实例", function () {
+    $.app.confirm("Sure强制终止CurrentContainersExample", function () {
         let node = local_node;
         let name = $('#containersDg').datagrid('getRows')[idx].Name
         $.docker.request.container.kill(function(){
-            $.app.show('容器{0}强制终止成功'.format(name));
+            $.app.show('Containers{0}强制终止Success'.format(name));
             reloadDg();
         }, node, id)
     })
@@ -1761,11 +1761,11 @@ function killLease(id, idx){
 
 function stopLease(id, idx){
 
-    $.app.confirm("确定停止当前的容器实例", function () {
+    $.app.confirm("SureStopCurrentContainersExample", function () {
         let node = local_node;
         let name = $('#containersDg').datagrid('getRows')[idx].Name
         $.docker.request.container.stop(function () {
-            $.app.show('容器{0}停止成功'.format(name));
+            $.app.show('Containers{0}StopSuccess'.format(name));
             reloadDg();
         }, node, id)
     })
@@ -1777,7 +1777,7 @@ function startLease(id, idx){
     $.docker.request.container.start(function(){
         showLog(id, idx, true);
         reloadDg();
-        $.app.show('容器{0}启动成功'.format(name));
+        $.app.show('Containers{0}StartSuccess'.format(name));
     }, node, id)
 }
 
@@ -1822,7 +1822,7 @@ function showLog(id, _idx, restart){
                     });
 
                     scrollBottom($('#'+dialogId));
-                    $('#'+dialogId).find('t').html('[已启动]');
+                    $('#'+dialogId).find('t').html('[Started]');
                 }
 
             }, function (xhr, state) {
@@ -1830,10 +1830,10 @@ function showLog(id, _idx, restart){
                 //console.log(xhr)
                 if(state==1){
                     //console.log('onSendOver')
-                    console.log('Log请求已经发送')
+                    console.log('LogRequest已经Send')
                 }
             }, function (xhr, state){
-                $('#'+dialogId).find('t').html('[已停止]');
+                $('#'+dialogId).find('t').html('[Stopped]');
                 closeEvent(id)
             })
 
@@ -1937,13 +1937,13 @@ function removeLease(idx, leaseId) {
     if(idx == null){
         let rows = $('#containersDg').datagrid('getChecked');
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个容器进行删除');
+            $.app.show('本Version仅SupportSelection一个ContainersConductDelete');
             return ;
         }
 
 
         if(rows.length==0){
-            $.app.show('选择一个容器进行删除');
+            $.app.show('Selection一个ContainersConductDelete');
             return ;
         }
 
@@ -1962,31 +1962,31 @@ function removeLease(idx, leaseId) {
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>容器删除选项</legend>
+                        <legend>ContainersDeleteOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">      
                         <div class="cubeui-row">                              
                             <input data-toggle="cubeui-checkbox" name="force" value="1" label="">
-                            <span style='line-height: 30px;padding-right:0px'><b>强制删除容器</b>(已运行中容器，会先Kill然后删除)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>强制DeleteContainers</b>(已Run中Containers，FirstKill然后Delete)</span>
                         </div>   
                         <div class="cubeui-row">                              
                             <input data-toggle="cubeui-checkbox" name="v" value="1" label="">
-                            <span style='line-height: 30px;padding-right:0px'><b>删除关联匿名数据卷</b>(Remove anonymous volumes associated with the container.)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>Delete关联匿名Data卷</b>(Remove anonymous volumes associated with the container.)</span>
                         </div>
                         <div class="cubeui-row">                              
                             <input data-toggle="cubeui-checkbox" name="link" value="1" label="">
-                            <span style='line-height: 30px;padding-right:0px'><b>删除关联link</b>(Remove the specified link associated with the container.)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>Delete关联link</b>(Remove the specified link associated with the container.)</span>
                         </div>
                     </div>
                 </div>
         `;
 
 
-    $.docker.utils.optionConfirm('删除容器', '重要警告：确定要删除容器{0}？'.format(name), html,
+    $.docker.utils.optionConfirm('DeleteContainers', 'Important Warning：Sure要DeleteContainers{0}？'.format(name), html,
         function(param, closeFn){
 
             $.docker.request.container.delete(function (response) {
-                $.app.show('容器{0}删除成功'.format(name));
+                $.app.show('Containers{0}DeleteSuccess'.format(name));
                 closeFn();
                 reloadDg()
             }, node, containerRow.ID, param.v=='1', param.link=='1', param.force=='1')
@@ -2007,7 +2007,7 @@ function showLogDialog(dialogId, containerRow, afterRendFn){
 
         return $.iDialog.openDialog({
             id:dialogId,
-            title: '{0}-容器日志'.format(containerRow.Name),
+            title: '{0}-ContainersLog'.format(containerRow.Name),
             minimizable:true,
             modal:false,
             containerId:containerRow.ID,
@@ -2020,7 +2020,7 @@ function showLogDialog(dialogId, containerRow, afterRendFn){
             },
             onBeforeClose:closeLogDialog,
             buttonsGroup: [{
-                text: '清除',
+                text: 'Clear',
                 iconCls: 'fa fa-plus-square-o',
                 btnCls: 'cubeui-btn-orange',
                 handler:function(){
@@ -2149,40 +2149,40 @@ function pruneContainer(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>选项</legend>
+                        <legend>Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">     
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理指定容器标签:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理AssignContainersLabel:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>label格式: label1=a,label2!=b(不等于),label!=...(没有标签)</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>labelFormat: label1=a,label2!=b(Not equal to),label!=...(NothingLabel)</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="labels"
-                                   value='' data-options="required:false,prompt:'label格式: label1=a,label2!=b,label!=...'">
+                                   value='' data-options="required:false,prompt:'labelFormat: label1=a,label2!=b,label!=...'">
                         </div>
                     </div>
                     <div style="margin-top:5px">     
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理在此时间戳之前创建的容器:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理在此TimetampBeforeCreate的Containers:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>值可以是Unix时间戳、日期格式的时间戳或Go持续时间字符串（例如10m、1h30m）格式:10m,1h30m</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>值It could beUnixTimetamp、DateFormat的Timetamp或GoString for duration（For example:10m、1h30m）Format:10m,1h30m</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="untils"
-                                   value='' data-options="required:false,prompt:'格式: 10m,1h30m'">
+                                   value='' data-options="required:false,prompt:'Format: 10m,1h30m'">
                         </div>
                     </div>
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('清理未运行容器', '重要警告：确定要清空所有未运行容器，清理后数据将无法恢复', html,
+    $.docker.utils.optionConfirm('清理未Run Container', 'Important Warning：Sure要ClearAll未Run Container，清理后Data将无法Restore', html,
         function(param, closeFn){
 
             $.docker.request.container.prune(function(response){
-                let msg = '成功清除{0}个容器, 回收空间{1}'.format(response.Count, response.Size);
+                let msg = 'SuccessClear{0}个Containers, Recovery Space{1}'.format(response.Count, response.Size);
 
                 closeFn();
 
@@ -2196,7 +2196,7 @@ function pruneContainer(){
 function runLease(){
     let rows = $('#containersDg').datagrid('getChecked');
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器作为模板进行运行');
+        $.app.show('本Version仅SupportSelection一个Containers作为TemplatesConductRun');
         return ;
     }
 
@@ -2204,7 +2204,7 @@ function runLease(){
         createContainerPanel(null, 2);
         return ;
     }else{
-        $.app.show('选择容器{0}作为模板进行运行'.format(rows[0].Name));
+        $.app.show('SelectionContainers{0}作为TemplatesConductRun'.format(rows[0].Name));
         cloneContainer(rows[0].ID, 2);
     }
 
@@ -2213,13 +2213,13 @@ function runLease(){
 function execLease(){
     let rows = $('#containersDg').datagrid('getChecked');
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器执行命令');
+        $.app.show('本Version仅SupportSelection一个ContainersImplementationCommand');
         return ;
     }
 
 
     if(rows.length==0){
-        $.app.show('选择一个容器进行执行命令');
+        $.app.show('Selection一个ContainersConductImplementationCommand');
         return ;
     }
 
@@ -2232,7 +2232,7 @@ function updateRestartPolicy(btn, id){
 
     if(opts.flag==2){
 
-        $.app.confirm("确定修改重启策略？", function(){
+        $.app.confirm("SureModifyRestart Policy？", function(){
 
             let name = $('#view_RestartPolicy').combobox('getValue');
             let maxcount = $('#MaximumRetryCount').numberspinner('getValue');
@@ -2240,11 +2240,11 @@ function updateRestartPolicy(btn, id){
             let node = local_node;
 
             $.docker.request.container.update_restart(function (response) {
-                $.app.show('修改重启策略已经完成');
+                $.app.show('ModifyRestart Policy已经完成');
 
                 opts.flag = 1;
                 $(btn).linkbutton({
-                    text:'修改',
+                    text:'Modify',
                     iconCls: 'fa fa-pencil-square-o'
                 });
 
@@ -2261,7 +2261,7 @@ function updateRestartPolicy(btn, id){
         $('#MaximumRetryCount').numberspinner('readonly', false);
 
         $(btn).linkbutton({
-            text:'确定',
+            text:'Sure',
             iconCls: 'fa fa-check-square-o'
         });
     }
@@ -2276,27 +2276,27 @@ function showImportFile(id){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>导入归档选项</legend>
+                        <legend>ImportArchiveOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">容器系统目标目录:</label>
+                                    <label class="cubeui-form-label">ContainersSystemObjectiveContents:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="path"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'容器中要将存档内容提取到的目录的路径；比如/etc/nginx/conf'
+                                                        required:false,prompt:'Containers中要将ArchiveContentsExtract到的Contents的Path；Like what/etc/nginx/conf'
                                                         "
                                         >
                                     </div>
                                 </div>             
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">归档文件:</label>
+                                    <label class="cubeui-form-label">ArchiveDocumentation:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-filebox" id="import_file" data-options="
-                                            prompt:'必须是使用以下算法之一压缩的tar存档：identity（无压缩）、gzip、bzip2或xz。',
-                                            buttonText: '选择文件',
+                                            prompt:'Must beUse以下算法之一压缩的tarArchive：identity（No compression）、gzip、bzip2或xz。',
+                                            buttonText: 'Select File',
                                             accept:'.tar',
                                             required:true,
                                             " style="width:100%">  
@@ -2307,7 +2307,7 @@ function showImportFile(id){
                             
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；解压缩给定内容相同文件覆盖目时录，将会出现错误；不选中；可以用文件覆盖目录">非目录不覆盖:</label>
+                                    <label class="cubeui-form-label" title="If selected；解压缩给定ContentsSameDocumentation覆盖目时录，Will出现Error；Uncheck；Yeah用Documentation覆盖Contents">Non Directory不覆盖:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked 
                                             name="noOverwriteDirNonDir" value="1" data-options="onText:'',offText:'',width:60">
@@ -2316,7 +2316,7 @@ function showImportFile(id){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；将UID/GID映射复制到目标文件或目录；不选中；不复制UID/GID映射">复制UID/GID:</label>
+                                    <label class="cubeui-form-label" title="If selected；将UID/GIDMapCopy到ObjectiveDocumentation或Contents；Uncheck；不CopyUID/GIDMap">CopyUID/GID:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked
                                             name="copyUIDGID" value="1" data-options="onText:'',offText:'',width:60">
@@ -2327,12 +2327,12 @@ function showImportFile(id){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('导入容器文件系统归档文件', '导入已归档文件至容器文件系统目录？', import_html,
+    $.docker.utils.optionConfirm('ImportContainersDocumentationSystemArchiveDocumentation', 'Import已ArchiveDocumentation至ContainersDocumentationSystemContents？', import_html,
         function(param, closeFn) {
             console.log(param)
 
             if ($.extends.isEmpty(param.path)) {
-                $.app.show("需要填写要归档导入的容器系统目标目录路径")
+                $.app.show("_Other Organiser要ArchiveImport的ContainersSystemObjectiveContentsPath")
                 return false;
             }
 
@@ -2344,7 +2344,7 @@ function showImportFile(id){
 
                 $.docker.request.container.extract(function (response) {
 
-                    $.app.show('归档导入容器目录{0}成功'.format(param.path.htmlEncode()));
+                    $.app.show('ArchiveImportContainersContents{0}Success'.format(param.path.htmlEncode()));
                     // closeFn();
                     reloadDg()
 
@@ -2375,17 +2375,17 @@ function showExportFile(id){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>导出选项</legend>
+                        <legend>ExportOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">归档源文件地址:</label>
+                                    <label class="cubeui-form-label">Archive源DocumentationAddress:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="path"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'要存档导出的容器文件系统中的资源；比如/etc/nginx/conf'
+                                                        required:false,prompt:'要ArchiveExport的ContainersDocumentationSystemMedium资源；Like what/etc/nginx/conf'
                                                         "
                                         >
                                     </div>
@@ -2395,16 +2395,16 @@ function showExportFile(id){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('归档容器文件系统文件导出', '从容器文件系统导出指定文件或者目录？', export_html,
+    $.docker.utils.optionConfirm('ArchiveContainersDocumentationSystemDocumentationExport', '从ContainersDocumentationSystemExportAssignDocumentationOr..Contents？', export_html,
     function(param, closeFn) {
         console.log(param)
 
         if ($.extends.isEmpty(param.path)) {
-            $.app.show("需要填写要存档导出的容器文件系统中的资源")
+            $.app.show("_Other Organiser要ArchiveExport的ContainersDocumentationSystemMedium资源")
             return false;
         }
 
-        $.app.showProgress('获取归档数据中......');
+        $.app.showProgress('AccessArchiveData中......');
 
         let bytes = new ByteArray();
         $.docker.request.container.archive(node, id, param.path, function (data, xhr, state, flag) {
@@ -2423,18 +2423,18 @@ function showExportFile(id){
 
             if (xhr.status < 400) {
                 console.log(xhr)
-                $.app.show('{0}归档已经准备成功，请等待下载'.format(param.path.htmlEncode()))
+                $.app.show('{0}Archive已经准备Success，Please waitDownload'.format(param.path.htmlEncode()))
             } else {
 
                 if(xhr.data!=null){
                     if(xhr.data.binary!=null){
                         let msg = ab2str(xhr.data.binary);
-                        $.app.show('文件归档失败:{0}'.format(msg.htmlEncode()));
+                        $.app.show('DocumentationArchiveFailed:{0}'.format(msg.htmlEncode()));
                     }else{
-                        $.app.show('文件归档失败:{0}'.format((xhr.data+"").htmlEncode()));
+                        $.app.show('DocumentationArchiveFailed:{0}'.format((xhr.data+"").htmlEncode()));
                     }
                 }else{
-                    $.app.show('文件归档失败')
+                    $.app.show('DocumentationArchiveFailed')
                 }
             }
         }, function (xhr, state) {
@@ -2450,13 +2450,13 @@ function archiveContainer2(){
 
     let rows = $('#containersDg').datagrid('getChecked');
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器归档');
+        $.app.show('本Version仅SupportSelection一个ContainersArchive');
         return ;
     }
 
 
     if(rows.length==0){
-        $.app.show('选择一个容器归档');
+        $.app.show('Selection一个ContainersArchive');
         return ;
     }
 
@@ -2468,13 +2468,13 @@ function extractContainer2(){
     let rows = $('#containersDg').datagrid('getChecked');
 
     if(rows.length>1){
-        $.app.show('本版本仅支持选择一个容器导入归档');
+        $.app.show('本Version仅SupportSelection一个ContainersImportArchive');
         return ;
     }
 
 
     if(rows.length==0){
-        $.app.show('选择一个容器导入归档');
+        $.app.show('Selection一个ContainersImportArchive');
         return ;
     }
 

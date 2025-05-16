@@ -1,26 +1,26 @@
 <div class="apiDetail">
 <div>
 	<h2><span>String</span><span class="path">treeNode.</span>iconSkin</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>节点自定义图标的 className</p>
-			<p class="highlight_red">1、需要修改 css，增加相应 className 的设置</p>
-			<p class="highlight_red">2、css 方式简单、方便，并且同时支持父节点展开、折叠状态切换图片</p>
-			<p class="highlight_red">3、css 建议采用图片分割渲染的方式以减少反复加载图片，并且避免图片闪动</p>
-			<p class="highlight_red">4、zTree v3.x 的 iconSkin 同样支持 IE6</p>
-			<p class="highlight_red">5、如果想直接使用 图片的Url路径 设置节点的个性化图标，需要设置 treeNode.icon / treeNode.iconOpen / treeNode.iconClose 属性</p>
-			<p>默认值：无</p>
+			<p>Nodes自定义Icon的 className</p>
+			<p class="highlight_red">1、需要Modify css，Increase相应 className 的Settings</p>
+			<p class="highlight_red">2、css ModalitiesSimple、Easy，并且同时Support父NodesExpand、CollapseStatusSwitchPicture</p>
+			<p class="highlight_red">3、css Recommendations采用Picture分割渲染的Modalities以减少反复加载Picture，并且避免Picture闪动</p>
+			<p class="highlight_red">4、zTree v3.x 的 iconSkin 同样Support IE6</p>
+			<p class="highlight_red">5、If想直接Use Picture的UrlPath SettingsNodes的个性化Icon，需要Settings treeNode.icon / treeNode.iconOpen / treeNode.iconClose Properties</p>
+			<p>Default value：无</p>
 		</div>
 	</div>
-	<h3>String 格式说明</h3>
+	<h3>String Format说明</h3>
 	<div class="desc">
-	<p>设置个性图标的 className</p>
+	<p>Settings个性Icon的 className</p>
 	</div>
-	<h3>css & treeNode 举例</h3>
-	<h4>1. 设置节点的个性化图标</h4>
-	<pre xmlns=""><code>css 内容：
+	<h3>css & treeNode Example</h3>
+	<h4>1. SettingsNodes的个性化Icon</h4>
+	<pre xmlns=""><code>css Contents：
 .ztree li span.button.diy01_ico_open, .ztree li span.button.diy01_ico_close{...}
 
 .ztree li span.button.diy02_ico_open{...}
@@ -28,16 +28,16 @@
 
 .ztree li span.button.diy03_ico_docu{...}
 
-js中节点数据：
+js中NodesData：
 var nodes = [
-	//父节点展开 折叠时使用相同的图标
-	{ name:"父节点1", iconSkin:"diy01"},
+	//父NodesExpand Collapse时Use相同的Icon
+	{ name:"父Nodes1", iconSkin:"diy01"},
 
-	//父节点展开 折叠时分别使用不同的图标
-	{ name:"父节点2", iconSkin:"diy02"},
+	//父NodesExpand Collapse时分别Use不同的Icon
+	{ name:"父Nodes2", iconSkin:"diy02"},
 
-	//叶子节点个性化图标
-	{ name:"叶子节点", iconSkin:"diy03"}
+	//LeafNodes个性化Icon
+	{ name:"LeafNodes", iconSkin:"diy03"}
 ]</code></pre>
 </div>
 </div>

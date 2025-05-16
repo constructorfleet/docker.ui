@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all1:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     formatter:leaseOperateFormatter},
                 {field: 'Name', title: 'NAME', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -62,9 +62,9 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectService(\'' + row.ID + '\')">查看</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除</button>';
-    htmlstr += '<button title="查看服务日志" class="layui-btn-orange layui-btn layui-btn-xs" onclick="logService(\'' + row.ID + '\')">日志</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectService(\'' + row.ID + '\')">View</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete</button>';
+    htmlstr += '<button title="ViewServicesLog" class="layui-btn-orange layui-btn layui-btn-xs" onclick="logService(\'' + row.ID + '\')">Log</button>';
     return htmlstr;
 }
 
@@ -73,12 +73,12 @@ function createRelatedTaskOperateFormatter(id){
         let htmlstr = "";
         //superpowers
         if(row.Status.State=='running'){
-            htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">查看</button>';
+            htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">View</button>';
         }else{
-            htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">查看</button>';
+            htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">View</button>';
         }
 
-        htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="logTask(\''+row.ID+'\', \'' + row.ID + '\')">日志</button>';
+        htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="logTask(\''+row.ID+'\', \'' + row.ID + '\')">Log</button>';
 
         return htmlstr;
     }
@@ -165,12 +165,12 @@ function removeLease(id, closePanel) {
         let rows = $('#servicesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个服务删除');
+            $.app.show('本Version仅SupportSelection一个ServicesDelete');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个服务删除');
+            $.app.show('请Selection一个ServicesDelete');
             return;
         }else{
             id = rows[0].ID;
@@ -179,11 +179,11 @@ function removeLease(id, closePanel) {
 
     let node = local_node;
 
-    $.docker.utils.deleteConfirm('从SWARM集群里删除服务', '您确认要从SWARM里删除当前服务', function (param, closeFn){
+    $.docker.utils.deleteConfirm('从SWARMCluster里DeleteServices', '您Confirm要从SWARM里DeleteCurrentServices', function (param, closeFn){
 
         let node = local_node;
         $.docker.request.service.delete(function(response){
-            $.app.show("从SWARM集群里删除服务成功".format(""));
+            $.app.show("从SWARMCluster里DeleteServicesSuccess".format(""));
             reloadDg();
             closeFn();
 
@@ -308,7 +308,7 @@ function saveService(){
         config.TaskTemplate.Placement.Constraints = $.docker.utils.convert2ListParamValue(info['TaskTemplate.Placement.Constraints'])
         
         $.docker.request.service.create(function (response) {
-            $.app.show("服务{0}已经创建成功".format(config.Name));
+            $.app.show("Services{0}已经CreateSuccess".format(config.Name));
             reloadDg();
         }, node, config.Name, config);
     }
@@ -339,7 +339,7 @@ function showServicePanel(rowData){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:'SWARM服务信息-{0}'.format($.extends.isEmpty(rowData.Name, rowData.ID)), title:'服务信息',
+            titleformat:'SWARMServicesInformation-{0}'.format($.extends.isEmpty(rowData.Name, rowData.ID)), title:'ServicesInformation',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerHtml:$.templates(service_panel_footer_html).render(rowData),
             render:function (panel, option) {
@@ -381,12 +381,12 @@ function showServicePanel(rowData){
                                 groupFormatter:function (value, rows) {
                                     var rtnStr = value + '({0})'.format(rows?rows.length:0);
                                     // rtnStr += '<input type="checkbox" onclick="FGPCkbClick(this)" helpGPVal="' + value + '" name="gpChk" />';
-                                    // rtnStr += value + ' 单据数量=' + rows.length + '条';
+                                    // rtnStr += value + ' Number of documents=' + rows.length + '条';
                                     return rtnStr;
                                 }
                             },
                             frozenColumns:[[
-                                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                                     width1: 300, formatter:createRelatedTaskOperateFormatter(rowData.ID)},
                                 {field: 'ID', title: 'ID', sortable: true,
                                     formatter:$.iGrid.tooltipformatter(),width: 250},
@@ -469,7 +469,7 @@ function showServicePanel(rowData){
 function showTaskPanel(rowData){
 
     let one = $.iDialog.openDialog({
-        title: '任务信息-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)),
+        title: 'TasksInformation-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)),
         minimizable:true,
         modal:true,
         maximized:true,
@@ -497,7 +497,7 @@ function showTaskPanel(rowData){
     //         iconCls:'fa fa-info-circle',
     //         collapsible:false,
     //         showHeader1:false,
-    //         titleformat:'任务信息-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)), title:'服务信息',
+    //         titleformat:'TasksInformation-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)), title:'ServicesInformation',
     //         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
     //         footerHtml:`
     //      <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -506,7 +506,7 @@ function showTaskPanel(rowData){
     //         },
     //         btnCls: 'cubeui-btn-red',
     //         iconCls: 'fa fa-close'
-    //     }">关闭</a>
+    //     }">Close</a>
     //     `.format(rowData.ID),
     //         render:function (panel, option) {
     //             $.docker.getHtml('./inspect-task.html', null, function(html){
@@ -534,12 +534,12 @@ function updateTags(id, inspect){
         let rows = $('#servicesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点编辑元数据');
+            $.app.show('本Version仅SupportSelection一个NodesEdit元Data');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点降级当前节点编辑元数据');
+            $.app.show('请Selection一个NodesDowngradeCurrentNodesEdit元Data');
             return;
         }else{
             id = rows[0].ID;
@@ -555,9 +555,9 @@ function updateTags(id, inspect){
                 </div>
                 <div class="cubeui-fluid">
                     <div style="margin-top:5px">      
-                        <div class="cubeui-row" title="用户定义的节点键/值元数据">
+                        <div class="cubeui-row" title="User definition的Nodes键/值元Data">
                             <fieldset>
-                                <legend style="margin-bottom: 0px;">用户定义的节点键/值元数据</legend>
+                                <legend style="margin-bottom: 0px;">User definition的Nodes键/值元Data</legend>
                             </fieldset>
                                             
                             <div class="cubeui-col-sm12 add-opt-div">
@@ -580,11 +580,11 @@ function updateTags(id, inspect){
                                 <div class="cubeui-row">
                                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                               name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                               name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                     </div>
                                     <div class="cubeui-col-sm5">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                               name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                               name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                     </div>
                                     <div class="cubeui-col-sm2" style="text-align: center">
                                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -603,12 +603,12 @@ function updateTags(id, inspect){
 
         html = $.templates(html).render(response)
 
-        $.docker.utils.optionConfirm('修改节点键/值标签的元数据', null, html,
+        $.docker.utils.optionConfirm('ModifyNodes键/值Label的元Data', null, html,
             function(param, closeFn){
                 let labels = $.docker.utils.buildOptsData(param['Labels-name'],param['Labels-value']);
 
                 $.docker.request.node.update_labels(function (response) {
-                    $.app.show("节点{0}节点键/值标签的元数据修改成功".format(response.Info.Description.Hostname));
+                    $.app.show("Nodes{0}Nodes键/值Label的元DataModifySuccess".format(response.Info.Description.Hostname));
 
                     reloadDg();
                     if(inspect){
@@ -629,15 +629,15 @@ function updateName(btn, id){
 
     if(opts.flag==2){
 
-        $.app.confirm("确定修改节点名称？", function(){
+        $.app.confirm("SureModifyNode Name？", function(){
 
             let name = $('#Nodename').textbox('getValue');
 
             $.docker.request.node.update_name(function (response) {
-                $.app.show('修改节点名称已经完成');
+                $.app.show('ModifyNode Name已经完成');
                 opts.flag = 1;
                 $(btn).linkbutton({
-                    text:'修改',
+                    text:'Modify',
                     iconCls: 'fa fa-pencil-square-o'
                 });
 
@@ -652,7 +652,7 @@ function updateName(btn, id){
         opts.flag = 2;
         $('#Nodename').textbox('readonly', false);
         $(btn).linkbutton({
-            text:'确定',
+            text:'Sure',
             iconCls: 'fa fa-check-square-o'
         });
     }

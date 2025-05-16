@@ -1,28 +1,28 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Function(treeId, treeNodes)</span><span class="path">setting.callback.</span>beforeDrag</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.exedit</span> 扩展 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.exedit</span> Extension js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>用于捕获节点被拖拽之前的事件回调函数，并且根据返回值确定是否允许开启拖拽操作</p>
-			<p>默认值：null</p>
+			<p>For captureNodes被Drag之前的EventsRevert function，并且Based onBack值Sure是否AllowOpenDragOperation</p>
+			<p>Default value：null</p>
 		</div>
 	</div>
-	<h3>Function 参数说明</h3>
+	<h3>Function ParametersAnnotations</h3>
 	<div class="desc">
 	<h4><b>treeId</b><span>String</span></h4>
-	<p>被拖拽的节点 treeNodes 所在 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控</p>
+	<p>被Drag的Nodes treeNodes Location zTree 的 <b class="highlight_red">treeId</b>，便于User操控</p>
 	<h4 class="topLine"><b>treeNodes</b><span>Array(JSON)</span></h4>
-	<p>要被拖拽的节点 JSON 数据集合</p>
-	<p class="highlight_red">v3.x 允许多个同级节点同时被拖拽，因此将此参数修改为 Array(JSON)</p>
-	<p class="highlight_red">如果拖拽时多个被选择的节点不是同级关系，则只能拖拽鼠标当前所在位置的节点</p>
-	<h4 class="topLine"><b>返回值</b><span>Boolean</span></h4>
-	<p>返回值是 true / false</p>
-	<p class="highlight_red">如果返回 false，zTree 将终止拖拽，也无法触发 onDrag / beforeDrop / onDrop 事件回调函数</p>
+	<p>要被Drag的Nodes JSON DataGather</p>
+	<p class="highlight_red">v3.x AllowMultiple同级Nodes同时被Drag，因此将此ParametersModify为 Array(JSON)</p>
+	<p class="highlight_red">IfDrag时Multiple被Selection的Nodes不是同级关系，则只能DragMouse当前Location位置的Nodes</p>
+	<h4 class="topLine"><b>Back值</b><span>Boolean</span></h4>
+	<p>Back值是 true / false</p>
+	<p class="highlight_red">IfBack false，zTree 将终止Drag，也无法Trigger onDrag / beforeDrop / onDrop EventsRevert function</p>
 	</div>
-	<h3>setting & function 举例</h3>
-	<h4>1. 禁止全部拖拽操作</h4>
+	<h3>setting & function Example</h3>
+	<h4>1. BanAllDragOperation</h4>
 	<pre xmlns=""><code>function zTreeBeforeDrag(treeId, treeNodes) {
     return false;
 };

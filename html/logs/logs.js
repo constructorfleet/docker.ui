@@ -31,7 +31,7 @@ function logService(serviceId){
                     });
 
                     scrollBottom($('#'+dialogId));
-                    $('#'+dialogId).find('t').html('[已启动]');
+                    $('#'+dialogId).find('t').html('[Started]');
                 }
 
             }, function (xhr, state) {
@@ -39,10 +39,10 @@ function logService(serviceId){
                 //console.log(xhr)
                 if(state==1){
                     //console.log('onSendOver')
-                    console.log('Log请求已经发送')
+                    console.log('LogRequest已经发送')
                 }
             }, function (xhr, state){
-                $('#'+dialogId).find('t').html('[已停止]');
+                $('#'+dialogId).find('t').html('[Stopped]');
                 closeEvent(serviceId)
             })
 
@@ -75,7 +75,7 @@ function logService(serviceId){
 
         $.iDialog.openDialog({
             id:dialogId,
-            title: '{0}-日志'.format(serviceId),
+            title: '{0}-Log'.format(serviceId),
             minimizable:true,
             modal:false,
             objectId:serviceId,
@@ -93,7 +93,7 @@ function logService(serviceId){
                 delete logsMap[objectId]
             },
             buttonsGroup: [{
-                text: '清除',
+                text: 'Clear',
                 iconCls: 'fa fa-plus-square-o',
                 btnCls: 'cubeui-btn-orange',
                 handler:function(){
@@ -121,7 +121,7 @@ function logTask(taskId){
                     });
 
                     scrollBottom($('#'+dialogId));
-                    $('#'+dialogId).find('t').html('[已启动]');
+                    $('#'+dialogId).find('t').html('[Started]');
                 }
 
             }, function (xhr, state) {
@@ -129,10 +129,10 @@ function logTask(taskId){
                 //console.log(xhr)
                 if(state==1){
                     //console.log('onSendOver')
-                    console.log('Log请求已经发送')
+                    console.log('LogRequest已经发送')
                 }
             }, function (xhr, state){
-                $('#'+dialogId).find('t').html('[已停止]');
+                $('#'+dialogId).find('t').html('[Stopped]');
                 closeEvent(taskId)
             })
 
@@ -165,7 +165,7 @@ function logTask(taskId){
 
         $.iDialog.openDialog({
             id:dialogId,
-            title: '{0}-日志'.format(taskId),
+            title: '{0}-Log'.format(taskId),
             minimizable:true,
             modal:false,
             objectId:taskId,
@@ -183,7 +183,7 @@ function logTask(taskId){
                 delete logsMap[objectId]
             },
             buttonsGroup: [{
-                text: '清除',
+                text: 'Clear',
                 iconCls: 'fa fa-plus-square-o',
                 btnCls: 'cubeui-btn-orange',
                 handler:function(){

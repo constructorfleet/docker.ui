@@ -1,8 +1,8 @@
 /**
  * User: Jinqn
  * Date: 14-04-08
- * Time: 下午16:34
- * 上传图片对话框逻辑代码,包括tab: 远程图片/上传图片/在线图片/搜索图片
+ * Time: Afternoon16:34
+ * UploadPicture对话框逻辑Code,Includingtab: RemotePicture/UploadPicture/OnlinePicture/SearchPicture
  */
 
 (function () {
@@ -15,7 +15,7 @@
         initButtons();
     };
 
-    /* 初始化tab标签 */
+    /* InitializetabLabel */
     function initTabs() {
         var tabs = $G('tabhead').children;
         for (var i = 0; i < tabs.length; i++) {
@@ -28,7 +28,7 @@
         setTabFocus('upload');
     }
 
-    /* 初始化tabbody */
+    /* Initializetabbody */
     function setTabFocus(id) {
         if(!id) return;
         var i, bodyId, tabs = $G('tabhead').children;
@@ -52,7 +52,7 @@
         }
     }
 
-    /* 初始化onok事件 */
+    /* InitializeonokEvents */
     function initButtons() {
 
         dialog.onok = function () {
@@ -69,7 +69,7 @@
                     list = uploadFile.getInsertList();
                     var count = uploadFile.getQueueCount();
                     if (count) {
-                        $('.info', '#queueList').html('<span style="color:red;">' + '还有2个未上传文件'.replace(/[\d]/, count) + '</span>');
+                        $('.info', '#queueList').html('<span style="color:red;">' + 'And..2个未UploadDocumentation'.replace(/[\d]/, count) + '</span>');
                         return false;
                     }
                     break;
@@ -77,13 +77,13 @@
                     list = onlineFile.getInsertList();
                     break;
             }
-            editor.fireEvent('afterConfirmUploadedFile', list); //小策一喋
+            editor.fireEvent('afterConfirmUploadedFile', list); //I don\'t know
             editor.execCommand('insertfile', list);
         };
     }
 
 
-    /* 上传附件 */
+    /* UploadAnnex */
     function UploadFile(target) {
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
@@ -97,39 +97,39 @@
         initContainer: function () {
             this.$queue = this.$wrap.find('.filelist');
         },
-        /* 初始化容器 */
+        /* InitializeContainers */
         initUploader: function () {
             var _this = this,
                 $ = jQuery,    // just in case. Make sure it's not an other libaray.
                 $wrap = _this.$wrap,
-            // 图片容器
+            // PictureContainers
                 $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
+            // Status栏，Including进度和Controlbutton
                 $statusBar = $wrap.find('.statusBar'),
-            // 文件总体选择信息。
+            // Documentation总体SelectionInformation。
                 $info = $statusBar.find('.info'),
-            // 上传按钮
+            // Uploadbutton
                 $upload = $wrap.find('.uploadBtn'),
-            // 上传按钮
+            // Uploadbutton
                 $filePickerBtn = $wrap.find('.filePickerBtn'),
-            // 上传按钮
+            // Uploadbutton
                 $filePickerBlock = $wrap.find('.filePickerBlock'),
-            // 没选择文件之前的内容。
+            // 没Select FileBefore的Contents。
                 $placeHolder = $wrap.find('.placeholder'),
-            // 总体进度条
+            // Overall progress bar
                 $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
+            // Add的Documentation数量
                 fileCount = 0,
-            // 添加的文件总大小
+            // Add的Documentation总大小
                 fileSize = 0,
-            // 优化retina, 在retina下这个值是2
+            // Optimizationretina, 在retina下HereValue2
                 ratio = window.devicePixelRatio || 1,
-            // 缩略图大小
+            // Thumbnail Size
                 thumbnailWidth = 113 * ratio,
                 thumbnailHeight = 113 * ratio,
-            // 可能有pedding, ready, uploading, confirm, done.
+            // Maybepedding, ready, uploading, confirm, done.
                 state = '',
-            // 所有文件的进度信息，key为file id
+            // AllDocumentation的进度Information，key为file id
                 percentages = {},
                 supportTransition = (function () {
                     var s = document.createElement('p').style,
@@ -141,7 +141,7 @@
                     s = null;
                     return r;
                 })(),
-            // WebUploader实例
+            // WebUploaderExample
                 uploader,
                 actionUrl = editor.getActionUrl(editor.getOpt('fileActionName')),
                 fileMaxSize = editor.getOpt('fileMaxSize'),
@@ -177,7 +177,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            // 当有DocumentationAdd进来时Implementation，Responsibleview的Create
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -241,7 +241,7 @@
                     percentages[ file.id ] = [ file.size, 0 ];
                     file.rotation = 0;
 
-                    /* 检查文件格式 */
+                    /* InspectionDocumentationFormat */
                     if (!file.ext || acceptExtensions.indexOf(file.ext.toLowerCase()) == -1) {
                         showError('not_allow_type');
                         uploader.removeFile(file);
@@ -255,7 +255,7 @@
                         $li.off('mouseenter mouseleave');
                         $btns.remove();
                     }
-                    // 成功
+                    // Success
                     if (cur === 'error' || cur === 'invalid') {
                         showError(file.statusText);
                         percentages[ file.id ][ 1 ] = 1;
@@ -312,7 +312,7 @@
                 $li.insertBefore($filePickerBlock);
             }
 
-            // 负责view的销毁
+            // Responsibleview的Destruction
             function removeFile(file) {
                 var $li = $('#' + file.id);
                 delete percentages[ file.id ];
@@ -349,7 +349,7 @@
 
                     switch (val) {
 
-                        /* 未选择文件 */
+                        /* 未Select File */
                         case 'pedding':
                             $queue.addClass('element-invisible');
                             $statusBar.addClass('element-invisible');
@@ -358,7 +358,7 @@
                             uploader.refresh();
                             break;
 
-                        /* 可以开始上传 */
+                        /* YeahStartUpload */
                         case 'ready':
                             $placeHolder.addClass('element-invisible');
                             $queue.removeClass('element-invisible');
@@ -368,13 +368,13 @@
                             uploader.refresh();
                             break;
 
-                        /* 上传中 */
+                        /* Upload中 */
                         case 'uploading':
                             $progress.show(); $info.hide();
                             $upload.text(lang.uploadPause);
                             break;
 
-                        /* 暂停上传 */
+                        /* 暂停Upload */
                         case 'paused':
                             $progress.show(); $info.hide();
                             $upload.text(lang.uploadContinue);
@@ -471,7 +471,7 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
+                        /* Add额外的GETParameters */
                         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
                             url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
                         uploader.option('server', url);
@@ -484,7 +484,7 @@
             });
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+                //这里YeahPassdataObjectAddPOSTParameters
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 
@@ -564,7 +564,7 @@
     };
 
 
-    /* 在线附件 */
+    /* OnlineAnnex */
     function OnlineFile(target) {
         this.container = utils.isString(target) ? document.getElementById(target) : target;
         this.init();
@@ -575,7 +575,7 @@
             this.initEvents();
             this.initData();
         },
-        /* 初始化容器 */
+        /* InitializeContainers */
         initContainer: function () {
             this.container.innerHTML = '';
             this.list = document.createElement('ul');
@@ -587,18 +587,18 @@
             this.list.appendChild(this.clearFloat);
             this.container.appendChild(this.list);
         },
-        /* 初始化滚动事件,滚动到地步自动拉取数据 */
+        /* Initialize滚动Events,滚动到地步AutoPullData */
         initEvents: function () {
             var _this = this;
 
-            /* 滚动拉取图片 */
+            /* 滚动PullPicture */
             domUtils.on($G('fileList'), 'scroll', function(e){
                 var panel = this;
                 if (panel.scrollHeight - (panel.offsetHeight + panel.scrollTop) < 10) {
                     _this.getFileData();
                 }
             });
-            /* 选中图片 */
+            /* SelectPicture */
             domUtils.on(this.list, 'click', function (e) {
                 var target = e.target || e.srcElement,
                     li = target.parentNode;
@@ -612,19 +612,19 @@
                 }
             });
         },
-        /* 初始化第一次的数据 */
+        /* Initialize第一次的Data */
         initData: function () {
 
-            /* 拉取数据需要使用的值 */
+            /* PullDataYesUseValue */
             this.state = 0;
             this.listSize = editor.getOpt('fileManagerListSize');
             this.listIndex = 0;
             this.listEnd = false;
 
-            /* 第一次拉取数据 */
+            /* 第一次PullData */
             this.getFileData();
         },
-        /* 向后台拉取图片列表数据 */
+        /* 向后台PullPictureListData */
         getFileData: function () {
             var _this = this;
 
@@ -664,7 +664,7 @@
                 });
             }
         },
-        /* 添加图片到列表界面上 */
+        /* AddPicture到List界面上 */
         pushData: function (list) {
             var i, item, img, filetype, preview, icon, _this = this,
                 urlPrefix = editor.getOpt('fileManagerUrlPrefix');
@@ -707,7 +707,7 @@
                 }
             }
         },
-        /* 改变图片大小 */
+        /* ChangePicture大小 */
         scale: function (img, w, h, type) {
             var ow = img.width,
                 oh = img.height;

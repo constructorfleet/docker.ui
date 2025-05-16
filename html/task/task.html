@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="tasksDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="tasksDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -35,19 +35,19 @@
                             extend: '#relatedTasksDg-toolbar',
                             btnCls: 'cubeui-btn-orange',
                             iconCls: 'fa fa-refresh'
-                        }">刷新</a>
+                        }">Refresh</a>
 
             <form id="queryForm" class="search-box">
 
                 <div id='dg_header' style="display1:none;margin-bottom1:15px">
-                        <span style='line-height: 30px;padding-right:0px' title="">模式：</span>
+                        <span style='line-height: 30px;padding-right:0px' title="">Mode：</span>
                         <input type="text" id="service_mode" value="" data-toggle="cubeui-combobox"
                                data-options="
                                         width:160,
-                                        required:false,prompt:'为空，查询所有',
+                                        required:false,prompt:'Empty，QuestionAll',
                                         valueField:'KEY',
                                         textField:'TEXT',
-                                        data:[{'KEY':'','TEXT':'所有'},{'KEY':'replicated','TEXT':'replicated'},{'KEY':'global','TEXT':'global'}]
+                                        data:[{'KEY':'','TEXT':'All'},{'KEY':'replicated','TEXT':'replicated'},{'KEY':'global','TEXT':'global'}]
                                ">
 
                         <span style='line-height: 30px;padding-left:2px;padding-right:10px'></span>
@@ -55,7 +55,7 @@
                         <input type="text" id='service_search_type' value="name" data-toggle="cubeui-combobox"
                                data-options="
                                         width:120,
-                                        required:true,prompt:'查询方式，必须填写',
+                                        required:true,prompt:'QuestionModalities，_Other Organiser',
                                         valueField:'KEY',
                                         textField:'TEXT',
                                         data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},
@@ -64,7 +64,7 @@
                         <input type="text" id='service_search_key' data-toggle="cubeui-textbox"
                                data-options="onClear:function(){
                                     $('#service_searchbtn').trigger('click');
-                               }, prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                               }, prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                         <a href="javascript:void(0)" id="service_searchbtn"
                            data-toggle="cubeui-menubutton"
                            data-options="
@@ -79,10 +79,10 @@
 
                                 $('#tasklist-service').combogrid('grid').datagrid('reload',param)
                            }
-                           ">查询</a>
+                           ">Question</a>
                 </div>
 
-                <span style='line-height: 30px;padding-right:0px' title="">服务：</span>
+                <span style='line-height: 30px;padding-right:0px' title="">Services：</span>
                 <input type="text" id="tasklist-service" name="service" value="" data-toggle="cubeui-combogrid"
                        data-options="
                                    width: 200,
@@ -100,7 +100,7 @@
                                    sortName:'Id',
                                    pageSize:50,
                                    queryParams:{all1:1},
-                                   prompt:'服务节点，选择填写',
+                                   prompt:'ServicesNodes，Select Fill',
                                    onBeforeLoad:function (param){
                                         refreshAllServices(param)
                                    },
@@ -140,41 +140,41 @@
                                    ]]
                                ">
 
-                <span style='line-height: 30px;padding-right:0px' title="">节点：</span>
+                <span style='line-height: 30px;padding-right:0px' title="">Nodes：</span>
                 <div id='dg_node_header' style="display1:none;margin-bottom1:15px">
                     <input type="text" id="node_search_role" value="" data-toggle="cubeui-combobox"
                            data-options="
                                     width:160,
-                                    required:false,prompt:'为空，查询所有',
+                                    required:false,prompt:'Empty，QuestionAll',
                                     valueField:'KEY',
                                     textField:'TEXT',
-                                    data:[{'KEY':'all','TEXT':'所有'},{'KEY':'manager','TEXT':'管理节点'},{'KEY':'worker','TEXT':'工作节点'}]
+                                    data:[{'KEY':'all','TEXT':'All'},{'KEY':'manager','TEXT':'管理Nodes'},{'KEY':'worker','TEXT':'工作Nodes'}]
                            ">
 
-                    <span style='line-height: 30px;padding-right:0px'>成员身份：</span>
+                    <span style='line-height: 30px;padding-right:0px'>Membership：</span>
                     <input type="text" id="node_search_membership" value="" data-toggle="cubeui-combobox"
                            data-options="
                                     width:160,
-                                    required:false,prompt:'为空，查询所有',
+                                    required:false,prompt:'Empty，QuestionAll',
                                     valueField:'KEY',
                                     textField:'TEXT',
-                                    data:[{'KEY':'all','TEXT':'所有'},{'KEY':'accepted','TEXT':'已经接受'},{'KEY':'pending','TEXT':'待定中'}]
+                                    data:[{'KEY':'all','TEXT':'All'},{'KEY':'accepted','TEXT':'已经Accept'},{'KEY':'pending','TEXT':'To be determined中'}]
                            ">
 
                     <span style='line-height: 30px;padding-left:2px;padding-right:10px'></span>
                     <input type="text" id='node_search_type' value="name" data-toggle="cubeui-combobox"
                            data-options="
                                     width:120,
-                                    required:true,prompt:'查询方式，必须填写',
+                                    required:true,prompt:'QuestionModalities，_Other Organiser',
                                     valueField:'KEY',
                                     textField:'TEXT',
-                                    data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'引擎Label'},{'KEY':'node.label','TEXT':'节点Label'},
+                                    data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'EngineLabel'},{'KEY':'node.label','TEXT':'NodesLabel'},
                                     {'KEY':'id','TEXT':'ID'}]
                            ">
                     <input type="text" id='node_search_key' data-toggle="cubeui-textbox"
                            data-options="onClear:function(){
                                 $('#node_searchbtn').trigger('click');
-                           }, prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                           }, prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                     <a href="javascript:void(0)" id="node_searchbtn"
                        data-toggle="cubeui-menubutton"
                        data-options="
@@ -190,7 +190,7 @@
 
                             $('#tasklist-node').combogrid('grid').datagrid('reload',param)
                        }
-                       ">查询</a>
+                       ">Question</a>
                 </div>
                 <input type="text" id='tasklist-node' name="nodeid" value="" data-toggle="cubeui-combogrid"
                        data-options="
@@ -210,7 +210,7 @@
                                    pageSize:50,
                                    queryParams:{all1:1},
                                    required:false,
-                                   prompt:'查询节点，选择填写',
+                                   prompt:'QuestionNodes，Select Fill',
                                    onBeforeLoad:function (param){
                                         refreshAllNodes(param)
                                    },
@@ -249,30 +249,30 @@
                                             width: 170},
                                         {field: 'Platform', title: 'OS', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 120},
-                                        {field: 'EVersion', title: '版本', sortable: true,
+                                        {field: 'EVersion', title: 'Version', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 100},
                                         {field: 'CPUs', title: 'CPUS', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 60},
-                                        {field: 'MemoryBytes', title: '内存', sortable: true,
+                                        {field: 'MemoryBytes', title: 'Memory', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 80},
-                                        {field: 'SVersion', title: '节点版本', sortable: true,
+                                        {field: 'SVersion', title: 'NodesVersion', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 80},
                                         {field: 'LabelStr', title: 'LABELS', sortable: true,
                                             formatter:$.iGrid.tooltipformatter(),width: 900}
                                     ]]
                                ">
 
-                <span style='line-height: 30px;padding-right:0px' title="">状态：</span>
+                <span style='line-height: 30px;padding-right:0px' title="">Status：</span>
                 <input type="text" id="tasklist-desired-state" name="desired-state" value="running" data-toggle="cubeui-combobox"
                        data-options="
                                         width:160,
-                                        required:false,prompt:'为空，查询所有',
+                                        required:false,prompt:'Empty，QuestionAll',
                                         valueField:'KEY',
                                         textField:'TEXT',
                                         onClear:function(){
                                             $('#searchbtn').trigger('click');
                                         },
-                                        data:[{'KEY':'','TEXT':'所有'},{'KEY':'running','TEXT':'Running'},{'KEY':'shutdown','TEXT':'Shutdown'},
+                                        data:[{'KEY':'','TEXT':'All'},{'KEY':'running','TEXT':'Running'},{'KEY':'shutdown','TEXT':'Shutdown'},
                                         {'KEY':'accepted','TEXT':'Accepted'}]
                                ">
 
@@ -280,7 +280,7 @@
                 <input type="text" id='tasklist-search_type' name="search_type" value="name" data-toggle="cubeui-combobox"
                        data-options="
                                         width:120,
-                                        required:true,prompt:'查询方式，必须填写',
+                                        required:true,prompt:'QuestionModalities，_Other Organiser',
                                         valueField:'KEY',
                                         textField:'TEXT',
                                         data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},
@@ -289,7 +289,7 @@
                 <input type="text" id='tasklist-search_key' name="search_key" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){
                                     $('#searchbtn').trigger('click');
-                               }, prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                               }, prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
 
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
@@ -297,7 +297,7 @@
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'tasksDg'}">查询</a>
+                   grid:{type:'datagrid','id':'tasksDg'}">Question</a>
             </form>
         </div>
     </div>

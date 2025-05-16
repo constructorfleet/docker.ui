@@ -29,42 +29,42 @@ function getVolumes(){
 
 function buildTreeDatas(orchestratorData){
     return [{
-        text: '编排计划',
+        text: 'Schedule',
         "id": ROOT_ID,
         'type':'root',
         "iconCls": "fa fa-delicious",
         children:[{
-            text: '服务',
+            text: 'Services',
             "id": ROOT_SERVICES_ID,
             'type':'services',
             state: "closed",
             "iconCls": "fa fa-spinner",
         },{
-            text: '网络',
+            text: 'Network',
             "id": ROOT_NETWORKS_ID,
             'type':'networks',
             state: "closed",
             "iconCls": "fa fa-usb",
         },{
-            text: '数据卷',
+            text: 'Data卷',
             "id": ROOT_VOLUMES_ID,
             'type':'volumes',
             state: "closed",
             "iconCls": "fa fa-database",
         },{
-            text: '密码文件',
+            text: 'PasswordDocumentation',
             "id": ROOT_SECRETS_ID,
             'type':'secrets',
             state: "closed",
             "iconCls": "fa fa-key",
         },{
-            text: '配置文件',
+            text: 'ConfigureDocumentation',
             "id": ROOT_CONFIGS_ID,
             'type':'configs',
             state: "closed",
             "iconCls": "fa fa-gear",
         },{
-            text: '其他项目',
+            text: 'Other项目',
             "id": ROOT_EXTRAS_ID,
             'type':'extras',
             state: "closed",
@@ -204,7 +204,7 @@ function loadTreeDg(orchestratorData){
 
             createContextMenu(e, row);
         },
-        //data:[{"id":"2","creatorId":"admin","creator":"系统管理员","createTime":"2016-10-06 13:31:38","modifierId":"admin","modifier":"系统管理员","modifyTime":"2018-06-08 08:44:15","creatorOrgId":0,"typeValue":"公司企业","typeText":"1","id":2,"pid":1,"node_name":"192.168.56.101:32379","checked":null,"state":"closed","attributes":null,"levelId":1,"sort":1,"code":"ginghan","status":"1","isDel":0,"leaderId":"ginghan000001","iconCls":null}],
+        //data:[{"id":"2","creatorId":"admin","creator":"System管理员","createTime":"2016-10-06 13:31:38","modifierId":"admin","modifier":"System管理员","modifyTime":"2018-06-08 08:44:15","creatorOrgId":0,"typeValue":"Enterprise","typeText":"1","id":2,"pid":1,"node_name":"192.168.56.101:32379","checked":null,"state":"closed","attributes":null,"levelId":1,"sort":1,"code":"ginghan","status":"1","isDel":0,"leaderId":"ginghan000001","iconCls":null}],
         data:buildTreeDatas(orchestratorData),
         columns: [[
             {

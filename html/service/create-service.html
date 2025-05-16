@@ -1,14 +1,14 @@
 
 
 <div data-toggle="cubeui-tabs" id='eastTabs'>
-    <div title="服务配置"
+    <div title="ServicesConfigure"
          data-options="id:'eastTab0',iconCls:'fa fa-info-circle'">
         <div style="margin: 0px;">
         </div>
         <form id='createServiceForm'>
         <div class="cubeui-fluid">
             <fieldset style="margin-top: 20px!important;margin-bottom1: 10px;">
-                <legend>服务基本信息</legend>
+                <legend>ServicesBasicInformation</legend>
             </fieldset>
 
             <div class="cubeui-row">
@@ -19,23 +19,23 @@
                                value=''
                                data-options="
                                required:true,
-                               prompt:'服务的名称'
+                               prompt:'Services的Name'
                                             "
                         >
                     </div>
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="调度模式(服务的调度模式)">
-                <legend style="margin-bottom: 10px;">服务调度模式(服务的调度模式)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="调度Mode(Services的调度Mode)">
+                <legend style="margin-bottom: 10px;">Services调度Mode(Services的调度Mode)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12" >
-                    <label class="cubeui-form-label" title="服务调度模式（replicated or global）（默认为“replicated”）。">服务调度模式:</label>
+                    <label class="cubeui-form-label" title="Services调度Mode（replicated or global）（Default as“replicated”）。">Services调度Mode:</label>
                     <div class="cubeui-input-block">
                         <input data-toggle="cubeui-radiobutton" checked name="Mode"
-                               data-options="title:'replicated模式',
+                               data-options="title:'replicatedMode',
                                                 onChange:function(checked){
                                                     if(checked){
                                                         $('.replicated-mode-div').show();
@@ -48,9 +48,9 @@
                                                     }
                                                 }
                                                 " value="replicated">
-                        <span style='line-height: 30px;padding-right:0px' title="replicated模式"><b>replicated模式</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span style='line-height: 30px;padding-right:0px' title="replicatedMode"><b>replicatedMode</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <input data-toggle="cubeui-radiobutton" name="Mode"
-                               data-options="title:'global模式',
+                               data-options="title:'globalMode',
                                                 onChange:function(checked){
                                                     if(checked){
                                                         $('.replicated-mode-div').hide();
@@ -65,22 +65,22 @@
                                                     }
                                                 }
                                                 "
-                               value="global" label1="远程URI">
-                        <span style='line-height: 30px;padding-right:0px' title="global模式"><b>global模式</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                               value="global" label1="RemoteURI">
+                        <span style='line-height: 30px;padding-right:0px' title="globalMode"><b>globalMode</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
                 </div>
             </div>
 
             <div class="cubeui-row replicated-mode-div">
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="复制模式的任务数">任务数:</label>
+                    <label class="cubeui-form-label" title="CopyMode的Tasks数">Tasks数:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" data-toggle="cubeui-numberspinner" id="replicated-mode-Replicas"
                                name="Mode.Replicated.Replicas"
                                value=''
                                data-options="
-                               prompt:'复制模式的任务数',
+                               prompt:'CopyMode的Tasks数',
                                required:true,
                                min:1
                                             "
@@ -88,29 +88,29 @@
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="要同时运行的作业任务数（默认值等于--副本）1.41版本或以上支持">
-                        最大复制作业数:</label>
+                    <label class="cubeui-form-label" title="要同时Run的作业Tasks数（Default valueequals--Copy）1.41Version或AboveSupport">
+                        最大Copy作业数:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" id="replicated-mode-MaxConcurrent"
                                name="Mode.ReplicatedJob.MaxConcurrent"
                                value=''
                                data-options="
-                               prompt:'要同时运行的作业任务数'
+                               prompt:'要同时Run的作业Tasks数'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="希望达到已完成状态的副本总数。如果未设置，将默认为MaxConcurrent的值
-                    1.41版本或以上支持">
-                        希望完成副本数:</label>
+                    <label class="cubeui-form-label" title="希望达到已完成Status的Copy总数。If未Settings，将Default asMaxConcurrentValue
+                    1.41Version或AboveSupport">
+                        _Other Organiser:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" data-toggle="cubeui-numberspinner" id="replicated-mode-TotalCompletions"
                                name="Mode.ReplicatedJob.TotalCompletions"
                                value=''
                                data-options="
-                               prompt:'希望达到已完成状态的副本总数'
+                               prompt:'希望达到已完成Status的Copy总数'
                                             "
                         >
                     </div>
@@ -120,8 +120,8 @@
             <div class="cubeui-row global-mode-div" style="display: none">
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="服务的容器规范, ">
-                <legend style="margin-bottom: 10px;">容器规范(服务的容器规范)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Services的Containers规范, ">
+                <legend style="margin-bottom: 10px;">Containers规范(Services的Containers规范)</legend>
             </fieldset>
 
             <div class="cubeui-row">
@@ -133,88 +133,88 @@
                                value=''
                                data-options="
                                required:true,
-                               prompt:'用于容器的Image名称，格式repos:tag,默认tag为latest'
+                               prompt:'ForContainers的ImageName，Formatrepos:tag,Defaulttag为latest'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="要在容器中运行的命令">Command:</label>
+                    <label class="cubeui-form-label" title="YesContainers中Run的Command">Command:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Command"
                                value=''
                                data-options="
-                               prompt:'要在容器中运行的命令'
+                               prompt:'YesContainers中Run的Command'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="命令的参数">Args:</label>
+                    <label class="cubeui-form-label" title="Command的Parameters">Args:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Args"
                                value=''
                                data-options="
-                               prompt:'要在容器中运行的命令的参数'
+                               prompt:'YesContainers中Run的Command的Parameters'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="用于容器的主机名，作为有效的RFC 1123主机名。">Hostname:</label>
+                    <label class="cubeui-form-label" title="ForContainers的Host名，As effectiveRFC 1123Host名。">Hostname:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Hostname"
                                value=''
                                data-options="
-                               prompt:'用于容器的主机名，作为有效的RFC 1123主机名。'
+                               prompt:'ForContainers的Host名，As effectiveRFC 1123Host名。'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="运行命令的工作目录。">Dir:</label>
+                    <label class="cubeui-form-label" title="RunCommand的Working Directory。">Dir:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Dir"
                                value=''
                                data-options="
-                               prompt:'运行命令的工作目录。'
+                               prompt:'RunCommand的Working Directory。'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="容器内的用户。">User:</label>
+                    <label class="cubeui-form-label" title="Containers内的User。">User:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.User"
                                value=''
                                data-options="
-                               prompt:'容器内的用户'
+                               prompt:'Containers内的User'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="容器进程将作为其运行的其他组。多个Group使用空格分隔">Groups:</label>
+                    <label class="cubeui-form-label" title="ContainersProcess将作为其Run的Other组。MultipleGroupUseSpaceSeparate">Groups:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Groups"
                                value=''
                                data-options="
-                               prompt:'容器进程将作为其运行的组。多个Group使用空格分隔'
+                               prompt:'ContainersProcess将作为其Run的组。MultipleGroupUseSpaceSeparate'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="是否应分配伪TTY。">TTY:</label>
+                    <label class="cubeui-form-label" title="Whether or not应分配伪TTY。">TTY:</label>
                     <div class="cubeui-input-block">
                         <input data-toggle="cubeui-switchbutton"
                                name="TaskTemplate.ContainerSpec.TTY" value="1" data-options="onText:'',offText:'',width:60">
@@ -222,7 +222,7 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="打开标准输入。">OpenStdin:</label>
+                    <label class="cubeui-form-label" title="OpenStandard输入。">OpenStdin:</label>
                     <div class="cubeui-input-block">
                         <input data-toggle="cubeui-switchbutton"
                                name="TaskTemplate.ContainerSpec.OpenStdin" value="1" data-options="onText:'',offText:'',width:60">
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="将容器的根文件系统装载为只读。">ReadOnly:</label>
+                    <label class="cubeui-form-label" title="将Containers的根DocumentationSystem装载为只读。">ReadOnly:</label>
                     <div class="cubeui-input-block">
                         <input data-toggle="cubeui-switchbutton"
                                name="TaskTemplate.ContainerSpec.ReadOnly" value="1" data-options="onText:'',offText:'',width:60">
@@ -238,7 +238,7 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在容器内运行init，转发信号并接收进程。如果为空，则省略该字段，并使用默认值（在守护进程上配置）。">Init:</label>
+                    <label class="cubeui-form-label" title="在Containers内Runinit，转发信号并接收Process。IfEmpty，则Ignore该字段，并UseDefault value（在守护Process上Configure）。">Init:</label>
                     <div class="cubeui-input-block">
                         <input data-toggle="cubeui-switchbutton"
                                name="TaskTemplate.ContainerSpec.Init" value="1" data-options="onText:'',offText:'',width:60">
@@ -246,12 +246,12 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="运行服务的容器的隔离技术。（仅限Windows）。枚举：“default”“process”“hyperv”">Isolation:</label>
+                    <label class="cubeui-form-label" title="RunServices的Containers的隔离技术。（OnlyWindows）。Enumeration：“default”“process”“hyperv”">Isolation:</label>
                     <div class="cubeui-input-block">
                         <input type="text" name="TaskTemplate.ContainerSpec.Isolation" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'运行服务的容器的隔离，默认为空',
+                                prompt:'RunServices的Containers的隔离，Default as空',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'default','TEXT':'Default'},{'KEY':'process','TEXT':'Process'},{'KEY':'hyperv','TEXT':'Hyperv'}]
@@ -261,75 +261,75 @@
 
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="停止容器信号。">StopSignal:</label>
+                    <label class="cubeui-form-label" title="StopContainers信号。">StopSignal:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox"
                                name="TaskTemplate.ContainerSpec.StopSignal"
                                value=''
                                data-options="
-                                prompt:'停止容器信号',
+                                prompt:'StopContainers信号',
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在强制杀死容器之前等待容器终止的时间量。">StopGracePeriod:</label>
+                    <label class="cubeui-form-label" title="在强制杀死ContainersBefore等待Containers终止的Time量。">StopGracePeriod:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner"
                                name="TaskTemplate.ContainerSpec.StopGracePeriod"
                                value=''
                                data-options="
-                                prompt:'在强制杀死容器之前等待容器终止的时间量',
+                                prompt:'在强制杀死ContainersBefore等待Containers终止的Time量',
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="即使没有更改相关参数，也会触发更新的计数器">ForceUpdate:</label>
+                    <label class="cubeui-form-label" title="即使NothingChangeRelevantParameters，也会TriggerUpdate的计数器">ForceUpdate:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox"
                                name="TaskTemplate.ContainerSpec.ForceUpdate"
                                value=''
                                data-options="
-                               prompt:'会触发更新的计数'
+                               prompt:'会TriggerUpdate的计数'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="添加到容器默认集的内核功能。多个功能使用空格隔开">CapabilityAdd:</label>
+                    <label class="cubeui-form-label" title="Add到ContainersDefault集的CoreFunctions。MultipleFunctionsUseSpace隔开">CapabilityAdd:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-tagbox" name="TaskTemplate.ContainerSpec.CapabilityAdd"
                                value=''
                                data-options="
-                               prompt:'添加到容器默认集的内核功能。多个功能使用空格隔开'
+                               prompt:'Add到ContainersDefault集的CoreFunctions。MultipleFunctionsUseSpace隔开'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="从容器的默认设置中删除的内核功能。多个功能使用空格隔开">CapabilityDrop:</label>
+                    <label class="cubeui-form-label" title="从Containers的DefaultSettings中Delete的CoreFunctions。MultipleFunctionsUseSpace隔开">CapabilityDrop:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-tagbox" name="TaskTemplate.ContainerSpec.CapabilityDrop"
                                value=''
                                data-options="
-                               prompt:'从容器的默认设置中删除的内核功能。多个功能使用空格隔开'
+                               prompt:'从Containers的DefaultSettings中Delete的CoreFunctions。MultipleFunctionsUseSpace隔开'
                                             "
                         >
                     </div>
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="Runtime是为任务执行器指定的运行时类型,默认值runc">Runtime:</label>
+                    <label class="cubeui-form-label" title="Runtime是为TasksImplementation器AssignedRun时Type,Default valuerunc">Runtime:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Runtime"
                                value=''
                                data-options="
-                               prompt:'任务执行器指定的运行时类型；为空为默认值runc'
+                               prompt:'TasksImplementation器AssignedRun时Type；EmptyAs Default值runc'
                                             "
                         >
                     </div>
@@ -337,18 +337,18 @@
 
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="指定用于根据此规范创建的任务的日志驱动程序。如果不存在，则将使用swarm的默认驱动程序，如果未指定，则最终返回到引擎默认驱动程序。">
-                <legend style="margin-bottom: 0px;">日志驱动</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="AssignForBased on此规范Create的Tasks的LogDriver程序。Ifdoes not exist，则将Useswarm的DefaultDriver程序，If not specified，则最终Back到EngineDefaultDriver程序。">
+                <legend style="margin-bottom: 0px;">LogDriver</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="创建的任务的日志驱动程序">Log Driver:</label>
+                    <label class="cubeui-form-label" title="Create的Tasks的LogDriver程序">Log Driver:</label>
                     <div class="cubeui-input-block">
                         <input type="text" name="TaskTemplate.ContainerSpec.LogDriver.Name" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'创建的任务的日志驱动程序，默认为swarm的默认驱动程序',
+                                prompt:'Create的Tasks的LogDriver程序，Default asswarm的DefaultDriver程序',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:$.docker.utils.getLocalLog()
@@ -361,10 +361,10 @@
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>配置项</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Configure项</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>配置值</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Configure值</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -375,18 +375,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="将卷绑定列表添加到作为服务一部分创建的容器的规范">
-                <legend style="margin-bottom: 0px;">卷绑定列表</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="将卷TieListAdd到作为Services一PartCreate的Containers的规范">
+                <legend style="margin-bottom: 0px;">卷TieList</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>主机路径或者数据卷</span>
+                            <span style='line-height: 20px;padding-right:0px;'>HostPathOr..Data卷</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>容器目标路径</span>
+                            <span style='line-height: 20px;padding-right:0px;'>ContainersObjectivePath</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -397,18 +397,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="在容器中设置内核命名空间参数（sysctl）。服务上的Sysctls选项接受与容器上支持的相同的sysctl。注意，虽然支持相同的sysctl，但没有保证或检查它们是否适合集群环境，由用户决定给定的sysctl是否在服务中正常工作">
-                <legend style="margin-bottom: 0px;">内核命名空间参数设置列表</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="在Containers中SettingsCore命名空间Parameters（sysctl）。Services上的SysctlsOptionsAccept与Containers上Support的Same的sysctl。Attention，虽然SupportSame的sysctl，但NothingPromise或Inspection它们Whether or not适合ClusterEnvironment，由User决定It\'s givensysctlWhether or not在Services中正常工作">
+                <legend style="margin-bottom: 0px;">Core命名空间ParametersSettingsList</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>参数键</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Parameters键</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>参数值</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Parameters值</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -419,18 +419,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="容器内的环境变量。">
-                <legend style="margin-bottom: 0px;">容器内的环境变量</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Containers内的EnvironmentVariables。">
+                <legend style="margin-bottom: 0px;">Containers内的EnvironmentVariables</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>环境变量名</span>
+                            <span style='line-height: 20px;padding-right:0px;'>EnvironmentVariables名</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>环境变量值</span>
+                            <span style='line-height: 20px;padding-right:0px;'>EnvironmentVariables值</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -441,18 +441,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="容器内的用户定义的键/值数据。">
-                <legend style="margin-bottom: 0px;">容器内的用户定义的键/值数据</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Containers内的User definition的键/值Data。">
+                <legend style="margin-bottom: 0px;">Containers内的User definition的键/值Data</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>用户定义键</span>
+                            <span style='line-height: 20px;padding-right:0px;'>User definition键</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>用户定义键值</span>
+                            <span style='line-height: 20px;padding-right:0px;'>User definition键值</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -463,21 +463,21 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="要在容器中设置的资源限制。例如：{“Name”：“nofile”，“Soft”：1024，“Hard”：2048}">
-                <legend style="margin-bottom: 0px;">容器中设置的资源限制</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="YesContainers中Settings的资源Limits。For example:：{“Name”：“nofile”，“Soft”：1024，“Hard”：2048}">
+                <legend style="margin-bottom: 0px;">Containers中Settings的资源Limits</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>限制资源名</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Resource constraints名</span>
                         </div>
                         <div class="cubeui-col-sm4" >
-                            <span style='line-height: 20px;padding-right:0px;'>soft限制</span>
+                            <span style='line-height: 20px;padding-right:0px;'>softLimits</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;'>hard限制</span>
+                            <span style='line-height: 20px;padding-right:0px;'>hardLimits</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -489,21 +489,21 @@
             </div>
 
             <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;"
-                       title="密码文件(机密包含对将向服务公开的零个或多个机密的引用)">
-                <legend style="margin-bottom: 10px;">密码文件(机密包含对将向服务公开的零个或多个机密的引用)</legend>
+                       title="PasswordDocumentation(机密Organisation对将向Services公开的零个或Multiple机密的References)">
+                <legend style="margin-bottom: 10px;">PasswordDocumentation(机密Organisation对将向Services公开的零个或Multiple机密的References)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;' title="文件表示由文件支持的特定目标。">密码文件</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="DocumentationOrganisation由DocumentationSupport的特定Objective。">PasswordDocumentation</span>
                         </div>
                         <div class="cubeui-col-sm4" >
-                            <span style='line-height: 20px;padding-right:0px;' title="引用的特定机密的ID。">密码文件ID</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="References的特定机密的ID。">PasswordDocumentationID</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;' title="引用的机密的名称，仅用于查找/显示目的。引用中的秘密将通过其ID识别。">密码文件引用名</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="References的机密的Name，仅ForFind/Show目的。ReferencesMedium秘密将Pass其IDIdentification。">PasswordDocumentationReferences名</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                             <span style='line-height: 20px;padding-right:0px;'>
@@ -515,21 +515,21 @@
             </div>
 
             <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;"
-                       title="配置文件(Configs包含对将向服务公开的零个或多个Config的引用)">
-                <legend style="margin-bottom: 10px;" title="Configs包含对将向服务公开的零个或多个Config的引用">配置文件</legend>
+                       title="ConfigureDocumentation(ConfigsOrganisation对将向Services公开的零个或MultipleConfig的References)">
+                <legend style="margin-bottom: 10px;" title="ConfigsOrganisation对将向Services公开的零个或MultipleConfig的References">ConfigureDocumentation</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;' title="文件支持的特定目标/运行时配置内容。">配置文件/运行时配置文本</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="DocumentationSupport的特定Objective/Run时ConfigureContents。">ConfigureDocumentation/Run时ConfigureText</span>
                         </div>
                         <div class="cubeui-col-sm4" >
-                            <span style='line-height: 20px;padding-right:0px;' title="引用的特定机密的ID。">配置文件ID</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="References的特定机密的ID。">ConfigureDocumentationID</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;' title="引用的配置的名称，仅用于查找/显示目的。引用中的配置将由其ID标识。">密码文件引用名</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="References的Configure的Name，仅ForFind/Show目的。ReferencesMediumConfigure将由其IDIdentification。">PasswordDocumentationReferences名</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                             <span style='line-height: 20px;padding-right:0px;'>
@@ -540,70 +540,70 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="健康测试策略(用于检查容器是否健康的测试)">
-                <legend style="margin-bottom: 10px;">健康测试策略(用于检查容器是否健康的测试)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Health testing strategy(ForInspectionContainersWhether or not健康的测试)">
+                <legend style="margin-bottom: 10px;">Health testing strategy(ForInspectionContainersWhether or not健康的测试)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="要执行的测试。可能的值为:空值从映像或父映像继承healthcheck; NONE禁用healthcheck;
-                            CMD args直接执行参数;CMD-SHELL command使用系统的默认SHELL运行命令">Test:</label>
+                    <label class="cubeui-form-label" title="要Implemented测试。Possible value为:空值从映像或父映像Successionhealthcheck; NONEDisablehealthcheck;
+                            CMD args直接ImplementationParameters;CMD-SHELL commandUseSystem的DefaultSHELLRunCommand">Test:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.HealthCheck.Test"
                                value=''
                                data-options="
-                                       prompt:'要执行的测试。可能的值为:为空从映像或父映像继承healthcheck; NONE禁用healthcheck;CMD args直接执行参数;CMD-SHELL command使用系统的默认SHELL运行命令；使用空格分隔'
+                                       prompt:'要Implemented测试。Possible value为:Empty从映像或父映像Successionhealthcheck; NONEDisablehealthcheck;CMD args直接ImplementationParameters;CMD-SHELL commandUseSystem的DefaultSHELLRunCommand；UseSpaceSeparate'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="检查之间的等待时间（纳秒）。它应为0或至少1000000（1毫秒）。
-                            0表示继承。">Interval(ns):</label>
+                    <label class="cubeui-form-label" title="InspectionBetween的等待Time（nanoseconds）。It should read0Or at least1000000（1milliseconds）。
+                            0OrganisationSuccession。">Interval(ns):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.ContainerSpec.HealthCheck.Interval"
                                value=''
                                data-options="
-                               prompt:'检查之间的等待时间（纳秒）。它应为0或至少1000000（1毫秒）。0表示继承。',
+                               prompt:'InspectionBetween的等待Time（nanoseconds）。It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在检查认为为已挂时的等待时间。
-                            它应为0或至少1000000（1毫秒）。0表示继承。">Timeout(ns):</label>
+                    <label class="cubeui-form-label" title="在Inspection认为为已挂时的等待Time。
+                            It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。">Timeout(ns):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.ContainerSpec.HealthCheck.Timeout"
                                value=''
                                data-options="
-                               prompt:'在检查认为为已挂时的等待时间。它应为0或至少1000000（1毫秒）。0表示继承。',
+                               prompt:'在Inspection认为为已挂时的等待Time。It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="认为容器不健康所需的连续故障数。
-                            0表示继承。">Retries:</label>
+                    <label class="cubeui-form-label" title="认为Containers不健康所需的连续故障数。
+                            0OrganisationSuccession。">Retries:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.ContainerSpec.HealthCheck.Retries"
                                value=''
                                data-options="
-                               prompt:'认为容器不健康所需的连续故障数。0表示继承。',
+                               prompt:'认为Containers不健康所需的连续故障数。0OrganisationSuccession。',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="容器初始化后开始运行健康检查的开始时间（纳秒）。
-                            它应为0或至少1000000（1毫秒）。0表示继承。">StartPeriod(ns):</label>
+                    <label class="cubeui-form-label" title="ContainersInitialize后StartRun健康Inspection的StartTime（nanoseconds）。
+                            It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。">StartPeriod(ns):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.ContainerSpec.HealthCheck.StartPeriod"
                                value=''
                                data-options="
-                               prompt:'容器初始化后开始运行健康检查的开始时间（纳秒）',
+                               prompt:'ContainersInitialize后StartRun健康Inspection的StartTime（nanoseconds）',
                                min:0
                                             "
                         >
@@ -611,42 +611,42 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="限制资源规范(适用于作为服务一部分创建的每个单独容器的资源需求,描述任务可以请求的资源限制的对象)">
-                <legend style="margin-bottom: 10px;">限制资源规范(适用于作为服务一部分创建的每个单独容器的资源需求)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Restriction of resource norms(适For作为Services一PartCreate的Each单独Containers的资源需求,DescriptionTasksYeahRequest的资源Limits的Object)">
+                <legend style="margin-bottom: 10px;">Restriction of resource norms(适For作为Services一PartCreate的Each单独Containers的资源需求)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="限制CPU">限制CPU:</label>
+                    <label class="cubeui-form-label" title="LimitsCPU">LimitsCPU:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Resources.Limits.NanoCPUs"
                                value=''
                                data-options="
-                               prompt:'限制CPU',
+                               prompt:'LimitsCPU',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="限制内存">限制内存:</label>
+                    <label class="cubeui-form-label" title="LimitsMemory">LimitsMemory:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Resources.Limits.MemoryBytes"
                                value=''
                                data-options="
-                               prompt:'限制内存',
+                               prompt:'LimitsMemory',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="限制容器中PID的最大数量。将0设置为无限。默认值：0">限制最大进程数:</label>
+                    <label class="cubeui-form-label" title="LimitsContainers中PIDMaximum number。将0Settings为无限。Default value：0">Limits最大Process数:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Resources.Limits.Pids"
                                value=''
                                data-options="
-                               prompt:'限制容器中PID的最大数量。将0设置为无限。默认值：0',
+                               prompt:'LimitsContainers中PIDMaximum number。将0Settings为无限。Default value：0',
                                min:0
                                             "
                         >
@@ -654,30 +654,30 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="保留资源规范(适用于作为服务一部分创建的每个单独容器的资源需求,可以由节点播发并由任务请求的资源)">
-                <legend style="margin-bottom: 10px;">保留资源规范(适用于作为服务一部分创建的每个单独容器的资源需求)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Reservations资源规范(适For作为Services一PartCreate的Each单独Containers的资源需求,Yeah由Nodes播发并由TasksRequest的资源)">
+                <legend style="margin-bottom: 10px;">Reservations资源规范(适For作为Services一PartCreate的Each单独Containers的资源需求)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="保留CPU">保留CPU:</label>
+                    <label class="cubeui-form-label" title="ReservationsCPU">ReservationsCPU:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Resources.Reservations.NanoCPUs"
                                value=''
                                data-options="
-                               prompt:'保留CPU',
+                               prompt:'ReservationsCPU',
                                min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="保留内存">保留内存:</label>
+                    <label class="cubeui-form-label" title="ReservationsMemory">ReservationsMemory:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Resources.Reservations.MemoryBytes"
                                value=''
                                data-options="
-                               prompt:'保留内存',
+                               prompt:'ReservationsMemory',
                                min:0
                                             "
                         >
@@ -685,18 +685,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="重启策略(适用于作为此服务一部分创建的容器的重启策略规范。)">
-                <legend style="margin-bottom: 10px;">重启策略(适用于作为此服务一部分创建的容器的重启策略规范)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Restart Policy(适For作为此Services一PartCreate的Containers的Restart Policy规范。)">
+                <legend style="margin-bottom: 10px;">Restart Policy(适For作为此Services一PartCreate的Containers的Restart Policy规范)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="重新启动的条件">重启条件:</label>
+                    <label class="cubeui-form-label" title="重新Start的条件">Restart条件:</label>
                     <div class="cubeui-input-block">
                         <input type="text" name="TaskTemplate.RestartPolicy.Condition" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'重启条件，默认为空',
+                                prompt:'Restart条件，Default as空',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'none','TEXT':'None'},{'KEY':'on-failure','TEXT':'On-failure'},{'KEY':'any','TEXT':'Any'}]
@@ -704,36 +704,36 @@
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="重启尝试之间的延迟。">延迟(ns):</label>
+                    <label class="cubeui-form-label" title="Restart尝试Between的Delay。">Delay(ns):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.RestartPolicy.Delay"
                                value=''
                                data-options="
-                                prompt:'重启尝试之间的延迟，默认为空',
+                                prompt:'Restart尝试Between的Delay，Default as空',
                                 min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在放弃之前重新启动给定容器的最大尝试次数（默认值为0，忽略该值）。">最大尝试次数:</label>
+                    <label class="cubeui-form-label" title="在放弃Before重新Start给定Containers的Maximum number of attempts（Default value为0，Ignore value）。">Maximum number of attempts:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.RestartPolicy.MaxAttempts"
                                value=''
                                data-options="
-                                prompt:'在放弃之前重新启动给定容器的最大尝试次数（默认值为0，忽略该值）',
+                                prompt:'在放弃Before重新Start给定Containers的Maximum number of attempts（Default value为0，Ignore value）',
                                 min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="Windows是用于评估重启策略的时间窗口（默认值为0，无限制）。默认值：0">时间窗口:</label>
+                    <label class="cubeui-form-label" title="Windows是For评估Restart Policy的TimeWindow（Default value为0，Unlimited）。Default value：0">TimeWindow:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.RestartPolicy.Window"
                                value=''
                                data-options="
-                                prompt:'重启策略的时间窗口（默认值为0，无限制）。默认值：0',
+                                prompt:'Restart Policy的TimeWindow（Default value为0，Unlimited）。Default value：0',
                                 min:0
                                             "
                         >
@@ -741,13 +741,13 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="服务分配策略(适用于作为服务一部分创建的每个单独容器的服务分配)">
-                <legend style="margin-bottom: 10px;">服务分配策略(适用于作为服务一部分创建的每个单独容器的服务分配)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Services分配策略(适For作为Services一PartCreate的Each单独Containers的Services分配)">
+                <legend style="margin-bottom: 10px;">Services分配策略(适For作为Services一PartCreate的Each单独Containers的Services分配)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <!--<label class="cubeui-form-label" title="约束表达式数组，用于限制可以调度任务的节点集。约束表达式可以使用匹配（=）或排除（！=）规则。多个约束查找满足每个表达式（和匹配）的节点。约束可以匹配节点或Docker引擎标签">Constraints:</label>-->
+                    <!--<label class="cubeui-form-label" title="ConstraintsExpressionArray，ForLimitsYeah调度Tasks的Nodes集。ConstraintsExpressionYeahUseMatch（=）Or exclude（！=）Rule。MultipleConstraintsFind满足EachExpression（和Match）的Nodes。ConstraintsYeahMatchNodes或DockerEngineLabel">Constraints:</label>-->
                     <label class="cubeui-form-label" title="
                            An array of constraint expressions to limit the set of nodes where a task can be scheduled.
                            Constraint expressions can either use a match (==) or exclude (!=) rule.
@@ -763,47 +763,47 @@
                                engine.labels	    Docker Engine's labels	    engine.labels.operatingsystem==ubuntu-14.04
                                engine.labels apply to Docker Engine labels like operating system, drivers, etc.
                             Swarm administrators add node.labels for operational purposes by using the node update endpoint.
-                           ">约束:</label>
+                           ">Constraints:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-tagbox" name="TaskTemplate.Placement.Constraints"
                                value=''
                                data-options="
-                               prompt:'约束表达式数组, 条件格式查看标头提示'
+                               prompt:'ConstraintsExpressionArray, 条件FormatView标头Hint'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="首选项提供了一种使调度器了解拓扑等因素的方法。它们按优先级从高到低的顺序提供。">
-                        首选项设置:</label>
+                    <label class="cubeui-form-label" title="首OptionsProvision了一种使调度器了解拓扑等因素的Methodology。它们按优先级从高到低的顺序Provision。">
+                        首OptionsSettings:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-tagbox" name="TaskTemplate.Placement.Preferences"
                                value=''
                                data-options="
-                               prompt:'首选项设置数组, 条件格式查看标头提示'
+                               prompt:'首OptionsSettingsArray, 条件FormatView标头Hint'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="平台存储服务映像可以在其上运行的所有平台。此字段在平台筛选器中用于调度。如果为空，则平台过滤器关闭，这意味着没有调度限制。">
-                        平台筛选:</label>
+                    <label class="cubeui-form-label" title="平台StorageServices映像Yeah在其上Run的All平台。此字段在Platform Filter器中For调度。IfEmpty，则平台Filter器Close，这意味着Nothing调度Limits。">
+                        Platform Filter:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-tagbox" name="TaskTemplate.Placement.Platforms"
                                value=''
                                data-options="
-                               prompt:'平台筛选设置数组, 条件格式查看标头提示'
+                               prompt:'Platform FilterSettingsArray, 条件FormatView标头Hint'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="每个节点的最大副本数（默认值为0，不受限制）默认值：0">最大副本数:</label>
+                    <label class="cubeui-form-label" title="EachNodes的Maximum number of copies（Default value为0，Unlimited）Default value：0">Maximum number of copies:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="TaskTemplate.Placement.MaxReplicas"
                                value=''
                                data-options="
-                               prompt:'节点的最大副本数（默认值为0，不受限制）为空使用默认值：0',
+                               prompt:'Nodes的Maximum number of copies（Default value为0，Unlimited）EmptyUseDefault value：0',
                                min:0
                                             "
                         >
@@ -811,43 +811,43 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="服务更新策略(适用于作为服务一部分创建的每个单独容器的服务更新策略的规范)">
-                <legend style="margin-bottom: 10px;">服务更新策略(适用于作为服务一部分创建的每个单独容器的服务更新策略的规范)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="ServicesUpdate策略(适For作为Services一PartCreate的Each单独Containers的ServicesUpdate策略的规范)">
+                <legend style="margin-bottom: 10px;">ServicesUpdate策略(适For作为Services一PartCreate的Each单独Containers的ServicesUpdate策略的规范)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="一次迭代中要更新的最大任务数（0表示无限并行性）。">最大任务数:</label>
+                    <label class="cubeui-form-label" title="一次迭代中要Update的最大Tasks数（0Organisation无限并行性）。">最大Tasks数:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="UpdateConfig.Parallelism"
                                value=''
                                data-options="
-                                   prompt:'一次迭代中要更新的最大任务数（0表示无限并行性)为空使用默认值：0',
+                                   prompt:'一次迭代中要Update的最大Tasks数（0Organisation无限并行性)EmptyUseDefault value：0',
                                    min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="更新之间的时间量，以纳秒为单位。">时间延迟量:</label>
+                    <label class="cubeui-form-label" title="UpdateBetween的Time量，以nanoseconds为Units。">TimeDelay量:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="UpdateConfig.Delay"
                                value=''
                                data-options="
-                                   prompt:'更新之间的时间量，以纳秒为单位。',
+                                   prompt:'UpdateBetween的Time量，以nanoseconds为Units。',
                                    min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="如果更新的任务无法运行或在更新过程中停止运行，则要采取的操作。
-                    枚举：'continue','pause','rollback'">失败操作:</label>
+                    <label class="cubeui-form-label" title="IfUpdate的Tasks无法Run或在Update过程中StopRun，则要采取的Operation。
+                    Enumeration：'continue','pause','rollback'">FailedOperation:</label>
                     <div class="cubeui-input-block">
                         <input type="text" name="UpdateConfig.FailureAction" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'任务无法运行或在更新过程中停止运行，则要采取的操作',
+                                prompt:'Tasks无法Run或在Update过程中StopRun，则要采取的Operation',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'continue','TEXT':'Continue'},{'KEY':'pause','TEXT':'Pause'},
@@ -856,25 +856,25 @@
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="监视每个更新任务的失败时间量，以纳秒为单位。">监视时间:</label>
+                    <label class="cubeui-form-label" title="监视EachUpdateTasks的FailedTime量，以nanoseconds为Units。">监视Time:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="UpdateConfig.Monitor"
                                value=''
                                data-options="
-                                   prompt:'监视每个更新任务的失败时间量，以纳秒为单位',
+                                   prompt:'监视EachUpdateTasks的FailedTime量，以nanoseconds为Units',
                                    min:0
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在调用失败操作之前的更新期间可能失败的任务最大失败率，指定为1到100之间的数。默认: 0">
-                        最大失败率(0-100):</label>
+                    <label class="cubeui-form-label" title="在CallFailedOperationBefore的Update期间可能Failed的Tasks最大Failed率，Assign为1到100Between的数。Default: 0">
+                        最大Failed率(0-100):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="UpdateConfig.MaxFailureRatio"
                                value=''
                                data-options="
-                                   prompt:'更新期间可能最大失败率,(0-100)',
+                                   prompt:'Update期间可能最大Failed率,(0-100)',
                                    min:0,
                                    max:100
                                             "
@@ -882,14 +882,14 @@
                     </div>
                 </div>
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="推出更新任务时的操作顺序。要么在新任务启动之前关闭旧任务，
-                    要么在旧任务关闭之前启动新任务。枚举：“stop-first”“start-first”">操作顺序:</label>
+                    <label class="cubeui-form-label" title="推出UpdateTasks时的Operation顺序。要么在新TasksStartBeforeClose旧Tasks，
+                    要么在旧TasksCloseBeforeStart新Tasks。Enumeration：“stop-first”“start-first”">Operation顺序:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" name="UpdateConfig.Order" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'推出更新任务时的操作顺序',
+                                prompt:'推出UpdateTasks时的Operation顺序',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[
@@ -901,18 +901,18 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="服务回滚策略(适用于作为服务一部分创建的每个单独容器的服务服务回滚策略的规范)">
-                <legend style="margin-bottom: 10px;">服务回滚策略(适用于作为服务一部分创建的每个单独容器的服务服务回滚策略的规范)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Services回滚策略(适For作为Services一PartCreate的Each单独Containers的ServicesServices回滚策略的规范)">
+                <legend style="margin-bottom: 10px;">Services回滚策略(适For作为Services一PartCreate的Each单独Containers的ServicesServices回滚策略的规范)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="一次迭代中要回滚的最大任务数（0表示无限并行性）。">最大任务数:</label>
+                    <label class="cubeui-form-label" title="一次迭代中要回滚的最大Tasks数（0Organisation无限并行性）。">最大Tasks数:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="RollbackConfig.Parallelism"
                                value=''
                                data-options="
-                                   prompt:'一次迭代中要回滚的最大任务数（0表示无限并行性)为空使用默认值：0',
+                                   prompt:'一次迭代中要回滚的最大Tasks数（0Organisation无限并行性)EmptyUseDefault value：0',
                                    min:0
                                             "
                         >
@@ -920,12 +920,12 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="回滚之间的时间量，以纳秒为单位。">时间延迟量:</label>
+                    <label class="cubeui-form-label" title="回滚Between的Time量，以nanoseconds为Units。">TimeDelay量:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="RollbackConfig.Delay"
                                value=''
                                data-options="
-                                   prompt:'回滚之间的时间量，以纳秒为单位。',
+                                   prompt:'回滚Between的Time量，以nanoseconds为Units。',
                                    min:0
                                             "
                         >
@@ -933,13 +933,13 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="如果回滚的任务无法运行或在回滚过程中停止运行，则要采取的操作。
-                    枚举：'continue','pause'">失败操作:</label>
+                    <label class="cubeui-form-label" title="If回滚的Tasks无法Run或在回滚过程中StopRun，则要采取的Operation。
+                    Enumeration：'continue','pause'">FailedOperation:</label>
                     <div class="cubeui-input-block">
                         <input type="text" name="RollbackConfig.FailureAction" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'任务无法运行或在回滚过程中停止运行，则要采取的操作',
+                                prompt:'Tasks无法Run或在回滚过程中StopRun，则要采取的Operation',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'continue','TEXT':'Continue'},{'KEY':'pause','TEXT':'Pause'}]
@@ -948,12 +948,12 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="监视每个回滚任务的失败时间量，以纳秒为单位。">监视时间:</label>
+                    <label class="cubeui-form-label" title="监视Each回滚Tasks的FailedTime量，以nanoseconds为Units。">监视Time:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="RollbackConfig.Monitor"
                                value=''
                                data-options="
-                                   prompt:'监视每个回滚任务的失败时间量，以纳秒为单位',
+                                   prompt:'监视Each回滚Tasks的FailedTime量，以nanoseconds为Units',
                                    min:0
                                             "
                         >
@@ -961,13 +961,13 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="在调用失败操作之前的回滚期间可能失败的任务的最大失败率，指定为1到100之间的数。默认: 0">
-                        最大失败率(0-100):</label>
+                    <label class="cubeui-form-label" title="在CallFailedOperationBefore的回滚期间可能Failed的Tasks的最大Failed率，Assign为1到100Between的数。Default: 0">
+                        最大Failed率(0-100):</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-numberspinner" name="RollbackConfig.MaxFailureRatio"
                                value=''
                                data-options="
-                                   prompt:'回滚期间可能最大失败率,(0-100)',
+                                   prompt:'回滚期间可能最大Failed率,(0-100)',
                                    min:0,
                                    max:100
                                             "
@@ -976,14 +976,14 @@
                 </div>
 
                 <div class="cubeui-col-sm6" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="回滚任务时的操作顺序。要么在新任务启动之前关闭旧任务，
-                    要么在旧任务关闭之前启动新任务。枚举：“stop-first”“start-first”">操作顺序:</label>
+                    <label class="cubeui-form-label" title="回滚Tasks时的Operation顺序。要么在新TasksStartBeforeClose旧Tasks，
+                    要么在旧TasksCloseBeforeStart新Tasks。Enumeration：“stop-first”“start-first”">Operation顺序:</label>
                     <div class="cubeui-input-block">
 
                         <input type="text" name="RollbackConfig.Order" value="" data-toggle="cubeui-combobox"
                                data-options="
                                 required:false,
-                                prompt:'推出回滚任务时的操作顺序',
+                                prompt:'推出回滚Tasks时的Operation顺序',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[
@@ -996,18 +996,18 @@
 
             </div>
 
-            <fieldset style="margin-top: 20px!important;margin-bottom1: 10px;" title="用户定义的服务的键/值元数据">
-                <legend style="margin-bottom: 10px;">服务标签选项(服务的键/值元数据)</legend>
+            <fieldset style="margin-top: 20px!important;margin-bottom1: 10px;" title="User definition的Services的键/值元Data">
+                <legend style="margin-bottom: 10px;">ServicesLabelOptions(Services的键/值元Data)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>服务定义键</span>
+                            <span style='line-height: 20px;padding-right:0px;'>ServicesDefinitions键</span>
                         </div>
                         <div class="cubeui-col-sm5" >
-                            <span style='line-height: 20px;padding-right:0px;'>服务定义键值</span>
+                            <span style='line-height: 20px;padding-right:0px;'>ServicesDefinitions键值</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -1022,7 +1022,7 @@
         </form>
     </div>
 
-    <div title="Endpoint配置"
+    <div title="EndpointConfigure"
          data-options="id:'eastTab1',iconCls:'fa fa-desktop'">
         <div style="margin: 0px;">
         </div>
@@ -1030,17 +1030,17 @@
         <form id='createServiceForm2'>
         <div class="cubeui-fluid">
             <fieldset>
-                <legend>端点信息(可配置为访问和负载平衡服务的属性)</legend>
+                <legend>端点Information(可Configure为Visits和负载平衡Services的Properties)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
-                    <label class="cubeui-form-label" title="用于任务之间内部负载平衡的解析模式。枚举：“vip”,“dnsrr”">负载平衡模式:</label>
+                    <label class="cubeui-form-label" title="ForTasksBetweenInternal负载平衡的ParsingMode。Enumeration：“vip”,“dnsrr”">负载平衡Mode:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-combobox" value=""
                                name='EndpointSpec.Mode' data-options="
                                required:false,
-                               prompt:'内部负载平衡的解析模式，为空只用默认值，“vip”',
+                               prompt:'Internal负载平衡的ParsingMode，Empty只用Default value，“vip”',
                                valueField:'KEY',
                                textField:'TEXT',
                                data:[{KEY:'vip',TEXT:'Vip'},{KEY:'dnsrr',TEXT:'Dnsrr(DNS Resource Records)'}]
@@ -1049,22 +1049,22 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="要添加到容器主机文件的主机名/IP映射列表。
-                            额外主机的格式在主机（5）手册页中指定：IP_address canonical_hostname [aliases...]">
-                <legend style="margin-bottom: 0px;">主机名/IP映射列表</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="要Add到ContainersHostDocumentation的Host名/IPMapList。
+                            额外Host的Format在Host（5）手册页中Assign：IP_address canonical_hostname [aliases...]">
+                <legend style="margin-bottom: 0px;">Host名/IPMapList</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>IP地址</span>
+                            <span style='line-height: 20px;padding-right:0px;'>IPAddress</span>
                         </div>
                         <div class="cubeui-col-sm4" >
-                            <span style='line-height: 20px;padding-right:0px;'>主机名</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Host名</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;'>别名</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Alias</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -1075,62 +1075,62 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="DNS配置(解析程序配置文件resolv.conf中DNS相关配置的规范)">
-                <legend style="margin-bottom: 0px;">DNS配置(解析程序配置文件resolv.conf中DNS相关配置的规范)</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="DNSConfigure(Parsing程序ConfigureDocumentationresolv.conf中DNSRelevantConfigure的规范)">
+                <legend style="margin-bottom: 0px;">DNSConfigure(Parsing程序ConfigureDocumentationresolv.conf中DNSRelevantConfigure的规范)</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm6">
-                    <label class="cubeui-form-label" title="名称服务器的IP地址。多个值之间使用空格分隔。">Nameservers:</label>
+                    <label class="cubeui-form-label" title="NameServices器的IPAddress。Multiple值BetweenUseSpaceSeparate。">Nameservers:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.DNSConfig.Nameservers"
                                value=''
                                data-options="
-                               prompt:'名称服务器的IP地址。多个值之间使用空格分隔'
+                               prompt:'NameServices器的IPAddress。Multiple值BetweenUseSpaceSeparate'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm6">
-                    <label class="cubeui-form-label" title="主机名查找的搜索列表。多个值之间使用空格分隔">Search:</label>
+                    <label class="cubeui-form-label" title="Host名Find的SearchList。Multiple值BetweenUseSpaceSeparate">Search:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Search"
                                value=''
                                data-options="
-                               prompt:'主机名查找的搜索列表。多个值之间使用空格分隔'
+                               prompt:'Host名Find的SearchList。Multiple值BetweenUseSpaceSeparate'
                                             "
                         >
                     </div>
                 </div>
                 <div class="cubeui-col-sm12" style="margin-top: 2px">
                     <label class="cubeui-form-label" title="
-要修改的内部解析器变量列表（例如debug、NDOT:3等）,多个值之间使用空格分隔">Options:</label>
+要Modify的InternalParsing器VariablesList（For example:debug、NDOT:3等）,Multiple值BetweenUseSpaceSeparate">Options:</label>
                     <div class="cubeui-input-block">
                         <input type="text" data-toggle="cubeui-textbox" name="TaskTemplate.ContainerSpec.Options"
                                value=''
                                data-options="
-                               prompt:'变量。（例如debug、NDOT:3等）,多个值之间使用空格分隔'
+                               prompt:'Variables。（For example:debug、NDOT:3等）,Multiple值BetweenUseSpaceSeparate'
                                             "
                         >
                     </div>
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="指定服务应连接到的网络">
-                <legend style="margin-bottom: 0px;">服务网络设置</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="AssignServices应Connection到的Network">
+                <legend style="margin-bottom: 0px;">ServicesNetworkSettings</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;'>网络</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Network</span>
                         </div>
                         <div class="cubeui-col-sm4" >
-                            <span style='line-height: 20px;padding-right:0px;'>别名</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Alias</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;'>配置项</span>
+                            <span style='line-height: 20px;padding-right:0px;'>Configure项</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                             <span style='line-height: 20px;padding-right:0px;'>
@@ -1141,24 +1141,24 @@
                 </div>
             </div>
 
-            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="可从外部访问此服务的公开端口列表。只有在使用vip解析模式时才能提供端口">
-                <legend style="margin-bottom: 0px;">公开端口列表</legend>
+            <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="可从ExternalVisits此Services的公开PortList。Only在UsevipParsingMode时才能ProvisionPort">
+                <legend style="margin-bottom: 0px;">公开PortList</legend>
             </fieldset>
 
             <div class="cubeui-row">
                 <div class="cubeui-col-sm12 add-opt-div">
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm2 cubeui-col-sm-offset1" style="padding-right: 5px">
-                            <span style='line-height: 20px;padding-right:0px;' title="公开端口发布的模式，枚举值：“ingress”和“host”">公开端口方式</span>
+                            <span style='line-height: 20px;padding-right:0px;' title="公开PortRelease的Mode，Enumeration值：“ingress”和“host”">公开PortModalities</span>
                         </div>
                         <div class="cubeui-col-sm3" >
-                            <span style='line-height: 20px;padding-right:0px;'  title="公开端口发布的协议，枚举值：“tcp”,“udp”和“sctp”">公开端口协议</span>
+                            <span style='line-height: 20px;padding-right:0px;'  title="公开PortRelease的Agreements，Enumeration值：“tcp”,“udp”和“sctp”">公开PortAgreements</span>
                         </div>
-                        <div class="cubeui-col-sm3" title="公开端口">
-                            <span style='line-height: 20px;padding-right:0px;'>公开端口</span>
+                        <div class="cubeui-col-sm3" title="公开Port">
+                            <span style='line-height: 20px;padding-right:0px;'>公开Port</span>
                         </div>
-                        <div class="cubeui-col-sm2" title="目标端口">
-                            <span style='line-height: 20px;padding-right:0px;'>目标端口</span>
+                        <div class="cubeui-col-sm2" title="ObjectivePort">
+                            <span style='line-height: 20px;padding-right:0px;'>ObjectivePort</span>
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                             <span style='line-height: 20px;padding-right:0px;'>

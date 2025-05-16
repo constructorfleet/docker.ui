@@ -1,22 +1,22 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Array(JSON)</span><span class="path">treeNode.</span>children</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>节点的子节点数据集合。</p>
-			<p class="highlight_red">1、如果不使用 children 属性保存子节点数据，请修改 setting.data.key.children </p>
-			<p class="highlight_red">2、异步加载时，对于设置了 isParent = true 的节点，在展开时将进行异步加载</p>
-			<p>默认值：无</p>
+			<p>Nodes的子NodesDataGather。</p>
+			<p class="highlight_red">1、If不Use children PropertiesSave子NodesData，请Modify setting.data.key.children </p>
+			<p class="highlight_red">2、Step Load时，YeahSettings了 isParent = true 的Nodes，在Expand时将ConductStep Load</p>
+			<p>Default value：无</p>
 		</div>
 	</div>
-	<h3>Array(JSON) 格式说明</h3>
+	<h3>Array(JSON) FormatAnnotations</h3>
 	<div class="desc">
-	<p>标准的 JSON 数据对象</p>
+	<p>Standard的 JSON DataObject</p>
 	</div>
-	<h3>treeNode 举例</h3>
-	<h4>1. 初始化的标准嵌套格式的 JSON 数据对象</h4>
+	<h3>treeNode Example</h3>
+	<h4>1. Initialize的Standard嵌套Format的 JSON DataObject</h4>
 	<pre xmlns=""><code>var nodes = [
 { "id":1, "name":"test1",
 	children: [
@@ -27,7 +27,7 @@
 },
 { "id":2, "name":"test2"  }
 ]</code></pre>
-	<h4>2. 获取第一个根节点的子节点</h4>
+	<h4>2. Access第一个根Nodes的子Nodes</h4>
 	<pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
 var nodes = treeObj.getNodes()[0].children;
 </code></pre>

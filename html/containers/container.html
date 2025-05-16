@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="containersDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="containersDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -36,7 +36,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-plus'
-                }">创建容器</a>
+                }">Create Container</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -45,7 +45,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-yellowgreen',
                     iconCls: 'fa fa-ticket'
-                }">克隆容器</a>
+                }">CloningContainers</a>
 
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -55,7 +55,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-orange',
                     iconCls: 'fa fa-sign-out'
-                }">导出tarball</a>
+                }">Exporttarball</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -64,7 +64,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-limegreen',
                     iconCls: 'fa fa-sign-out'
-                }">归档</a>
+                }">Archive</a>
 
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -74,7 +74,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-pink',
                     iconCls: 'fa fa-sign-in'
-                }">导入归档</a>
+                }">ImportArchive</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -83,7 +83,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-times'
-                }">删除容器</a>
+                }">DeleteContainers</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -92,7 +92,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-dodgerblue',
                     iconCls: 'fa fa-trash'
-                }">清理容器</a>
+                }">清理Containers</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -101,7 +101,7 @@
                     extend: '#containersDg-toolbar',
                     btnCls: 'cubeui-btn-olive',
                     iconCls: 'fa fa-play-circle-o'
-                }">运行新容器</a>
+                }">Run新Containers</a>
 
 <!--            <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{-->
 <!--                    onClick:function(){-->
@@ -110,10 +110,10 @@
 <!--                    extend: '#containersDg-toolbar',-->
 <!--                    btnCls: 'cubeui-btn-pink',-->
 <!--                    iconCls: 'fa fa-random'-->
-<!--                }">执行</a>-->
+<!--                }">Implementation</a>-->
 
             <form id="queryForm" class="search-box">
-                <span style='line-height: 30px;padding-right:0px'>所有容器：</span>
+                <span style='line-height: 30px;padding-right:0px'>AllContainers：</span>
                 <input id='refreshBtn'  name="all"  value='1' data-toggle="cubeui-switchbutton" style="width:50px;height1:30px" checked="true"
                     data-options="
                     onText:'',offText:'',
@@ -127,7 +127,7 @@
                 <input type="text" id='search_type' name="search_type" value="name" data-toggle="cubeui-combobox"
                        data-options="
                                 width:120,
-                                required:true,prompt:'查询方式，必须填写',
+                                required:true,prompt:'QuestionModalities，_Other Organiser',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},{'KEY':'before','TEXT':'Before'},
@@ -138,17 +138,17 @@
                        data-options="onClear:function(){
                             console.log(111);
                             $('#searchbtn').trigger('click');
-                       }, mask:'{{:~js(prefix)}}', prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                       }, mask:'{{:~js(prefix)}}', prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'containersDg'}">查询</a>
+                   grid:{type:'datagrid','id':'containersDg'}">Question</a>
             </form>
         </div>
-        <!-- 表格工具栏结束 -->
+        <!-- End of Table Toolbar -->
 
     </div>
 </div>

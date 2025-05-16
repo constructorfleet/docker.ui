@@ -6,7 +6,7 @@ function rendSwarmPage(){
         d.info.swarm = {};
         if(data.Swarm && !$.extends.isEmpty(data.Swarm.NodeID)){
             d.info.swarm.status = 'On';
-            d.info.swarm.custerid = d.info.Swarm.Cluster?(d.info.Swarm.Cluster.ID+'[管理节点]'):'[工作节点]';
+            d.info.swarm.custerid = d.info.Swarm.Cluster?(d.info.Swarm.Cluster.ID+'[管理Nodes]'):'[工作Nodes]';
             d.info.swarm.nodeid = d.info.Swarm.NodeID;
             d.info.swarm.address = d.info.Swarm.NodeAddr;
         }else{
@@ -44,11 +44,11 @@ function rendSwarmPage(){
                         if(checked){
                             let r = startSwarmInterval();
                             if(r){
-                                $.app.show('自动刷新已经开启')
+                                $.app.show('自动Refresh已经开启')
                             }
                         }else{
                             stopSwamInterval();
-                            $.app.show('自动刷新已经关闭')
+                            $.app.show('自动Refresh已经Close')
                         }
                     }
                 })
@@ -100,10 +100,10 @@ function fillSwarmData(data){
 
         if(data.info.Swarm && !$.extends.isEmpty(data.info.Swarm.NodeID)){
             $('#activeCount').text('N/A');
-            $('#managerCount').text('非管理节点');
+            $('#managerCount').text('非管理Nodes');
         }else{
             $('#activeCount').text('N/A');
-            $('#managerCount').text('非Swarm环境');
+            $('#managerCount').text('非SwarmEnvironment');
         }
 
         $('#imageCount').text('N/A');
@@ -178,13 +178,13 @@ function leaveSwarm(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>退出Swarm集群选项</legend>
+                        <legend>ExitSwarmCluster选项</legend>
                     </fieldset>
 
                     <div style="margin-top:5px">    
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；强制离开swarm，即使这是最后一个管理器，否则它将破坏集群。">强制离开:</label>
+                                    <label class="cubeui-form-label" title="If selected；Forced Leaveswarm，Even if it\'s the last manager，否则它将破坏Cluster。">Forced Leave:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton"
                                             name="force" value="1" data-options="onText:'',offText:'',width:60">
@@ -197,12 +197,12 @@ function leaveSwarm(){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('退出Swarm集群', '确认退出Swarm集群的选项？', import_html,
+    $.docker.utils.optionConfirm('ExitSwarmCluster', '确认ExitSwarmCluster的选项？', import_html,
         function(param, closeFn) {
             console.log(param)
 
             $.docker.request.swarm.leave(function (json, xhr, state) {
-                $.app.info("Swarm集群退出成功", function () {
+                $.app.info("SwarmClusterExit成功", function () {
                     closeFn();
                     window.location.reload()
                 })
@@ -217,9 +217,9 @@ function copyToken(obj){
     let token = t.parent().find('t').text();
 
     $.extends.copyToClipBoard(token, function () {
-        $.app.show('复制到剪贴板成功')
+        $.app.show('Copy到剪贴板成功')
     },function () {
-        $.app.show('复制到剪贴板失败')
+        $.app.show('Failed to copy to clipboard')
     })
 }
 
@@ -230,7 +230,7 @@ function openTokenDlg(){
         $.docker.request.info(node, function (res) {
 
             if($.extends.isEmpty(res.Swarm.RemoteManagers)){
-                $.app.show("非管理节点，无法查看令牌");
+                $.app.show("非管理Nodes，无法查看token");
                 return false;
             }
 
@@ -246,42 +246,42 @@ function openTokenDlg(){
                     </div>
                     <div class="cubeui-fluid showtoken">
                         <fieldset>
-                            <legend>Swarm集群令牌</legend>
+                            <legend>SwarmClustertoken</legend>
                         </fieldset>
     
                         <div style="margin-top:5px">
                                 <div class="cubeui-row" style="margin-top: 5px">
                                     <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                        <label class="cubeui-form-label" title="加入SWARM集群的管理节点advertise-addr">
+                                        <label class="cubeui-form-label" title="AddSWARMCluster的管理Nodesadvertise-addr">
                                         Advertise:
                                         </label>
                                         
                                         <div class="cubeui-input-block">
                                         <span><t class="textspan">{2}</t>
-                                           <button type='button' style='float: right;' class="layui-btn-blue layui-btn layui-btn-xs" onclick="copyToken(this);">复制</button>
+                                           <button type='button' style='float: right;' class="layui-btn-blue layui-btn layui-btn-xs" onclick="copyToken(this);">Copy</button>
                                         </span>
                                         </div>
                                     </div>  
                                     
                                     <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                        <label class="cubeui-form-label" title="作为工作节点可以使用令牌加入SWARM集群">
-                                        工作节点令牌:
+                                        <label class="cubeui-form-label" title="作为工作Nodes可以UsetokenAddSWARMCluster">
+                                        工作Nodestoken:
                                         </label>
                                         
                                         <div class="cubeui-input-block">
                                         <span><t>{0}</t>
-                                           <button type='button' style='float: right;' class="layui-btn-blue layui-btn layui-btn-xs" onclick="copyToken(this);">复制</button>
+                                           <button type='button' style='float: right;' class="layui-btn-blue layui-btn layui-btn-xs" onclick="copyToken(this);">Copy</button>
                                         </span>
                                         </div>
                                     </div>  
                                     
                                     
                                     <div class="cubeui-col-sm12" style="margin-top: 15px">
-                                        <label class="cubeui-form-label" title="作为管理节点可以使用令牌加入SWARM集群">
-                                        管理节点令牌:</label>
+                                        <label class="cubeui-form-label" title="作为管理Nodes可以UsetokenAddSWARMCluster">
+                                        管理Nodestoken:</label>
                                         <div class="cubeui-input-block">
                                         <span><t>{1}</t>
-                                        <button type='button' style='float: right;' class="layui-btn-orange layui-btn layui-btn-xs" onclick="copyToken(this);">复制</button>
+                                        <button type='button' style='float: right;' class="layui-btn-orange layui-btn layui-btn-xs" onclick="copyToken(this);">Copy</button>
                                         </span>
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@ function openTokenDlg(){
                     </div>
             `.format(response.JoinTokens.Worker, response.JoinTokens.Manager, advertises);
 
-            $.docker.utils.optionConfirm('Swarm集群令牌', null, import_html, function(param, closeFn) {
+            $.docker.utils.optionConfirm('SwarmClustertoken', null, import_html, function(param, closeFn) {
                 closeFn();
             }, null, null, 800);
         })
@@ -308,18 +308,18 @@ function openJoinSwarmDlg(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>Swarm集群加入选项</legend>
+                        <legend>SwarmClusterAdd选项</legend>
                     </fieldset>
 
                     <div style="margin-top:5px">
                             <div class="cubeui-row" style="margin-top: 5px">
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="通告给其他节点的外部可访问地址。这可以是192.168.1.1:4567格式的地址/端口组合，也可以是后跟端口号的接口，如eth0:4567。如果省略端口号，则使用侦听地址中的端口号。如果未指定AdvertiseAddr，则会在可能的情况下自动检测到它">
-                                    播发地址:</label>
+                                    <label class="cubeui-form-label" title="通告给其他Nodes的外部可访问Address。这It could be192.168.1.1:4567Format的Address/Port组合，也It could be后跟Port号的Interface，如eth0:4567。如果省略Port号，则Use侦听Address中的Port号。If not specifiedAdvertiseAddr，It will be detected automatically, if possible">
+                                    Send Address:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="AdvertiseAddr" data-options="
-                                            prompt:'Advertised address播发地址（格式：<ip |接口>[：端口]）; 如果省略端口号，则使用侦听地址中的端口号',                                            
+                                            prompt:'Advertised addressSend Address（Format：<ip |Interface>[：Port]）; 如果省略Port号，则Use侦听Address中的Port号',                                            
                                             required:true,
                                             " >  
                                     </div>
@@ -327,25 +327,25 @@ function openJoinSwarmDlg(){
                                 
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="侦听用于管理器间通信的地址，以及确定用于VXLAN隧道端点（VTEP）的网络接口。这可以是192.168.1.1:4567格式的地址/端口组合，也可以是后跟端口号的接口，如eth0:4567。如果省略端口号，则使用默认swarm侦听端口">
-                                    通信侦听地址:</label>
+                                    <label class="cubeui-form-label" title="Intercepting addresses used to manage inter-manufacturer communications，and identified for useVXLANTunnel End（VTEP）的网络Interface。这It could be192.168.1.1:4567Format的Address/Port组合，也It could be后跟Port号的Interface，如eth0:4567。如果省略Port号，则Use默认swarm侦听Port">
+                                    Communications interception address:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="ListenAddr"
                                                value='0.0.0.0:2377'
                                                data-options="
-                                                        required:true,prompt:'侦听用于管理器间通信的地址。如果省略端口号，则使用默认swarm侦听端口; 可以是192.168.1.1:4567格式。也可以是eth0:4567'
+                                                        required:true,prompt:'Intercepting addresses used to manage inter-manufacturer communications。如果省略Port号，则Use默认swarm侦听Port; It could be192.168.1.1:4567Format。也It could beeth0:4567'
                                                         "
                                         >
                                     </div>
                                 </div>
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px;">
-                                    <label class="cubeui-form-label" title="用于数据路径通信的地址或接口（格式：<ip | interface>），例如192.168.1.1或接口，
-                                    如eth0。如果未指定DataPathAddr，则使用与AdvertiseAddr相同的地址。DataPathAddr指定全局作用域网络驱动程序将向其他节点发布的地址，以便访问在此节点上运行的容器。使用此参数可以将容器数据流量与集群的管理流量分离。">
-                                    数据通信地址:</label>
+                                    <label class="cubeui-form-label" title="用于数据路径通信的Addressor interface（Format：<ip | interface>），For example:192.168.1.1or interface，
+                                    如eth0。If not specifiedDataPathAddr，则Use与AdvertiseAddr相同的Address。DataPathAddr指定全局作用域网络驱动程序将向其他Nodes发布的Address，以便访问在此Nodes上运行的容器。Use此参数可以将容器数据流量与Cluster的管理流量分离。">
+                                    Data address:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="DataPathAddr" data-options="
-                                            prompt:'用于数据路径通信的地址或接口（格式：<ip | interface>）; 如果未指定DataPathAddr，则使用与AdvertiseAddr相同的地址',                                            
+                                            prompt:'用于数据路径通信的Addressor interface（Format：<ip | interface>）; If not specifiedDataPathAddr，则Use与AdvertiseAddr相同的Address',                                            
                                             required:false,
                                             " >  
                                     </div>
@@ -353,22 +353,22 @@ function openJoinSwarmDlg(){
                                 
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px;">
-                                    <label class="cubeui-form-label" title="已经参与swarm的manager节点的地址。">
-                                    manager地址:</label>
+                                    <label class="cubeui-form-label" title="Participatedswarm的managerNodes的Address。">
+                                    managerAddress:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="RemoteAddrs" data-options="
-                                            prompt:'已经参与swarm的manager节点的地址。多个manager使用,号分隔',                                            
+                                            prompt:'Participatedswarm的managerNodes的Address。MultiplemanagerUse,No. Separate',                                            
                                             required:true,
                                             " >  
                                     </div>
                                 </div>  
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px;">
-                                    <label class="cubeui-form-label" title="加入此群的秘密令牌。">
-                                    秘密令牌:</label>
+                                    <label class="cubeui-form-label" title="Add此群的秘密token。">
+                                    秘密token:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="JoinToken" data-options="
-                                            prompt:'加入此群的秘密令牌。',     
+                                            prompt:'Add此群的秘密token。',     
                                             multiline:true,                                       
                                             required:true,
                                             height:60,
@@ -382,29 +382,29 @@ function openJoinSwarmDlg(){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('加入Swarm集群', '确认加入Swarm集群的选项？', import_html,
+    $.docker.utils.optionConfirm('AddSwarmCluster', '确认AddSwarmCluster的选项？', import_html,
         function(param, closeFn) {
             console.log(param)
 
             if ($.extends.isEmpty(param.AdvertiseAddr)) {
-                $.app.show("需要填写Advertised address播发地址")
+                $.app.show("_Other OrganiserAdvertised addressSend Address")
                 return false;
             }
 
             if ($.extends.isEmpty(param.JoinToken)) {
-                $.app.show("需要填写加入此群的秘密令牌")
+                $.app.show("_Other OrganiserAdd此群的秘密token")
                 return false;
             }
 
             if ($.extends.isEmpty(param.RemoteAddrs)) {
-                $.app.show("需要填写加入此swarm的manager节点的地址")
+                $.app.show("_Other OrganiserAdd此swarm的managerNodes的Address")
                 return false;
             }
 
             let values = param.RemoteAddrs.split2(" ")
 
             if($.extends.isEmpty(values)) {
-                $.app.show("需要填写加入此swarm的manager节点的地址")
+                $.app.show("_Other OrganiserAdd此swarm的managerNodes的Address")
                 return false;
             }
 
@@ -430,7 +430,7 @@ function openJoinSwarmDlg(){
 
 
             $.docker.request.swarm.join(function (json, xhr, state) {
-                $.app.info("加入Swarm集群成功", function () {
+                $.app.info("AddSwarmCluster成功", function () {
                     closeFn();
                     window.location.reload()
                 })
@@ -448,18 +448,18 @@ function openInitSwarmDlg(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>Swarm集群初始化选项</legend>
+                        <legend>SwarmClusterInitialize选项</legend>
                     </fieldset>
 
                     <div style="margin-top:5px">
                             <div class="cubeui-row" style="margin-top: 5px">
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="通告给其他节点的外部可访问地址。这可以是192.168.1.1:4567格式的地址/端口组合，也可以是后跟端口号的接口，如eth0:4567。如果省略端口号，则使用侦听地址中的端口号。如果未指定AdvertiseAddr，则会在可能的情况下自动检测到它">
-                                    播发地址:</label>
+                                    <label class="cubeui-form-label" title="通告给其他Nodes的外部可访问Address。这It could be192.168.1.1:4567Format的Address/Port组合，也It could be后跟Port号的Interface，如eth0:4567。如果省略Port号，则Use侦听Address中的Port号。If not specifiedAdvertiseAddr，It will be detected automatically, if possible">
+                                    Send Address:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="AdvertiseAddr" data-options="
-                                            prompt:'Advertised address播发地址（格式：<ip |接口>[：端口]）; 如果省略端口号，则使用侦听地址中的端口号',                                            
+                                            prompt:'Advertised addressSend Address（Format：<ip |Interface>[：Port]）; 如果省略Port号，则Use侦听Address中的Port号',                                            
                                             required:true,
                                             " >  
                                     </div>
@@ -467,25 +467,25 @@ function openInitSwarmDlg(){
                                 
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="侦听用于管理器间通信的地址，以及确定用于VXLAN隧道端点（VTEP）的网络接口。这可以是192.168.1.1:4567格式的地址/端口组合，也可以是后跟端口号的接口，如eth0:4567。如果省略端口号，则使用默认swarm侦听端口">
-                                    通信侦听地址:</label>
+                                    <label class="cubeui-form-label" title="Intercepting addresses used to manage inter-manufacturer communications，and identified for useVXLANTunnel End（VTEP）的网络Interface。这It could be192.168.1.1:4567Format的Address/Port组合，也It could be后跟Port号的Interface，如eth0:4567。如果省略Port号，则Use默认swarm侦听Port">
+                                    Communications interception address:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="ListenAddr"
                                                value='0.0.0.0:2377'
                                                data-options="
-                                                        required:true,prompt:'侦听用于管理器间通信的地址。如果省略端口号，则使用默认swarm侦听端口; 可以是192.168.1.1:4567格式。也可以是eth0:4567'
+                                                        required:true,prompt:'Intercepting addresses used to manage inter-manufacturer communications。如果省略Port号，则Use默认swarm侦听Port; It could be192.168.1.1:4567Format。也It could beeth0:4567'
                                                         "
                                         >
                                     </div>
                                 </div>
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px;">
-                                    <label class="cubeui-form-label" title="用于数据路径通信的地址或接口（格式：<ip | interface>），例如192.168.1.1或接口，
-                                    如eth0。如果未指定DataPathAddr，则使用与AdvertiseAddr相同的地址。DataPathAddr指定全局作用域网络驱动程序将向其他节点发布的地址，以便访问在此节点上运行的容器。使用此参数可以将容器数据流量与集群的管理流量分离。">
-                                    数据通信地址:</label>
+                                    <label class="cubeui-form-label" title="用于数据路径通信的Addressor interface（Format：<ip | interface>），For example:192.168.1.1or interface，
+                                    如eth0。If not specifiedDataPathAddr，则Use与AdvertiseAddr相同的Address。DataPathAddr指定全局作用域网络驱动程序将向其他Nodes发布的Address，以便访问在此Nodes上运行的容器。Use此参数可以将容器数据流量与Cluster的管理流量分离。">
+                                    Data address:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" name="DataPathAddr" data-options="
-                                            prompt:'用于数据路径通信的地址或接口（格式：<ip | interface>）; 如果未指定DataPathAddr，则使用与AdvertiseAddr相同的地址',                                            
+                                            prompt:'用于数据路径通信的Addressor interface（Format：<ip | interface>）; If not specifiedDataPathAddr，则Use与AdvertiseAddr相同的Address',                                            
                                             required:false,
                                             " >  
                                     </div>
@@ -493,12 +493,12 @@ function openInitSwarmDlg(){
                                 
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px;">
-                                    <label class="cubeui-form-label" title="DataPathPort指定数据通信的数据路径端口号。可接受的端口范围为1024到49151。
-                                    如果未设置端口或设置为0，则将使用默认端口4789。">
-                                    数据路径端口:</label>
+                                    <label class="cubeui-form-label" title="DataPathPort指定数据通信的数据路径Port号。可接受的Port范围为1024到49151。
+                                    如果未SettingsPort或Settings为0，则将Use默认Port4789。">
+                                    数据路径Port:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-numberspinner" name="DataPathPort" data-options="
-                                            prompt:'指定数据通信的数据路径端口号。可接受的端口范围为1024到49151。如果未设置端口，则将使用默认端口4789。',                                            
+                                            prompt:'指定数据通信的数据路径Port号。可接受的Port范围为1024到49151。如果未SettingsPort，则将Use默认Port4789。',                                            
                                             required:false,
                                             min:1014,
                                             max:49151
@@ -510,12 +510,12 @@ function openInitSwarmDlg(){
                             
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="SWARM集群设置的任意键/值标签的元数据,格式为KEY1=VALUE1[ KEY2=VAVLUE2]">标签:</label>
+                                    <label class="cubeui-form-label" title="SWARMClusterSettings的任意键/值Label的元数据,Format为KEY1=VALUE1[ KEY2=VAVLUE2]">Label:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="Labels"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'键/值标签的元数据,格式为KEY1=VALUE1[ KEY2=VAVLUE2]。'
+                                                        required:false,prompt:'键/值Label的元数据,Format为KEY1=VALUE1[ KEY2=VAVLUE2]。'
                                                         "
                                         >
                                     </div>
@@ -527,12 +527,12 @@ function openInitSwarmDlg(){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('初始化想新的Swarm集群', '确认初始化新的Swarm集群的选项？', import_html,
+    $.docker.utils.optionConfirm('Initialize想新的SwarmCluster', '确认Initialize新的SwarmCluster的选项？', import_html,
         function(param, closeFn) {
             console.log(param)
 
             if ($.extends.isEmpty(param.AdvertiseAddr)) {
-                $.app.show("需要填写Advertised address播发地址")
+                $.app.show("_Other OrganiserAdvertised addressSend Address")
                 return false;
             }
 
@@ -567,7 +567,7 @@ function openInitSwarmDlg(){
             }
 
             $.docker.request.swarm.init(function (json, xhr, state) {
-                $.app.info("Swarm集群初始化成功", function () {
+                $.app.info("SwarmClusterInitialize成功", function () {
                     closeFn();
                     window.location.reload()
                 })

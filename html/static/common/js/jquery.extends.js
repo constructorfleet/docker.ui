@@ -155,7 +155,7 @@ String.prototype.format = function(args) {
         else {
             for (var i = 0; i < arguments.length; i++) {
                 if (arguments[i] != undefined) {
-                    //var reg = new RegExp("({[" + i + "]})", "g");//这个在索引大于9时会有问题，谢谢何以笙箫的指出
+                    //var reg = new RegExp("({[" + i + "]})", "g");//Here在索引Greater than9时会有Problem，Thank you何以笙箫的指出
                     var reg = new RegExp("({)" + i + "(})", "g");
                     result = result.replace(reg, arguments[i]);
                 }
@@ -231,7 +231,7 @@ String.prototype.bytes2 = function(){
 }
 
 /**
- *@description:将string转为UTF-8格式signed char字节数组
+ *@description:将stringToUTF-8Formatsigned charBytesArray
  *
  */
 String.prototype.bytes = function(){
@@ -306,7 +306,7 @@ $.inArray3 = function( elem, array, field ) {
 	if ( array ) {
 		len = array.length;
 		for ( var i=0 ; i < len; i++ ) {
-			// Skip accessing in sparse arrays 这么判断主要是考虑数组下标不连续的情况注意学习这种方式 i in arry 的判断方式
+			// Skip accessing in sparse arrays 这么Decision主要是考虑ArraySubscript不连续SituationAttention学习这种Modalities i in arry 的DecisionModalities
 			if ( i in array && array[ i ][field] == elem ) {
 				return i;
 			}
@@ -322,7 +322,7 @@ $.inArray4 = function( elem, array, comparorfn ) {
 	if ( array && comparorfn) {
 		len = array.length;
 		for ( var i=0 ; i < len; i++ ) {
-			// Skip accessing in sparse arrays 这么判断主要是考虑数组下标不连续的情况注意学习这种方式 i in arry 的判断方式
+			// Skip accessing in sparse arrays 这么Decision主要是考虑ArraySubscript不连续SituationAttention学习这种Modalities i in arry 的DecisionModalities
 			if ( i in array && comparorfn(array[ i ], elem) == true ) {
 				return i;
 			}
@@ -339,15 +339,15 @@ $.inArray2 = function( elem, array, i ) {
 
 		len = array.length;
 		/*
-			注意该条语句是给i赋值用的，猛的一看该语句可能产生混淆
-			首先判断i的值，i ? （i < 0 ? Math.max( 0, len + i ) : i ）: 0 如果 i 未定义 或者i为0 则 把0赋值给i
-			如果i 定义了并且不为0 执行 i < 0 ? Math.max( 0, len + i ) : i
-			如果i 为负数，加上则为其加上数组长度，且其值不能小于0
+			Attention该条语句是给iGranted，If you look at it, it\'s confusing
+			首先DecisioniValue，i ? （i < 0 ? Math.max( 0, len + i ) : i ）: 0 If i 未Definitions Or..i为0 则 把0Granted toi
+			Ifi Definitions了And..不为0 Implementation i < 0 ? Math.max( 0, len + i ) : i
+			Ifi As Negative，AddAnd..其AddArrayLength，且其值I can\'tless than0
 		*/
 		i = i ? i < 0 ? Math.max( 0, len + i ) : i : 0;
 
 		for ( ; i < len; i++ ) {
-			// Skip accessing in sparse arrays 这么判断主要是考虑数组下标不连续的情况注意学习这种方式 i in arry 的判断方式
+			// Skip accessing in sparse arrays 这么Decision主要是考虑ArraySubscript不连续SituationAttention学习这种Modalities i in arry 的DecisionModalities
 			if ( i in array && array[ i ] == elem ) {
 				return i;
 			}
@@ -400,15 +400,15 @@ $.fn.getoptions = function(){
 $.extends = {};
 
 function copyToClipboard(textToCopy, okFn, errFn) {
-	// navigator clipboard 需要https等安全上下文
+	// navigator clipboard Yeshttps等安全Context
 	if (navigator.clipboard && window.isSecureContext) {
-		// navigator clipboard 向剪贴板写文本
+		// navigator clipboard 向剪贴板写Text
 		return navigator.clipboard.writeText(textToCopy).then(okFn, errFn);
 	} else {
-		// 创建text area
+		// Createtext area
 		let textArea = document.createElement("textarea");
 		textArea.value = textToCopy;
-		// 使text area不在viewport，同时设置不可见
+		// 使text areaNo, I\'m notviewport，同时Settings不可见
 		textArea.style.position = "absolute";
 		textArea.style.opacity = 0;
 		textArea.style.left = "-999999px";
@@ -417,7 +417,7 @@ function copyToClipboard(textToCopy, okFn, errFn) {
 		textArea.focus();
 		textArea.select();
 		return new Promise((res, rej) => {
-			// 执行复制命令并移除文本框
+			// ImplementationCopyCommand并移除Text框
 			document.execCommand('copy') ? res() : rej();
 			textArea.remove();
 		}).then(okFn, errFn);
@@ -616,9 +616,9 @@ $.extends.cloneArray = function(array, size, field){
 $.extends.arrayToTree = function (data, id, pid) {
 
         if (!data || !data.length) return [];
-        var targetData = [];                    //存储数据的容器(返回)
+        var targetData = [];                    //StorageData的Containers(Back)
         var records = {};
-        var itemLength = data.length;           //数据集合的个数
+        var itemLength = data.length;           //DataGather的个数
         for (var i = 0; i < itemLength; i++) {
             var o = data[i];
             records[o[id]] = o;
@@ -733,7 +733,7 @@ $.extends.maths = {
 		if(numbera.length==1)
 			numbera.push('');
 
-		var decimal = numbera[1];//获取小数部分
+		var decimal = numbera[1];//Access小数Part
 
 		var a = fractiondigits - decimal.length;
 
@@ -838,7 +838,7 @@ $.extends.jquery = function(jqueryobj){
 	}
 
 	if($.extends.isEmpty(jqueryobj)){
-		throw '$.extends.jquery 不能包装空对象';
+		throw '$.extends.jquery I can\'t包装空Object';
 	}
 
 	return $(jqueryobj);
@@ -897,7 +897,7 @@ $.extends.str2number = function(str, defaultv) {
 		return rtn;
 }
 
-//获取cookie值
+//Accesscookie值
 $.extends.getcookie = function(name) {
 	var cookie = document.cookie;
 	var array = cookie.split("; ");
@@ -911,35 +911,35 @@ $.extends.getcookie = function(name) {
 	return "";
 }
 
-//删除cookie
+//Deletecookie
 $.extends.deletecookie = function(name) {
 	var date = new Date();
 	date.setTime(date.getTime() - 1000);
 	document.cookie = name + "=''; expires=" + date.toGMTString();
 }
 
-//判断是否存在空格
+//DecisionWhether or notExistenceSpace
 $.extends.checkspace = function(string) {
 	return string.match(/\s+/);
 };
 
-//判断是否为汉字
+//DecisionIs it汉字
 $.extends.ischinese = function(string) {
 	return string.match(/[\u4E00-\u9FA5]/g);
 };
 
-//判断是否为手机
+//DecisionIs itCell phone
 $.extends.ismobileno = function(string) {
 	return string.match(/^1[34578][0-9]{9}$/);
 }
 
-//去除空白字符
+//去除空白Character
 $.extends.stripspace = function(string) {
 	return string.replace(/\s*/g, "");
 };
 
-/*全局函数************************************************************************************************************/
-//json操作
+/*全局Functions************************************************************************************************************/
+//jsonOperation
 $.extends.json = {
 	param2json : function(url){
 
@@ -1041,9 +1041,9 @@ $.extends.json = {
 			return eval("(" + str + ")");
 		return str;
 	},
-	"toobject2" :function(str){  // 解决eval的context问题
+	"toobject2" :function(str){  // Solveeval的contextProblem
 		if($.extends.isString(str)){
-			var Fn = Function;  //一个变量指向Function，防止有些前端编译工具报错
+			var Fn = Function;  //一个VariablesPointFunction，Prevention有些前端编译ToolsWrong
 			return new Fn('return (' + str +')')();
 		}
 		return str;
@@ -1055,7 +1055,7 @@ $.extends.json = {
 	}
 };
 
-//设置cookie
+//Settingscookie
 $.extends.setcookie = function(name, value, life) {
 	var cookie = name + "=" + escape(value);
 	if (life > 0) {
@@ -1098,13 +1098,13 @@ dateFormat("YYYY-mm-dd HH:MM", date)
 Date.prototype.Format = function (fmt) { //author: meizz
 	var o = {
 		"Y+": this.getFullYear().toString(),        // 年
-		"M+": this.getMonth() + 1, //月份
+		"M+": this.getMonth() + 1, //Month
 		"d+": this.getDate(), //日
-		"H+": this.getHours(), //小时
+		"H+": this.getHours(), //Hours
 		"m+": this.getMinutes(), //分
 		"s+": this.getSeconds(), //秒
-		"q+": Math.floor((this.getMonth() + 3) / 3), //季度
-		"S": this.getMilliseconds() //毫秒
+		"q+": Math.floor((this.getMonth() + 3) / 3), //quarterly
+		"S": this.getMilliseconds() //milliseconds
 	};
 	if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
 	for (var k in o)
@@ -1121,7 +1121,7 @@ $.extends.dateFormat = function(fmt, date) {
 		"H+": date.getHours().toString(),           // 时
 		"M+": date.getMinutes().toString(),         // 分
 		"S+": date.getSeconds().toString()          // 秒
-		// 有其他格式化字符需求可以继续添加，必须转化成字符串
+		// 有OtherFormat化Character需求YeahGo onAdd，必须Conversion成Character串
 	};
 	for (let k in opt) {
 		ret = new RegExp("(" + k + ")").exec(fmt);
@@ -1151,16 +1151,16 @@ $.extends.isMobile = {
 	}
 };
 
-//身份证号码的验证规则
+//身份证号码的AuthenticationRule
 $.extends.isIdCardNo=function (num) {
-	//if (isNaN(num)) {alert("输入的不是数字！"); return false;}
+	//if (isNaN(num)) {alert("输入的NopeNumbers！"); return false;}
 	var len = num.length, re;
 	if (len == 15)
 		re = new RegExp(/^(\d{6})()?(\d{2})(\d{2})(\d{2})(\d{2})(\w)$/);
 	else if (len == 18)
 		re = new RegExp(/^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/);
 	else {
-		//alert("输入的数字位数不对。");
+		//alert("Wrong number of digits entered。");
 		return false;
 	}
 	var a = num.match(re);
@@ -1175,12 +1175,12 @@ $.extends.isIdCardNo=function (num) {
 					&& D.getDate() == a[5];
 		}
 		if (!B) {
-			//alert("输入的身份证号 "+ a[0] +" 里出生日期不对。");
+			//alert("ID number entered "+ a[0] +" 里出生Date不对。");
 			return false;
 		}
 	}
 	if (!re.test(num)) {
-		//alert("身份证最后一位只能是数字和字母。");
+		//alert("身份证最后一位只能是Numbers和Letter。");
 		return false;
 	}
 	return true;
@@ -1189,111 +1189,111 @@ $.extends.isIdCardNo=function (num) {
 
 
 $.extends.initExtentValidateRule=function() {
-	// 判断整数value是否等于0
+	// Decision整数valueWhether or notequals0
 	jQuery.validator.addMethod("isIntEqZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value == 0;
-	}, "整数必须为0");
+	}, "The integer must be0");
 
-	// 判断整数value是否大于0
+	// Decision整数valueWhether or notGreater than0
 	jQuery.validator.addMethod("isIntGtZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value > 0;
-	}, "整数必须大于0");
+	}, "整数必须Greater than0");
 
-	// 判断整数value是否大于或等于0
+	// Decision整数valueWhether or notGreater than或equals0
 	jQuery.validator.addMethod("isIntGteZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value >= 0;
-	}, "整数必须大于或等于0");
+	}, "整数必须Greater than或equals0");
 
-	// 判断整数value是否不等于0
+	// Decision整数valueWhether or notNot equal to0
 	jQuery.validator.addMethod("isIntNEqZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value != 0;
-	}, "整数必须不等于0");
+	}, "整数必须Not equal to0");
 
-	// 判断整数value是否小于0
+	// Decision整数valueWhether or notless than0
 	jQuery.validator.addMethod("isIntLtZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value < 0;
-	}, "整数必须小于0");
+	}, "整数必须less than0");
 
-	// 判断整数value是否小于或等于0
+	// Decision整数valueWhether or notless than或equals0
 	jQuery.validator.addMethod("isIntLteZero", function(value, element) {
 		value = parseInt(value);
 		return this.optional(element) || value <= 0;
-	}, "整数必须小于或等于0");
+	}, "整数必须less than或equals0");
 
-	// 判断浮点数value是否等于0
+	// Decision浮点数valueWhether or notequals0
 	jQuery.validator.addMethod("isFloatEqZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value == 0;
-	}, "浮点数必须为0");
+	}, "Float number must be0");
 
-	// 判断浮点数value是否大于0
+	// Decision浮点数valueWhether or notGreater than0
 	jQuery.validator.addMethod("isFloatGtZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value > 0;
-	}, "浮点数必须大于0");
+	}, "浮点数必须Greater than0");
 
-	// 判断浮点数value是否大于或等于0
+	// Decision浮点数valueWhether or notGreater than或equals0
 	jQuery.validator.addMethod("isFloatGteZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value >= 0;
-	}, "浮点数必须大于或等于0");
+	}, "浮点数必须Greater than或equals0");
 
-	// 判断浮点数value是否不等于0
+	// Decision浮点数valueWhether or notNot equal to0
 	jQuery.validator.addMethod("isFloatNEqZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value != 0;
-	}, "浮点数必须不等于0");
+	}, "浮点数必须Not equal to0");
 
-	// 判断浮点数value是否小于0
+	// Decision浮点数valueWhether or notless than0
 	jQuery.validator.addMethod("isFloatLtZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value < 0;
-	}, "浮点数必须小于0");
+	}, "浮点数必须less than0");
 
-	// 判断浮点数value是否小于或等于0
+	// Decision浮点数valueWhether or notless than或equals0
 	jQuery.validator.addMethod("isFloatLteZero", function(value, element) {
 		value = parseFloat(value);
 		return this.optional(element) || value <= 0;
-	}, "浮点数必须小于或等于0");
+	}, "浮点数必须less than或equals0");
 
-	// 判断浮点型
+	// Decision浮点型
 	jQuery.validator.addMethod("isFloat", function(value, element) {
 		return this.optional(element) || /^[-\+]?\d+(\.\d+)?$/.test(value);
-	}, "只能包含数字、小数点等字符");
+	}, "只能OrganisationNumbers、小数点等Character");
 
-	// 匹配integer
+	// Matchinteger
 	jQuery.validator.addMethod("isInteger", function(value, element) {
 		return this.optional(element)
 				|| (/^[-\+]?\d+$/.test(value) && parseInt(value) >= 0);
-	}, "匹配integer");
+	}, "Matchinteger");
 
-	// 判断数值类型，包括整数和浮点数
+	// Decision数值Type，Including整数和浮点数
 	jQuery.validator.addMethod("isNumber", function(value, element) {
 		return this.optional(element) || /^[-\+]?\d+$/.test(value)
 				|| /^[-\+]?\d+(\.\d+)?$/.test(value);
-	}, "匹配数值类型，包括整数和浮点数");
+	}, "Match数值Type，Including整数和浮点数");
 
-	// 只能输入[0-9]数字
+	// Only enter[0-9]Numbers
 	jQuery.validator.addMethod("isDigits", function(value, element) {
 		return this.optional(element) || /^\d+$/.test(value);
-	}, "只能输入0-9数字");
+	}, "Only enter0-9Numbers");
 
-	// 判断中文字符
+	// Decision中文Character
 	jQuery.validator.addMethod("isChinese", function(value, element) {
 		return this.optional(element) || /^[\u0391-\uFFE5]+$/.test(value);
-	}, "只能包含中文字符。");
+	}, "只能Organisation中文Character。");
 
-	// 判断英文字符
+	// DecisionEnglishCharacter
 	jQuery.validator.addMethod("isEnglish", function(value, element) {
 		return this.optional(element) || /^[A-Za-z]+$/.test(value);
-	}, "只能包含英文字符。");
+	}, "只能OrganisationEnglishCharacter。");
 
-	// 手机号码验证
+	// Cell phone号码Authentication
 	jQuery.validator
 			.addMethod(
 					"isMobile",
@@ -1302,46 +1302,46 @@ $.extends.initExtentValidateRule=function() {
 						return this.optional(element)
 								|| (length == 11 && /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/
 										.test(value));
-					}, "请正确填写您的手机号码。");
+					}, "请正确填写您的Cell phone号码。");
 
-	// 电话号码验证
+	// 电话号码Authentication
 	jQuery.validator.addMethod("isPhone", function(value, element) {
 		var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
 		return this.optional(element) || (tel.test(value));
-	}, "请正确填写您的电话号码。");
+	}, "Please fill in your number correctly。");
 
-	// 联系电话(手机/电话皆可)验证
+	// Call me(Cell phone/Any phone calls)Authentication
 	jQuery.validator.addMethod("isTel", function(value, element) {
 		var length = value.length;
 		var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
 		var tel = /^(\d{3,4}-?)?\d{7,9}$/g;
 		return this.optional(element) || tel.test(value)
 				|| (length == 11 && mobile.test(value));
-	}, "请正确填写您的联系方式");
+	}, "请正确填写您的联系Modalities");
 
-	// 匹配qq
+	// Matchqq
 	jQuery.validator.addMethod("isQq", function(value, element) {
 		return this.optional(element) || /^[1-9]\d{4,12}$/;
-	}, "匹配QQ");
+	}, "MatchQQ");
 
-	// 邮政编码验证
+	// 邮政EncodedAuthentication
 	jQuery.validator.addMethod("isZipCode", function(value, element) {
 		var zip = /^[0-9]{6}$/;
 		return this.optional(element) || (zip.test(value));
-	}, "请正确填写您的邮政编码。");
+	}, "请正确填写您的邮政Encoded。");
 
-	// 匹配密码，以字母开头，长度在6-12之间，只能包含字符、数字和下划线。
+	// MatchPassword，以LetterStart，Length在6-12Between，只能OrganisationCharacter、Numbers和Underline。
 	jQuery.validator.addMethod("isPwd", function(value, element) {
 		return this.optional(element) || /^[a-zA-Z]\\w{6,12}$/.test(value);
-	}, "以字母开头，长度在6-12之间，只能包含字符、数字和下划线。");
+	}, "以LetterStart，Length在6-12Between，只能OrganisationCharacter、Numbers和Underline。");
 
-	// 身份证号码验证
+	// 身份证号码Authentication
 	jQuery.validator.addMethod("isIdCardNo", function(value, element) {
 		//var idCard = /^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/;
 		return this.optional(element) || $.extends.isIdCardNo(value);
-	}, "请输入正确的身份证号码。");
+	}, "Please enter the correct ID number码。");
 
-	// IP地址验证
+	// IPAddressAuthentication
 	jQuery.validator
 			.addMethod(
 					"ip",
@@ -1349,53 +1349,53 @@ $.extends.initExtentValidateRule=function() {
 						return this.optional(element)
 								|| /^(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.)(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.){2}([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))$/
 										.test(value);
-					}, "请填写正确的IP地址。");
+					}, "Please fill it out correctlyIPAddress。");
 
-	// 字符验证，只能包含中文、英文、数字、下划线等字符。
+	// CharacterAuthentication，只能Organisation中文、English、Numbers、Underline等Character。
 	jQuery.validator.addMethod("stringCheck", function(value, element) {
 		return this.optional(element)
 				|| /^[a-zA-Z0-9\u4e00-\u9fa5-_]+$/.test(value);
-	}, "只能包含中文、英文、数字、下划线等字符");
+	}, "只能Organisation中文、English、Numbers、Underline等Character");
 
-	// 字符验证，只能包含中文、英文、数字、下划线等字符。
+	// CharacterAuthentication，只能Organisation中文、English、Numbers、Underline等Character。
 	jQuery.validator.addMethod("stringCheck2", function(value, element) {
 		return this.optional(element)
 				|| /^[a-zA-Z0-9\u4e00-\u9fa5-_ \'\",]+$/.test(value);
-	}, "只能包含中文、英文、数字、下划线等字符");
+	}, "只能Organisation中文、English、Numbers、Underline等Character");
 
-	// 匹配english
+	// Matchenglish
 	jQuery.validator.addMethod("isEnglish", function(value, element) {
 		return this.optional(element) || /^[A-Za-z]+$/.test(value);
-	}, "匹配english");
+	}, "Matchenglish");
 
-	// 匹配汉字
+	// Match汉字
 	jQuery.validator.addMethod("isChinese", function(value, element) {
 		return this.optional(element) || /^[\u4e00-\u9fa5]+$/.test(value);
-	}, "匹配汉字");
+	}, "Match汉字");
 
-	// 匹配中文(包括汉字和字符)
+	// Match中文(Including汉字和Character)
 	jQuery.validator.addMethod("isChineseChar", function(value, element) {
 		return this.optional(element) || /^[\u0391-\uFFE5]+$/.test(value);
-	}, "匹配中文(包括汉字和字符) ");
+	}, "Match中文(Including汉字和Character) ");
 
-	// 判断是否为合法字符(a-zA-Z0-9-_)
+	// DecisionIs it合法Character(a-zA-Z0-9-_)
 	jQuery.validator.addMethod("isRightfulString", function(value, element) {
 		return this.optional(element) || /^[A-Za-z0-9_-]+$/.test(value);
-	}, "判断是否为合法字符(a-zA-Z0-9-_)");
+	}, "DecisionIs it合法Character(a-zA-Z0-9-_)");
 
-	// 判断是否包含中英文特殊字符，除英文"-_"字符外
+	// DecisionWhether or notOrganisation中English特殊Character，除English"-_"Character外
 	jQuery.validator
 			.addMethod(
 					"isContainsSpecialChar",
 					function(value, element) {
 						var reg = RegExp(/[(\ )(\`)(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\+)(\=)(\|)(\{)(\})(\')(\:)(\;)(\')(',)(\[)(\])(\.)(\<)(\>)(\/)(\?)(\~)(\！)(\@)(\#)(\￥)(\%)(\…)(\&)(\*)(\（)(\）)(\—)(\+)(\|)(\{)(\})(\【)(\】)(\‘)(\；)(\：)(\”)(\“)(\’)(\。)(\，)(\、)(\？)]+/);
 						return this.optional(element) || !reg.test(value);
-					}, "含有中英文特殊字符");
+					}, "含有中English特殊Character");
 
 	jQuery.validator.addMethod("begin", function(value, element, param) {
 		var begin = new RegExp("^" + param);
 		return this.optional(element) || (begin.test(value));
-	}, $.validator.format("必须以 {0} 开头!"));
+	}, $.validator.format("I have to {0} Start!"));
 
 	/* $.fn.validate2=function(opt)
 	 {
@@ -1468,7 +1468,7 @@ $.extends.download = function(url, data, method) {
 };
 
 
-// 将form转为AJAX提交
+// 将formToAJAXSubmit
 $.extends.ajaxSubmit=function(form, fn, prefix) {
 
 	var dataPara = getFormJson(form, prefix);
@@ -1480,7 +1480,7 @@ $.extends.ajaxSubmit=function(form, fn, prefix) {
 	});
 }
 
-// 将form中的值转换为键值对。
+// 将formMedium值Convert为键Value pair。
 $.extends.getFormJson=function(form, prefix) {
 	var o = {};
 	var a = $(form).serializeArray();
@@ -1667,11 +1667,11 @@ $.extends.thousandthFormat = function(num){
 }
 
 /**
- * 舍弃指定精度后的小数，对保留的末位数字舍入
+ * 舍弃Assign精度After小数，对Reservations末位Numbers舍入
  *
  * @param number
- * @parem precision 要保留的小数位数
- * @return 结果值
+ * @parem precision 要Reservations小数位数
+ * @return Result值
  */
 
 $.extends.roundUp = function (number, precision){
@@ -1681,10 +1681,10 @@ $.extends.roundUp = function (number, precision){
 }
 
 /**
- * 舍弃指定精度后的小数
+ * 舍弃Assign精度After小数
  *
  * @param number
- * @parem precision 要保留的小数位数
+ * @parem precision 要Reservations小数位数
  * @return number
  */
 $.extends.roundDown = function(number, precision) {
@@ -1694,9 +1694,9 @@ $.extends.roundDown = function(number, precision) {
 }
 
 /**
- * 格式化数字
- * @param num 数字
- * @param pattern 格式化表达式，如：#,###.00\.##\#:###.##,‘.’后表示保留小数位数
+ * Format化Numbers
+ * @param num Numbers
+ * @param pattern Format化Expression，如：#,###.00\.##\#:###.##,‘.’后OrganisationReservations小数位数
  * @returns {String}
  */
 
@@ -1900,7 +1900,7 @@ function ab2str(buf) {
 }
 
 
-//byte数组转字符串
+//byteArray转Character串
 function byteToString(arr) {
 	if (typeof arr === 'string') {
 		return arr;
@@ -1952,7 +1952,7 @@ p.readBytes=function(len){
 				let tmplen=tmpbuf.length;
 				let last_len=len-rbuf_ind;
 				if(tmplen>=last_len){
-					//足夠了
+					//Enough
 					let tmpbuf2 = tmpbuf.subarray(0, last_len);
 					rbuf.set(tmpbuf2,rbuf_ind);
 					rbuf_ind+=tmpbuf2.length;

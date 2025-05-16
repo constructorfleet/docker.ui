@@ -1,25 +1,25 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Boolean</span><span class="path">treeNode.</span>open</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>记录 treeNode 节点的 展开 / 折叠 状态。</p>
-			<p class="highlight_red">1、初始化节点数据时，如果设定 treeNode.open = true，则会直接展开此节点</p>
-			<p class="highlight_red">2、叶子节点 treeNode.open = false</p>
-			<p class="highlight_red">3、为了解决部分朋友生成 json 数据出现的兼容问题, 支持 "false","true" 字符串格式的数据</p>
-			<p class="highlight_red">4、非异步加载模式下，无子节点的父节点设置 open=true 后，可显示为展开状态，但异步加载模式下不会生效。（v3.5.15+） </p>
-			<p>默认值：false</p>
+			<p>Records treeNode Nodes的 Expand / Collapse Status。</p>
+			<p class="highlight_red">1、InitializeNodesData时，If设定 treeNode.open = true，则会直接Expand此Nodes</p>
+			<p class="highlight_red">2、LeafNodes treeNode.open = false</p>
+			<p class="highlight_red">3、为了SolvePart朋友Generate json Data出现的兼容问题, Support "false","true" Character串Format的Data</p>
+			<p class="highlight_red">4、非Step LoadMode，无子Nodes的父NodesSettings open=true 后，可Show为ExpandStatus，但Step LoadMode不会生效。（v3.5.15+） </p>
+			<p>Default value：false</p>
 		</div>
 	</div>
-	<h3>Boolean 格式说明</h3>
+	<h3>Boolean Format说明</h3>
 	<div class="desc">
-	<p> true 表示节点为 展开 状态</p>
-	<p> false 表示节点为 折叠 状态</p>
+	<p> true OrganisationNodes为 Expand Status</p>
+	<p> false OrganisationNodes为 Collapse Status</p>
 	</div>
-	<h3>treeNode 举例</h3>
-	<h4>1. 查看当前被选中的节点的 展开 / 折叠 状态</h4>
+	<h3>treeNode Example</h3>
+	<h4>1. View当前被选MediumNodes的 Expand / Collapse Status</h4>
 	<pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
 var sNodes = treeObj.getSelectedNodes();
 if (sNodes.length > 0) {

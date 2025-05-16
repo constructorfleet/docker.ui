@@ -14,7 +14,7 @@
         historys:[],
         lineHeight: 15,
         basePath: '',
-        rect: {// 状态
+        rect: {// Status
             attr: {
                 x: 10,
                 y: 10,
@@ -32,14 +32,14 @@
                 'font-style': 'italic'
             },
             text: {
-                text: '状态',
+                text: 'Status',
                 'font-size': 13
             },
             margin: 5,
             props: [],
             img: {}
         },
-        path: {// 路径转换
+        path: {// PathConvert
             attr: {
                 path: {
                     path: 'M10 10L100 100',
@@ -102,7 +102,7 @@
             props: {
                 text: {
                     name: 'text',
-                    label: '显示',
+                    label: 'Show',
                     value: '',
                     editor: function () {
                         return new myflow.editors.textEditor();
@@ -110,7 +110,7 @@
                 }
             }
         },
-        tools: {// 工具栏
+        tools: {// Toolbar
             attr: {
                 left: 10,
                 top: 30
@@ -124,7 +124,7 @@
                 }
             }
         },
-        props: {// 属性编辑器
+        props: {// PropertiesEdit器
             attr: {
                 top: 30,
                 right: 30
@@ -132,14 +132,14 @@
             props: {}
         },
         restore: '',
-        activeRects: {// 当前激活状态
+        activeRects: {// 当前激活Status
             rects: [],
             rectAttr: {
                 stroke: '#ff0000',
                 "stroke-width": 2
             }
         },
-        historyRects: {// 历史激活状态
+        historyRects: {// 历史激活Status
             rects: [],
             pathAttr: {
                 path: {
@@ -154,7 +154,7 @@
     };
 
     myflow.util = {
-        isLine: function (p1, p2, p3) {// 三个点是否在一条直线上
+        isLine: function (p1, p2, p3) {// 三个点是否在一条Line上
             var s, p2y;
             if ((p1.x - p3.x) == 0)
                 s = 1;
@@ -168,7 +168,7 @@
             }
             return false;
         },
-        center: function (p1, p2) {// 两个点的中间点
+        center: function (p1, p2) {// The middle of the two points
             return {
                 x: (p1.x - p2.x) / 2 + p2.x,
                 y: (p1.y - p2.y) / 2 + p2.y
@@ -183,21 +183,21 @@
         nextId:function(){
             return new Date().getTime();
         },
-        connPoint: function (rect, p) {// 计算矩形中心到p的连线与矩形的交叉点
+        connPoint: function (rect, p) {// Calculating Rectangular Center top的Connect与矩形的交叉点
             var start = p, end = {
                 x: rect.x + rect.width / 2,
                 y: rect.y + rect.height / 2
             };
-            // 计算正切角度
+            // Calculate positive tangent angle
             var tag = (end.y - start.y) / (end.x - start.x);
             tag = isNaN(tag) ? 0 : tag;
 
             var rectTag = rect.height / rect.width;
-            // 计算箭头位置
+            // 计算Arrow位置
             var xFlag = start.y < end.y ? -1 : 1, yFlag = start.x < end.x
                     ? -1
                     : 1, arrowTop, arrowLeft;
-            // 按角度判断箭头位置
+            // 按角度DecisionArrow位置
             if (Math.abs(tag) > rectTag && xFlag == -1) {// top边
                 arrowTop = end.y - rect.height / 2;
                 arrowLeft = end.x + xFlag * rect.height / 2 / tag;
@@ -217,7 +217,7 @@
             };
         },
 
-        arrow: function (p1, p2, r) {// 画箭头，p1 开始位置,p2 结束位置, r前头的边长
+        arrow: function (p1, p2, r) {// 画Arrow，p1 Start位置,p2 End位置, rLong front
             var atan = Math.atan2(p1.y - p2.y, p2.x - p1.x) * (180 / Math.PI);
 
             var centerX = p2.x - r * Math.cos(atan * (Math.PI / 180));
@@ -240,11 +240,11 @@
 
     myflow.rect = function (o, r,id) {
         var _this = this, _uid = myflow.util.nextId(), _o = $.extend(true, {},
-            myflow.config.rect, o), _id =id || 'rect' + _uid, _r = r, // Raphael画笔
-    _rect, _img, // 图标
-    _name, // 状态名称
-    _text, // 显示文本
-    _ox, _oy; // 拖动时，保存起点位置;
+            myflow.config.rect, o), _id =id || 'rect' + _uid, _r = r, // RaphaelBrush
+    _rect, _img, // Icon
+    _name, // StatusName
+    _text, // ShowText
+    _ox, _oy; // Drag，Save起点位置;
 
 
         _rect = _r.rect(_o.attr.x, _o.attr.y, _o.attr.width, _o.attr.height,
@@ -262,9 +262,9 @@
             _o.attr.x + _o.img.width + (_o.attr.width - _o.img.width) / 2,
             _o.attr.y + (_o.attr.height - myflow.config.lineHeight) / 2
                     + myflow.config.lineHeight, _o.text.text).hide()
-            .attr(_o.text); // 文本
+            .attr(_o.text); // Text
 
-        // 拖动处理----------------------------------------
+        // Drag Process----------------------------------------
         _rect.drag(function (dx, dy) {
             dragMove(dx, dy);
         }, function () {
@@ -294,7 +294,7 @@
             dragUp();
         });
 
-        var dragMove = function (dx, dy) {// 拖动中
+        var dragMove = function (dx, dy) {// Draging
             if (!myflow.config.editable)
                 return;
 
@@ -306,7 +306,7 @@
             resize();
         };
 
-        var dragStart = function () {// 开始拖动
+        var dragStart = function () {// Start拖动
             _ox = _rect.attr("x");
             _oy = _rect.attr("y");
             _rect.attr({
@@ -320,7 +320,7 @@
             });
         };
 
-        var dragUp = function () {// 拖动结束
+        var dragUp = function () {// 拖动End
             _rect.attr({
                 opacity: 1
             });
@@ -332,7 +332,7 @@
             });
         };
 
-        // 改变大小的边框
+        // Resize Border
         var _bpath, _bdots = {}, _bw = 5, _bbox = {
             x: _o.attr.x - _o.margin,
             y: _o.attr.y - _o.margin,
@@ -362,7 +362,7 @@
             bdragStart(this.attr('x') + _bw / 2, this.attr('y') + _bw
                                 / 2, 'lt');
         }, function () {
-        }); // 左上
+        }); // Top Left
         _bdots['l'] = _r.rect(0, 0, _bw, _bw).attr({
             fill: '#000',
             stroke: '#fff',
@@ -384,7 +384,7 @@
             bdragStart(this.attr('x') + _bw / 2, this.attr('y') + _bw
                                 / 2, 'lb');
         }, function () {
-        }); // 左下
+        }); // Bottom Left
         _bdots['b'] = _r.rect(0, 0, _bw, _bw).attr({
             fill: '#000',
             stroke: '#fff',
@@ -406,7 +406,7 @@
             bdragStart(this.attr('x') + _bw / 2, this.attr('y') + _bw
                                 / 2, 'rb');
         }, function () {
-        }); // 右下
+        }); // Bottom Right
         _bdots['r'] = _r.rect(0, 0, _bw, _bw).attr({
             fill: '#000',
             stroke: '#fff',
@@ -428,7 +428,7 @@
             bdragStart(this.attr('x') + _bw / 2, this.attr('y') + _bw
                                 / 2, 'rt')
         }, function () {
-        }); // 右上
+        }); // Top Right
         $([_bdots['t'].node, _bdots['lt'].node, _bdots['l'].node, _bdots['lb'].node, _bdots['b'].node, _bdots['rb'].node, _bdots['r'].node, _bdots['rt'].node]).click(function () { return false; });
 
         var bdragMove = function (dx, dy, t) {
@@ -479,7 +479,7 @@
             _by = oy;
         };
 
-        // 事件处理--------------------------------
+        // EventsProcessing--------------------------------
         $([_rect.node, _text.node, _name.node, _img.node]).bind('click',
             function () {
                 if (!myflow.config.editable)
@@ -497,7 +497,7 @@
 
                         var moving=myflow.config.moving;
 
-                        //处理：禁止两个状态间有重复的线
+                        //Processing：Ban两个Status间有重复的线
                         if(myflow.config.allowStateMutiLine){
                             var paths=myflow.config.tempData.paths,flag=false;
                             for(var k in paths){
@@ -581,8 +581,8 @@
         };
         $(_r).bind('textchange', textchangeHandler);
 
-        // 私有函数-----------------------
-        // 边框路径
+        // Private Functions-----------------------
+        // 边框Path
         function getBoxPathString() {
             return 'M' + _bbox.x + ' ' + _bbox.y + 'L' + _bbox.x + ' '
                 + (_bbox.y + _bbox.height) + 'L' + (_bbox.x + _bbox.width)
@@ -590,14 +590,14 @@
                 + (_bbox.x + _bbox.width) + ' ' + _bbox.y + 'L' + _bbox.x
                 + ' ' + _bbox.y;
         }
-        // 显示边框
+        // Show边框
         function showBox() {
             _bpath.show();
             for (var k in _bdots) {
                 _bdots[k].show();
             }
         }
-        // 隐藏
+        // Hide
         function hideBox() {
             _bpath.hide();
             for (var k in _bdots) {
@@ -605,7 +605,7 @@
             }
         }
 
-        // 根据_bbox，更新位置信息
+        // Based on_bbox，Update位置Information
         function resize() {
             var rx = _bbox.x + _o.margin, ry = _bbox.y + _o.margin, rw = _bbox.width
                 - _o.margin * 2, rh = _bbox.height - _o.margin * 2;
@@ -628,7 +628,7 @@
                     _text.attr({
                         x: rx + rw / 2,
                         y: ry + rh / 2
-                    }).show(); // 文本
+                    }).show(); // Text
                     break;
                 case 'image&text':
                     _rect.show();
@@ -640,7 +640,7 @@
                         x: rx + _o.img.width + (rw - _o.img.width) / 2,
                         y: ry + (rh - myflow.config.lineHeight) / 2
                             + myflow.config.lineHeight
-                    }).show(); // 文本
+                    }).show(); // Text
                     _img.attr({
                         x: rx + _o.img.width / 2,
                         y: ry + (rh - _o.img.height) / 2
@@ -655,7 +655,7 @@
             _bdots['lt'].attr({
                 x: _bbox.x - _bw / 2,
                 y: _bbox.y - _bw / 2
-            }); // 左上
+            }); // Top Left
             _bdots['l'].attr({
                 x: _bbox.x - _bw / 2,
                 y: _bbox.y - _bw / 2 + _bbox.height / 2
@@ -663,7 +663,7 @@
             _bdots['lb'].attr({
                 x: _bbox.x - _bw / 2,
                 y: _bbox.y - _bw / 2 + _bbox.height
-            }); // 左下
+            }); // Bottom Left
             _bdots['b'].attr({
                 x: _bbox.x - _bw / 2 + _bbox.width / 2,
                 y: _bbox.y - _bw / 2 + _bbox.height
@@ -671,7 +671,7 @@
             _bdots['rb'].attr({
                 x: _bbox.x - _bw / 2 + _bbox.width,
                 y: _bbox.y - _bw / 2 + _bbox.height
-            }); // 右下
+            }); // Bottom Right
             _bdots['r'].attr({
                 x: _bbox.x - _bw / 2 + _bbox.width,
                 y: _bbox.y - _bw / 2 + _bbox.height / 2
@@ -679,7 +679,7 @@
             _bdots['rt'].attr({
                 x: _bbox.x - _bw / 2 + _bbox.width,
                 y: _bbox.y - _bw / 2
-            }); // 右上
+            }); // Top Right
             _bpath.attr({
                 path: getBoxPathString()
             });
@@ -687,8 +687,8 @@
             $(_r).trigger('rectresize', _this);
         };
 
-        // 函数----------------
-        // 转化json字串
+        // Functions----------------
+        // ConversionjsonString
         this.toJson = function () {
             var data = "{type:'" + _o.type + "',ID:'" + (!_o.ID ? "" : _o.ID) + "',text:{text:'"
                 + (!_text.node.textContent ? "" : _text.node.textContent) + "'}, attr:{ x:"
@@ -705,7 +705,7 @@
             data += "}";
             return data;
         };
-        // 从数据中恢复图
+        // 从Data中Restore图
         this.restore = function (data) {
             var obj = data;
             // if (typeof data === 'string')
@@ -743,7 +743,7 @@
                 _rect.attr(attr);
         };
 
-        resize(); // 初始化位置
+        resize(); // Initialize位置
     };
 
     myflow.path = function (o, r, from, to, guid, ec,dots,id) {
@@ -752,8 +752,8 @@
 
         // 点
         function dot(type, pos, left, right) {
-            var _this = this, _t = type, _n, _lt = left, _rt = right, _ox, _oy, // 缓存移动前时位置
-            _pos = pos; // 缓存位置信息{x,y}, 注意：这是计算出中心点
+            var _this = this, _t = type, _n, _lt = left, _rt = right, _ox, _oy, // 缓存Move前时位置
+            _pos = pos; // 缓存位置Information{x,y}, Attention：This is the center of the calculations
 
             switch (_t) {
                 case 'from':
@@ -789,13 +789,13 @@
                     dragStart()
                 }, function () {
                     dragUp();
-                }); // 初始化拖动
-                var dragMove = function (dx, dy) {// 拖动中
+                }); // Initialize拖动
+                var dragMove = function (dx, dy) {// Draging
                     var x = (_ox + dx), y = (_oy + dy);
                     _this.moveTo(x, y);
                 };
 
-                var dragStart = function () {// 开始拖动
+                var dragStart = function () {// Start拖动
                     if (_t == 'big') {
                         _ox = _n.attr("x") + _o.attr.bigDot.width / 2;
                         _oy = _n.attr("y") + _o.attr.bigDot.height / 2;
@@ -806,7 +806,7 @@
                     }
                 };
 
-                var dragUp = function () {// 拖动结束
+                var dragUp = function () {// 拖动End
 
                 };
             }
@@ -890,7 +890,7 @@
                         if (_lt && _lt.left()) {
                             _lt.pos(myflow.util.center(_pos, _lt.left().pos()));
                         }
-                        // 三个大点在一条线上，移除中间的小点
+                        // Three big dots on one line，Remove Middle Point
                         var pos = {
                             x: _pos.x,
                             y: _pos.y
@@ -911,7 +911,7 @@
                             // $('body').append('ok.');
                         }
                         break;
-                    case 'small': // 移动小点时，转变为大点，增加俩个小点
+                    case 'small': // Move小点时，It\'s bigger，Increase俩个小点
                         if (_lt && _rt && !myflow.util.isLine(_lt.pos(), {
                             x: _pos.x,
                             y: _pos.y
@@ -950,7 +950,7 @@
         }
 
         function dotList() {
-            // if(!_from) throw '没有from节点!';
+            // if(!_from) throw 'NothingfromNodes!';
             var _fromDot, _toDot, _fromBB = _from.getBBox(), _toBB = _to
                 .getBBox(), _fromPos, _toPos;
 
@@ -968,18 +968,18 @@
             _toDot = new dot('to', _toPos, _fromDot.right(), null);
             _fromDot.right().right(_toDot);
 
-            // 转换为path格式的字串
+            // Convert为pathFormat的String
             this.toPathString = function () {
                 if (!_fromDot)
                     return '';
 
                 var d = _fromDot, p = 'M' + d.pos().x + ' ' + d.pos().y, arr = '';
-                // 线的路径
+                // 线的Path
                 while (d.right()) {
                     d = d.right();
                     p += 'L' + d.pos().x + ' ' + d.pos().y;
                 }
-                // 箭头路径
+                // ArrowPath
                 var arrPos = myflow.util.arrow(d.left().pos(), d.pos(),
                     _o.attr.arrow.radius);
                 arr = 'M' + arrPos[0].x + ' ' + arrPos[0].y + 'L' + arrPos[1].x
@@ -1022,7 +1022,7 @@
             this.toDot = function () {
                 return _toDot;
             };
-            this.midDot = function () {// 返回中间点
+            this.midDot = function () {// Back中间点
                 var mid = _fromDot.right(), end = _fromDot.right().right();
                 while (end.right() && end.right().right()) {
                     end = end.right().right();
@@ -1058,7 +1058,7 @@
             };
         }
 
-        // 初始化操作
+        // InitializeOperation
         _o = $.extend(true, _o, o);
         _path = _r.path(_o.attr.path.path).attr(_o.attr.path);
         _markpath=_r.path(_o.attr.path.path)
@@ -1088,9 +1088,9 @@
             };
         });
 
-        refreshpath(); // 初始化路径
+        refreshpath(); // InitializePath
 
-        // 事件处理--------------------
+        // EventsProcessing--------------------
         $([_path.node,_markpath.node, _arrow.node, _text.node]).bind('click', function () {
             if (!myflow.config.editable)
                 return;
@@ -1100,7 +1100,7 @@
             return false;
         });
 
-        // 处理点击事件，线或矩形
+        // Processing点击Events，Line or Rectangle
         var clickHandler = function (e, src) {
             if (!myflow.config.editable)
                 return;
@@ -1115,17 +1115,17 @@
             var mod = $(_r).data('mod');
             switch (mod) {
                 case 'pointer':
-                        //console.log("点击的是点")  
+                        //console.log("Click on point")  
                     break;
                 case 'path':
-                        //console.log("点击的是线")
+                        //console.log("Click on the line")
                     break;
             }
 
         };
         $(_r).bind('click', clickHandler);
 
-        // 删除事件处理
+        // DeleteEventsProcessing
         var removerectHandler = function (e, src) {
             if (!myflow.config.editable)
                 return;
@@ -1136,7 +1136,7 @@
         };
         $(_r).bind('removerect', removerectHandler);
 
-        // 矩形移动时间处理
+        // 矩形MoveTimeProcessing
         var rectresizeHandler = function (e, src) {
             if (!myflow.config.editable)
                 return;
@@ -1172,7 +1172,7 @@
         $(_r).bind('rectresize', rectresizeHandler);
 
         var textchangeHandler = function (e, v, src) {
-            if (src.getId() == _id) {// 改变自身文本
+            if (src.getId() == _id) {// 改变自身Text
                 _text.attr({
                     text: v
                 });
@@ -1198,14 +1198,14 @@
         };
         $(_r).bind('textchange', textchangeHandler);
 
-        // 函数-------------------------------------------------
+        // Functions-------------------------------------------------
         this.from = function () {
             return _from;
         };
         this.to = function () {
             return _to;
         };
-        // 转化json数据
+        // ConversionjsonData
         this.toJson = function () {
             var data = "{lineID:'" + (!_o.lineID ? "" : _o.lineID) + "',from:'" + _from.getId() + "',to:'" + _to.getId()
                 + "', dots:" + _dotList.toJson() + ",text:{text:'"
@@ -1221,7 +1221,7 @@
             data += '}}';
             return data;
         };
-        // 恢复
+        // Restore
         this.restore = function (data) {
             var obj = data;
 
@@ -1235,7 +1235,7 @@
 
             _dotList.restore(obj.dots);
         };
-        // 删除
+        // Delete
         this.remove = function () {
             _dotList.remove();
             _path.remove();
@@ -1259,7 +1259,7 @@
             } catch (e) {
             }
         };
-        // 刷新路径
+        // RefreshPath
         function refreshpath() {
             var p = _dotList.toPathString(), mid = _dotList.midDot().pos();
             _path.attr({
@@ -1309,7 +1309,7 @@
             }), _tb = _pdiv.find('table'), _r = r, _src;
 
         var showpropsHandler = function (e, props, src) {
-            if (_src && _src.getId() == src.getId()) {// 连续点击不刷新
+            if (_src && _src.getId() == src.getId()) {// 连续点击不Refresh
                 return;
             }
             _src = src;
@@ -1333,7 +1333,7 @@
 
     };
 
-    // 属性编辑器
+    // PropertiesEdit器
     myflow.editors = {
         textEditor: function () {
             var _props, _k, _div, _src, _r;
@@ -1363,7 +1363,7 @@
         }
     };
 
-    // 初始化流程
+    // Initialize流程
     myflow.init = function (c, o) {
         var _w = $(window).width(), _h = $(window).height(), _r = Raphael(c, _w
                     * 1.5, _h * 1.5), _states = {}, _paths = {};
@@ -1372,8 +1372,8 @@
 
 
         /**
-        * 删除： 删除状态时，触发removerect事件，连接在这个状态上当路径监听到这个事件，触发removepath删除自身；
-        * 删除路径时，触发removepath事件
+        * Delete： DeleteStatus时，TriggerremoverectEvents，Connection在HereStatus上当Path监听到HereEvents，TriggerremovepathDelete自身；
+        * DeletePath时，TriggerremovepathEvents
         */
         $(document).keydown(function (arg) {
             if (!myflow.config.editable)
@@ -1382,13 +1382,13 @@
                 var c = $(_r).data('currNode');
                 if (c) {
                     if (c.getId().substring(0, 4) == 'rect') {
-                        //添加到历史记录
+                        //Add到历史Records
                         myflow.config.historys.push({state:"removerect",object:c,data:getJson()});
 
                         myflow.config.tools.deleteRect(c.getId(),c.toJson());
                         $(_r).trigger('removerect', c);
 
-                        /*清除自定义轨迹*/
+                        /*Clear自定义轨迹*/
                         myflow.config.moving.temp.map(function(item,index){
                             item.remove();
                         })
@@ -1402,7 +1402,7 @@
                         };
 
                     } else if (c.getId().substring(0, 4) == 'path') {
-                        //添加到历史记录
+                        //Add到历史Records
                         myflow.config.historys.push({state:"removepath",object:c,data:getJson()});
 
                         myflow.config.tools.deletePath(c.getId());
@@ -1433,7 +1433,7 @@
             }]);
         });
 
-        // 删除事件
+        // DeleteEvents
         var removeHandler = function (e, src) {
             if (!myflow.config.editable)
                 return;
@@ -1448,14 +1448,14 @@
         $(_r).bind('removepath', removeHandler);
         $(_r).bind('removerect', removeHandler);
 
-        // 添加状态
+        // AddStatus
         $(_r).bind('addrect', function (e, type, o) {
             var data=getJson();
             var rect = new myflow.rect($.extend(true, {},myflow.config.tools.states[type], o), _r);
             myflow.config.tools.addRect(rect.getId(),rect.toJson());
             _states[rect.getId()] = rect;
 
-            //添加到历史记录
+            //Add到历史Records
             myflow.config.historys.push({state:"addrect",object:rect,data:data});
         });
 
@@ -1465,14 +1465,14 @@
             var str = json.split(',')[1];
             return str.substring(4, str.length - 1);
         }
-        // 添加路径
+        // AddPath
         var addpathHandler = function (e, from, to,dots) {
             var data=getJson();
             var path = new myflow.path({}, _r, from, to,null,null,dots,null);
             myflow.config.tools.addPath(path.getId(),path.toJson());
             _paths[path.getId()] = path;
 
-            //添加到历史记录
+            //Add到历史Records
             myflow.config.historys.push({state:"addpath",object:path,data:data});
         };
         $(_r).bind('addpath', addpathHandler);
@@ -1507,7 +1507,7 @@
 
         })
 
-        // 取消描点
+        // Cancel描点
         document.oncontextmenu = function(e){
             $("#pointer").click();
             $("#path").click();
@@ -1525,10 +1525,10 @@
             }
         })
 
-        // 模式
+        // Mode
         $(_r).data('mod', 'pointer');
         if (myflow.config.editable) {
-            // 工具栏
+            // Toolbar
             $("#myflow_tools").draggable({
                 handle: '#myflow_tools_handle'
             }).css(myflow.config.tools.attr);
@@ -1591,13 +1591,13 @@
                 return data;
             }
 
-            $('#myflow_save').click(function () {// 保存
+            $('#myflow_save').click(function () {// Save
                 myflow.config.tools.save(getJson())
             });
-            $('#myflow_publish').click(function () {// 发布
+            $('#myflow_publish').click(function () {// Release
                 myflow.config.tools.publish(getJson())
             });
-            $('#myflow_revoke').click(function(){//撤销
+            $('#myflow_revoke').click(function(){//Undo
                 var temp=myflow.config.historys.pop();
                 if(temp){
                     switch(temp.state){
@@ -1615,11 +1615,11 @@
                             break;
                     }
                 }else{
-                    alert("没有东西可以撤销！");
+                    alert("Nothing东西YeahUndo！");
                 }
             });
 
-            $("#myflow_redraw").click(function(){ //重绘
+            $("#myflow_redraw").click(function(){ //Redraw
                 if(_states){
                     for(var k in _states){
                         _states[k].remove();
@@ -1646,7 +1646,7 @@
 
             });
 
-            $("#pointer").click(function(){ //重绘
+            $("#pointer").click(function(){ //Redraw
                     myflow.config.moving.temp.map(function(item,index){
                     item.remove();
                 })
@@ -1660,10 +1660,10 @@
                 };
             })
 
-            // 属性框
+            // Properties框
             new myflow.props({}, _r);
         }
-        // 恢复
+        // Restore
         if (o.restore) {
             restore(o.restore);
         }
@@ -1702,11 +1702,11 @@
         }
 
 
-        // 历史状态
+        // 历史Status
         var hr = myflow.config.historyRects, ar = myflow.config.activeRects;
         if (hr.rects.length || ar.rects.length) {
             var pmap = {}, rmap = {};
-            for (var pid in _paths) {// 先组织MAP
+            for (var pid in _paths) {// OrganisationMAP
                 if (!rmap[_paths[pid].from().text()]) {
                     rmap[_paths[pid].from().text()] = {
                         rect: _paths[pid].from(),
@@ -1746,7 +1746,7 @@
         }
     }
 
-    // 添加jquery方法
+    // AddjqueryMethodology
     $.fn.myflow = function (o) {
         return this.each(function () {
             myflow.init(this, o);

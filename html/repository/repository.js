@@ -9,7 +9,7 @@ function loadRepository(){
             pageSize:50,
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 100, formatter:reposOperateFormatter},
                 {field: 'Id', title: 'ID', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -43,8 +43,8 @@ function loadRepository(){
 
 function reposOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateRepos(\'' + row.ID + '\')">修改仓库</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeRepos(\'' + row.ID + '\')">删除仓库</button>';
+    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateRepos(\'' + row.ID + '\')">修改Warehouse</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeRepos(\'' + row.ID + '\')">删除Warehouse</button>';
     return htmlstr;
 }
 
@@ -56,7 +56,7 @@ function refreshRepos(param){
 
     //let node = $.v3browser.menu.getCurrentTabAttachNode();
     let node = local_node;
-    // 仓库的密码基于安全考虑，仅仅只能做本地保存，不能入数据库
+    // WarehousePassword基于安全考虑，Only local saving，Cannot initialise Evolution\'s mail component
 
     $.docker.request.repos.list(function (response) {
 
@@ -80,23 +80,23 @@ function removeRepos(id){
         let rows = $('#reposDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个从仓库删除');
+            $.app.show('本Version仅支持选择一个从Warehouse删除');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个仓库删除');
+            $.app.show('请选择一个Warehouse删除');
             return;
         }else{
             id = rows[0].ID;
         }
     }
 
-    $.app.confirm("删除仓库信息", "您确定要删除所选择的仓库信息？",function () {
+    $.app.confirm("删除Warehouse信息", "您Sure要删除所选择的Warehouse信息？",function () {
 
         let node = local_node;
         $.docker.request.repos.delete(function (data) {
-            $.app.show("删除仓库信息成功");
+            $.app.show("删除Warehouse信息Success");
             reloadDg();
         }, node, id);
     })
@@ -108,12 +108,12 @@ function updateRepos(id){
         let rows = $('#reposDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个从仓库修改');
+            $.app.show('本Version仅支持选择一个从Warehouse修改');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个仓库修改');
+            $.app.show('请选择一个Warehouse修改');
             return;
         }else{
             id = rows[0].ID;
@@ -123,7 +123,7 @@ function updateRepos(id){
     $.docker.request.repos.all(function (data, map) {
         let reposData = map[id];
         if(reposData==null){
-            $.app.show('仓库不存在，请刷新后再重新编辑')
+            $.app.show('Warehouse不存在，请Refresh后再重新编辑')
             return false;
         }
 
@@ -138,9 +138,9 @@ function updateReposDlg(reposData){
     let isAdd = true;
     if(reposData == null || reposData.ID == null){
         reposData = {};
-        title = "添加仓库";
+        title = "添加Warehouse";
     }else{
-        title = "修改仓库{0}".format(reposData.Name);
+        title = "修改Warehouse{0}".format(reposData.Name);
         isAdd = false;
     }
 
@@ -158,7 +158,7 @@ function updateReposDlg(reposData){
             handler.render(reposData);
         },
         buttonsGroup: [{
-            text: '确定',
+            text: 'Sure',
             iconCls: 'fa fa-floppy-o',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -176,7 +176,7 @@ function updateReposDlg(reposData){
                 }
 
                 $.docker.request.repos.save(function (data) {
-                    $.app.show('保存仓库{0}成功'.format(info.Name))
+                    $.app.show('保存Warehouse{0}Success'.format(info.Name))
                     $.iDialog.closeOutterDialog($(t))
                     reloadDg()
                 }, node, info);

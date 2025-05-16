@@ -9,7 +9,7 @@ function loadOrchestrators(){
             pageSize:50,
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 100, formatter:orchestratorsOperateFormatter},
                 {field: 'Id', title: 'ID', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -37,8 +37,8 @@ function loadOrchestrators(){
 
 function orchestratorsOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateOrchestrators(\'' + row.ID + '\')">修改仓库</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeOrchestrators(\'' + row.ID + '\')">删除仓库</button>';
+    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateOrchestrators(\'' + row.ID + '\')">ModifyWarehouse</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeOrchestrators(\'' + row.ID + '\')">DeleteWarehouse</button>';
     return htmlstr;
 }
 
@@ -50,7 +50,7 @@ function refreshOrchestrators(param){
 
     //let node = $.v3browser.menu.getCurrentTabAttachNode();
     let node = local_node;
-    // 仓库的密码基于安全考虑，仅仅只能做本地保存，不能入数据库
+    // WarehousePassword基于安全考虑，Only local saving，Cannot initialise Evolution\'s mail component
 
     $.docker.request.repos.list(function (response) {
         $('#orchestratorsDg').datagrid('loadData', {
@@ -69,23 +69,23 @@ function removeOrchestrators(id){
         let rows = $('#orchestratorsDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个编排任务删除');
+            $.app.show('本Version仅SupportSelection一个编排TasksDelete');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个编排任务删除');
+            $.app.show('请Selection一个编排TasksDelete');
             return;
         }else{
             id = rows[0].ID;
         }
     }
 
-    $.app.confirm("删除编排任务信息", "您确定要删除所选择的编排任务信息？",function () {
+    $.app.confirm("Delete编排TasksInformation", "您Sure要Delete所Selection的编排TasksInformation？",function () {
 
         let node = local_node;
         $.docker.request.repos.delete(function (data) {
-            $.app.show("删除编排任务信息成功");
+            $.app.show("Delete编排TasksInformationSuccess");
             reloadDg();
         }, node, id);
     })
@@ -97,12 +97,12 @@ function updateOrchestrators(id){
         let rows = $('#orchestratorsDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个从编排任务修改');
+            $.app.show('本Version仅SupportSelection一个从编排TasksModify');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个编排任务修改');
+            $.app.show('请Selection一个编排TasksModify');
             return;
         }else{
             id = rows[0].ID;
@@ -112,7 +112,7 @@ function updateOrchestrators(id){
     $.docker.request.repos.all(function (data, map) {
         let orchestratorData = map[id];
         if(orchestratorData==null){
-            $.app.show('编排任务不存在，请刷新后再重新编辑')
+            $.app.show('编排Tasksdoes not exist，请Refresh后再重新Edit')
             return false;
         }
 
@@ -129,9 +129,9 @@ function updateOrchestratorsDlg(orchestratorData){
         let isAdd = true;
         if(orchestratorData == null || orchestratorData.ID == null){
             orchestratorData = {};
-            title = "添加编排任务";
+            title = "Add编排Tasks";
         }else{
-            title = "修改编排任务{0}".format(orchestratorData.Name);
+            title = "Modify编排Tasks{0}".format(orchestratorData.Name);
             isAdd = false;
         }
 
@@ -144,7 +144,7 @@ function updateOrchestratorsDlg(orchestratorData){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:title, title:'服务信息',
+            titleformat:title, title:'ServicesInformation',
             headerCls:'border_right',bodyCls:'border_right',
             // footerHtml:$.templates(service_panel_footer_html).render(rowData),
             render:function (panel, option) {

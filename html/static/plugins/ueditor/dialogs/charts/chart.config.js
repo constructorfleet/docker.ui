@@ -1,9 +1,9 @@
 /*
- * 图表配置文件
+ * ChartConfigureDocumentation
  * */
 
 
-//不同类型的配置
+//DifferentType的Configure
 var typeConfig = [
     {
         chart: {

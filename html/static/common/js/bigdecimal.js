@@ -66,7 +66,7 @@ function formatNumber(num,pattern){
   var fmtarr = pattern?pattern.split('.'):[''];  
   var retstr='';  
   
-  // 整数部分  
+  // 整数Part  
   var str = strarr[0];  
   var fmt = fmtarr[0];  
   var i = str.length-1;    
@@ -98,7 +98,7 @@ function formatNumber(num,pattern){
   }  
   
   retstr = retstr+'.';  
-  // 处理小数部分  
+  // Processing小数Part  
   str=strarr.length>1?strarr[1]:'';  
   fmt=fmtarr.length>1?fmtarr[1]:'';  
   i=0;  

@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>聊天记录</title>
+<title>Chat记录</title>
 
 <link rel="stylesheet" href="http://local.res.layui.com/layui/src/css/layui.css">
 <style>
@@ -21,7 +21,7 @@ body .layim-chat-main{height: auto;}
 <div id="LAY_page" style="margin: 0 10px;"></div>
 
 
-<textarea title="消息模版" id="LAY_tpl" style="display:none;">
+<textarea title="Message Template" id="LAY_tpl" style="display:none;">
 {{# layui.each(d.data, function(index, item){
   if(item.id == parent.layui.layim.cache().mine.id){ }}
     <li class="layim-chat-mine"><div class="layim-chat-user"><img src="{{ item.avatar }}"><cite><i>{{ layui.data.date(item.timestamp) }}</i>{{ item.username }}</cite></div><div class="layim-chat-text">{{ layui.layim.content(item.content) }}</div></li>
@@ -32,7 +32,7 @@ body .layim-chat-main{height: auto;}
 </textarea>
 
 <!-- 
-上述模版采用了 laytpl 语法，不了解的同学可以去看下文档：http://www.layui.com/doc/modules/laytpl.html
+This template is used laytpl Syntax:，If you don\'t know, you can read the files：http://www.layui.com/doc/modules/laytpl.html
 
 -->
 
@@ -46,40 +46,40 @@ layui.use(['layim', 'laypage'], function(){
   ,$ = layui.jquery
   ,laypage = layui.laypage;
   
-  //聊天记录的分页此处不做演示，你可以采用laypage，不了解的同学见文档：http://www.layui.com/doc/modules/laypage.html
+  //Chat记录的分页此处不做演示，You can use itlaypage，I don\'t know：http://www.layui.com/doc/modules/laypage.html
   
   
-  //开始请求聊天记录
-  var param =  location.search //获得URL参数。该窗口url会携带会话id和type，他们是你请求聊天记录的重要凭据
+  //StartRequestChat记录
+  var param =  location.search //AccessURLParameters。The windowurlCan not open messageid和type，他们是你RequestChat记录的重要凭据
   
-  //实际使用时，下述的res一般是通过Ajax获得，而此处仅仅只是演示数据格式
+  //实际Use时，Belowres一般是PassAjaxAccess，而此处仅仅只是演示DataFormat
   ,res = {
     code: 0
     ,msg: ''
     ,data: [{
-      username: '纸飞机'
+      username: 'Paper aircraft'
       ,id: 100000
       ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.512.512.180/8693225ajw8f2rt20ptykj20e80e8weu.jpg'
       ,timestamp: 1480897882000
-      ,content: 'face[抱抱] face[心] 你好啊小美女'
+      ,content: 'face[Hug] face[心] Hello, beautiful'
     }, {
-      username: 'Z_子晴'
+      username: 'Z_Xiaoqing'
       ,id: 108101
       ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.512.512.180/8693225ajw8f2rt20ptykj20e80e8weu.jpg'
       ,timestamp: 1480897892000
-      ,content: '你没发错吧？face[微笑]'
+      ,content: 'Are you sure you\'re right？face[Smile]'
     },{
-      username: 'Z_子晴'
+      username: 'Z_Xiaoqing'
       ,id: 108101
       ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.512.512.180/8693225ajw8f2rt20ptykj20e80e8weu.jpg'
       ,timestamp: 1480897898000
-      ,content: '你是谁呀亲。。我爱的是贤心！我爱的是贤心！我爱的是贤心！重要的事情要说三遍~'
+      ,content: 'Who are you。。I love Kenshin！I love Kenshin！I love Kenshin！It\'s important to say it three times~'
     },{
-      username: 'Z_子晴'
+      username: 'Z_Xiaoqing'
       ,id: 108101
       ,avatar: 'http://tva3.sinaimg.cn/crop.0.0.512.512.180/8693225ajw8f2rt20ptykj20e80e8weu.jpg'
       ,timestamp: 1480897908000
-      ,content: '注意：这些都是模拟数据，实际使用时，需将其中的模拟接口改为你的项目真实接口。\n该模版文件所在目录（相对于layui.js）：\n/css/modules/layim/html/chatlog.html'
+      ,content: 'Attention：这些都是模拟Data，实际Use时，需将其中的模拟Interface改为你的项目真实Interface。\n该模版Documentation所在目录（Relative tolayui.js）：\n/css/modules/layim/html/chatlog.html'
     }]
   }
   

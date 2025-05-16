@@ -207,7 +207,7 @@
 							if (e.pageX > p2.left && e.pageX < p2.left + dropObj.outerWidth()
 									&& e.pageY > p2.top && e.pageY < p2.top + dropObj.outerHeight()){
 								/**
-								*  这里是有bug的，当两个datagrid同时存在时，如果区域相覆盖，即使下面的图层被mask了，还是会被抓进来
+								*  Here we arebug的，When twodatagridWhen it\'s all there，If区域相覆盖，Even if the bottom layer is..mask了，Still会被抓进来
 								*  
 								**/
 								

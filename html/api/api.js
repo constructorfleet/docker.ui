@@ -404,7 +404,7 @@ $.docker.request = {
     },
     execute: function (serverInfo, cmd) {
         if ($.extends.isEmpty(serverInfo)) {
-            $.app.show('节点信息不存在，请关闭连接后重新连接');
+            $.app.show('NodesInformationdoes not exist，请CloseConnection后重新Connection');
             // cmd.call(serverInfo, {});
         } else {
             let node = serverInfo
@@ -1037,7 +1037,7 @@ $.docker.request = {
                     error: function (xhr, status) {
                         console.log('error')
                         console.log(xhr)
-                        console.log("日志接收结束[error]");
+                        console.log("Log接收End[error]");
                     },
                     complete: function (xhr, status) {
                         console.log('complete')
@@ -1235,7 +1235,7 @@ $.docker.request = {
                     }, node, id, cmd, user, workDir, notStdOut, notStderr, notStdIn, notTty)
 
                 }else{
-                    $.app.show('当前容器{0}还没有启动,不嫩执行容器命令'.format(response.Name));
+                    $.app.show('CurrentContainers{0}还Nothing启动,不嫩ImplementationContainersCommand'.format(response.Name));
                 }
             }, node, id);
         },
@@ -1276,7 +1276,7 @@ $.docker.request = {
                                                             let DIR =attrs[0].startsWith("d");
 
                                                             // if(errorFn){
-                                                            //     let msg = '当前路径`{0}`非目录,文件信息为{1}'.format(path, str);
+                                                            //     let msg = 'CurrentPath`{0}`Non Directory,DocumentationInformation为{1}'.format(path, str);
                                                             //     errorFn.call(node, msg)
                                                             // }
                                                             // return ;
@@ -1351,7 +1351,7 @@ $.docker.request = {
                         }, node, id, ['ls', '-al', path], user, null, false, false, true, true)
                     }else{
                         if(errorFn){
-                            errorFn.call(node, '当前容器{0}还没有启动,不嫩执行容器命令'.format(response.Name))
+                            errorFn.call(node, 'CurrentContainers{0}还Nothing启动,不嫩ImplementationContainersCommand'.format(response.Name))
                         }
                     }
             }, node , id);
@@ -1628,7 +1628,7 @@ $.docker.request = {
         build:function(fn, node, content, data, completeFn, sendFn){
             let datastr = $.param(data)
 
-            // $.app.showProgress('开始构建镜像{0}中......'.format(data.t));
+            // $.app.showProgress('Start构建Mirror{0}中......'.format(data.t));
 
             return $.docker.postBodyStream(
                 V3_ENDPOINT_STREAM.format2(node) + APIS.BUILDS_CREATE+"?"+datastr, content, null,
@@ -1763,7 +1763,7 @@ $.docker.request = {
             let loopFn = function (i, idArray) {
 
                 if (i == 0) {
-                    $.app.showProgress('批量删除数据卷中......');
+                    $.app.showProgress('批量DeleteData卷中......');
                 }
 
                 let id = idArray[i];
@@ -1916,11 +1916,11 @@ $.docker.request = {
         },
         push:function(fn, node, repos, serverAddress, username, password, completeFn){
             if(repos == '<none>:<none>' || repos == '<none>@<none>'){
-                $.app.show("待推送镜像名称和标签不正确，请先给该镜像进行标签操作");
+                $.app.show("待推送MirrorName和Label不正确，请先给该MirrorConductLabelOperation");
                 return false;
             }
 
-            $.app.showProgress('开始推送镜像{0}至镜像仓库中......'.format(repos));
+            $.app.showProgress('Start推送Mirror{0}至MirrorWarehouse中......'.format(repos));
 
             let auth = {}
 
@@ -2037,7 +2037,7 @@ $.docker.request = {
                 headers["X-Registry-Auth"] = auth;
             }
 
-            $.app.showProgress('开始拉取镜像{0}:{1}中......'.format(data.fromImage, data.tag));
+            $.app.showProgress('StartPullMirror{0}:{1}中......'.format(data.fromImage, data.tag));
 
             $.docker.ajaxStream(V3_ENDPOINT_STREAM.format2(node) + APIS.IMAGES_PULL, data, null, headers, {
                 method: 'POST',
@@ -2255,7 +2255,7 @@ $.docker.request = {
             let loopFn = function (i, idArray) {
 
                 if (i == 0) {
-                    $.app.showProgress('批量删除数据卷中......');
+                    $.app.showProgress('批量DeleteData卷中......');
                 }
 
                 let id = idArray[i];
@@ -2370,23 +2370,23 @@ $.docker.request = {
             let status = $.extends.isEmpty(v.Status.State, "down");
 
             if(status == 'down'){
-                status = "离线";
+                status = "Offline";
             }else if(status == 'unknown'){
-                status = "未知";
+                status = "Unknown";
             }else if(status == 'ready'){
-                status = "就绪";
+                status = "Ready";
             }else if(status == 'disconnected'){
-                status = "连接失败";
+                status = "ConnectionFailed";
             }else{
-                status = "离线";
+                status = "Offline";
             }
 
             let availability = $.extends.isEmpty(v.Spec.Availability, 'drain');
 
             if(availability=='drain'){
-                status = status+"[污点]";
+                status = status+"[Dust]";
             }else if(availability=='pause'){
-                status = status+"[暂停]";
+                status = status+"[Pause]";
             }
 
             v.StatuStr =status;
@@ -2408,13 +2408,13 @@ $.docker.request = {
             v.Role = $.extends.isEmpty(v.Spec.Role, "worker");
 
             if(v.ManagerStatus && v.Role == 'manager'){
-                v.RoleStr = "管理节点";
+                v.RoleStr = "管理Nodes";
                 v.Role = "manager";
 
                 if(v.ManagerStatus.Leader){
                     v.Leader = 1;
                     v.LeaderStr = "Leader";
-                    v.RoleStr = "管理节点[√]";
+                    v.RoleStr = "管理Nodes[√]";
                 }else{
                     v.Leader = 0;
                     v.LeaderStr = "";
@@ -2423,13 +2423,13 @@ $.docker.request = {
                 let cstatus = $.extends.isEmpty(v.ManagerStatus.Reachability, "unreachable");
 
                 if(cstatus == 'unreachable'){
-                    cstatus = "离线";
+                    cstatus = "Offline";
                 }else if(cstatus == 'reachable'){
-                    cstatus = "可用";
+                    cstatus = "Available";
                 }else if(cstatus == 'unknown'){
-                    cstatus = "未知";
+                    cstatus = "Unknown";
                 }else{
-                    cstatus = "离线";
+                    cstatus = "Offline";
                 }
 
                 v.Reachability = cstatus;
@@ -2438,7 +2438,7 @@ $.docker.request = {
                 v.MAddrStr = "{0}[{1}]".format(v.MAddr, cstatus);
 
             }else{
-                v.RoleStr = "工作节点";
+                v.RoleStr = "工作Nodes";
                 v.Role = "worker";
 
                 v.Leader = -1;
@@ -2899,7 +2899,7 @@ $.docker.request = {
                     error: function (xhr, status) {
                         console.log('error')
                         console.log(xhr)
-                        console.log("日志接收结束[error]");
+                        console.log("Log接收End[error]");
                     },
                     complete: function (xhr, status) {
                         console.log('complete')
@@ -3150,7 +3150,7 @@ $.docker.request = {
                     error: function (xhr, status) {
                         console.log('error')
                         console.log(xhr)
-                        console.log("日志接收结束[error]");
+                        console.log("Log接收End[error]");
                     },
                     complete: function (xhr, status) {
                         console.log('complete')
@@ -3819,7 +3819,7 @@ $.docker.request = {
                 let repos = $.docker.request.repos.getAll(node).list;
                 let idx = findIdx(repos, data.id, 'ID');
                 if(idx<0){
-                    $.app.show('仓库{0}不存在，请刷新数据后，再进行操作'.format(id));
+                    $.app.show('Warehouse{0}does not exist，请RefreshData后，再ConductOperation'.format(id));
                     return false;
                 }
 
@@ -3847,7 +3847,7 @@ $.docker.request = {
             id = $.extends.isEmpty(id, 'Default').trim();
 
             if(id=='Default'){
-                $.app.show('默认仓库不能删除');
+                $.app.show('DefaultWarehouseI can\'tDelete');
                 return false;
             }
 
@@ -3856,7 +3856,7 @@ $.docker.request = {
             let idx = findIdx(repos, id, 'ID');
 
             if(idx<0){
-                $.app.show('仓库{0}不存在，请刷新数据后，再进行操作'.format(id));
+                $.app.show('Warehouse{0}does not exist，请RefreshData后，再ConductOperation'.format(id));
                 return false;
             }
 
@@ -3889,7 +3889,7 @@ $.docker.request = {
                     repos.push({
                         Name:'Default',
                         ID:'Default',
-                        Description:'默认Docker的官方镜像仓库',
+                        Description:'DefaultDocker的OfficialMirrorWarehouse',
                         Endpoint:'',
                         Username:'',
                         Password:'',
@@ -3979,33 +3979,33 @@ $.docker.response = {
         }
 
         if (response && response.code == 16) {
-            $.app.show('连接已经失效或者错误，请重新进行请求');
+            $.app.show('Connection已经失效Or..Error，请重新ConductRequest');
             return false;
         } else if (response && response.code) {
-            $.app.show('服务器错误信息:' + response.error);
+            $.app.show('Services器ErrorInformation:' + response.error);
             return false;
         } else if (!$.extends.isEmpty(response.message)) {
-            $.app.show('服务器错误信息:' + response.message);
+            $.app.show('Services器ErrorInformation:' + response.message);
             return false;
         } else if (!$.extends.isEmpty(response.error)) {
-            $.app.show('服务器错误信息:' + response.error);
+            $.app.show('Services器ErrorInformation:' + response.error);
             return false;
         } else if (!$.extends.isEmpty(response.errorDetail)) {
-            $.app.show('服务器错误信息:' + response.errorDetail.message);
+            $.app.show('Services器ErrorInformation:' + response.errorDetail.message);
             return false;
         } else if (response.status < 0) {
             if (!$.extends.isEmpty(response.msg)) {
-                $.app.show('服务器错误信息:' + response.msg);
+                $.app.show('Services器ErrorInformation:' + response.msg);
                 return false;
             }
-            $.app.show('服务器错误信息:服务器响应错误，请确定服务器响应正确后再尝试');
+            $.app.show('Services器ErrorInformation:Services器响应Error，请SureServices器响应正确后再尝试');
             return false;
         }else if (response.statusCode >= 400) {
             if (!$.extends.isEmpty(response.msg)) {
-                $.app.show('服务器错误信息:' + response.msg);
+                $.app.show('Services器ErrorInformation:' + response.msg);
                 return false;
             }
-            $.app.show('服务器错误信息:服务器响应错误，请确定服务器响应正确后再尝试');
+            $.app.show('Services器ErrorInformation:Services器响应Error，请SureServices器响应正确后再尝试');
             return false;
         }
 
@@ -4574,11 +4574,11 @@ $.docker.utils = {
             </div>
             <div class="cubeui-fluid">
                 <fieldset>
-                    <legend>选项</legend>
+                    <legend>Options</legend>
                 </fieldset>
                 <div style="margin-top:20px">
                     <input data-toggle="cubeui-checkbox" name="force" value="1" label="">
-                    <span style='line-height: 30px;padding-right:0px'><b>强制删除</b>(请谨慎选择)</span>
+                    <span style='line-height: 30px;padding-right:0px'><b>强制Delete</b>(请谨慎Selection)</span>
                 </div>
                 {0}
             </div>
@@ -4600,7 +4600,7 @@ $.docker.utils = {
     },
     optionConfirm: function (title, msg, optionHtml, yesFn, noFn, height, width, afterRender, notmodal) {
         $.iDialog.openDialog({
-            title: title || '确认',
+            title: title || 'Confirm',
             minimizable: false,
             maximizable: false,
             ignoreclose: true,
@@ -4618,7 +4618,7 @@ $.docker.utils = {
                 }
             },
             buttonsGroup: [{
-                text: '确定',
+                text: 'Sure',
                 iconCls: 'fa fa-check-circle',
                 btnCls: 'cubeui-btn-red',
                 handler: 'ajaxForm',
@@ -4639,7 +4639,7 @@ $.docker.utils = {
                     return false
                 },
             }, {
-                text: '取消',
+                text: 'Cancel',
                 iconCls: 'fa fa-check-circle',
                 btnCls: 'cubeui-btn-blue',
                 handler:function(o){
@@ -4721,11 +4721,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'名字，比如：group '">
+                               name='{0}-name' data-options="required:false,prompt:'Name，Like what：group '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'对应值，比如：db '">
+                               name='{0}-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4748,11 +4748,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'名字，比如：group '">
+                               name='{0}-name' data-options="required:false,prompt:'Name，Like what：group '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'对应值，比如：db '">
+                               name='{0}-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                     </div>
                     <div class="cubeui-col-sm2" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4775,11 +4775,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'Subnet，比如：172.17.0.0/16 '">
+                               name='{0}-name' data-options="required:false,prompt:'Subnet，Like what：172.17.0.0/16 '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'Gateway，比如：172.17.0.1 '">
+                               name='{0}-value' data-options="required:false,prompt:'Gateway，Like what：172.17.0.1 '">
                     </div>
                     <div class="cubeui-col-sm2" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4804,11 +4804,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'自定义元数据名，比如：group '">
+                               name='{0}-name' data-options="required:false,prompt:'自Definitions元Data名，Like what：group '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'自定义元数据名值，比如：db '">
+                               name='{0}-value' data-options="required:false,prompt:'自Definitions元Data名值，Like what：db '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4833,11 +4833,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'日志驱动配置项，比如：max-log-count '">
+                               name='{0}-name' data-options="required:false,prompt:'LogDriverConfigure项，Like what：max-log-count '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'日志驱动配置值，比如：10 '">
+                               name='{0}-value' data-options="required:false,prompt:'LogDriverConfigure值，Like what：10 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4869,16 +4869,16 @@ $.docker.utils = {
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
                                name='{0}-name' data-options="
                                required:true,
-                               prompt:'配置文件/运行时配置文本，必填项目'
+                               prompt:'ConfigureDocumentation/Run时ConfigureText，Required项目'
                                ">
                     </div>
                     <div class="cubeui-col-sm4">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'配置文件ID'">
+                               name='{0}-value' data-options="required:false,prompt:'ConfigureDocumentationID'">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox" value="{3}"
-                               name='{0}-value' data-options="required:false,prompt:'引用名称，仅用于查找/显示目的。配置将通过其ID识别。 '">
+                               name='{0}-value' data-options="required:false,prompt:'ReferencesName，仅ForFind/Show目的。Configure将Pass其IDIdentification。 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4905,16 +4905,16 @@ $.docker.utils = {
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
                                name='{0}-name' data-options="
                                required:true,
-                               prompt:'密码文件，必填项目'
+                               prompt:'PasswordDocumentation，Required项目'
                                ">
                     </div>
                     <div class="cubeui-col-sm4">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'密码文件ID'">
+                               name='{0}-value' data-options="required:false,prompt:'PasswordDocumentationID'">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox" value="{3}"
-                               name='{0}-value' data-options="required:false,prompt:'引用名称，仅用于查找/显示目的。密码将通过其ID识别。 '">
+                               name='{0}-value' data-options="required:false,prompt:'ReferencesName，仅ForFind/Show目的。Password将Pass其IDIdentification。 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4942,7 +4942,7 @@ $.docker.utils = {
                         <input type="text" data-toggle="cubeui-combobox" value="{1}"
                                name='{0}-publish-mode' data-options="
                                required:false,
-                               prompt:'公开端口发布的模式，为空使用默认值，默认值：“ingress”',
+                               prompt:'公开PortRelease的Mode，EmptyUseDefault value，Default value：“ingress”',
                                valueField:'KEY',
                                textField:'TEXT',
                                data:[{KEY:'ingress',TEXT:'Ingress'},{KEY:'host',TEXT:'Host'}]
@@ -4952,7 +4952,7 @@ $.docker.utils = {
                         <input type="text" data-toggle="cubeui-combobox" value="{2}"                               
                                name='{0}-publish-protocol' data-options="
                                required:false,
-                               prompt:'公开端口协议，为空使用默认值，默认值：“tcp”',
+                               prompt:'公开PortAgreements，EmptyUseDefault value，Default value：“tcp”',
                                valueField:'KEY',
                                textField:'TEXT',
                                data:[{KEY:'tcp',TEXT:'Tcp'},{KEY:'udp',TEXT:'Udp'},{KEY:'sctp',TEXT:'Sctp(Stream Control Transmission Protocol)'}]
@@ -4960,11 +4960,11 @@ $.docker.utils = {
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-numberspinner" value="{3}"
-                               name='{0}-publish-port' data-options="required:false,prompt:'公开端口，比如：9090 '">
+                               name='{0}-publish-port' data-options="required:false,prompt:'公开Port，Like what：9090 '">
                     </div>
                     <div class="cubeui-col-sm2">
                         <input type="text" data-toggle="cubeui-numberspinner" value="{4}"
-                               name='{0}-target-port' data-options="required:false,prompt:'目标端口，比如：80 '">
+                               name='{0}-target-port' data-options="required:false,prompt:'ObjectivePort，Like what：80 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -4998,7 +4998,7 @@ $.docker.utils = {
                             <input type="text" data-toggle="cubeui-combobox" value="{1}"
                                    name='{0}-name' data-options="
                                    required:true,
-                                   prompt:'选择需要连接的网络，必填项目',
+                                   prompt:'SelectionYesConnection的Network，Required项目',
                                    valueField:'KEY',
                                    textField:'TEXT',
                                    data:[].concat(getAllList())
@@ -5006,11 +5006,11 @@ $.docker.utils = {
                         </div>
                         <div class="cubeui-col-sm4">
                             <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                                   name='{0}-value' data-options="required:false,prompt:'网络内部别名，比如：node01 '">
+                                   name='{0}-value' data-options="required:false,prompt:'NetworkInternal别名，Like what：node01 '">
                         </div>
                         <div class="cubeui-col-sm3">
                             <input type="text" data-toggle="cubeui-textbox" value="{3}"
-                                   name='{0}-value2' data-options="required:false,prompt:'网络配置项目，格式key=value 多个配置使用;分割 '">
+                                   name='{0}-value2' data-options="required:false,prompt:'NetworkConfigure项目，Formatkey=value MultipleConfigureUse;Split '">
                         </div>
                         <div class="cubeui-col-sm1" style="text-align: center">
                             <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5039,15 +5039,15 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'限制资源名，比如：nofile '">
+                               name='{0}-name' data-options="required:false,prompt:'Resource constraints名，Like what：nofile '">
                     </div>
                     <div class="cubeui-col-sm4">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-soft' data-options="required:false,prompt:'限制资源soft限制，比如：1024 '">
+                               name='{0}-soft' data-options="required:false,prompt:'Resource constraintssoftLimits，Like what：1024 '">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox" value="{3}"
-                               name='{0}-hard' data-options="required:false,prompt:'限制资源hard限制，比如：2048 '">
+                               name='{0}-hard' data-options="required:false,prompt:'Resource constraintshardLimits，Like what：2048 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5074,11 +5074,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'内核命名空间参数名字，比如：kernel.core_uses_pid '">
+                               name='{0}-name' data-options="required:false,prompt:'Core命名空间ParametersName，Like what：kernel.core_uses_pid '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'内核命名空间参数对应值，比如：1 '">
+                               name='{0}-value' data-options="required:false,prompt:'Core命名空间ParametersCorresponding value，Like what：1 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5103,15 +5103,15 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-address' data-options="required:false,prompt:'IP地址，比如：192.168.56.1 '">
+                               name='{0}-address' data-options="required:false,prompt:'IPAddress，Like what：192.168.56.1 '">
                     </div>
                     <div class="cubeui-col-sm4">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-hostname' data-options="required:false,prompt:'Hosts主机名，比如：machine '">
+                               name='{0}-hostname' data-options="required:false,prompt:'HostsHost名，Like what：machine '">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox" value="{3}"
-                               name='{0}-aliases' data-options="required:false,prompt:'主机别名，比如：team01 team02 '">
+                               name='{0}-aliases' data-options="required:false,prompt:'Host别名，Like what：team01 team02 '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5138,11 +5138,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'环境变量名，比如：profile '">
+                               name='{0}-name' data-options="required:false,prompt:'EnvironmentVariables名，Like what：profile '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"  value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'环境变量值，比如：production '">
+                               name='{0}-value' data-options="required:false,prompt:'EnvironmentVariables值，Like what：production '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5165,11 +5165,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'目标容器名，比如：mysql-001 '">
+                               name='{0}-name' data-options="required:false,prompt:'ObjectiveContainers名，Like what：mysql-001 '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'链接别名，比如：mysqldb '">
+                               name='{0}-value' data-options="required:false,prompt:'Link alias，Like what：mysqldb '">
                     </div>
                     <div class="cubeui-col-sm2" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5192,11 +5192,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'目标容器名，比如：mysql-001 '">
+                               name='{0}-name' data-options="required:false,prompt:'ObjectiveContainers名，Like what：mysql-001 '">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'链接别名，比如：mysqldb '">
+                               name='{0}-value' data-options="required:false,prompt:'Link alias，Like what：mysqldb '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5219,7 +5219,7 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm9 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'容器运行命令，比如：docker.ui '">
+                               name='{0}-name' data-options="required:false,prompt:'ContainersRunCommand，Like what：docker.ui '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5242,7 +5242,7 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm9 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'入口点，如果由空字符串组成，则入口点重置为系统默认值（即docker在Dockerfile中没有入口点指令时使用的入口点）。'">
+                               name='{0}-name' data-options="required:false,prompt:'Entry point，If由空Character串组成，则Entry pointReset为SystemDefault value（即docker在Dockerfile中NothingEntry point指令时Use的Entry point）。'">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5266,7 +5266,7 @@ $.docker.utils = {
 
             let html = `
                 <div id='dg_container_header-{3}' style="display:none;margin-bottom1:15px">
-                    <span style='line-height: 30px;padding-right:0px'>所有容器：</span>
+                    <span style='line-height: 30px;padding-right:0px'>AllContainers：</span>
                     <input id='container_refreshBtn-{3}'  value='1' data-toggle="cubeui-switchbutton" style="width:50px;height1:30px" checked1="true"
                         data-options="
                         onText:'',offText:'',
@@ -5279,7 +5279,7 @@ $.docker.utils = {
                     <input type="text" id='container_search_type-{3}' value="name" data-toggle="cubeui-combobox"
                            data-options="
                                     width:120,
-                                    required:true,prompt:'查询方式，必须填写',
+                                    required:true,prompt:'QuestionModalities，_Other Organiser',
                                     valueField:'KEY',
                                     textField:'TEXT',
                                     data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},{'KEY':'before','TEXT':'Before'},
@@ -5289,7 +5289,7 @@ $.docker.utils = {
                     <input type="text" id='container_search_key-{3}' data-toggle="cubeui-textbox"
                            data-options="onClear:function(){
                                 $('#container_searchbtn-{3}').trigger('click');
-                           }, mask:'{{:~js(prefix)}}', prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                           }, mask:'{{:~js(prefix)}}', prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                     <a href="javascript:void(0)" id="container_searchbtn-{3}"
                        data-toggle="cubeui-menubutton"
                        data-options="
@@ -5302,7 +5302,7 @@ $.docker.utils = {
                             param.search_key = $('#container_search_key-{3}').textbox('getValue');
                             $('#containerlist-{3}').combogrid('grid').datagrid('reload',param)
                        }
-                       ">查询</a>
+                       ">Question</a>
                 </div>
 
                 <div class="cubeui-row">
@@ -5323,7 +5323,7 @@ $.docker.utils = {
                                        sortOrder:'asc',
                                        sortName:'Id',
                                        pageSize:50,
-                                       prompt:'目标容器名，比如：mysql-001 ',
+                                       prompt:'ObjectiveContainers名，Like what：mysql-001 ',
                                        onBeforeLoad:function (param){                                            
                                             refreshContainer4ContainerLink(param,'{3}');
                                        },
@@ -5366,7 +5366,7 @@ $.docker.utils = {
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'链接别名，比如：mysqldb,多值用空格分隔 '">
+                               name='{0}-value' data-options="required:false,prompt:'Link alias，Like what：mysqldb,多值用SpaceSeparate '">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5392,11 +5392,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'使用端口号和协议，例如80/tcp, 80/udp'">
+                               name='{0}-name' data-options="required:false,prompt:'UsePort号和Agreements，For example:80/tcp, 80/udp'">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'主机映射端口, 格式[ip:]port, 例如192.168.56.101:9999, 9999'">
+                               name='{0}-value' data-options="required:false,prompt:'Host映射Port, Format[ip:]port, For example:192.168.56.101:9999, 9999'">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5418,11 +5418,11 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-name' data-options="required:false,prompt:'使用端口号和协议，例如80/tcp, 80/udp'">
+                               name='{0}-name' data-options="required:false,prompt:'UsePort号和Agreements，For example:80/tcp, 80/udp'">
                     </div>
                     <div class="cubeui-col-sm5">
                         <input type="text" data-toggle="cubeui-textbox"
-                               name='{0}-value' data-options="required:false,prompt:'主机映射端口, 格式[ip:]port, 例如192.168.56.101:9999, 9999'">
+                               name='{0}-value' data-options="required:false,prompt:'Host映射Port, Format[ip:]port, For example:192.168.56.101:9999, 9999'">
                     </div>
                     <div class="cubeui-col-sm1" style="text-align: center">
                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -5454,16 +5454,16 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'绑定的主机路径或者数据卷, 主机路径必须是绝对路径'">
+                               name='{0}-name' data-options="required:false,prompt:'Tie的HostPathOr..Data卷, HostPathMust be绝对Path'">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox"  value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'绑定容器目标路径, 目标路径必须是绝对路径'">
+                               name='{0}-value' data-options="required:false,prompt:'TieContainersObjectivePath, ObjectivePathMust be绝对Path'">
                     </div>
                     
                     <div class="cubeui-col-sm2">
                             <span style='line-height: 30px;padding-left:5px' title='
-                             禁用将数据从容器路径自动复制到卷,仅适用于卷
+                             Disable将Data从ContainersPathAutoCopy到卷,仅适For卷
                              ' ><b >nc</b></span>
                             <input type="hidden" name="nocopy" class="nocopy" value="{3}">       
                              <input data-toggle="cubeui-checkbox" name="volume-nocopy-opt" {4} value="1" label="" data-options="
@@ -5478,7 +5478,7 @@ $.docker.utils = {
                                  }
                              ">
                              <span style='line-height: 30px;padding-left:5px' title='
-                             只读或读写方式装入卷。如果勾选为rw，卷将以读写方式装入
+                             只读或读写Modalities装入卷。IfCheck为rw，卷将以读写Modalities装入
                              ' ><b >RW</b></span>
                             <input type="hidden" name="rw"  class="rw" value="{5}">       
                              <input data-toggle="cubeui-checkbox" {6} name="volume-rw-opt" value="1" label="" data-options="
@@ -5493,7 +5493,7 @@ $.docker.utils = {
                                  }
                              ">                             
                              <span style='line-height: 30px;padding-left:5px' title='
-                             应用SELinux以允许或拒绝多个容器对同一卷进行读写, 勾选表示为共享方式，否则私有方式
+                             ApplySELinux以Allow或RejectMultipleContainers对同一卷Conduct读写, CheckOrganisation为共享Modalities，Otherwise..私有Modalities
                              ' ><b >S</b></span>
                             <input type="hidden" name="z"  class="z"  value="{7}">       
                              <input data-toggle="cubeui-checkbox" {8} name="volume-z-opt" value="1" label="" data-options="
@@ -5538,16 +5538,16 @@ $.docker.utils = {
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                               name='{0}-name' data-options="required:false,prompt:'绑定的主机路径或者数据卷, 主机路径必须是绝对路径'">
+                               name='{0}-name' data-options="required:false,prompt:'Tie的HostPathOr..Data卷, HostPathMust be绝对Path'">
                     </div>
                     <div class="cubeui-col-sm3">
                         <input type="text" data-toggle="cubeui-textbox"  value="{2}"
-                               name='{0}-value' data-options="required:false,prompt:'绑定容器目标路径, 目标路径必须是绝对路径'">
+                               name='{0}-value' data-options="required:false,prompt:'TieContainersObjectivePath, ObjectivePathMust be绝对Path'">
                     </div>
                     
                     <div class="cubeui-col-sm2">
                             <span style='line-height: 30px;padding-left:5px' title='
-                             禁用将数据从容器路径自动复制到卷,仅适用于卷
+                             Disable将Data从ContainersPathAutoCopy到卷,仅适For卷
                              ' ><b >nc</b></span>
                             <input type="hidden" name="nocopy" class="nocopy" value="{3}">       
                              <input data-toggle="cubeui-checkbox" name="volume-nocopy-opt" {4} value="1" label="" data-options="
@@ -5562,7 +5562,7 @@ $.docker.utils = {
                                  }
                              ">
                              <span style='line-height: 30px;padding-left:5px' title='
-                             只读或读写方式装入卷。如果勾选为rw，卷将以读写方式装入
+                             只读或读写Modalities装入卷。IfCheck为rw，卷将以读写Modalities装入
                              ' ><b >RW</b></span>
                             <input type="hidden" name="rw"  class="rw" value="{5}">       
                              <input data-toggle="cubeui-checkbox" {6} name="volume-rw-opt" value="1" label="" data-options="
@@ -5577,7 +5577,7 @@ $.docker.utils = {
                                  }
                              ">                             
                              <span style='line-height: 30px;padding-left:5px' title='
-                             应用SELinux以允许或拒绝多个容器对同一卷进行读写, 勾选表示为共享方式，否则私有方式
+                             ApplySELinux以Allow或RejectMultipleContainers对同一卷Conduct读写, CheckOrganisation为共享Modalities，Otherwise..私有Modalities
                              ' ><b >S</b></span>
                             <input type="hidden" name="z"  class="z"  value="{7}">       
                              <input data-toggle="cubeui-checkbox" {8} name="volume-z-opt" value="1" label="" data-options="
@@ -5748,7 +5748,7 @@ $.docker.driver = {
             let map = [];
             map.push({
                 KEY:'',
-                TEXT:'所有'
+                TEXT:'All'
             })
 
             $.each($.docker.driver.network.list, function (idx, v) {
@@ -5870,19 +5870,19 @@ function createTerminate(target, onKey, rows, cols){
     let term ;
     term = new Terminal({
 
-        rendererType: "canvas", //渲染类型
-        convertEol: true, //启用时，光标将设置为下一行的开头
-        scrollback: 100, //终端中的回滚量
-        disableStdin: false, //是否应禁用输入。
-        cursorStyle: "underline", //光标样式
-        cursorBlink: true, //光标闪烁
+        rendererType: "canvas", //RenderType
+        convertEol: true, //When enabled，光标将Settings为下一行的Start
+        scrollback: 100, //Rollback in Terminal
+        disableStdin: false, //Whether input should be disabled。
+        cursorStyle: "underline", //Cursor Style
+        cursorBlink: true, //Cursor Flash
         cols: cols,
         rows: rows,
 
         theme: {
-            foreground: "#14e264", //字体
-            background: "#002833", //背景色
-            cursor: "help", //设置光标
+            foreground: "#14e264", //Fonts
+            background: "#002833", //Background Colour
+            cursor: "help", //Settings光标
             lineHeight: 16
         },
         bellStyle:'sound',

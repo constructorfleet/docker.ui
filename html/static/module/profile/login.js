@@ -48,7 +48,7 @@ $(window).load(function () {
                     function (c) {
                     	if(c.status!=0)
     					{
-                    		$('#myModal #msg').html("用户名和密码不正确");
+                    		$('#myModal #msg').html("Username和Password不正确");
                             $('#myModal').modal();	 
     					}else{
     					    $.app.localStorage.saveItem(window.app.clientId+'.token', c.data.token);

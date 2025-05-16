@@ -1,6 +1,6 @@
-﻿/*本系列框架中,一些用得上的小功能函数,一些UI必须使用到它们,用户也可以单独拿出来用*/
+﻿/*This series framework,Some用得上的小Functions函数,SomeUI必须Use到它们,Users can use it alone*/
 
-//获取一个DIV的绝对坐标的功能函数,即使是非绝对定位,一样能获取到
+//Get oneDIV的绝对Coordinates的Functions函数,Even if it\'s not absolute,I can get it
 function getElCoordinate(dom) {
   var t = dom.offsetTop;
   var l = dom.offsetLeft;
@@ -14,7 +14,7 @@ function getElCoordinate(dom) {
     left: l
   };
 }
-//兼容各种浏览器的,获取鼠标真实位置
+//Compatible with various browsers,Get Mouse Real Location
 function mousePosition(ev){
 	if(!ev) ev=window.event;
     if(ev.pageX || ev.pageY){
@@ -25,7 +25,7 @@ function mousePosition(ev){
         y:ev.clientY + document.documentElement.scrollTop  - document.body.clientTop
     };
 }
-//给DATE类添加一个格式化输出字串的方法
+//给DATE类Add一个Format化输出字串的方法
 Date.prototype.format = function(format)   
 {   
    var o = {   
@@ -45,7 +45,7 @@ Date.prototype.format = function(format)
           ("00"+ o[k]).substr((""+ o[k]).length));   
     return format;   
 }
-//JS]根据格式字符串分析日期（MM与自动匹配两位的09和一位的9）
+//JS]根据Format字符串分析日期（MM与Auto匹配两位的09And one9）
 //alert(getDateFromFormat(sDate,sFormat));
 function getDateFromFormat(dateString,formatString){
 	var regDate = /\d+/g;
@@ -73,7 +73,7 @@ function getDateFromFormat(dateString,formatString){
 	}
 	return date;
 }
-//货币分析成浮点数
+//Currency analysis into floating points
 //alert(parseCurrency("￥1,900,000.12"));
 function parseCurrency(currentString){
 	var regParser = /[\d\.]+/g;
@@ -90,9 +90,9 @@ function parseCurrency(currentString){
 	return parseFloat(result);
 }
 
-//将#XXXXXX颜色格式转换为RGB格式，并附加上透明度
+//将#XXXXXX颜色Format转换为RGBFormat，And add transparency
 function brgba(hex, opacity) {
-    if( ! /#?\d+/g.test(hex) ) return hex; //如果是“red”格式的颜色值，则不转换。//正则错误，参考后面的PS内容
+    if( ! /#?\d+/g.test(hex) ) return hex; //If是“red”FormatColours值，Do not convert。//Correct error，Read the restPSContents
     var h = hex.charAt(0) == "#" ? hex.substring(1) : hex,
         r = parseInt(h.substring(0,2),16),
         g = parseInt(h.substring(2,4),16),

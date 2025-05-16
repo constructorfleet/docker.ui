@@ -1,5 +1,5 @@
 <div data-toggle="cubeui-tabs" id='eastTabs'>
-    <div title="基础信息"
+    <div title="Basic information"
          data-options="id:'eastTab0',iconCls:'fa fa-info-circle'">
         <div style="margin: 0px;">
         </div>
@@ -7,7 +7,7 @@
         <form id='createNetworkForm1'>
             <div class="cubeui-fluid">
                 <fieldset>
-                    <legend>基础信息</legend>
+                    <legend>Basic information</legend>
                 </fieldset>
 
                 {{if updated}}
@@ -81,7 +81,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="在网络上启用IPv6">EnableIPv6:</label>
+                        <label class="cubeui-form-label" title="在Network上启用IPv6">EnableIPv6:</label>
                         <div class="cubeui-input-block">
 
                             <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -95,7 +95,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="限制对网络的外部访问">Internal:</label>
+                        <label class="cubeui-form-label" title="Limits对Network的ExternalVisits">Internal:</label>
                         <div class="cubeui-input-block">
 
                             <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -109,7 +109,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="在swarm模式下，全局范围的网络可由工作人员的常规容器手动连接">Attachable:</label>
+                        <label class="cubeui-form-label" title="在swarmMode，全局Scope的Network可由工作人员的常规Containers手动Connection">Attachable:</label>
                         <div class="cubeui-input-block">
 
                             <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -123,7 +123,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="入口网络是以swarm模式提供路由网格的网络">Ingress:</label>
+                        <label class="cubeui-form-label" title="入口Network是以swarmModeProvision路由网格的Network">Ingress:</label>
                         <div class="cubeui-input-block">
 
                             <input type="text" data-toggle="cubeui-textbox" name="Ingress" readonly
@@ -143,7 +143,7 @@
                             <input type="text" data-toggle="cubeui-textbox" name="Name"
                                    value='{{>Name}}'
                                    data-options="
-                                       prompt:'网络名称，必填项目',
+                                       prompt:'NetworkName，Required项目',
                                        required:true,
                                             "
                             >
@@ -153,12 +153,12 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="要使用的网络驱动程序插件的名称。默认值：桥接">Driver:</label>
+                        <label class="cubeui-form-label" title="要Use的NetworkDriver程序Plugin的Name。Default value：Bridge">Driver:</label>
                         <div class="cubeui-input-block">
                             <input type="text" name="Driver" value='{{>Driver}}'
                                    data-toggle="cubeui-combobox"
                                    data-options="
-                                            required:false,prompt:'为空，使用默认值：桥接',
+                                            required:false,prompt:'Empty，UseDefault value：Bridge',
                                             valueField:'KEY',
                                             textField:'TEXT',
                                             data:$.docker.driver.network.getNetworkObjectList()
@@ -169,12 +169,12 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="范围描述网络存在的级别（例如，集群范围的“swarm”或机器级别的“local”）">Scope:</label>
+                        <label class="cubeui-form-label" title="ScopeDescriptionNetworkExistence的级别（For example:，ClusterScope的“swarm”Or machine level“local”）">Scope:</label>
                         <div class="cubeui-input-block">
                             <input type="text" name="Scope" value='{{>Scope}}'
                                    data-toggle="cubeui-combobox"
                                    data-options="
-                                            required:false,prompt:'为空，使用默认值：local',
+                                            required:false,prompt:'Empty，UseDefault value：local',
                                             valueField:'KEY',
                                             textField:'TEXT',
                                             data:[{'KEY':'','TEXT':''},{'KEY':'local','TEXT':'local'},{'KEY':'swarm','TEXT':'swarm'},{'KEY':'global','TEXT':'global'}]
@@ -185,8 +185,8 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
-                        <label class="cubeui-form-label" title="检查名称重复的网络。由于网络主要基于随机ID而不是名称设置密钥，并且网络名称严格来说是使用ID唯一标识的网络的用户友好别名，因此无法保证检查重复项。CheckDuplicate提供了对具有相同名称但不能保证捕获所有名称冲突的任何网络的最大努力检查。">
-                            检查名称重复:</label>
+                        <label class="cubeui-form-label" title="Check duplicate name的Network。BecauseNetwork主要基于随机IDNotNameSettings密钥，And..NetworkName严格来说是UseID唯一Identification的Network的User友好Alias，There is therefore no guarantee of double-checking。CheckDuplicateProvision了对具有SameName但I can\'tPromise捕获AllName冲突的任何Network的最大努力Inspection。">
+                            Check duplicate name:</label>
                         <div class="cubeui-input-block">
                             <input data-toggle="cubeui-switchbutton"
                                    {{if CheckDuplicate}}checked{{/if}}
@@ -197,7 +197,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3">
-                        <label class="cubeui-form-label" title="在网络上启用IPv6">EnableIPv6:</label>
+                        <label class="cubeui-form-label" title="在Network上启用IPv6">EnableIPv6:</label>
                         <div class="cubeui-input-block">
                             <input data-toggle="cubeui-switchbutton"
                                    {{if EnableIPv6}}checked{{/if}}
@@ -208,7 +208,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3">
-                        <label class="cubeui-form-label" title="限制对网络的外部访问">Internal:</label>
+                        <label class="cubeui-form-label" title="Limits对Network的ExternalVisits">Internal:</label>
                         <div class="cubeui-input-block">
                             <input data-toggle="cubeui-switchbutton"
                                    {{if Internal}}checked{{/if}}
@@ -219,7 +219,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3">
-                        <label class="cubeui-form-label" title="在swarm模式下，全局范围的网络可由工作人员的常规容器手动连接">Attachable:</label>
+                        <label class="cubeui-form-label" title="在swarmMode，全局Scope的Network可由工作人员的常规Containers手动Connection">Attachable:</label>
                         <div class="cubeui-input-block">
                             <input data-toggle="cubeui-switchbutton"
                                    {{if Attachable}}checked{{/if}}
@@ -230,7 +230,7 @@
 
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm3">
-                        <label class="cubeui-form-label" title="入口网络是以swarm模式提供路由网格的网络">Ingress:</label>
+                        <label class="cubeui-form-label" title="入口Network是以swarmModeProvision路由网格的Network">Ingress:</label>
                         <div class="cubeui-input-block">
                             <input data-toggle="cubeui-switchbutton"
                                    {{if Ingress}}checked{{/if}}
@@ -243,14 +243,14 @@
 
 
                 <fieldset  style="margin-top: 10px;">
-                    <legend style="margin-bottom: 0px;">驱动选项</legend>
+                    <legend style="margin-bottom: 0px;">DriverOptions</legend>
                 </fieldset>
                 {{if updated}}
                 <div class="cubeui-row">
                     <div class="cubeui-col-sm12">
                         <div class="cubeui-row"  style="margin-top: 0px;">
                             <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                <span style='line-height: 20px;padding-right:0px;'>Label</span>
                             </div>
                             <div class="cubeui-col-sm1">
                                 <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -299,11 +299,11 @@
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                       name='driver-opt-name' data-options="required:false,prompt:'名字，比如：group '">
+                                       name='driver-opt-name' data-options="required:false,prompt:'Name，Like what：group '">
                             </div>
                             <div class="cubeui-col-sm5">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                       name='driver-opt-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                       name='driver-opt-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                             </div>
                             <div class="cubeui-col-sm2" style="text-align: center">
                                 <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -317,7 +317,7 @@
                 {{/if}}
 
                 <fieldset  style="margin-top: 20px;">
-                    <legend style="margin-bottom: 0px;">标签选项</legend>
+                    <legend style="margin-bottom: 0px;">LabelOptions</legend>
                 </fieldset>
 
                 {{if updated}}
@@ -325,7 +325,7 @@
                     <div class="cubeui-col-sm12">
                         <div class="cubeui-row"  style="margin-top: 0px;">
                             <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                <span style='line-height: 20px;padding-right:0px;'>Label</span>
                             </div>
                             <div class="cubeui-col-sm1">
                                 <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -374,11 +374,11 @@
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                       name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                       name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                             </div>
                             <div class="cubeui-col-sm5">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                       name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                       name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                             </div>
                             <div class="cubeui-col-sm2" style="text-align: center">
                                 <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -395,7 +395,7 @@
     </div>
 
 
-    <div title="IPAM设置"
+    <div title="IPAMSettings"
          data-options="id:'eastTab1',iconCls:'fa fa-usb'">
         <div style="margin: 0px;">
         </div>
@@ -406,7 +406,7 @@
                 {{if updated}}
 
                 <fieldset>
-                    <legend>IPAM设置</legend>
+                    <legend>IPAMSettings</legend>
                 </fieldset>
 
                 <div class="cubeui-row">
@@ -452,7 +452,7 @@
 
 
                 <fieldset  style="margin-top: 10px;">
-                    <legend style="margin-bottom: 0px;">IPAM参数选项</legend>
+                    <legend style="margin-bottom: 0px;">IPAMParametersOptions</legend>
                 </fieldset>
 
                 {{if updated}}
@@ -460,7 +460,7 @@
                     <div class="cubeui-col-sm12">
                         <div class="cubeui-row"  style="margin-top: 0px;">
                             <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                <span style='line-height: 20px;padding-right:0px;'>Label</span>
                             </div>
                             <div class="cubeui-col-sm1">
                                 <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -509,11 +509,11 @@
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                       name='ipam-opt-name' data-options="required:false,prompt:'名字，比如：group '">
+                                       name='ipam-opt-name' data-options="required:false,prompt:'Name，Like what：group '">
                             </div>
                             <div class="cubeui-col-sm5">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                       name='ipam-opt-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                       name='ipam-opt-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                             </div>
                             <div class="cubeui-col-sm2" style="text-align: center">
                                 <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -528,7 +528,7 @@
 
 
                 <fieldset  style="margin-top: 20px;">
-                    <legend style="margin-bottom: 0px;">网络设置</legend>
+                    <legend style="margin-bottom: 0px;">NetworkSettings</legend>
                 </fieldset>
 
                 {{if updated}}
@@ -585,11 +585,11 @@
                         <div class="cubeui-row">
                             <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>Subnet}}"
-                                       name='network-name' data-options="required:false,prompt:'Subnet，比如：172.17.0.0/16 '">
+                                       name='network-name' data-options="required:false,prompt:'Subnet，Like what：172.17.0.0/16 '">
                             </div>
                             <div class="cubeui-col-sm5">
                                 <input type="text" data-toggle="cubeui-textbox" value="{{>Gateway}}"
-                                       name='network-value' data-options="required:false,prompt:'Gateway，比如：172.17.0.1  '">
+                                       name='network-value' data-options="required:false,prompt:'Gateway，Like what：172.17.0.1  '">
                             </div>
                             <div class="cubeui-col-sm2" style="text-align: center">
                                 <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -607,7 +607,7 @@
     </div>
 
     {{if updated}}
-    <div title="活动容器"
+    <div title="活动Containers"
          data-options="id:'eastTab1',iconCls:'fa fa-superpowers'">
         <div style="margin: 0px;">
         </div>
@@ -625,7 +625,7 @@
                             extend: '#relatedContainersDg-toolbar',
                             btnCls: 'cubeui-btn-orange',
                             iconCls: 'fa fa-refresh'
-                        }">刷新</a>
+                        }">Refresh</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                             onClick:function(){
@@ -634,9 +634,9 @@
                             extend: '#relatedContainersDg-toolbar',
                             btnCls: 'cubeui-btn-blue',
                             iconCls: 'fa fa-link'
-                        }">连接容器</a>
+                        }">ConnectionContainers</a>
         </div>
-        <!-- 表格工具栏结束 -->
+        <!-- End of Table Toolbar -->
 
         <table id="relatedContainersDg"></table>
 

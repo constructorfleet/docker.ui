@@ -28,7 +28,7 @@ function createService(){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '添加服务',
+        title: 'AddServices',
         id:'addServiceDlg',
         iconCls:'fa fa-circle-o-notch',
         minimizable:false,
@@ -41,7 +41,7 @@ function createService(){
             handler.render({})
         },
         leftButtonsGroup:[{
-            text: '搜索镜像仓库',
+            text: 'SearchMirrorWarehouse',
             iconCls: 'fa fa-search',
             btnCls: 'cubeui-btn-blue',
             handler1:'ajaxForm',
@@ -51,14 +51,14 @@ function createService(){
                 let imageName = $(dlgObj).find("input[name='fromImage']").val()
 
                 $.iDialog.openDialog({
-                    title: '搜索镜像',
+                    title: 'SearchMirror',
                     minimizable:false,
                     id:'queryForm-search',
                     width: 1200,
                     height: 640,
                     href:'./search-image.html',
                     buttonsGroup: [{
-                        text: '确定选择',
+                        text: 'SureSelection',
                         iconCls: 'fa fa-check-square-o',
                         btnCls: 'cubeui-btn-orange',
                         handler:'ajaxForm',
@@ -66,12 +66,12 @@ function createService(){
                             let rows = $('#searchImagesDg').datagrid('getSelections');
 
                             if($.extends.isEmpty(rows)){
-                                $.app.show("请选择一个指定的镜像")
+                                $.app.show("请Selection一个AssignedMirror")
                                 return false;
                             }
 
                             if(rows.length > 1){
-                                $.app.show("选择了多个镜像，选择一个指定的镜像")
+                                $.app.show("Selection了MultipleMirror，Selection一个AssignedMirror")
                                 return false;
                             }
                             setImageName(rows[0].name);
@@ -102,7 +102,7 @@ function createService(){
                                     }
 
                                     if($.extends.isEmpty(p.term)){
-                                        $.app.show('没有输入过滤条件');
+                                        $.app.show('No filter conditions entered');
                                         return false;
                                     }
 
@@ -155,7 +155,7 @@ function createService(){
             }
         }],
         buttonsGroup: [{
-            text: '添加',
+            text: 'Add',
             iconCls: 'fa fa-plus-square-o',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -172,7 +172,7 @@ function createService(){
                     showServicePanel(service);
                     closeOuterDialog(t);
                 }else{
-                    $.app.show('服务名{0}已经存在，服务名必须唯一'.format(service.Name));
+                    $.app.show('Services名{0}已经Existence，Services名必须唯一'.format(service.Name));
                 }
 
                 return false;
@@ -185,7 +185,7 @@ function createNetwork(){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '添加网络',
+        title: 'AddNetwork',
         iconCls:'fa fa-sitemap',
         id:'addNetworkDlg',
         minimizable:false,
@@ -199,7 +199,7 @@ function createNetwork(){
             handler.render(networkConfig)
         },
         buttonsGroup: [{
-            text: '添加',
+            text: 'Add',
             iconCls: 'fa fa-plus-square-o',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -216,7 +216,7 @@ function createNetwork(){
                     //showNetworkPanel(service);
                     closeOuterDialog(t);
                 }else{
-                    $.app.show('网络名{0}已经存在，网络名必须唯一'.format(network.Name));
+                    $.app.show('Network名{0}已经Existence，Network名必须唯一'.format(network.Name));
                 }
 
                 return false;
@@ -230,7 +230,7 @@ function createVolume(){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '添加数据卷',
+        title: 'AddData卷',
         iconCls:'fa fa-tasks',
         id:'addVolumeDlg',
         minimizable:false,
@@ -244,7 +244,7 @@ function createVolume(){
             handler.render(networkConfig)
         },
         buttonsGroup: [{
-            text: '添加',
+            text: 'Add',
             iconCls: 'fa fa-plus-square-o',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -261,7 +261,7 @@ function createVolume(){
                     //showNetworkPanel(service);
                     closeOuterDialog(t);
                 }else{
-                    $.app.show('数据卷名{0}已经存在，数据卷名必须唯一'.format(network.Name));
+                    $.app.show('Data卷名{0}已经Existence，Data卷名必须唯一'.format(network.Name));
                 }
 
                 return false;
@@ -348,7 +348,7 @@ function showServicePanel(serviceConfig){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '编辑服务',
+        title: 'EditServices',
         iconCls:'fa fa-circle-o-notch',
         id: dgId,
         minimizable: true,
@@ -363,7 +363,7 @@ function showServicePanel(serviceConfig){
                 delete dgMap[dgId];
                 return true;
             }else{
-                $.app.confirm('确定退出服务编辑，上一次暂存之后的编辑信息将会丢失，请确保已经暂存了数据?', function () {
+                $.app.confirm('SureExitServicesEdit，上一次PendingAfter的EditInformationWill丢失，请Ensure已经Pending了Data?', function () {
                     dg.YES = true;
                     $(dg).dialog('close');
                 })
@@ -379,7 +379,7 @@ function showServicePanel(serviceConfig){
             dgMap[dgId] = true;
         },
         buttonsGroup: [{
-            text: '暂存服务',
+            text: 'PendingServices',
             iconCls: 'fa fa-save',
             btnCls: 'cubeui-btn-blue',
             handler:'ajaxForm',
@@ -399,7 +399,7 @@ function showServicePanel(serviceConfig){
     return false;
 /*    let showFn = function(row){
 
-        let title = "修改服务{0}".format(serviceConfig.Name);;
+        let title = "ModifyServices{0}".format(serviceConfig.Name);;
         let isAdd = true;
 
         $('#orchestrator_main_layout').layout('remove', 'east');
@@ -457,7 +457,7 @@ function showNetworkPanel(networkConfig){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '编辑网络',
+        title: 'EditNetwork',
         iconCls:'fa fa-sitemap',
         id: dgId,
         minimizable: true,
@@ -472,7 +472,7 @@ function showNetworkPanel(networkConfig){
                 delete dgMap[dgId];
                 return true;
             }else{
-                $.app.confirm('确定退出网络编辑，上一次暂存之后的编辑信息将会丢失，请确保已经暂存了数据?', function () {
+                $.app.confirm('SureExitNetworkEdit，上一次PendingAfter的EditInformationWill丢失，请Ensure已经Pending了Data?', function () {
                     dg.YES = true;
                     $(dg).dialog('close');
                 })
@@ -488,7 +488,7 @@ function showNetworkPanel(networkConfig){
             dgMap[dgId] = true;
         },
         buttonsGroup: [{
-            text: '暂存',
+            text: 'Pending',
             iconCls: 'fa fa-save',
             btnCls: 'cubeui-btn-blue',
             handler:'ajaxForm',
@@ -522,7 +522,7 @@ function showVolumePanel(volumeConfig){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '编辑数据卷',
+        title: 'EditData卷',
         iconCls:'fa fa-tasks',
         id: dgId,
         minimizable: true,
@@ -537,7 +537,7 @@ function showVolumePanel(volumeConfig){
                 delete dgMap[dgId];
                 return true;
             }else{
-                $.app.confirm('确定退出数据卷编辑，上一次暂存之后的编辑信息将会丢失，请确保已经暂存了数据?', function () {
+                $.app.confirm('SureExitData卷Edit，上一次PendingAfter的EditInformationWill丢失，请Ensure已经Pending了Data?', function () {
                     dg.YES = true;
                     $(dg).dialog('close');
                 })
@@ -553,7 +553,7 @@ function showVolumePanel(volumeConfig){
             dgMap[dgId] = true;
         },
         buttonsGroup: [{
-            text: '暂存',
+            text: 'Pending',
             iconCls: 'fa fa-save',
             btnCls: 'cubeui-btn-blue',
             handler:'ajaxForm',

@@ -8,30 +8,30 @@ $(function() {
 			restore : eval("(" + flowdata + ")"),
 			tools : {
 				save : function(data) {
-					console.log("保存",eval("("+data+")"));
+					console.log("Save",eval("("+data+")"));
 					//console.log(data);
 					window.localStorage.setItem("data",data)
 				},
 				publish:function(data){
-					console.log("发布",eval("("+data+")"));
+					console.log("Release",eval("("+data+")"));
 				},
 				addPath:function(id,data){
-					console.log("添加路径",id,eval("("+data+")"));
+					console.log("AddPath",id,eval("("+data+")"));
 				},
 				addRect:function(id,data){
-					//console.log("添加状态",id,eval("("+data+")"));
+					//console.log("AddStatus",id,eval("("+data+")"));
 				},
 				clickPath:function(id){
-					//console.log("点击线",id)
+					//console.log("Click Line",id)
 				},
 				clickRect:function(id,data){
-					//console.log("点击状态",id,eval("("+data+")"));
+					//console.log("点击Status",id,eval("("+data+")"));
 				},
 				deletePath:function(id){
-					//console.log("删除线",id);
+					//console.log("Delete线",id);
 				},
 				deleteRect:function(id,data){
-					//console.log("删除状态",id,eval("("+data+")"));
+					//console.log("DeleteStatus",id,eval("("+data+")"));
 				},
 				revoke:function(id){
 

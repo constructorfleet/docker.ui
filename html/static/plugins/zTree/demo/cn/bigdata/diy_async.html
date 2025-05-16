@@ -35,9 +35,9 @@
 		};
 
 		var zNodes =[
-			{name:"500个节点", id:"1", count:500, times:1, isParent:true},
-			{name:"1000个节点", id:"2", count:1000, times:1, isParent:true},
-			{name:"2000个节点", id:"3", count:2000, times:1, isParent:true}
+			{name:"500个Nodes", id:"1", count:500, times:1, isParent:true},
+			{name:"1000个Nodes", id:"2", count:1000, times:1, isParent:true},
+			{name:"2000个Nodes", id:"3", count:2000, times:1, isParent:true}
 		];
 
 		var log, className = "dark",
@@ -55,7 +55,7 @@
 				ajaxGetNodes(treeNode, "refresh");
 				return true;
 			} else {
-				alert("zTree 正在下载数据中，请稍后展开节点。。。");
+				alert("zTree 正在下载Data中，请稍后ExpandNodes。。。");
 				return false;
 			}
 		}
@@ -75,12 +75,12 @@
 				var usedTime = (endTime.getTime() - startTime.getTime())/1000;
 				className = (className === "dark" ? "":"dark");
 				showLog("[ "+getTime()+" ]&nbsp;&nbsp;treeNode:" + treeNode.name );
-				showLog("加载完毕，共进行 "+ (treeNode.times-1) +" 次异步加载, 耗时："+ usedTime + " 秒");
+				showLog("加载Over，Total "+ (treeNode.times-1) +" 次Step Load, Time-consuming："+ usedTime + " 秒");
 			}
 		}
 		function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-			alert("异步获取数据出现异常。");
+			alert("异步获取Data出现异常。");
 			treeNode.icon = "";
 			zTree.updateNode(treeNode);
 		}
@@ -117,37 +117,37 @@
  </HEAD>
 
 <BODY>
-<h1>分批异步加载大数据量</h1>
-<h6>[ 文件路径: bigdata/diy_async.html ]</h6>
+<h1>分批Step Load大Data量</h1>
+<h6>[ DocumentationPath: bigdata/diy_async.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul>
-			<li class="highlight_red">&nbsp;&nbsp;&nbsp;&nbsp;此 Demo 专门用于测试分批异步加载，每次展开节点都要重新进行异步加载。</li>
+			<li class="highlight_red">&nbsp;&nbsp;&nbsp;&nbsp;此 Demo 专门用于测试分批Step Load，每次ExpandNodes都要重新进行Step Load。</li>
 		</ul>
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、大数据量加载说明</h2>
+			<li class="title"><h2>1、大Data量加载说明</h2>
 				<ul class="list">
-				<li>1)、对于某一级节点数多达几千个的时候，zTree 默认的延迟加载是无效的，此 Demo 演示了一种原先 zTree v2.6 时的分批加载节点的方法。</li>
-				<li class="highlight_red">2)、此方法适用于1、2千个节点必须全部显示的需求。</li>
-				<li class="highlight_red">3)、此方法并不能解决加载慢的问题，相反只会让最终结果出现的更慢，只是可以有限度的避免浏览器假死，而且显示的节点越多就越慢。</li>
-				<li>4)、对于某一级节点数至少几千个的情况，另一个解决方案是：分页异步加载。<br/>
+				<li>1)、Yeah某一级Nodes数多达几千个的时候，zTree Default的延迟加载是无效的，此 Demo Presentation了一种原先 zTree v2.6 时的分批加载Nodes的Methodology。</li>
+				<li class="highlight_red">2)、此Methodology适用于1、2千个Nodes必须全部Show的需求。</li>
+				<li class="highlight_red">3)、此Methodology并I can\'tSolve加载慢的问题，Instead, it only slows down the end，There\'s only a limit to avoiding the browser\'s fake death，而且Show的Nodes越多就越慢。</li>
+				<li>4)、Yeah某一级Nodes数至少几千个的情况，另一个Solve方案是：分页Step Load。<br/>
 					async load log:<br/>
 					<ul id="log" class="log" style="height:85px"></ul></li>
 				</ul>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li>需要设置 setting.async 异步加载部分的参数</li>
-				<li>建议关闭动画效果 setting.view.expandSpeed = "";</li>
-				<li>其他不需要进行特殊的配置，根据自己的需求自行设置</li>
+				<li>需要Settings setting.async Step LoadPart的Parameters</li>
+				<li>RecommendationsClose动画效果 setting.view.expandSpeed = "";</li>
+				<li>OtherNo need进行特殊的Configure，Based on自己的需求自行Settings</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
+				<li>对 NodesData No special requests，User可以Based on自己的需求Add自定义Properties</li>
 				</ul>
 			</li>
 		</ul>

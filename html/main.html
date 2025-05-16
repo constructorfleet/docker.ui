@@ -22,16 +22,16 @@
 
 <script id="mainTmpl1" type="text/x-jquery-tmpl">
 <div style="display:none" id="mm" class="submenubutton" style="width: 140px;">
-    <div id="mm-tabclose" name="6" iconCls="fa fa-refresh">刷新</div>
+    <div id="mm-tabclose" name="6" iconCls="fa fa-refresh">Refresh</div>
     <div class="menu-sep"></div>
-    <div id="Div1" name="1" iconCls="fa fa-close">关闭</div>
-    <div id="mm-tabcloseother" name="3">关闭其他</div>
-    <div id="mm-tabcloseall" name="2">关闭全部</div>
+    <div id="Div1" name="1" iconCls="fa fa-close">Close</div>
+    <div id="mm-tabcloseother" name="3">Close其他</div>
+    <div id="mm-tabcloseall" name="2">Close全部</div>
     <div class="menu-sep"></div>
-    <div id="mm-tabcloseright" name="4">关闭右侧标签</div>
-    <div id="mm-tabcloseleft" name="5">关闭左侧标签</div>
+    <div id="mm-tabcloseright" name="4">Close右侧标签</div>
+    <div id="mm-tabcloseleft" name="5">Close左侧标签</div>
     <div class="menu-sep"></div>
-    <div id="mm-newwindow" name="7">新窗口中打开</div>
+    <div id="mm-newwindow" name="7">Open in New Window</div>
 </div>
 
 <div data-toggle="cubeui-layout"
@@ -64,20 +64,20 @@
             <a href="javascript:showEvent()"
                 data-toggle="cubeui-menubutton"
                 data-options="iconCls:'fa fa-bell',hasDownArrow:false"
-                style="color: #fff;outline: unset;">事件<span style='margin-left: 2px;' class="title-event layui-badge layui-bg-red">0</span></a>
+                style="color: #fff;outline: unset;">Events<span style='margin-left: 2px;' class="title-event layui-badge layui-bg-red">0</span></a>
 
             <a href="javascript:void(0)"
                 id="mb3" data-toggle="cubeui-menubutton"
                 data-options="menu:'#mm3',iconCls:'fa fa-cog',hasDownArrow:true"
-                style="color: #fff;outline: unset;">设置</a>
+                style="color: #fff;outline: unset;">Settings</a>
 				<div id="mm3" style="width: 74px;">
 					<div data-options="iconCls:'fa fa-key'"
-                         onclick="javascript:modifyUserPwd(0)">修改密码</div>
+                         onclick="javascript:modifyUserPwd(0)">修改Password</div>
 				</div>|
 				<a href="javascript:void(0)" onclick="logout()"
                           data-toggle="cubeui-menubutton"
                           data-options="iconCls:'fa fa-sign-out',hasDownArrow:false"
-                          style="color: #fff;">注销</a>
+                          style="color: #fff;">Write-offs</a>
 			</span>
     </div>
 
@@ -98,7 +98,7 @@
     <div id="center" data-options="region:'center',border:false"
          style="overflow: hidden;">
         <div id="index_tabs" style="width: 100%; height: 100%">
-            <div title="概览<span class='title-summary layui-badge layui-badge-dot'></span>" iconCls="fa fa-windows"
+            <div title="Overview<span class='title-summary layui-badge layui-badge-dot'></span>" iconCls="fa fa-windows"
                  data-options="border:true,iframe:true,
             content:'<iframe src=\'./portal/index.html\' scrolling=\'auto\' frameborder=\'0\' style=\'width:100%;height:100%;\'></iframe>'"></div>
         </div>
@@ -107,15 +107,15 @@
     <div data-options="region:'south',border:true"
          style="text-align: center; height: 30px; line-height: 30px; border-bottom: 0; overflow: hidden;">
 			<span
-                    style="float: left; padding-left: 5px; width: 30%; text-align: left;">当前用户：<block
+                    style="float: left; padding-left: 5px; width: 30%; text-align: left;">Current User：<block
                     class="currentuserinfo">David.Liu</block></span>
-        <span style="padding-right: 5px; width: 40%"> 版权所有 © 2018 <b>锦翰科技（深圳）有限公司</b>  <a
+        <span style="padding-right: 5px; width: 40%"> All rights reserved © 2018 <b>Jinghan Technologies（Shenzhen）Limited</b>  <a
                 href="http://www.joinsunsoft.com" target="_blank"></a>
 				<a href="http://www.beian.miit.gov.cn" target="_blank"> 粤ICP备16033069号</a>
 			</span> <span
-            style="float: right; padding-right: 5px; width: 30%; text-align: right;"><span id='versioninfo'>版本：v.1.0.22</span>  <a
+            style="float: right; padding-right: 5px; width: 30%; text-align: right;"><span id='versioninfo'>Version：v.1.0.22</span>  <a
             href="javascript:void(0);"
-            onclick="show_term();">《条款说明》</a></span>
+            onclick="show_term();">《Article description》</a></span>
     </div>
 </div>
 
@@ -123,9 +123,9 @@
 <div id="ie6-warning">
     <p>
 
-        您正在使用低版本浏览器，在本页面可能会导致部分功能无法使用，建议您升级到
-        <a href='http://www.microsoft.com/china/windows/internet-explorer/' target='_blank'>IE9或以上版本的浏览器</a>
-        或使用<a href='http://se.360.cn/' target='_blank'>360安全浏览器</a>的极速模式浏览
+        您正在使用低Version浏览器，This page may result in some functionality not working，I suggest you upgrade to
+        <a href='http://www.microsoft.com/china/windows/internet-explorer/' target='_blank'>IE9或以上Version的浏览器</a>
+        or<a href='http://se.360.cn/' target='_blank'>360Secure Browser</a>Speed Mode Browser
 
     </p>
 </div>
@@ -165,7 +165,7 @@
             render: function () {
 
                 if (!isTokenOK()) {
-                    $.app.alert("登录已经无效，重新登录", function(){
+                    $.app.alert("Login已经无效，重新Login", function(){
                         window.location = "./login.html";
                     })
                     return
@@ -207,7 +207,7 @@
                 try{
                     let json = $.extends.json.toobject2(chunk)
 
-                    //$.app.show('收到{0}事件:{1}'.format(json.Type, json.Action, new Date(json.timeNano/1000000).pattern('yyyy-MM-dd HH:mm:ss')))
+                    //$.app.show('Copy that{0}Events:{1}'.format(json.Type, json.Action, new Date(json.timeNano/1000000).pattern('yyyy-MM-dd HH:mm:ss')))
 
                 }catch (e) {
                     console.log('Parse event error ' + e)
@@ -216,7 +216,7 @@
         }, local_node, function(){
 
         }, function (xhr, status) {
-            $.app.show('事件监控退出，5秒后重新建立监控事件.....');
+            $.app.show('Organisation，5Re-establish monitoring event in seconds.....');
             $.easyui.thread.sleep(function (){
                 monitorEvent()
             }, 5000)

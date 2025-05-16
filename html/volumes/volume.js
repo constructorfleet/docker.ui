@@ -11,7 +11,7 @@ function loadLease(){
             pageSize:50,
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'center',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'center',
                     width: 150, formatter:leaseOperateFormatter},
                 {field: 'Name', title: 'VOLUME NAME', sortable: true,
                     formatter:$.iGrid.buildformatter([$.iGrid.templateformatter('{Name}'), $.iGrid.tooltipformatter()]),
@@ -50,8 +50,8 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectLease(\'' + index + '\')">查看卷</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除卷</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectLease(\'' + index + '\')">View卷</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete卷</button>';
 
     return htmlstr;
 }
@@ -79,9 +79,9 @@ function removeLease(leaseId) {
         let rows = $('#volumesDg').datagrid('getChecked');
 
         if(rows.length == 0) {
-            $.app.alert('请选择需要删除的租期')
+            $.app.alert('请SelectionYesDelete的租期')
         }else{
-            $.docker.utils.deleteConfirm('删除卷', '您确认要删除当前想选择的数据卷', function (param, closeFn){
+            $.docker.utils.deleteConfirm('Delete卷', '您Confirm要DeleteCurrent想Selection的Data卷', function (param, closeFn){
 
                 let ids = $.extends.collect(rows, function(r){
                     return r.ID;
@@ -90,9 +90,9 @@ function removeLease(leaseId) {
                 $.docker.request.volume.deleteBulk(function(response){
                     let msg = '';
                     if(response.fail.length==0){
-                        msg = '删除成功，已经成功删除'+response.ok.length+'个数据卷';
+                        msg = 'DeleteSuccess，已经SuccessDelete'+response.ok.length+'个Data卷';
                     }else{
-                        msg = '已经成功删除'+response.ok.length+'个数据卷, 失败删除'+response.fail.length+'个数据卷';
+                        msg = '已经SuccessDelete'+response.ok.length+'个Data卷, FailedDelete'+response.fail.length+'个Data卷';
                     }
 
                     reloadDg()
@@ -105,10 +105,10 @@ function removeLease(leaseId) {
         }
 
     }else{
-        $.docker.utils.deleteConfirm('删除卷', '您确认要删除当前的数据卷', function (param, closeFn){
+        $.docker.utils.deleteConfirm('Delete卷', '您Confirm要DeleteCurrentData卷', function (param, closeFn){
             $.docker.request.volume.delete(function(response){
 
-                let msg = '删除成功，已经成功删除数据卷{0}'.format(leaseId);
+                let msg = 'DeleteSuccess，已经SuccessDeleteData卷{0}'.format(leaseId);
                 $.app.show(msg)
 
                 reloadDg()
@@ -125,29 +125,29 @@ function emptyLease(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>选项</legend>
+                        <legend>Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                 
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理指定标签:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理AssignLabel:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>label格式: label1=a label2!=b(不等于) label!=...(没有标签)</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>labelFormat: label1=a label2!=b(Not equal to) label!=...(NothingLabel)</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="labels"
-                                   value='' data-options="required:false,prompt:'label格式: label1=a,label2!=b,label!=...'">
+                                   value='' data-options="required:false,prompt:'labelFormat: label1=a,label2!=b,label!=...'">
                         </div>
                     </div>
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('清理数据卷', '重要警告：确定要清空所有未使用的数据卷，清理后数据卷数据将无法恢复', html,
+    $.docker.utils.optionConfirm('清理Data卷', 'Important Warning：Sure要ClearAll未Use的Data卷，清理后Data卷Data将无法Restore', html,
         function(param, closeFn){
 
             $.docker.request.volume.prune(function(response){
-                let msg = '成功清除{0}个数据卷，回收空间{1}'.format(response.Count, response.Size)
+                let msg = 'SuccessClear{0}个Data卷，Recovery Space{1}'.format(response.Count, response.Size)
 
                 closeFn();
 
@@ -177,7 +177,7 @@ function addLease(){
         region:'east',
         split:false,border:false,width:'100%',collapsed:true,
         iconCls:'fa fa-database',
-        titleformat:'添加数据卷'.format(rowData.Name), title:'数据卷',
+        titleformat:'AddData卷'.format(rowData.Name), title:'Data卷',
         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
         footerHtml:`
              <a  href="javascript:void(0)" data-toggle="cubeui-menubutton" data-options="{
@@ -186,14 +186,14 @@ function addLease(){
                 },
                 btnCls: 'cubeui-btn-orange',
                 iconCls: 'fa fa-plus-square-o'
-            }">创建</a>
+            }">Create</a>
              <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
                         $('#layout').layout('collapse', 'east');
                 },
                 btnCls: 'cubeui-btn-red',
                 iconCls: 'fa fa-close'
-            }">关闭</a>
+            }">Close</a>
             `,
         render:$('#addVolumeTpl').html()
     }
@@ -220,7 +220,7 @@ function save(){
         let labels = $.docker.utils.buildOptsData(info['label-name'],info['label-value']);
 
         $.docker.request.volume.create(function (response) {
-            $.app.show('添加数据卷{0}成功'.format(info.Name))
+            $.app.show('AddData卷{0}Success'.format(info.Name))
             reloadDg()
             $('#layout').layout('collapse', 'east');
 
@@ -242,7 +242,7 @@ function showVolumePanel(index){
             region:'east',
             split:false,border:false,width:'100%',collapsed:true,
             iconCls:'fa fa-database',
-            titleformat:'数据卷-{0}'.format(rowData.Name), title:'数据卷',
+            titleformat:'Data卷-{0}'.format(rowData.Name), title:'Data卷',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerTpl1:'#footerTpl',
             footerHtml:`
@@ -252,7 +252,7 @@ function showVolumePanel(index){
                 },
                 btnCls: 'cubeui-btn-red',
                 iconCls: 'fa fa-close'
-            }">关闭</a>
+            }">Close</a>
             `,
             render:$.templates(html_template).render(rowData)
         }
@@ -270,11 +270,11 @@ let html_template = `
 
 <div class="cubeui-fluid">
     <fieldset>
-        <legend>数据卷信息</legend>
+        <legend>Data卷Information</legend>
     </fieldset>
     <div class="cubeui-row">
         <div class="cubeui-col-sm12">
-            <label class="cubeui-form-label">数据卷:</label>
+            <label class="cubeui-form-label">Data卷:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" name="Name" readonly
                        value='{{>Name}}'
@@ -329,7 +329,7 @@ let html_template = `
 
     <div class="cubeui-row">
         <div class="cubeui-col-sm12">
-            <label class="cubeui-form-label">数据卷驱动:</label>
+            <label class="cubeui-form-label">Data卷Driver:</label>
             <div class="cubeui-input-block">
 
                 <input type="text" data-toggle="cubeui-textbox" name="Driver" readonly
@@ -342,14 +342,14 @@ let html_template = `
     </div>
 
     <fieldset>
-        <legend style="margin-bottom: 0px;">驱动选项</legend>
+        <legend style="margin-bottom: 0px;">DriverOptions</legend>
     </fieldset>
 
     <div class="cubeui-row">
         <div class="cubeui-col-sm12">
             <div class="cubeui-row">
                 <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
-                    <span style='line-height: 20px;padding-right:0px;'>选项</span>
+                    <span style='line-height: 20px;padding-right:0px;'>Options</span>
                 </div>
                 <div class="cubeui-col-sm5" >
                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -359,11 +359,11 @@ let html_template = `
             <div class="cubeui-row">
                 <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                     <input type="text" data-toggle="cubeui-textbox" readonly
-                           value='{{>key}}' data-options="required:false,prompt:'租约ID，选择填写，默认为空，不使用租约'">
+                           value='{{>key}}' data-options="required:false,prompt:'LeasesID，Select Fill，Default as空，不UseLeases'">
                 </div>
                 <div class="cubeui-col-sm5">
                     <input type="text" data-toggle="cubeui-textbox" readonly
-                           value='{{>prop}}' data-options="required:false,prompt:'租约ID，选择填写，默认为空，不使用租约'">
+                           value='{{>prop}}' data-options="required:false,prompt:'LeasesID，Select Fill，Default as空，不UseLeases'">
                 </div>
             </div>
             {{/props}}
@@ -371,14 +371,14 @@ let html_template = `
     </div>
 
     <fieldset>
-        <legend style="margin-bottom: 0px;">标签选项</legend>
+        <legend style="margin-bottom: 0px;">LabelOptions</legend>
     </fieldset>
 
     <div class="cubeui-row">
         <div class="cubeui-col-sm12">
             <div class="cubeui-row">
                 <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
-                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                 </div>
                 <div class="cubeui-col-sm5" >
                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -388,11 +388,11 @@ let html_template = `
             <div class="cubeui-row">
                 <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                     <input type="text" data-toggle="cubeui-textbox" readonly
-                           value='{{>key}}' data-options="required:false,prompt:'租约ID，选择填写，默认为空，不使用租约'">
+                           value='{{>key}}' data-options="required:false,prompt:'LeasesID，Select Fill，Default as空，不UseLeases'">
                 </div>
                 <div class="cubeui-col-sm5">
                     <input type="text" data-toggle="cubeui-textbox" readonly
-                           value='{{>prop}}' data-options="required:false,prompt:'租约ID，选择填写，默认为空，不使用租约'">
+                           value='{{>prop}}' data-options="required:false,prompt:'LeasesID，Select Fill，Default as空，不UseLeases'">
                 </div>
             </div>
             {{/props}}

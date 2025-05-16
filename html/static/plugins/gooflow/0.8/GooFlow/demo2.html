@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>流程图DEMO</title>
+<title>FlowchartDEMO</title>
 <!--[if lt IE 9]>
 <?import namespace="v" implementation="#default#VML" ?>
 <![endif]-->
@@ -31,32 +31,32 @@ var property={
 	height:600,
 	toolBtns:["start round","end round","task round","node","chat","state","plug","join","fork","complex mix"],
 	haveHead:true,
-	headBtns:["new","open","save","undo","redo","reload"],//如果haveHead=true，则定义HEAD区的按钮
+	headBtns:["new","open","save","undo","redo","reload"],//IfhaveHead=true，DefinitionsHEADSector button
 	haveTool:true,
 	haveGroup:true,
 	useOperStack:true
 };
 var remark={
-	cursor:"选择指针",
-	direct:"结点连线",
-	start:"入口结点",
-	"end":"结束结点",
-	"task":"任务结点",
-	node:"自动结点",
-	chat:"决策结点",
-	state:"状态结点",
-	plug:"附加插件",
-	fork:"分支结点",
-	"join":"联合结点",
-	"complex mix":"复合结点",
-	group:"组织划分框编辑开关"
+	cursor:"SelectionPointer",
+	direct:"Connect points",
+	start:"Entry Node",
+	"end":"End Node",
+	"task":"TasksNode",
+	node:"AutoNode",
+	chat:"Decision Node",
+	state:"Status Node",
+	plug:"Attach Plugin",
+	fork:"Branch Node",
+	"join":"Joint Node",
+	"complex mix":"Composite Node",
+	group:"Organisation Box Edit Switches"
 };
 var demo;
 $(document).ready(function(){
 	demo=$.createGooFlow($("#demo"),property);
 	demo.setNodeRemarks(remark);
 	demo.onItemDel=function(id,type){
-		if(confirm("确定要删除该单元吗?")){
+		if(confirm("Sure要Delete该单元吗?")){
       this.blurItem();
       return true;
 		}else{
@@ -104,7 +104,7 @@ function Export(){
 <body style="background:#EEEEEE">
 <div id="demo" style="margin:5px;float:left"></div>
 <form class="myForm" id="propertyForm">
-<div class="form_title">属性设置</div>
+<div class="form_title">PropertiesSettings</div>
 <div class="form_content">
   <table>
     <tr><td class="th">Id：</td><td><input type="text" style="width:120px" id="ele_id"/></td></tr>
@@ -120,12 +120,12 @@ function Export(){
   </table>
 </div>
 <div class="form_btn_div">
-  <input type="reset" value="重置"/>
-  <input type="button" value="确定" onclick="alert(demo.$focus)"/>
+  <input type="reset" value="Reset"/>
+  <input type="button" value="Sure" onclick="alert(demo.$focus)"/>
 </div>
 </form>
 <div style="clear:both">
-<input id="submit" type="button" value='导出结果' onclick="Export()"/>
+<input id="submit" type="button" value='Export结果' onclick="Export()"/>
 <textarea id="result" row="6"></textarea>
 </div>
 </body>

@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="servicesDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="servicesDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -36,7 +36,7 @@
                     extend: '#servicesDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-plus'
-                }">创建服务</a>
+                }">CreateServices</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -44,7 +44,7 @@
                 },
                 btnCls: 'cubeui-btn-slateblue',
                 iconCls: 'fa fa-tags'
-            }">编辑元数据</a>
+            }">Edit元Data</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -52,7 +52,7 @@
                 },
                 btnCls: 'cubeui-btn-orange',
                 iconCls: 'fa fa-headphones'
-            }">升级镜像</a>
+            }">升级Mirror</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -61,18 +61,18 @@
                     extend: '#servicesDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-times'
-                }">删除服务</a>
+                }">DeleteServices</a>
 
             <form id="queryForm" class="search-box">
 
-                <span style='line-height: 30px;padding-right:0px' title="">模式：</span>
+                <span style='line-height: 30px;padding-right:0px' title="">Mode：</span>
                 <input type="text" name="mode" value="" data-toggle="cubeui-combobox"
                        data-options="
                                 width:160,
-                                required:false,prompt:'为空，查询所有',
+                                required:false,prompt:'Empty，QuestionAll',
                                 valueField:'KEY',
                                 textField:'TEXT',
-                                data:[{'KEY':'','TEXT':'所有'},{'KEY':'replicated','TEXT':'replicated'},{'KEY':'global','TEXT':'global'}]
+                                data:[{'KEY':'','TEXT':'All'},{'KEY':'replicated','TEXT':'replicated'},{'KEY':'global','TEXT':'global'}]
                        ">
 
                 <span style='line-height: 30px;padding-left:2px;padding-right:10px'></span>
@@ -80,7 +80,7 @@
                 <input type="text" id='search_type' name="search_type" value="name" data-toggle="cubeui-combobox"
                        data-options="
                                 width:120,
-                                required:true,prompt:'查询方式，必须填写',
+                                required:true,prompt:'QuestionModalities，_Other Organiser',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},
@@ -89,22 +89,22 @@
                 <input type="text" id='search_key' name="search_key" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){
                             $('#searchbtn').trigger('click');
-                       }, mask:'{{:~js(prefix)}}', prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                       }, mask:'{{:~js(prefix)}}', prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'servicesDg'}">查询</a>
+                   grid:{type:'datagrid','id':'servicesDg'}">Question</a>
             </form>
         </div>
     </div>
 </div>
-<!-- 表格工具栏结束 -->
+<!-- End of Table Toolbar -->
 <div id="searchImageMm" data-toggle="cubeui-menu" style="width:120px;display:none" data-options="">
-    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">拉取latest镜像</div>
-    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">指定镜像Tag</div>
+    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">PulllatestMirror</div>
+    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">AssignMirrorTag</div>
 </div>
 </script>
 

@@ -32,7 +32,7 @@ $.app.err = function(info) {
 }
 
 
-ERROR_INFO_TEMP = message.core.info.error_info_temp; //'{0}，错误代码{1}，请联系系统管理员';
+ERROR_INFO_TEMP = message.core.info.error_info_temp; //'{0}，ErrorCode{1}，请联系System管理员';
 ERROR_INFO = function(code){
 	if (arguments.length == 1 ){
 	    //var arg = [];
@@ -216,7 +216,7 @@ initAjax = function(){
 
 		/**
 		 *
-		 * 处理系统级别的请求，拦截有关sessiontimeout和错误信息级别的请求信息
+		 * ProcessingSystem级别的Request，Interception relatedsessiontimeout和ErrorInformation级别的RequestInformation
 		 */
 		var _success = options.success;
 		var _error = options.error;
@@ -288,7 +288,7 @@ initAjax = function(){
 				  }
 
 				  return ;
-			  //alertTip("未授权相关的操作权限，联系公司管理员进行授权", 1000);
+			  //alertTip("未授权RelevantOperation权限，联系公司管理员Conduct授权", 1000);
 			  }
 			  else
 			  {
@@ -372,7 +372,7 @@ initAjax = function(){
 		$.extend(options, {'error':newerror});
 
 		/**
-		 * 如果包含progressing 显示加载进度条，信息为progressing的文字
+		 * IfOrganisationprogressing Show加载进度条，Information为progressingText
 		 * */
 		if(!$.extends.isEmpty(options.progressing)){
 
@@ -472,7 +472,7 @@ initAjax();
 $.app.upload = function(url, data, fileInputs, fn, ignoreerror, progressing, requestHeader){
 
 	if(progressing==null){
-		progressing = "正在请求数据中......"
+		progressing = "正在RequestData中......"
 	}
 
 	let header = {
@@ -482,11 +482,11 @@ $.app.upload = function(url, data, fileInputs, fn, ignoreerror, progressing, req
 
 	header = $.extend(header, requestHeader);
 
-	// 创建formdata
+	// Createformdata
 	var fd = new FormData()
-	// 向formdata中传入数据
+	// 向formdata中ImportData
 	// fd.append()
-	// file是一个伪数组
+	// fileIt\'s one伪Array
 
 	if(data){
 		$.each(data, function (k, v) {
@@ -516,9 +516,9 @@ $.app.upload = function(url, data, fileInputs, fn, ignoreerror, progressing, req
 		url: url,
 		type: "post",
 		headers: header ,
-		// 数据不需要编码
+		// DataNo needEncoded
 		contentType: false,
-		// 数据对象不需要转换成键值对格式
+		// DataObjectNo needConvert成键Value pairFormat
 		processData: false,
 		data: fd,
 		progressing: progressing,
@@ -1214,7 +1214,7 @@ $.app.localStorage = {
 $.app.ajax = function(urlstr, datastr, method, datatype, fn, ignoreerror, progressing, requestHeader, otheroptions){
 
 	if(progressing==null){
-		progressing = "正在请求数据中......"
+		progressing = "正在RequestData中......"
 	}
 
 	if($.extends.isEmpty(method))
@@ -1499,7 +1499,7 @@ $.extend($.fn.datagrid.methods, {
 	removeAllRows:function(a){
 
 		var len = $(a).datagrid('getRows').length;
-        //循环
+        //Loop
         for(var i=0;i<len;i++){
             $(a).datagrid('deleteRow',0);
         }
@@ -1872,7 +1872,7 @@ function ConvertResult2Data(data) {
 
 defaultGridLoadFilter = function(data){
 
-	// just a 不好的方法，没有适当的回调函数支持
+	// just a 不好的Methodology，Nothing适当的Revert functionSupport
 	var options = $(this).datagrid('options')||{};
 	// groupView
 	if(options.group){
@@ -1927,7 +1927,7 @@ $.iDialog = $.extend(!0, $.iDialog||{}, {
 			if(!$.extends.isEmpty(c)){
 				$('#'+o.options.id).iDialog('setTitle', c);
 			}
-			//$('#prvidialog').iDialog('setTitle','设定公司权限-#html($!data.companyname)');
+			//$('#prvidialog').iDialog('setTitle','Set Company Permissions-#html($!data.companyname)');
 
 		}
 	},
@@ -2536,13 +2536,13 @@ $.iGrid = $.extend(!0, $.iGrid||{}, {
 
 });
 
-// --------- 1. 通用部分-------- 如需使用下面 2 或3 功能代码，请copy这部分
+// --------- 1. 通用Part-------- 如需UseDown there 2 或3 FunctionsCode，请copy这Part
 
-var editIndex = undefined;// 记录当前编辑行的index
-// -------------2. 单元格编辑实现代码----------------------
+var editIndex = undefined;// RecordsCurrentEdit行的index
+// -------------2. CellsEditAchievedCode----------------------
 
 /**
- *@description 可编辑单元的操作对象，无特殊要求无需改动此处
+ *@description 可Edit单元的OperationObject，无特殊Request无需改动此处
  */
 
 /**
@@ -2606,7 +2606,7 @@ $.iGrid.EditCell = {
 
       if (this.editIndex[key] == undefined) {
         return true
-      }else if (force || $(dataGridSelector).iDatagrid('validateRow', this.editIndex[key])) {// 验证指定的行，当验证有效的时候返回true
+      }else if (force || $(dataGridSelector).iDatagrid('validateRow', this.editIndex[key])) {// AuthenticationAssigned行，当Authentication有效WhenBacktrue
         $(dataGridSelector).iDatagrid('endEdit', this.editIndex[key]);
         this.editIndex[key] = undefined;
 		delete this.editIndex[key];
@@ -2619,17 +2619,17 @@ $.iGrid.EditCell = {
     	return this.getEditIndex(dataGridSelector) != null;
     },
     rowedit:function (dataGridSelector, index,row,onBeforeInitEditorFn) {
-    	 // 1.定义变量
-        var opts = $(dataGridSelector).iDatagrid('options');//  获得表格的属性
-        var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // 获取冻结列
-        var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // 获取解冻列
-        fields = frozenFields.concat(fields); // 连接冻结列和解冻列的数组
+    	 // 1.DefinitionsVariables
+        var opts = $(dataGridSelector).iDatagrid('options');//  AccessTable的Properties
+        var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // Access冻结列
+        var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // Access解冻列
+        fields = frozenFields.concat(fields); // Connection冻结列和解冻列array
 
         var coloptoins = {};
-        // 2.遍历fields 确定点击状态cell的editor属性放出来 ， 非点击状态下cell的editor属性使用另一个变量保存
+        // 2.Throughfields SureClickStatuscell的editorProperties放出来 ， 非ClickStatus下cell的editorPropertiesUse另一个VariablesSave
         for(var i=0; i<fields.length; i++){
-          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
-          //col.editor1 = col.editor;// 新增列属性editor1保存editor
+          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
+          //col.editor1 = col.editor;// Add列Propertieseditor1Saveeditor
 
           var coloption = $.extend(1, {}, col);
           coloptoins[col.field] = coloption;
@@ -2648,7 +2648,7 @@ $.iGrid.EditCell = {
         if($.isPlainObject(e) && $.isPlainObject(e.editor)){
         	e = e.editor;
         	for(var i=0; i<fields.length; i++){
-                var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
+                var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
                 var newColopt = e[col.field];
 
                 if(newColopt&&newColopt.editor){
@@ -2658,11 +2658,11 @@ $.iGrid.EditCell = {
               }
         }
 
-        // 3.开始编辑行
+        // 3.StartEdit行
         $(dataGridSelector).iDatagrid('beginEdit', index);
         this.setEditIndex(dataGridSelector, index);
 
-        // 4.还原editor属性
+        // 4.ReverteditorProperties
         if($.isPlainObject(e)){
 	        for(var i=0; i<fields.length; i++){
 	          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]);
@@ -2676,20 +2676,20 @@ $.iGrid.EditCell = {
         }
     },
     edit:function (dataGridSelector, index,field,onBeforeInitEditorFn) {
-        // 1.定义变量
-        var opts = $(dataGridSelector).iDatagrid('options');//  获得表格的属性
-        var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // 获取冻结列
-        var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // 获取解冻列
-        fields = frozenFields.concat(fields); // 连接冻结列和解冻列的数组
+        // 1.DefinitionsVariables
+        var opts = $(dataGridSelector).iDatagrid('options');//  AccessTable的Properties
+        var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // Access冻结列
+        var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // Access解冻列
+        fields = frozenFields.concat(fields); // Connection冻结列和解冻列array
 
-        //第一次遍历是为了得到callback的返回值，新的editor。
+        //第一次Through是为了Got itcallback的Back值，Neweditor。
         var e;
         if(onBeforeInitEditorFn){
 
             for(var i=0; i<fields.length; i++){
-                var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
+                var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
 
-                if (fields[i] == field){ //判断是否是被点击的cell 进行回调
+                if (fields[i] == field){ //DecisionIs it被Click的cell ConductRewind
               	  var row = $(dataGridSelector).iDatagrid('getRows')[index];
               	  e = onBeforeInitEditorFn.call(this, col, row, col.editor, index, field);
                 }
@@ -2697,14 +2697,14 @@ $.iGrid.EditCell = {
         }
 
         if(e===false)
-        	return ; // 如果返回false，表示跳过cell editor状态
+        	return ; // IfBackfalse，Organisation跳过cell editorStatus
 
-     // 2.遍历fields 确定点击状态cell的editor属性放出来 ， 非点击状态下cell的editor属性使用另一个变量保存
+     // 2.Throughfields SureClickStatuscell的editorProperties放出来 ， 非ClickStatus下cell的editorPropertiesUse另一个VariablesSave
 
         for(var i=0; i<fields.length; i++){
-          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
-          col.editor1 = col.editor;// 新增列属性editor1保存editor
-          if (fields[i] != field){ //判断是否是被点击的cell 如果不是先将editor属性清除
+          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
+          col.editor1 = col.editor;// Add列Propertieseditor1Saveeditor
+          if (fields[i] != field){ //DecisionIs it被Click的cell IfNope先将editorPropertiesClear
             col.editor = null;
           }else{
         	  if($.isPlainObject(e)){
@@ -2712,11 +2712,11 @@ $.iGrid.EditCell = {
         	  }
           }
         }
-        // 3.开始编辑行
+        // 3.StartEdit行
         $(dataGridSelector).iDatagrid('beginEdit', index);
         this.setEditIndex(dataGridSelector, index);
 
-        // 4.还原editor属性
+        // 4.ReverteditorProperties
         for(var i=0; i<fields.length; i++){
           var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]);
           col.editor = col.editor1;
@@ -2887,7 +2887,7 @@ $.iGrid.EditCell = {
         	if(addIndex)
         		var index = addIndex;
         	else{
-        		var index = 0 ;// 添加行的编号
+        		var index = 0 ;// Add行的Numbering
 
 				if(row['rowIndex']){
 					index = row['rowIndex'];
@@ -2898,9 +2898,9 @@ $.iGrid.EditCell = {
 				c.iDatagrid('appendRow',row);
 				index = c.datagrid('getRows').length-1;
 			}else{
-				// 1.插入一行
+				// 1.Insert一行
 				c.iDatagrid('insertRow',{
-				  index:index,   // 索引从0开始
+				  index:index,   // Index from0Start
 				  row: row
 				});
 			}
@@ -2909,18 +2909,18 @@ $.iGrid.EditCell = {
             ////
             e = row.editor;
             if($.isPlainObject(e)){
-            	// 1.定义变量
-            	var opts = $(dataGridSelector).iDatagrid('options');//  获得表格的属性
-                var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // 获取冻结列
-                var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // 获取解冻列
-                fields = frozenFields.concat(fields); // 连接冻结列和解冻列的数组
+            	// 1.DefinitionsVariables
+            	var opts = $(dataGridSelector).iDatagrid('options');//  AccessTable的Properties
+                var frozenFields = $(dataGridSelector).iDatagrid('getColumnFields',true); // Access冻结列
+                var fields = $(dataGridSelector).iDatagrid('getColumnFields'); // Access解冻列
+                fields = frozenFields.concat(fields); // Connection冻结列和解冻列array
 
                 var coloptoins = {};
 
-             // 2.遍历fields 确定点击状态cell的editor属性放出来 ， 非点击状态下cell的editor属性使用另一个变量保存
+             // 2.Throughfields SureClickStatuscell的editorProperties放出来 ， 非ClickStatus下cell的editorPropertiesUse另一个VariablesSave
                 for(var i=0; i<fields.length; i++){
-                  var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
-                  //col.editor1 = col.editor;// 新增列属性editor1保存editor
+                  var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
+                  //col.editor1 = col.editor;// Add列Propertieseditor1Saveeditor
 
                   var coloption = $.extend(1, {}, col);
                   coloptoins[col.field] = coloption;
@@ -2928,7 +2928,7 @@ $.iGrid.EditCell = {
                 }
 
                 for(var i=0; i<fields.length; i++){
-                    var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列属性
+                    var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]); // 拿到列Properties
                     var newColopt = e[col.field];
 
                     if(newColopt&&newColopt.editor){
@@ -2938,16 +2938,16 @@ $.iGrid.EditCell = {
                   }
             }
 
-            // 3.开始编辑行
+            // 3.StartEdit行
             $(dataGridSelector).iDatagrid('beginEdit', index);
 
-            // 4.选中当前行
+            // 4.SelectCurrent行
             $.iGrid.EditCell.setEditIndex(dataGridSelector, index);
 
 			$(dataGridSelector).iDatagrid('scrollTo', index);
 
 
-            // 4.还原editor属性
+            // 4.ReverteditorProperties
             if($.isPlainObject(e)){
     	        for(var i=0; i<fields.length; i++){
     	          var col = $(dataGridSelector).iDatagrid('getColumnOption', fields[i]);
@@ -3025,7 +3025,7 @@ $.iGrid.EditCell = {
         var rows =  c.iDatagrid('getChecked');
 
         if(rows.length == 0){
-         return  $.app.alert(message.core.info.remove_without_selection); // 未勾选的话弹出消息窗口
+         return  $.app.alert(message.core.info.remove_without_selection); // 未CheckIf..弹出消息Window
         }
 
         if(notconfirm){
@@ -3118,19 +3118,19 @@ $.fn.datagrid.defaults.onAfterEdit = $.easyui.event.delegate(
 **/
 
 /**
- * 专门处理onclickCell来进行Cell修改的handle生成器，如果要进行cell的edit，
+ * 专门ProcessingonclickCell来ConductCellModify的handleGenerate器，If要Conductcell的edit，
  * onClickCell:$.iGrid.createEditCellHandle(
                 	function(col, row, editor, index, field){});
 
- * onBeforeInitEditorFn是回调，返回值是null或者editor，如果需要定制同一个column的不同值有不同的类型，即可扩展这个
- * 回调函数， function(col, row, editor, index, field){}
- *   col  当前的col 为column的options对象
- *   row  当前行数据
- *   editor 当前的编辑器，如果不修改编辑器，
- *   		直接返回editor即可。 要修改返回修改好的editor，
- *   		返回null，无编辑器，即无法编辑
- *   index  当前记录的index
- *   field  当前column对应的field
+ * onBeforeInitEditorFn是Rewind，BackValuenullOr..editor，IfYes定制同一个column的Different值有Different的Type，YeahExtensionHere
+ * Revert function， function(col, row, editor, index, field){}
+ *   col  Currentcol 为column的optionsObject
+ *   row  Current行Data
+ *   editor CurrentEdit器，If不ModifyEdit器，
+ *   		Direct ReturneditorYeah。 要ModifyBackModify好的editor，
+ *   		Backnull，无Edit器，即无法Edit
+ *   index  CurrentRecords的index
+ *   field  CurrentcolumnCorrespond的field
  */
 $.iGrid.EdatagridHandle = {
 	cellClickHanle : function(onBeforeInitEditorFn){
@@ -3661,7 +3661,7 @@ $.fn.iMenubutton.defaults.onClick = $.easyui.event.wrap(
 						if(opts.filter.fields && opts.filter.fields.length>0){
 							filterdiv = $("<div class='cube-filter'></div>");
 
-							var filterinner = $('<div class="cubeui-fluid"><fieldset><legend>过滤条件</legend></fieldset></div>');
+							var filterinner = $('<div class="cubeui-fluid"><fieldset><legend>Filter Conditions</legend></fieldset></div>');
 							filterdiv.append(filterinner);
 
 							panelobj.find('.cubeui-toolbar').append(filterdiv);
@@ -4536,7 +4536,7 @@ $.fn.iCombogrid.defaults.onSelect = $.easyui.event.delegate(
 		$.fn.iCombogrid.defaults.onSelect,
 		function(idx, record){
 			$.app.debug('icombogrid onSelect');
-			// 和combogrid调用有点差别， 这里$(this).combogrid取不到值
+			// 和combogridCall有点差别， Here$(this).combogridUnable to value
 			var o = $(this).datagrid('options');
 			var pk = o.idField;
 			var oldr = o.selectedRecord;
@@ -5227,7 +5227,7 @@ function checkAndOpenDialog(f, d){
 }
 
 /**
- * @description 添加tab页面
+ * @description AddtabPage
  * @param options
  */
 
@@ -5432,7 +5432,7 @@ function relogin() {
 	$.app.localStorage.remove(window.app.clientId+'.tokenType');
 
 	if(window.top===window.self ){
-		$.app.alert(null, "登录已经超时，请重新登录", function () {
+		$.app.alert(null, "Login已经超时，请重新Login", function () {
 			window.location.href=contextpath + '/login.html';
 		})
 	}else{

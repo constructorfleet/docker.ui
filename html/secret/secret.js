@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all1:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 100, formatter:leaseOperateFormatter},
                 {field: 'Id', title: 'ID', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -48,9 +48,9 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectSecret(\'' + row.ID + '\')">查看</button>';
-    htmlstr += '<button disabled class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateData(\'' + row.ID + '\')">修改密码</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectSecret(\'' + row.ID + '\')">View</button>';
+    htmlstr += '<button disabled class="layui-btn-blue layui-btn layui-btn-xs" onclick="updateData(\'' + row.ID + '\')">ModifyPassword</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete</button>';
     return htmlstr;
 }
 
@@ -89,12 +89,12 @@ function removeLease(id, closePanel) {
         let rows = $('#secretsDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个密码删除');
+            $.app.show('本Version仅SupportSelection一个PasswordDelete');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个密码删除');
+            $.app.show('请Selection一个PasswordDelete');
             return;
         }else{
             id = rows[0].ID;
@@ -103,11 +103,11 @@ function removeLease(id, closePanel) {
 
     let node = local_node;
 
-    $.app.confirm('您确认要删除当前密码',function (){
+    $.app.confirm('您Confirm要DeleteCurrentPassword',function (){
 
         let node = local_node;
         $.docker.request.secret.delete(function(response){
-            $.app.show("删除密码成功".format(""));
+            $.app.show("DeletePasswordSuccess".format(""));
             reloadDg();
 
             if(closePanel){
@@ -149,7 +149,7 @@ function showSecretPanel(rowData){
         iconCls:'fa fa-key',
         collapsible:false,
         showHeader1:false,
-        titleformat:'密码信息-{0}'.format($.extends.isEmpty(rowData.Name, '新建')), title:'节点信息',
+        titleformat:'PasswordInformation-{0}'.format($.extends.isEmpty(rowData.Name, 'New')), title:'NodesInformation',
         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
         footerHtml:$.templates(footer_html_template).render(rowData),
         render:function (panel, option) {
@@ -190,12 +190,12 @@ function saveSecret(fn){
 
 
         let doFn = function (row) {
-            $.app.confirm("您确定新建当前密码信息？", function () {
+            $.app.confirm("您SureNewCurrentPasswordInformation？", function () {
                 $.docker.request.secret.create(function (response) {
                     if (fn) {
                         fn.call(row, response, row)
                     } else {
-                        $.app.show('创建密码{0}成功'.format(row.Name));
+                        $.app.show('CreatePassword{0}Success'.format(row.Name));
                         reloadDg();
                         removePanel();
                         //$('#layout').layout('collapse', 'east');
@@ -208,7 +208,7 @@ function saveSecret(fn){
 
         if(info.mode == 'data'){
             if($.extends.isEmpty(info.data_text)){
-                $.app.show("必须填写密码文本内容");
+                $.app.show("_Other OrganiserPasswordTextContents");
                 return false;
             }
             data.Data = info.data_text;
@@ -217,7 +217,7 @@ function saveSecret(fn){
             let files = $('#data_file').filebox('files');
 
             if($.extends.isEmpty(files)){
-                $.app.show("必须选择需要上传的密码文件");
+                $.app.show("必须SelectionYesUploadPasswordDocumentation");
                 return false;
             }
 
@@ -240,14 +240,14 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-slateblue',
             iconCls: 'fa fa-tags'
-        }">编辑元数据</a>        
+        }">Edit元Data</a>        
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                 removeLease('{{:ID}}', true);
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-times'
-        }">删除</a>
+        }">Delete</a>
         {{else}}   
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -255,7 +255,7 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-plus'
-        }">添加</a>
+        }">Add</a>
         {{/if}}
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -263,12 +263,12 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
 `;
 
 let secret_html_template = `
         <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="密码信息"
+            <div title="PasswordInformation"
                  data-options="id:'eastTab0',iconCls:'fa fa-info-circle'">                 
                 <div style="margin: 0px;">
                 </div>
@@ -277,7 +277,7 @@ let secret_html_template = `
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>基础信息</legend>
+                        <legend>Basic information</legend>
                     </fieldset>
                     
                     <form id='createSecretForm'>
@@ -314,7 +314,7 @@ let secret_html_template = `
 								},
 								btnCls: 'cubeui-btn-blue',
 								iconCls: 'fa fa-pencil-square-o'
-							}">修改</a>
+							}">Modify</a>
                         </div>
                     </div>
                     
@@ -368,7 +368,7 @@ let secret_html_template = `
                                 <input type="text" data-toggle="cubeui-textbox" id="SecretName" name="Name"
                                        value=''
                                        data-options="
-                                       prompt:'密码的名称，必填项目',
+                                       prompt:'Password的Name，Required项目',
                                        required:true,
                                             "
                                 >
@@ -387,7 +387,7 @@ let secret_html_template = `
                         <div class="cubeui-col-sm12" style="margin-top: 5px">
                             <label class="cubeui-form-label">
                             <input data-toggle="cubeui-radiobutton" checked name="mode" 
-                                            data-options="title:'从本地上传文件',
+                                            data-options="title:'从LocalUploadDocumentation',
                                             onChange:function(checked){    
                                                     $('#data_file').filebox('enableValidation');
                                                     $('#data_file').filebox('enable');
@@ -396,11 +396,11 @@ let secret_html_template = `
                                                     $('#data_text').textbox('disable');                                            
                                             }
                                             " value="file" >
-                            选择文件:</label>
+                            Select File:</label>
                             <div class="cubeui-input-block">
                                 <input  data-toggle="cubeui-filebox" id="data_file" data-options="
-                                    prompt:'从本地文件系统选择文件...',
-                                    buttonText: '选择文件',
+                                    prompt:'从LocalDocumentationSystemSelect File...',
+                                    buttonText: 'Select File',
                                     required:true,
                                     accept:'.*',
                                     " style="width:100%">  
@@ -412,7 +412,7 @@ let secret_html_template = `
                         <div class="cubeui-col-sm12">
                             <label class="cubeui-form-label">                            
                             <input data-toggle="cubeui-radiobutton" name="mode" 
-                                            data-options="title:'直接输入文本内容',
+                                            data-options="title:'直接输入TextContents',
                                             onChange:function(checked){               
                                                     $('#data_text').textbox('enableValidation');  
                                                     $('#data_text').textbox('enable');   
@@ -422,14 +422,14 @@ let secret_html_template = `
                                                     $('#data_file').filebox('resize');         
                                             }
                                             " value="data" >                                            
-                            密码内容:</label>
+                            PasswordContents:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="data_text" id="data_text"
                                        value=''
                                        data-options="
                                        disabled:true,
-                                       prompt:'密码内容，必填项目',
+                                       prompt:'PasswordContents，Required项目',
                                        required:true,
                                        multiline:true,
                                        height:200,
@@ -441,7 +441,7 @@ let secret_html_template = `
                     {{/if}}
                                     
                     <fieldset  style="margin-top: 10px;">
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                                 
                     {{if updated}}
@@ -449,7 +449,7 @@ let secret_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm1">
                                     <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -498,11 +498,11 @@ let secret_html_template = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -529,12 +529,12 @@ function updateData(id){
         let rows = $('#secretsDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个密码修改');
+            $.app.show('本Version仅SupportSelection一个PasswordModify');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个密码修改');
+            $.app.show('请Selection一个PasswordModify');
             return;
         }else{
             id = rows[0].ID;
@@ -552,9 +552,9 @@ function updateData(id){
                 </div>
                 <div class="cubeui-fluid">
                     <div style="margin-top:5px">      
-                        <div class="cubeui-row" title="密码数据">
+                        <div class="cubeui-row" title="PasswordData">
                             <fieldset>
-                                <legend style="margin-bottom: 0px;"密码数据</legend>
+                                <legend style="margin-bottom: 0px;"PasswordData</legend>
                             </fieldset>
                                             
                             <div class="cubeui-col-sm12">
@@ -562,7 +562,7 @@ function updateData(id){
                                 <input type="text" data-toggle="cubeui-textbox" name="Data" 
                                        value=''
                                        data-options="
-                                       prompt:'密码内容，必填项目',
+                                       prompt:'PasswordContents，Required项目',
                                        required:true,
                                        multiline:true,
                                        height:260,
@@ -578,15 +578,15 @@ function updateData(id){
 
         html = $.templates(html).render(response)
 
-        $.docker.utils.optionConfirm('修改密码数据', null, html, function (param, closeFn) {
+        $.docker.utils.optionConfirm('ModifyPasswordData', null, html, function (param, closeFn) {
 
             if($.extends.isEmpty(param.Data)){
-                $.app.show("请输入密码数据内容");
+                $.app.show("请输入PasswordDataContents");
                 return false;
             }
 
             $.docker.request.secret.update_data(function (response) {
-                $.app.show("密码{0}数据修改成功".format(response.Info.Spec.Name));
+                $.app.show("Password{0}DataModifySuccess".format(response.Info.Spec.Name));
 
                 reloadDg();
                 if(inspect){
@@ -605,12 +605,12 @@ function updateTags(id, inspect){
         let rows = $('#secretsDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个密码编辑元数据');
+            $.app.show('本Version仅SupportSelection一个PasswordEdit元Data');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个密码编辑元数据');
+            $.app.show('请Selection一个PasswordEdit元Data');
             return;
         }else{
             id = rows[0].ID;
@@ -626,9 +626,9 @@ function updateTags(id, inspect){
                 </div>
                 <div class="cubeui-fluid">
                     <div style="margin-top:5px">      
-                        <div class="cubeui-row" title="用户定义的密码键/值元数据">
+                        <div class="cubeui-row" title="User definitionPassword键/值元Data">
                             <fieldset>
-                                <legend style="margin-bottom: 0px;">用户定义的密码键/值元数据</legend>
+                                <legend style="margin-bottom: 0px;">User definitionPassword键/值元Data</legend>
                             </fieldset>
                                             
                             <div class="cubeui-col-sm12 add-opt-div">
@@ -651,11 +651,11 @@ function updateTags(id, inspect){
                                 <div class="cubeui-row">
                                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                               name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                               name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                     </div>
                                     <div class="cubeui-col-sm5">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                               name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                               name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                     </div>
                                     <div class="cubeui-col-sm2" style="text-align: center">
                                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -674,12 +674,12 @@ function updateTags(id, inspect){
 
         html = $.templates(html).render(response)
 
-        $.docker.utils.optionConfirm('修改密码键/值标签的元数据', null, html,
+        $.docker.utils.optionConfirm('ModifyPassword键/值Label的元Data', null, html,
             function(param, closeFn){
                 let labels = $.docker.utils.buildOptsData(param['Labels-name'],param['Labels-value']);
 
                 $.docker.request.secret.update_labels(function (response) {
-                    $.app.show("密码{0键/值标签的元数据修改成功".format(response.Info.Spec.Name));
+                    $.app.show("Password{0键/值Label的元DataModifySuccess".format(response.Info.Spec.Name));
 
                     reloadDg();
                     if(inspect){
@@ -700,20 +700,20 @@ function updateName(btn, id){
 
     if(opts.flag==2){
 
-        $.app.confirm("确定修改密码名称？", function(){
+        $.app.confirm("SureModifyPasswordName？", function(){
 
             let name = $('#SecretName').textbox('getValue');
 
             if($.extends.isEmpty(name)){
-                $.app.show("请输入密码的名字");
+                $.app.show("请输入Password的Name");
                 return false;
             }
 
             $.docker.request.secret.update_name(function (response) {
-                $.app.show('修改密码名称已经完成');
+                $.app.show('ModifyPasswordName已经完成');
                 opts.flag = 1;
                 $(btn).linkbutton({
-                    text:'修改',
+                    text:'Modify',
                     iconCls: 'fa fa-pencil-square-o'
                 });
 
@@ -729,7 +729,7 @@ function updateName(btn, id){
         $('#SecretName').textbox('readonly', false);
         $('#SecretName').textbox('textbox').focus();
         $(btn).linkbutton({
-            text:'确定',
+            text:'Sure',
             iconCls: 'fa fa-check-square-o'
         });
     }

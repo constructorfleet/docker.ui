@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>消息盒子</title>
+<title>Message Box</title>
 
 <link rel="stylesheet" href="../../../layui.css?v=1">
 <style>
@@ -28,11 +28,11 @@
 <ul class="layim-msgbox" id="LAY_view"></ul>
 
 <div style="margin: 0 15px;">
-  <blockquote class="layui-elem-quote">注意：这些都是模拟数据，实际使用时，需将其中的模拟接口改为你的项目真实接口。
-  <br>该模版文件所在目录（相对于layui.js）：/css/modules/layim/html/msgbox.html</blockquote>
+  <blockquote class="layui-elem-quote">Attention：这些都是模拟Data，实际Use时，需将其中的模拟Interface改为你的项目真实Interface。
+  <br>该模版Documentation所在目录（Relative tolayui.js）：/css/modules/layim/html/msgbox.html</blockquote>
 </div>
 
-<textarea title="消息模版" id="LAY_tpl" style="display:none;">
+<textarea title="Message Template" id="LAY_tpl" style="display:none;">
 {{# layui.each(d.data, function(index, item){
   if(item.from){ }}
     <li data-uid="{{ item.from }}" data-fromGroup="{{ item.from_group }}">
@@ -45,23 +45,23 @@
       </p>
       <p class="layim-msgbox-content">
         {{ item.content }} 
-        <span>{{ item.remark ? '附言: '+item.remark : '' }}</span>
+        <span>{{ item.remark ? 'Annex: '+item.remark : '' }}</span>
       </p>
       <p class="layim-msgbox-btn">
-        <button class="layui-btn layui-btn-small" data-type="agree">同意</button>
-        <button class="layui-btn layui-btn-small layui-btn-primary" data-type="refuse">拒绝</button>
+        <button class="layui-btn layui-btn-small" data-type="agree">Agreed</button>
+        <button class="layui-btn layui-btn-small layui-btn-primary" data-type="refuse">Reject</button>
       </p>
     </li>
   {{# } else { }}
     <li class="layim-msgbox-system">
-      <p><em>系统：</em>{{ item.content }}<span>{{ item.time }}</span></p>
+      <p><em>System：</em>{{ item.content }}<span>{{ item.time }}</span></p>
     </li>
   {{# }
 }); }}
 </textarea>
 
 <!-- 
-上述模版采用了 laytpl 语法，不了解的同学可以去看下文档：http://www.layui.com/doc/modules/laytpl.html 
+This template is used laytpl Syntax:，If you don\'t know, you can read the files：http://www.layui.com/doc/modules/laytpl.html 
 -->
 
 
@@ -74,12 +74,12 @@ layui.use(['layim', 'flow'], function(){
   ,$ = layui.jquery
   ,flow = layui.flow;
 
-  var cache = {}; //用于临时记录请求到的数据
+  var cache = {}; //用于临时记录Request到的Data
 
-  //请求消息
+  //Request消息
   var renderMsg = function(page, callback){
     
-    //实际部署时，请将下述 getmsg.json 改为你的接口地址
+    //Actual deployment，Please provide the following getmsg.json 改为你的InterfaceAddress
     
     $.get('getmsg.json', {
       page: page || 1
@@ -88,7 +88,7 @@ layui.use(['layim', 'flow'], function(){
         return layer.msg(res.msg);
       }
 
-      //记录来源用户信息
+      //记录来源User信息
       layui.each(res.data, function(index, item){
         cache[item.from] = item.user;
       });
@@ -97,12 +97,12 @@ layui.use(['layim', 'flow'], function(){
     });
   };
 
-  //消息信息流
+  //Message stream
   flow.load({
-    elem: '#LAY_view' //流加载容器
+    elem: '#LAY_view' //流加载Containers
     ,isAuto: false
-    ,end: '<li class="layim-msgbox-tips">暂无更多新消息</li>'
-    ,done: function(page, next){ //加载下一页
+    ,end: '<li class="layim-msgbox-tips">No further news</li>'
+    ,done: function(page, next){ //加载Next Page
       renderMsg(page, function(data, pages){
         var html = laytpl(LAY_tpl.value).render({
           data: data
@@ -113,65 +113,65 @@ layui.use(['layim', 'flow'], function(){
     }
   });
 
-  //打开页面即把消息标记为已读
+  //打开Page即把消息Tag为已读
   /*
   $.post('/message/read', {
     type: 1
   });
   */
 
-  //操作
+  //Operation
   var active = {
-    //同意
+    //Agreed
     agree: function(othis){
       var li = othis.parents('li')
       ,uid = li.data('uid')
       ,from_group = li.data('fromGroup')
       ,user = cache[uid];
 
-      //选择分组
+      //Selection分组
       parent.layui.layim.setFriendGroup({
         type: 'friend'
         ,username: user.username
         ,avatar: user.avatar
-        ,group: parent.layui.layim.cache().friend //获取好友分组数据
+        ,group: parent.layui.layim.cache().friend //获取Friends分组Data
         ,submit: function(group, index){
           
-          //将好友追加到主面板
+          //Add Friends to Main Panel
           parent.layui.layim.addList({
             type: 'friend'
-            ,avatar: user.avatar //好友头像
-            ,username: user.username //好友昵称
-            ,groupid: group //所在的分组id
-            ,id: uid //好友ID
-            ,sign: user.sign //好友签名
+            ,avatar: user.avatar //Friends
+            ,username: user.username //Friends nickname
+            ,groupid: group //Group(s)id
+            ,id: uid //FriendsID
+            ,sign: user.sign //Friends签名
           });
           parent.layer.close(index);
-          othis.parent().html('已同意');
+          othis.parent().html('Agreed');
         
         
-          //实际部署时，请开启下述注释，并改成你的接口地址
+          //Actual deployment，Please open the following comments:，并改成你的InterfaceAddress
           /*
           $.post('/im/agreeFriend', {
-            uid: uid //对方用户ID
-            ,from_group: from_group //对方设定的好友分组
-            ,group: group //我设定的好友分组
+            uid: uid //对方UserID
+            ,from_group: from_group //The peer-set friends group
+            ,group: group //The group of friends I set up
           }, function(res){
             if(res.code != 0){
               return layer.msg(res.msg);
             }
 
-            //将好友追加到主面板
+            //Add Friends to Main Panel
             parent.layui.layim.addList({
               type: 'friend'
-              ,avatar: user.avatar //好友头像
-              ,username: user.username //好友昵称
-              ,groupid: group //所在的分组id
-              ,id: uid //好友ID
-              ,sign: user.sign //好友签名
+              ,avatar: user.avatar //Friends
+              ,username: user.username //Friends nickname
+              ,groupid: group //Group(s)id
+              ,id: uid //FriendsID
+              ,sign: user.sign //Friends签名
             });
             parent.layer.close(index);
-            othis.parent().html('已同意');
+            othis.parent().html('Agreed');
           });
           */
           
@@ -179,20 +179,20 @@ layui.use(['layim', 'flow'], function(){
       });
     }
 
-    //拒绝
+    //Reject
     ,refuse: function(othis){
       var li = othis.parents('li')
       ,uid = li.data('uid');
 
-      layer.confirm('确定拒绝吗？', function(index){
+      layer.confirm('SureReject吗？', function(index){
         $.post('/im/refuseFriend', {
-          uid: uid //对方用户ID
+          uid: uid //对方UserID
         }, function(res){
           if(res.code != 0){
             return layer.msg(res.msg);
           }
           layer.close(index);
-          othis.parent().html('<em>已拒绝</em>');
+          othis.parent().html('<em>Rejected</em>');
         });
       });
     }

@@ -1,40 +1,40 @@
 if ($.fn.pagination) {
     $.fn.pagination.defaults.beforePageText = '第';
     $.fn.pagination.defaults.afterPageText = '共{pages}頁';
-    $.fn.pagination.defaults.displayMsg = '顯示{from}到{to},共{total}記錄';
+    $.fn.pagination.defaults.displayMsg = 'Show{from}到{to},共{total}Records';
 }
 if ($.fn.datagrid) {
-    $.fn.datagrid.defaults.loadMsg = '正在處理，請稍待。。。';
+    $.fn.datagrid.defaults.loadMsg = 'Processing，Please wait。。。';
 }
 if ($.fn.treegrid && $.fn.datagrid) {
     $.fn.treegrid.defaults.loadMsg = $.fn.datagrid.defaults.loadMsg;
 }
 if ($.messager) {
-    $.messager.defaults.ok = '確定';
-    $.messager.defaults.cancel = '取消';
+    $.messager.defaults.ok = 'Sure';
+    $.messager.defaults.cancel = 'Cancel';
 }
 $.map(['validatebox', 'textbox', 'passwordbox', 'filebox', 'searchbox',
     'combo', 'combobox', 'combogrid', 'combotree',
     'datebox', 'datetimebox', 'numberbox',
     'spinner', 'numberspinner', 'timespinner', 'datetimespinner'], function (plugin) {
     if ($.fn[plugin]) {
-        $.fn[plugin].defaults.missingMessage = '該輸入項為必輸項';
+        $.fn[plugin].defaults.missingMessage = 'The entry is the required one';
     }
 });
 if ($.fn.validatebox) {
-    $.fn.validatebox.defaults.rules.email.message = '請輸入有效的電子郵件地址';
-    $.fn.validatebox.defaults.rules.url.message = '請輸入有效的URL地址';
-    $.fn.validatebox.defaults.rules.length.message = '輸入內容長度必須介於{0}和{1}之間';
-    $.fn.validatebox.defaults.rules.remote.message = '請修正此欄位';
+    $.fn.validatebox.defaults.rules.email.message = 'Please enter valid電子郵件Address';
+    $.fn.validatebox.defaults.rules.url.message = 'Please enter validURLAddress';
+    $.fn.validatebox.defaults.rules.length.message = 'Enter content length must be between{0}和{1}Between';
+    $.fn.validatebox.defaults.rules.remote.message = '請Amendments此欄位';
 }
 if ($.fn.calendar) {
     $.fn.calendar.defaults.weeks = ['日', '一', '二', '三', '四', '五', '六'];
-    $.fn.calendar.defaults.months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    $.fn.calendar.defaults.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', '十January', '十February'];
 }
 if ($.fn.datebox) {
-    $.fn.datebox.defaults.currentText = '今天';
-    $.fn.datebox.defaults.closeText = '關閉';
-    $.fn.datebox.defaults.okText = '確定';
+    $.fn.datebox.defaults.currentText = 'Today';
+    $.fn.datebox.defaults.closeText = 'Close';
+    $.fn.datebox.defaults.okText = 'Sure';
 
 	$.fn.datebox.defaults.formatter = function (date) {
         var y = date.getFullYear();

@@ -7,18 +7,18 @@ function debug(info){
 	}
 }
 
-// 格式化日期时间
+// Format化DateTime
 Date.prototype.pattern = function(fmt) {
 	var o = {
-		"M+" : this.getMonth() + 1,// 月份
+		"M+" : this.getMonth() + 1,// Month
 		"d+" : this.getDate(),// 日
-		"h+" : this.getHours() % 12 == 0 ? 12 : this.getHours() % 12,// 小时
-		"H+" : this.getHours(),// 小时
+		"h+" : this.getHours() % 12 == 0 ? 12 : this.getHours() % 12,// Hours
+		"H+" : this.getHours(),// Hours
 		"m+" : this.getMinutes(),// 分
 		"s+" : this.getSeconds(),// 秒
-		"q+" : Math.floor((this.getMonth() + 3) / 3),// 季度
+		"q+" : Math.floor((this.getMonth() + 3) / 3),// quarterly
 		"S" : this.getMilliseconds()
-	// 毫秒
+	// milliseconds
 	};
 	var week = {
 		"0" : "\u65e5",

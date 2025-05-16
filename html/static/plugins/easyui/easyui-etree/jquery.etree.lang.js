@@ -1,18 +1,18 @@
 $.extend($.fn.etree.defaults,{
 	editMsg:{
 		norecord:{
-			title:'警告',
-			msg:'请先选择节点后再进行修改操作。'
+			title:'Warning',
+			msg:'请先SelectionNodes后再ConductModifyOperation。'
 		}
 	},
 	destroyMsg:{
 		norecord:{
-			title:'警告',
-			msg:'请先选择节点后再进行删除操作。'
+			title:'Warning',
+			msg:'请先SelectionNodes后再ConductDeleteOperation。'
 		},
 		confirm:{
-			title:'确认',
-			msg:'是否真的删除选定的节点？'
+			title:'Confirm',
+			msg:'是否真的Delete选定的Nodes？'
 		}
 	}
 

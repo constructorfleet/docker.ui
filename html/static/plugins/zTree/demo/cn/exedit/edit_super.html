@@ -39,18 +39,18 @@
 		};
 
 		var zNodes =[
-			{ id:1, pId:0, name:"父节点 1", open:true},
-			{ id:11, pId:1, name:"叶子节点 1-1"},
-			{ id:12, pId:1, name:"叶子节点 1-2"},
-			{ id:13, pId:1, name:"叶子节点 1-3"},
-			{ id:2, pId:0, name:"父节点 2", open:true},
-			{ id:21, pId:2, name:"叶子节点 2-1"},
-			{ id:22, pId:2, name:"叶子节点 2-2"},
-			{ id:23, pId:2, name:"叶子节点 2-3"},
-			{ id:3, pId:0, name:"父节点 3", open:true},
-			{ id:31, pId:3, name:"叶子节点 3-1"},
-			{ id:32, pId:3, name:"叶子节点 3-2"},
-			{ id:33, pId:3, name:"叶子节点 3-3"}
+			{ id:1, pId:0, name:"父Nodes 1", open:true},
+			{ id:11, pId:1, name:"叶子Nodes 1-1"},
+			{ id:12, pId:1, name:"叶子Nodes 1-2"},
+			{ id:13, pId:1, name:"叶子Nodes 1-3"},
+			{ id:2, pId:0, name:"父Nodes 2", open:true},
+			{ id:21, pId:2, name:"叶子Nodes 2-1"},
+			{ id:22, pId:2, name:"叶子Nodes 2-2"},
+			{ id:23, pId:2, name:"叶子Nodes 2-3"},
+			{ id:3, pId:0, name:"父Nodes 3", open:true},
+			{ id:31, pId:3, name:"叶子Nodes 3-1"},
+			{ id:32, pId:3, name:"叶子Nodes 3-2"},
+			{ id:33, pId:3, name:"叶子Nodes 3-3"}
 		];
 		var log, className = "dark";
 		function beforeDrag(treeId, treeNodes) {
@@ -62,7 +62,7 @@
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
 			zTree.selectNode(treeNode);
 			setTimeout(function() {
-				if (confirm("进入节点 -- " + treeNode.name + " 的编辑状态吗？")) {
+				if (confirm("进入Nodes -- " + treeNode.name + " _Other Organiser？")) {
 					setTimeout(function() {
 						zTree.editName(treeNode);
 					}, 0);
@@ -75,7 +75,7 @@
 			showLog("[ "+getTime()+" beforeRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
 			zTree.selectNode(treeNode);
-			return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+			return confirm("ConfirmDelete Nodes -- " + treeNode.name + " 吗？");
 		}
 		function onRemove(e, treeId, treeNode) {
 			showLog("[ "+getTime()+" onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
@@ -87,7 +87,7 @@
 				setTimeout(function() {
 					var zTree = $.fn.zTree.getZTreeObj("treeDemo");
 					zTree.cancelEditName();
-					alert("节点名称不能为空.");
+					alert("Node NameI can\'tEmpty.");
 				}, 0);
 				return false;
 			}
@@ -152,37 +152,37 @@
 </HEAD>
 
 <BODY>
-<h1>高级 增 / 删 / 改 节点</h1>
-<h6>[ 文件路径: exedit/edit_super.html ]</h6>
+<h1>Advanced 增 / 删 / 改 Nodes</h1>
+<h6>[ DocumentationPath: exedit/edit_super.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、beforeEditName<br/>&nbsp;&nbsp;beforeRemove / onRemove<br/>&nbsp;&nbsp;beforeRename / onRename 事件回调函数控制</h2>
+			<li class="title"><h2>1、beforeEditName<br/>&nbsp;&nbsp;beforeRemove / onRemove<br/>&nbsp;&nbsp;beforeRename / onRename Events回调函数Control</h2>
 				<ul class="list">
-				<li>此 Demo 演示合理利用自定义控件、事件回调函数配合以增强用户体验，操作时可以对比"基本 增 / 删 / 改 节点"的 Demo</li>
-				<li>此 Demo 实现增加节点按钮</li>
-				<li>此 Demo 实现删除节点时进行确认</li>
-				<li>此 Demo 利用 showRenameBtn 对 isLastNode = true 的节点不显示编辑按钮 </li>
-				<li>此 Demo 利用 showRemoveBtn 对 isFirstNode = true 的节点不显示删除按钮 </li>
-				<li class="highlight_red">可以利用 beforeEditName 触发自定义的编辑操作</li>
-				<li><p><span class="highlight_red">在对这些灵活的配置熟悉以后，相信你能够做出更加合理的编辑界面！</span><br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="selectAll" checked /> 编辑名称时是否全选 text<br/>
-					remove / rename log:&nbsp;&nbsp;<span style="color:red">红色</span> 表示取消编辑操作 (v3.5.13+)<br/>
+				<li>此 Demo Presentation合理UtilizationCustom Controls、Events回调函数Cooperation以增强User体验，Operation时可以对比"Basic 增 / 删 / 改 Nodes"的 Demo</li>
+				<li>此 Demo Achieved增加Nodes按钮</li>
+				<li>此 Demo AchievedDeleteNodes时进行Confirm</li>
+				<li>此 Demo Utilization showRenameBtn 对 isLastNode = true 的NodesDo Not Show编辑按钮 </li>
+				<li>此 Demo Utilization showRemoveBtn 对 isFirstNode = true 的NodesDo Not ShowDelete按钮 </li>
+				<li class="highlight_red">可以Utilization beforeEditName 触发自定义的编辑Operation</li>
+				<li><p><span class="highlight_red">在对这些灵活的Configure熟悉以后，I\'m sure you can make a more rational editorial interface！</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="selectAll" checked /> Whether to select all for editing names text<br/>
+					remove / rename log:&nbsp;&nbsp;<span style="color:red">Red</span> 表示Cancel编辑Operation (v3.5.13+)<br/>
 					<ul id="log" class="log"></ul></p>
 				</li>
 				</ul>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li>同 "基本 增 / 删 / 改 节点"</li>
+				<li>同 "Basic 增 / 删 / 改 Nodes"</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li>同 "基本 增 / 删 / 改 节点"</li>
+				<li>同 "Basic 增 / 删 / 改 Nodes"</li>
 				</ul>
 			</li>
 		</ul>

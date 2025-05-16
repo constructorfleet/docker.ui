@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>流程图-导出图片</title>
+    <title>Flowchart-Export图片</title>
     <!--[if lt IE 9]>
     <?import namespace="v" implementation="#default#VML" ?>
     <![endif]-->
@@ -29,25 +29,25 @@
             toolBtns:["start round mix","end round","task","node","chat","state","plug","join","fork","complex mix"],
             haveHead:true,
             headLabel:true,
-            headBtns:["new","open","save","undo","redo","reload","print"],//如果haveHead=true，则定义HEAD区的按钮
+            headBtns:["new","open","save","undo","redo","reload","print"],//IfhaveHead=true，DefinitionsHEADSector button
             haveTool:true,
             haveGroup:true,
             useOperStack:true
         };
         var remark={
-            cursor:"选择指针",
-            direct:"结点连线",
-            start:"入口结点",
-            "end":"结束结点",
-            "task":"任务结点",
-            node:"自动结点",
-            chat:"决策结点",
-            state:"状态结点",
-            plug:"附加插件",
-            fork:"分支结点",
-            "join":"联合结点",
-            "complex":"复合结点",
-            group:"组织划分框编辑开关"
+            cursor:"Selection指针",
+            direct:"Connect points",
+            start:"Entry Node",
+            "end":"End Node",
+            "task":"Tasks结点",
+            node:"Auto结点",
+            chat:"Decision Node",
+            state:"Status Node",
+            plug:"Attach Plugin",
+            fork:"Branch Node",
+            "join":"Joint Node",
+            "complex":"Composite Node",
+            group:"Organisation Box Edit Switches"
         };
         var demo;
         $(function(){
@@ -55,17 +55,17 @@
             demo.setNodeRemarks(remark);
             demo.loadData(jsondata);
 
-            //以下是测试导出图片功能
+            //以下是测试Export图片功能
 //            demo.onPrintClick=function(){
-//                //0.添加临时元素
+//                //0.Add临时元素
 //                $("body").append('<div id="demo_export" style="position:absolute;top:0;left:0;z-index:-1;width:0px;height:0px;overflow:hidden">'
 //                    +'<div style="color:#15428B;position:absolute;left:0;right:0;width:1160px;height:507px;overflow:hidden;float:none;" class="GooFlow GooFlow_work"></div>'
 //                    +'</div>');
 //
-//                //1.先COPY节点和区块的内容
+//                //1.先COPYNodes和区块的内容
 //                var inner = $("#demo").find(".GooFlow_work_inner");
 //                var divCanvas = $("#demo_export").children("div:eq(0)");
-//                //复制节点的内容
+//                //CopyNodes的内容
 //                inner.children("div").each(function(i){
 //                    var item=$(this);
 //                    if(item.hasClass("GooFlow_item")){
@@ -78,16 +78,16 @@
 //                html2canvas(divCanvas[0], {
 //                    allowTaint: false, taintTest: false,
 //                    onrendered: function(canvas) {
-//                        //2.在回调方法中，COPY连线内容
-//                        //造出临时的IMAGE
-//                        var context = canvas.getContext('2d');//取得画布的2d绘图上下文
+//                        //2.In return mode，COPYConnect Content
+//                        //Make a temporaryIMAGE
+//                        var context = canvas.getContext('2d');//Get the canvas2d绘图Context
 //                        context.save();
 //                        var strSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="507">'
 //                                +'<defs><style type="text/css">text{font-size:14px;line-height:1.42857143;'
 //                                +'font-family:"Microsoft Yahei", "Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, Arial, sans-serif;'
-//                                +'}</style></defs>' + window.$("<svg>").append(window.$("#draw_demo").clone()).html() +'</svg>'; //COPY连线内容
+//                                +'}</style></defs>' + window.$("<svg>").append(window.$("#draw_demo").clone()).html() +'</svg>'; //COPYConnect Content
 //                        var image = null;
-//                        if(!!window.ActiveXObject || "ActiveXObject" in window){//当为IE11及以下版本浏览器时，使用Canvg第三方工具
+//                        if(!!window.ActiveXObject || "ActiveXObject" in window){//AsIE11及以下Version浏览器时，UseCanvgThird party tool
 //                            image = document.createElement('canvas');
 //                            canvg(image, strSvg);
 //                        }else{
@@ -96,7 +96,7 @@
 //                        }
 //                        var tempFunc=function(){
 //                           context.drawImage(image, 0, 0);
-//                            //清除不需要的临时DOM
+//                            //Clear不需要的临时DOM
 //                            $("#demo_export").empty().remove();
 //                            try{
 //                                var blob = canvas.msToBlob();
@@ -104,20 +104,20 @@
 //                                navigator.msSaveBlob(blob, "prettyImage.png");
 //                            }
 //                            catch(e){
-//                                //生成一个下载链接并点击
+//                                //Generate a download link and click
 //                                var a = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
-//                                a.href = canvas.toDataURL('image/png');  //将画布内的信息导出为png图片数据
-//                                a.download = "prettyImage.png";  //设定下载名称
+//                                a.href = canvas.toDataURL('image/png');  //将画布内的信息Export为png图片Data
+//                                a.download = "prettyImage.png";  //Set Download Name
 //                                document.body.appendChild(a);
-//                                a.click(); //点击触发下载
+//                                a.click(); //Click to trigger download
 //                                document.body.removeChild(a);
 //                            }
 //                        }
 //
-//                        if(image.complete|| (!!window.ActiveXObject || "ActiveXObject" in window)) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+//                        if(image.complete|| (!!window.ActiveXObject || "ActiveXObject" in window)) { // If图片已经存在于浏览器缓存，Direct Callback Function
 //                            console.log("aaa");
 //                            tempFunc();
-//                            return;// 直接返回，不用再处理onload事件
+//                            return;// Direct Return，No more handlingonloadEvents
 //                        }
 //                        image.onload=function(){
 //                            console.log("ccc");
@@ -129,7 +129,7 @@
 //                });
 //            }
             demo.onPrintClick=function(){demo.exportDiagram("fuckyou");}
-            //导出图片功能 END
+            //Export图片功能 END
         });
     </script>
 </head>

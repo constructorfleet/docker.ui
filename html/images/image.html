@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="imagesDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="imagesDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -36,7 +36,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-download'
-                }">拉取镜像</a>
+                }">PullMirror</a>
 
 <!--            <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{-->
 <!--                    onClick:function(){-->
@@ -45,7 +45,7 @@
 <!--                    extend: '#imagesDg-toolbar',-->
 <!--                    btnCls: 'cubeui-btn-yellowgreen',-->
 <!--                    iconCls: 'fa fa-ticket'-->
-<!--                }">延续租约</a>-->
+<!--                }">Continuation of the lease</a>-->
 
 <!--            <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{-->
 <!--                    onClick:function(){-->
@@ -54,7 +54,7 @@
 <!--                    extend: '#imagesDg-toolbar',-->
 <!--                    btnCls: 'cubeui-btn-red',-->
 <!--                    iconCls: 'fa fa-times'-->
-<!--                }">删除镜像</a>-->
+<!--                }">DeleteMirror</a>-->
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -63,7 +63,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-orange',
                     iconCls: 'fa fa-sign-in'
-                }">导入tarball</a>
+                }">Importtarball</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -72,7 +72,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-sign-in'
-                }">加载镜像</a>
+                }">加载Mirror</a>
 
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -82,7 +82,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-limegreen',
                     iconCls: 'fa fa-puzzle-piece'
-                }">构建镜像</a>
+                }">构建Mirror</a>
 
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -92,7 +92,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-sign-in'
-                }">导出镜像</a>
+                }">ExportMirror</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -101,7 +101,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-ivory',
                     iconCls: 'fa fa-arrow-circle-up'
-                }">推送镜像</a>
+                }">推送Mirror</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -110,7 +110,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-dodgerblue',
                     iconCls: 'fa fa-toggle-right'
-                }">运行容器</a>
+                }">Run Container</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -119,7 +119,7 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-brown',
                     iconCls: 'fa fa-trash'
-                }">清理镜像</a>
+                }">清理Mirror</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -128,10 +128,10 @@
                     extend: '#imagesDg-toolbar',
                     btnCls: 'cubeui-btn-slateblue',
                     iconCls: 'fa fa-trash'
-                }">清理缓存</a>
+                }">Clear Cache</a>
 
             <form id="queryForm" class="search-box">
-                <span style='line-height: 30px;padding-right:0px'>包含中间镜像：</span>
+                <span style='line-height: 30px;padding-right:0px'>包含中间Mirror：</span>
                 <input id='refreshBtn'  name="all"  value='1' data-toggle="cubeui-switchbutton" style="width:50px;height1:30px" checked1="true"
                     data-options="
                     onText:'',offText:'',
@@ -145,7 +145,7 @@
                 <input type="text" id='search_type' name="search_type" value="name" data-toggle="cubeui-combobox"
                        data-options="
                                 width:120,
-                                required:true,prompt:'查询方式，必须填写',
+                                required:true,prompt:'QuestionModalities，_Other Organiser',
                                 valueField:'KEY',
                                 textField:'TEXT',
                                 data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},{'KEY':'before','TEXT':'Before'},
@@ -155,22 +155,22 @@
                        data-options="onClear:function(){
                             console.log(111);
                             $('#searchbtn').trigger('click');
-                       }, mask:'{{:~js(prefix)}}', prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                       }, mask:'{{:~js(prefix)}}', prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'imagesDg'}">查询</a>
+                   grid:{type:'datagrid','id':'imagesDg'}">Question</a>
             </form>
         </div>
     </div>
 </div>
-<!-- 表格工具栏结束 -->
+<!-- End of Table Toolbar -->
 <div id="searchImageMm" data-toggle="cubeui-menu" style="width:120px;display:none" data-options="">
-    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">拉取latest镜像</div>
-    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">指定镜像Tag</div>
+    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">PulllatestMirror</div>
+    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">指定MirrorTag</div>
 </div>
 </script>
 

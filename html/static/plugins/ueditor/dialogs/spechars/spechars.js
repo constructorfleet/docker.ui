@@ -2,7 +2,7 @@
  * Created with JetBrains PhpStorm.
  * User: xuheng
  * Date: 12-9-26
- * Time: 下午1:09
+ * Time: Afternoon1:09
  * To change this template use File | Settings | File Templates.
  */
 var charsContent = [

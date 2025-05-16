@@ -1,23 +1,23 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Boolean</span><span class="path">treeNode.</span>checkedOld</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.excheck</span> 扩展 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.excheck</span> Extension js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>节点的 checkBox / radio 在初始化时的 勾选状态。<span class="highlight_red">[setting.check.enable = true & treeNode.nocheck = false 时有效]</span></p>
-			<p class="highlight_red">1、zTree 初始化节点数据时会对此属性进行赋值，因此请勿对此属性初始化</p>
-			<p class="highlight_red">2、如需配合 zTreeObj.getChangeCheckedNodes 方法实现特殊功能，可以根据需求在使用中自行修改 checkedOld 数据</p>
-			<p>默认值：checked的初始化值</p>
+			<p>Nodes的 checkBox / radio 在Initialize时的 CheckStatus。<span class="highlight_red">[setting.check.enable = true & treeNode.nocheck = false It works]</span></p>
+			<p class="highlight_red">1、zTree InitializeNodesData时会对此PropertiesConduct赋值，因此请勿对此PropertiesInitialize</p>
+			<p class="highlight_red">2、如需Cooperation zTreeObj.getChangeCheckedNodes MethodologyAchieved特殊Functions，YeahBased on需求在Use中自行Modify checkedOld Data</p>
+			<p>Default value：checked的Initialize值</p>
 		</div>
 	</div>
-	<h3>Boolean 格式说明</h3>
+	<h3>Boolean FormatAnnotations</h3>
 	<div class="desc">
-	<p>true 表示节点初始化时 输入框被勾选</p>
-	<p>false 表示节点初始化时 输入框未勾选</p>
+	<p>true OrganisationNodesInitialize时 输入框被Check</p>
+	<p>false OrganisationNodesInitialize时 输入框未Check</p>
 	</div>
-	<h3>treeNode 举例</h3>
-	<h4>1. 获取第一个根节点的初始勾选状态</h4>
+	<h3>treeNode Example</h3>
+	<h4>1. Access第一个根Nodes的初始CheckStatus</h4>
 	<pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
 var checkedOld = treeObj.getNodes()[0].checkedOld;
 </code></pre>

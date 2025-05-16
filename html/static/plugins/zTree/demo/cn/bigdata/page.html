@@ -35,13 +35,13 @@
 		};
 
 		var zNodes =[
-			{name:"分页测试", t:"请点击分页按钮", id:"1", count:2000, page:0, pageSize:100, isParent:true}
+			{name:"Page Break Test", t:"请点击分页button", id:"1", count:2000, page:0, pageSize:100, isParent:true}
 		];
 		var curPage = 0;
 		function getUrl(treeId, treeNode) {
 			var param = "id="+ treeNode.id +"_"+treeNode.page +"&count="+treeNode.pageSize,
 			aObj = $("#" + treeNode.tId + "_a");
-			aObj.attr("title", "当前第 " + treeNode.page + " 页 / 共 " + treeNode.maxPage + " 页")
+			aObj.attr("title", "Current No " + treeNode.page + " 页 / 共 " + treeNode.maxPage + " 页")
 			return "../asyncData/getNodesForBigData.php?" + param;
 		}
 		function goPage(treeNode, page) {
@@ -62,7 +62,7 @@
 		}
 		function onAsyncError(event, treeId, treeNode, XMLHttpRequest, textStatus, errorThrown) {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-			alert("异步获取数据出现异常。");
+			alert("异步获取Data出现异常。");
 			treeNode.icon = "";
 			zTree.updateNode(treeNode);
 		}
@@ -117,30 +117,30 @@
  </HEAD>
 
 <BODY>
-<h1>分页加载大数据量</h1>
-<h6>[ 文件路径: bigdata/page.html ]</h6>
+<h1>分页加载大Data量</h1>
+<h6>[ DocumentationPath: bigdata/page.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、大数据量加载说明</h2>
+			<li class="title"><h2>1、大Data量加载说明</h2>
 				<ul class="list">
-				<li>1)、分页方案可以有效解决某一级节点数据超大的情况。</li>
-				<li>2)、分页按钮通过自定义控件的方法实现。</li>
-				<li class="highlight_red">3)、分页方案对于 checkbox 的关联关系无能为力，只能每次翻页后进行修正。由于时间关系，Demo 中不对 checkbox 的关联进行任何修正处理。</li>
-				<li class="highlight_red">4)、分页方案中，从 zTree 得到的节点数据只有当前页的节点数据，可以在每次翻页后自行保存每页的数据，作为缓存，具体情况要根据实际需求来决定。</li>
+				<li>1)、分页方案可以有效Solve某一级NodesData超大的情况。</li>
+				<li>2)、分页buttonPassCustom Controls的MethodologyAchieved。</li>
+				<li class="highlight_red">3)、分页方案Yeah checkbox There\'s nothing we can do about it，We can only fix it every time we flip。BecauseTime关系，Demo Wrong checkbox Any amendments to the association。</li>
+				<li class="highlight_red">4)、Page Break Scheme，从 zTree 得到的NodesData只有当前页的NodesData，可以在每次翻页后自行Save每页的Data，As Cache，具体情况要Based on实际需求来决定。</li>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li>需要设置 setting.async 异步加载部分的参数</li>
-				<li>其他不需要进行特殊的配置，根据自己的需求自行设置</li>
+				<li>需要Settings setting.async Step LoadPart的Parameters</li>
+				<li>OtherNo need进行特殊的Configure，Based on自己的需求自行Settings</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
+				<li>对 NodesData No special requests，User可以Based on自己的需求Add自定义Properties</li>
 				</ul>
 			</li>
 		</ul>

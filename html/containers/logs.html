@@ -21,36 +21,36 @@
         <table class="layui-table" style="margin: 0px 0;">
             <thead>
             <tr>
-                <th colspan="6" style="text-align: center">{{:Name}} <t>{{if Running==1}}[已启动]{{else}}[已停止]{{/if}}</t> </th>
+                <th colspan="6" style="text-align: center">{{:Name}} <t>{{if Running==1}}[Started]{{else}}[Stopped]{{/if}}</t> </th>
             </tr>
             </thead>
             <tr>
-                <td class="table-label">命令：</td>
+                <td class="table-label">Command：</td>
                 <td colspan="2">{{:Config.CmdStr}}</td>
                 {{if Running==1}}
-                <td class="table-label">启动时间：</td>
+                <td class="table-label">启动Time：</td>
                 <td colspan="2">{{:StartAt}}</td>
                 {{else}}
-                <td class="table-label">停止时间：</td>
+                <td class="table-label">StopTime：</td>
                 <td colspan="2">{{:FinishAt}}</td>
                 {{/if}}
             </tr>
             <tr>
-                <td class="table-label">已用空间：</td>
+                <td class="table-label">Used Space：</td>
                 <td colspan="2">{{:SizeRootFs}}</td>
             </tr>
             <tr>
-                <td class="table-label">镜像：</td>
+                <td class="table-label">Mirror：</td>
                 <td colspan="5">
                     {{:ImageName}} / {{:ImageID}}
                 </td>
             </tr>
             <tr>
-                <td class="table-label">端口：</td>
+                <td class="table-label">Port：</td>
                 <td colspan="5">{{:Port?Port:BindingPort}}</td>
             </tr>
             <tr>
-                <td class="table-label">数据挂载：</td>
+                <td class="table-label">Data挂载：</td>
                 <td colspan="5">{{:MountStr}}</td>
             </tr>
         </table>

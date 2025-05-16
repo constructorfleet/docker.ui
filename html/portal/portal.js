@@ -6,7 +6,7 @@ function rendPage(){
         d.info.swarm = {};
         if(data.Swarm && !$.extends.isEmpty(data.Swarm.NodeID)){
             d.info.swarm.status = 'On';
-            d.info.swarm.custerid = d.info.Swarm.Cluster?(d.info.Swarm.Cluster.ID+'[管理节点]'):'[工作节点]';
+            d.info.swarm.custerid = d.info.Swarm.Cluster?(d.info.Swarm.Cluster.ID+'[管理Nodes]'):'[工作Nodes]';
             d.info.swarm.nodeid = d.info.Swarm.NodeID;
             d.info.swarm.address = d.info.Swarm.NodeAddr;
         }else{
@@ -46,11 +46,11 @@ function rendPage(){
                     if(checked){
                         let r = startInterval();
                         if(r){
-                            $.app.show('自动刷新已经开启')
+                            $.app.show('自动Refresh已经开启')
                         }
                     }else{
                         stopInterval();
-                        $.app.show('自动刷新已经关闭')
+                        $.app.show('自动Refresh已经Close')
                     }
                 }
             })
@@ -92,11 +92,11 @@ function fillData(data){
 
         if(data.info.Swarm && !$.extends.isEmpty(data.info.Swarm.NodeID)){
             $('#activeCount').text('N/A');
-            $('#managerCount').text('非管理节点');
+            $('#managerCount').text('非管理Nodes');
             data.info.Swarm.IP = data.info.Swarm.NodeAddr;
         }else{
             $('#activeCount').text('N/A');
-            $('#managerCount').text('非Swarm环境');
+            $('#managerCount').text('非SwarmEnvironment');
 
             if(local_node.node_host.toLowerCase()=='unix'){
                 data.info.Swarm.IP = "Unix(Host)";

@@ -1,25 +1,25 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Function(treeNode)</span><span class="path">zTreeObj.</span>getNodeIndex</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>获取某节点在同级节点中的序号（从0开始）</p>
-			<p class="highlight_red">请通过 zTree 对象执行此方法。</p>
+			<p>Access某Nodes在同级NodesMedium序号（从0Start）</p>
+			<p class="highlight_red">请Pass zTree Object执行此Methodology。</p>
 		</div>
 	</div>
-	<h3>Function 参数说明</h3>
+	<h3>Function Parameters说明</h3>
 	<div class="desc">
 	<h4><b>treeNode</b><span>JSON</span></h4>
-	<p>需要查询顺序的节点 JSON 数据对象</p>
-	<p class="highlight_red">请务必保证此节点数据对象 是 zTree 内部的数据对象</p>
-	<h4 class="topLine"><b>返回值</b><span>Number</span></h4>
-	<p class="highlight_red">返回值从 0 开始计数</p>
-	<p class="highlight_red">如果不存在该节点数据，返回 -1</p>
+	<p>需要Question顺序的Nodes JSON DataObject</p>
+	<p class="highlight_red">请务必Promise此NodesDataObject 是 zTree 内部的DataObject</p>
+	<h4 class="topLine"><b>Back值</b><span>Number</span></h4>
+	<p class="highlight_red">Back值从 0 Start计数</p>
+	<p class="highlight_red">If不存在该NodesData，Back -1</p>
 	</div>
-	<h3>function 举例</h3>
-	<h4>1. 获取当前选中的第一个节点在同级节点中的序号</h4>
+	<h3>function Example</h3>
+	<h4>1. Access当前选Medium第一个Nodes在同级NodesMedium序号</h4>
 	<pre xmlns=""><code>var treeObj = $.fn.zTree.getZTreeObj("tree");
 var nodes = treeObj.getSelectedNodes();
 if (nodes.length>0) {

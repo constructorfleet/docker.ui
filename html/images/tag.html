@@ -5,21 +5,21 @@
 
     <div class="cubeui-row">
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">镜像:</label>
+            <label class="cubeui-form-label">Mirror:</label>
             <span style='line-height: 30px;padding-right:0px;color: red'>{{:Repository}}:{{:Tag}}</span>
         </div>
     </div>
     <fieldset>
-        <legend>标记镜像选项</legend>
+        <legend>标记Mirror选项</legend>
     </fieldset>
     <div class="cubeui-row">
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">镜像名称:</label>
+            <label class="cubeui-form-label">Mirror名称:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" id="fromImage" name="fromImage"
                        value='{{:Repository}}'
                        data-options="
-                                required:true,prompt:'镜像名称，选择填写；比如joinsunsoft/docker-ui'
+                                required:true,prompt:'Mirror名称，Select Fill；Like whatjoinsunsoft/docker-ui'
                                 "
                 >
             </div>
@@ -30,7 +30,7 @@
                 <input type="text" data-toggle="cubeui-textbox" name="tag"
                        value='{{:Tag}}'
                        data-options="
-                                required:true,prompt:'TAG，选择填写；为空使用默认latest'
+                                required:true,prompt:'TAG，Select Fill；为空Use默认latest'
                                 "
                 >
             </div>

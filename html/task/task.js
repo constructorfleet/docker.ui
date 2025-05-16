@@ -18,12 +18,12 @@ function loadLease(){
                 groupFormatter:function (value, rows) {
                     var rtnStr = value + '({0})'.format(rows?rows.length:0);
                     // rtnStr += '<input type="checkbox" onclick="FGPCkbClick(this)" helpGPVal="' + value + '" name="gpChk" />';
-                    // rtnStr += value + ' 单据数量=' + rows.length + '条';
+                    // rtnStr += value + ' Number of documents=' + rows.length + '条';
                     return rtnStr;
                 }
             },
             frozenColumns:[[
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 300, formatter:leaseOperateFormatter},
                 {field: 'ID', title: 'ID', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 250},
@@ -151,12 +151,12 @@ function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
     //superpowers
     if(row.Status.State=='running'){
-        htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">查看</button>';
+        htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">View</button>';
     }else{
-        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">查看</button>';
+        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="inspectTask(\''+row.ID+'\', \'' + row.ID + '\')">View</button>';
     }
 
-    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="logTask(\''+row.ID+'\', \'' + row.ID + '\')">日志</button>';
+    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="logTask(\''+row.ID+'\', \'' + row.ID + '\')">Log</button>';
 
     return htmlstr;
 }
@@ -198,7 +198,7 @@ function showTaskPanel(rowData){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:'任务信息-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)), title:'服务信息',
+            titleformat:'TasksInformation-{0}'.format($.extends.isEmpty(rowData.SlotStr, rowData.ID)), title:'ServicesInformation',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerHtml:`
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -207,7 +207,7 @@ function showTaskPanel(rowData){
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
         `.format(rowData.ID),
             render:function (panel, option) {
                 $.docker.getHtml('./inspect-task.html', null, function(html){

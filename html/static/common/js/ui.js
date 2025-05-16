@@ -1,8 +1,8 @@
 
 function getUrlParam(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有ObjectiveParameters的正则ExpressionObject
+    var r = window.location.search.substr(1).match(reg);  //匹配ObjectiveParameters
+    if (r != null) return unescape(r[2]); return null; //BackParameters值
 }
 
 function getParamFromUrl(url, name) {
@@ -12,9 +12,9 @@ function getParamFromUrl(url, name) {
     }
     url = url.substring(s+1);
 
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    var r = url.match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有ObjectiveParameters的正则ExpressionObject
+    var r = url.match(reg);  //匹配ObjectiveParameters
+    if (r != null) return unescape(r[2]); return null; //BackParameters值
 }
 
 var dynamicLoading = {
@@ -90,14 +90,14 @@ var dynamicLoading = {
             return
         }
 
-        let sp = document.createElement("script"); // 动态创建 script 标签
-        sp.type = 'text/javascript'; // 设置 script 的ype类型
-        sp.src = urlArr[0]; // 设置 script 的src属性
+        let sp = document.createElement("script"); // 动态Create script Label
+        sp.type = 'text/javascript'; // Settings script 的ypeType
+        sp.src = urlArr[0]; // Settings script 的srcProperties
         console.log("Load " + urlArr[0]);
-        document.getElementsByTagName('head')[0].appendChild(sp); // 把 script 标签 插入head头部
+        document.getElementsByTagName('head')[0].appendChild(sp); // 把 script Label InsertheadHead
 
         if (sp.readyState) { // IE
-            sp.onreadystatechange = function () { // IE 加载完成
+            sp.onreadystatechange = function () { // IE Load complete
                 if (sp.readyState == 'loaded' || sp.readyState == 'complete') {
                     sp.onreadystatechange = null;
                     if(allt > 0){
@@ -106,8 +106,8 @@ var dynamicLoading = {
                     }
                 }
             };
-        } else { //其他浏览器
-            sp.onload = function () { // 加载完成
+        } else { //OtherBrowser
+            sp.onload = function () { // Load complete
                 if(allt > 0){
                     var newArr =  urlArr.slice(1)
                     dynamicLoading.dynLoadJs(newArr, callback)

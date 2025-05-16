@@ -1,4 +1,4 @@
-// 首页加载完后，取消加载中状态
+// Home Page加载完后，CancelLoadingStatus
 $(window).load(function () {
     $("#loading").fadeOut();
 });
@@ -25,9 +25,9 @@ var App = function () {
         }
     };
 
-    //退出全屏 判断浏览器种类
+    //ExitFullscreen DecisionBrowser种类
     var exitFullScreen = function () {
-        // 判断各种浏览器，找到正确的方法
+        // Decision各种Browser，Found it正确的Methodology
         var exitMethod = document.exitFullscreen || //W3C
             document.mozCancelFullScreen ||    //Chrome等
             document.webkitExitFullscreen || //FireFox
@@ -71,7 +71,7 @@ $(function () {
         }
     });
 
-    // 首页tabs选项卡
+    // Home PagetabsOptions卡
     var index_tabs = $('#index_tabs').iTabs({
         fit: true,
         onSelect:function(title,index){
@@ -194,7 +194,7 @@ $(function () {
                 App().handleFullScreen();
             }
         }],
-        //监听右键事件，创建右键菜单
+        //ListenRightEvents，CreateRightMenu
         onContextMenu: function (e, title, index) {
             e.preventDefault();
             if (index >= 0) {
@@ -206,14 +206,14 @@ $(function () {
         }
     });
 
-    //tab右键菜单
+    //tabRightMenu
     $("#mm").iMenu({
         onClick: function (item) {
             tabMenuOprate(this, item.name);
         }
     });
 
-    // 初始化accordion
+    // Initializeaccordion
     $("#RightAccordion").iAccordion({
         fit: true,
         border: false,
@@ -261,13 +261,13 @@ $(function () {
 
 
 
-    // 主页打开初始化时显示第一个系统的菜单
+    // 主页OpenInitialize时Show第一个System的Menu
     initmodules();
     //$('.systemName').eq('0').trigger('click');
-    //generateMenu(1325, "系统配置");
+    //generateMenu(1325, "SystemConfigure");
 });
 
-// Tab菜单操作
+// TabMenuOperation
 function tabMenuOprate(menu, type) {
     var allTabs = $('#index_tabs').iTabs('tabs');
     var allTabtitle = [];
@@ -279,7 +279,7 @@ function tabMenuOprate(menu, type) {
     var curTabTitle = $(menu).data("tabTitle");
     var curTabIndex = $('#index_tabs').iTabs("getTabIndex", $('#index_tabs').iTabs("getTab", curTabTitle));
     switch (type) {
-        case "1"://关闭当前
+        case "1"://CloseCurrent
             if (curTabIndex > 0) {
                 $('#index_tabs').iTabs("close", curTabTitle);
                 return false;
@@ -288,13 +288,13 @@ function tabMenuOprate(menu, type) {
                 $.app.show(message.core.kind_warning, message.core.not_home_closed);
                 break;
             }
-        case "2"://全部关闭
+        case "2"://AllClose
             for (var i = 0; i < allTabtitle.length; i++) {
                 $('#index_tabs').iTabs('close', allTabtitle[i]);
             }
             $('#index_tabs').iTabs('scrollBy', 10);
             break;
-        case "3"://除此之外全部关闭
+        case "3"://除此之外AllClose
             for (var i = 0; i < allTabtitle.length; i++) {
                 if (curTabTitle != allTabtitle[i])
                     $('#index_tabs').iTabs('close', allTabtitle[i]);
@@ -302,21 +302,21 @@ function tabMenuOprate(menu, type) {
             $('#index_tabs').iTabs('scrollBy', 10);
             $('#index_tabs').iTabs('select', curTabTitle);
             break;
-        case "4"://当前侧面右边
+        case "4"://Current侧面Right
             for (var i = curTabIndex; i < allTabtitle.length; i++) {
                 $('#index_tabs').iTabs('close', allTabtitle[i]);
             }
 
             $('#index_tabs').iTabs('select', curTabTitle);
             break;
-        case "5": //当前侧面左边
+        case "5": //Current侧面Left
             for (var i = 0; i < curTabIndex - 1; i++) {
                 $('#index_tabs').iTabs('close', allTabtitle[i]);
             }
             $('#index_tabs').iTabs('scrollBy', 10);
             $('#index_tabs').iTabs('select', curTabTitle);
             break;
-        case "6": //刷新
+        case "6": //Refresh
 
 			var currentTab = $('#index_tabs').iTabs('getSelected');
 			var opts = $.data(currentTab[0], 'panel').options;
@@ -349,7 +349,7 @@ function tabMenuOprate(menu, type) {
             });
 			**/
             break;
-        case "7": //在新窗口打开
+        case "7": //在New WindowOpen
             var refresh_tab = $('#index_tabs').iTabs('getSelected');
             var refresh_iframe = refresh_tab.find('iframe')[0];
             window.open(refresh_iframe.src);
@@ -358,7 +358,7 @@ function tabMenuOprate(menu, type) {
 
 }
 
-//选项卡右键菜单
+//Options卡RightMenu
 function findTabElement(target) {
     var $ele = $(target);
     if (!$ele.is("a")) {
@@ -367,7 +367,7 @@ function findTabElement(target) {
     return $ele;
 }
 
-//保存页面id的field
+//SavePageid的field
 var pageIdField = "data-pageId";
 
 function getPageId(element) {
@@ -384,7 +384,7 @@ function findTabTitle(pageId) {
         var $a = $(this);
         if ($a.attr(pageIdField) == pageId) {
             $ele = $a;
-            return false;//退出循环
+            return false;//Exit循环
         }
     });
     return $ele;
@@ -406,7 +406,7 @@ function findTabPanel(pageId) {
         var $div = $(this);
         if ($div.attr(pageIdField) == pageId) {
             $ele = $div;
-            return false;//退出循环
+            return false;//Exit循环
         }
     });
     return $ele;
@@ -421,11 +421,11 @@ function getActivePageId() {
     return getPageId($a);
 }
 
-//激活Tab,通过id
+//ActivateTab,Passid
 function activeTabByPageId(pageId) {
     $(".menu_tab").removeClass("active");
     $("#index_tabs").find(".active").removeClass("active");
-    //激活TAB
+    //ActivateTAB
     var $title = findTabTitle(pageId).addClass('active');
     findTabPanel(pageId).addClass("active");
     // scrollToTab($('.menu_tab.active'));
@@ -433,17 +433,17 @@ function activeTabByPageId(pageId) {
 }
 
 /**
- * 更换页面风格
+ * ReplacementPageStyle
  * @param themeName
  */
-function changeTheme(themeName) {/* 更换主题 */
+function changeTheme(themeName) {/* Replacement主题 */
     var $dynamicTheme = $('#dynamicTheme');
     var themeHref = $dynamicTheme.attr('href');
     var themeHrefNew = themeHref.substring(0, themeHref.indexOf('themes')) + 'themes/default/cubeui.' + themeName + '.css';
-    // 更换主页面风格
+    // Replacement主PageStyle
     $dynamicTheme.attr('href', themeHrefNew);
 
-    // 更换iframe页面风格
+    // ReplacementiframePageStyle
     var $iframe = $('iframe');
     if ($iframe.length > 0) {
         for (var i = 1; i < $iframe.length; i++) {
@@ -470,7 +470,7 @@ if ($.cookie('themeName')) {
 	changeTheme('bluelight');
 }
 **/
-// 退出系统
+// ExitSystem
 function logout() {
 
 	/**
@@ -831,7 +831,7 @@ function createMenu(moduleId, systemName){
 	var module = $.index.modules[moduleId];
 	var data = module.children;
 
-    $.each(data, function (i, e) {// 循环创建手风琴的项
+    $.each(data, function (i, e) {// 循环Create手风琴的项
         var treeid = i;
         var isSelected = i == 0 ? true : false;
 		//console.log(e.text + ' : ' + e.id + ' : ' + e.iconCls + ' : ' + e.url + ' childrens: ' + e.children);
@@ -1025,7 +1025,7 @@ function addNewTab(title, html, options, fn){
     }
 }
 
-//打开Tab窗口
+//OpenTabWindow
 function addTab(params) {
     var t = $('#index_tabs');
     var $selectedTab = t.iTabs('getSelected');
@@ -1176,7 +1176,7 @@ function showuserprofile(flag){
 }
 
 function showNotSupport(){
-	showMsg('功能还在升级中......');
+	showMsg('Functions还在升级中......');
 }
 
 function showMsg(msg){
@@ -1245,7 +1245,7 @@ function setupQuickScan(url, mincharnum, opts){
 	var ___keyhandler = $.extend(1, {}, $.fn.combogrid.defaults.keyHandler);
 	
 	opts = $.extend(1, {
-		prompt:'输入单号，快速查找',
+		prompt:'Enter a single number，快速Find',
     	idField:'ID',
     	hasDownArrow:false,
         width:240,
@@ -1255,8 +1255,8 @@ function setupQuickScan(url, mincharnum, opts){
 	       onSelect:function(){},
 	       panelWidth:500,
 	       columns:[[
-	               {field: 'NAME', title: '名称', width:150},
-	               {field: 'NO', title: '编号', width:150}
+	               {field: 'NAME', title: 'Name', width:150},
+	               {field: 'NO', title: 'Numbering', width:150}
 	           ]]
 	}, opts, {
 
@@ -1348,7 +1348,7 @@ function show_term() {
     $.iDialog.openDialog({
         width: 1000,
         height: 600,
-        title: "《条款说明》",
+        title: "《Article description》",
         href: 'https://erp-cdn.ginghan.com/public/cube/static/term/terms.html?1.0.0.23'
     });
 }
@@ -1375,11 +1375,11 @@ function loadMenu(){
         });
 
         if ($.index.modules.length > 11) {
-            $.app.info('菜单不能超过11个，共有' + $.index.modules.length + '个，菜单\'' + noshow.join(',') + '\'将不会显示');
+            $.app.info('MenuI can\'tOver11个，Common' + $.index.modules.length + '个，Menu\'' + noshow.join(',') + '\'将不会Show');
         }
 
 
-        // 绑定横向导航菜单点击事件
+        // Tie横向导航MenuClickEvents
         $(".systemName").on("click", function (e) {
             createMenu($(this).attr("id"), $(this).attr("title"));
             $(".systemName").removeClass("selected");

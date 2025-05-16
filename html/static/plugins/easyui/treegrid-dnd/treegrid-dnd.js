@@ -318,30 +318,30 @@
 
 /*
 
-事件
-该事件扩展自树形网格（treegrid），下面是为树形网格（treegrid）添加的事件。
+Events
+该EventsExtension自树形网格（treegrid），Here\'s the tree grid（treegrid）Add的Events。
 
-名称	参数	描述
-onBeforeDrag	row	当一行的拖拽开始前触发，返回 false 则取消拖拽。
-onStartDrag	row	当开始拖拽一行时触发。
-onStopDrag	row	当停止拖拽一行后触发。
-onDragEnter	targetRow, sourceRow	当拖拽一行进入某允许放置的目标行时触发，返回 false 则取消放置。
-onDragOver	targetRow, sourceRow	当拖拽一行在某允许放置的目标行上时触发，返回 false 则取消放置。
-onDragLeave	targetRow, sourceRow	当拖拽一行离开某允许放置的目标行时触发。
-onBeforeDrop	targetRow,sourceRow,point	当一行被放置前触发，返回 false 则取消放置。
-											targetRow：放置的目标行。
-											sourceRow：拖拽的源行。
-											point：指示放置的位置，可能的值：'append'、'top' 或 'bottom'。
-onDrop	targetRow,sourceRow,point	当一行被放置时触发。
-											targetRow：放置的目标行。
-											sourceRow：拖拽的源行。
-											point：指示放置的位置，可能的值：'append'、'top' 或 'bottom'。
-方法
-该方法扩展自树形网格（treegrid）。
+Name	Parameters	Description
+onBeforeDrag	row	当一行的DragStart前Trigger，Back false 则CancelDrag。
+onStartDrag	row	当StartDrag一行时Trigger。
+onStopDrag	row	当StopDrag一行后Trigger。
+onDragEnter	targetRow, sourceRow	当Drag一行Enter某Allow放置的Objective行时Trigger，Back false 则Cancel放置。
+onDragOver	targetRow, sourceRow	当Drag一行在某Allow放置的Objective行UpTrigger，Back false 则Cancel放置。
+onDragLeave	targetRow, sourceRow	当Drag一行离开某Allow放置的Objective行时Trigger。
+onBeforeDrop	targetRow,sourceRow,point	当一行被放置前Trigger，Back false 则Cancel放置。
+											targetRow：放置的Objective行。
+											sourceRow：Drag的源行。
+											point：指示放置Location，Possible value：'append'、'top' 或 'bottom'。
+onDrop	targetRow,sourceRow,point	当一行被放置时Trigger。
+											targetRow：放置的Objective行。
+											sourceRow：Drag的源行。
+											point：指示放置Location，Possible value：'append'、'top' 或 'bottom'。
+Methodology
+该MethodologyExtension自树形网格（treegrid）。
 
-名称	参数	描述
-enableDnd	id	启用行的拖拽与放置。
-'id' 参数指示要被拖拽与放置的行。
-如果该参数未指定，则拖拽与放置所有行。
+Name	Parameters	Description
+enableDnd	id	启用行的Drag与放置。
+'id' Parameters指示要被Drag与放置的行。
+If该Parameters未指定，则Drag与放置All行。
 
 */

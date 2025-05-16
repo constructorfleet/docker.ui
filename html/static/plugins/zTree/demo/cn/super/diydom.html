@@ -31,23 +31,23 @@
 		};
 
 		var zNodes =[
-			{id:1, name:"hover事件显示控件", open:true,
+			{id:1, name:"hoverEventsShowControls", open:true,
 				children:[
-					   {id:11, name:"按钮1"},
-					   {id:12, name:"按钮2"},
-					   {id:13, name:"下拉框"},
-					   {id:141, name:"文本1"},
-					   {id:142, name:"文本2"},
-					   {id:15, name:"超链接"}
+					   {id:11, name:"button1"},
+					   {id:12, name:"button2"},
+					   {id:13, name:"Lower Frame"},
+					   {id:141, name:"Text1"},
+					   {id:142, name:"Text2"},
+					   {id:15, name:"Hyperlink"}
 
 				]},
-			{id:2, name:"始终显示控件", open:true,
+			{id:2, name:"始终ShowControls", open:true,
 				children:[
-					   {id:21, name:"按钮1"},
-					   {id:22, name:"按钮2"},
-					   {id:23, name:"下拉框"},
-					   {id:24, name:"文本"},
-					   {id:25, name:"超链接"}
+					   {id:21, name:"button1"},
+					   {id:22, name:"button2"},
+					   {id:23, name:"Lower Frame"},
+					   {id:24, name:"Text"},
+					   {id:25, name:"Hyperlink"}
 				]}
 	 	];
 
@@ -83,8 +83,8 @@
 			} else if (treeNode.id == 15) {
 				if ($("#diyBtn1_"+treeNode.id).length>0) return;
 				if ($("#diyBtn2_"+treeNode.id).length>0) return;
-				var editStr = "<a id='diyBtn1_" +treeNode.id+ "' onclick='alert(1);return false;' style='margin:0 0 0 5px;'>链接1</a>" +
-					"<a id='diyBtn2_" +treeNode.id+ "' onclick='alert(2);return false;' style='margin:0 0 0 5px;'>链接2</a>";
+				var editStr = "<a id='diyBtn1_" +treeNode.id+ "' onclick='alert(1);return false;' style='margin:0 0 0 5px;'>Link1</a>" +
+					"<a id='diyBtn2_" +treeNode.id+ "' onclick='alert(2);return false;' style='margin:0 0 0 5px;'>Link2</a>";
 				aObj.append(editStr);
 			}
 		}
@@ -122,8 +122,8 @@
 				var editStr = "<span id='diyBtn_" +treeNode.id+ "'>Text Demo...</span>";
 				aObj.after(editStr);
 			} else if (treeNode.id == 25) {
-				var editStr = "<a id='diyBtn1_" +treeNode.id+ "' onclick='alert(1);return false;'>链接1</a>" +
-					"<a id='diyBtn2_" +treeNode.id+ "' onclick='alert(2);return false;'>链接2</a>";
+				var editStr = "<a id='diyBtn1_" +treeNode.id+ "' onclick='alert(1);return false;'>Link1</a>" +
+					"<a id='diyBtn2_" +treeNode.id+ "' onclick='alert(2);return false;'>Link2</a>";
 				aObj.after(editStr);
 			}
 		}
@@ -145,29 +145,29 @@
  </HEAD>
 
 <BODY>
-<h1>添加自定义控件</h1>
-<h6>[ 文件路径: super/diydom.html ]</h6>
+<h1>AddCustom Controls</h1>
+<h6>[ DocumentationPath: super/diydom.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、实现方法说明</h2>
+			<li class="title"><h2>1、AchievedMethodology说明</h2>
 				<ul class="list">
-				<li>利用 setting.view.addHoverDom / removeHoverDom / addDiyDom 这几个参数的配置可以很容易的实现自定义控件的功能</li>
-				<li class="highlight_red">添加自定义控件，请务必掌握 zTree 节点对象的命名规则，以保证正常添加 DOM 控件</li>
-				<li class="highlight_red">如果添加标准的 select / checkbox / radio 等，请注意适当调整 zTree 的布局 css，保证 zTree 能正常显示</li>
+				<li>Utilization setting.view.addHoverDom / removeHoverDom / addDiyDom 这几个Parameters的Configure可以很容易的AchievedCustom Controls的Functions</li>
+				<li class="highlight_red">AddCustom Controls，Make sure you have it zTree Nodesobject命名规则，以Promise正常Add DOM Controls</li>
+				<li class="highlight_red">IfAddStandard的 select / checkbox / radio 等，请Attention适当调整 zTree Layout css，Promise zTree 能正常Show</li>
 				</ul>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li>使用 setting.view.addHoverDom / removeHoverDom / addDiyDom 属性，详细请参见 API 文档中的相关内容</li>
+				<li>Use setting.view.addHoverDom / removeHoverDom / addDiyDom Properties，For more details, please see API in document的相关Contents</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li>对 节点数据 没有特殊要求，用户可以根据自己的需求添加自定义属性</li>
+				<li>对 NodesData No special requests，User可以Based on自己的需求Add自定义Properties</li>
 				</ul>
 			</li>
 		</ul>

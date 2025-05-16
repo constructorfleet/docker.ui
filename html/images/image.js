@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all1:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'center',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'center',
                     width: 210, formatter:leaseOperateFormatter},
                 {field: 'Id', title: 'IMAGE ID', sortable: true,
                     formatter:$.iGrid.buildformatter([$.iGrid.templateformatter('{Id}'), $.iGrid.tooltipformatter()]),
@@ -48,10 +48,10 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectImage(\'' + index + '\', \'' + row.ID + '\')">查看</button>';
-    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="createContainerFromImage(\'' + index + '\', \'' + row.ID + '\')">运行</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除</button>';
-    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="tagLease(\'' + index + '\', \'' + row.ID + '\')">标记</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectImage(\'' + index + '\', \'' + row.ID + '\')">View</button>';
+    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="createContainerFromImage(\'' + index + '\', \'' + row.ID + '\')">Run</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete</button>';
+    htmlstr += '<button class="layui-btn-orange layui-btn layui-btn-xs" onclick="tagLease(\'' + index + '\', \'' + row.ID + '\')">Tag</button>';
 
     return htmlstr;
 }
@@ -63,13 +63,13 @@ function removePanel(){
 function deleteBuild(){
     let node = local_node;
 
-    $.app.confirm("您确定删除所有的构建缓存？", function (response) {
+    $.app.confirm("您SureDelete所有的构建缓存？", function (response) {
         $.docker.request.build.delete(function(response){
             response.CachesDeleted = response.CachesDeleted||[];
 
             console.log(response.CachesDeleted);
 
-            let msg = '构建缓存清理成功，清理空间{0}, 清理构建缓存{1}个'.format($.docker.utils.getSize(response.SpaceReclaimed), response.CachesDeleted.length);
+            let msg = '构建缓存清理Success，Clear space{0}, Clear Build Cache{1}个'.format($.docker.utils.getSize(response.SpaceReclaimed), response.CachesDeleted.length);
 
             $.app.show(msg)
 
@@ -87,7 +87,7 @@ function buildImage(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>构建镜像选项</legend>
+                        <legend>构建MirrorOptions</legend>
                     </fieldset>
                     <style>
                     .radiobutton.inputbox{
@@ -98,10 +98,10 @@ function buildImage(){
                     <div style="margin-top:5px">
                             <div class="cubeui-row" style="margin-top: 5px">
                                 <div class="cubeui-col-sm12" >
-                                    <label class="cubeui-form-label" title="Git存储库URI或HTTP/HTTPS上下文URI。如果URI指向单个文本文件，则该文件的内容将被放置到名为Dockerfile的文件中，并从该文件构建图像。如果URI指向tarball，则守护进程将下载该文件，其中的内容将用作构建的上下文。如果URI指向tarball，并且还指定了dockerfile参数，则tarball内必须有一个具有相应路径的文件。">构建源方式:</label>
+                                    <label class="cubeui-form-label" title="GitLibraryURI或HTTP/HTTPSContextURI。IfURIPoint单个文本Documentation，The contents of this file will be placed under the nameDockerfile_Other Organiser，and build images from this file。IfURIPointtarball，The daemon will download the file，其中的内容将用作构建的Context。IfURIPointtarball，And it\'s been assigneddockerfileParameters，则tarball内必须有一个具有相应Path的Documentation。">构建源Modalities:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-radiobutton" checked name="mode" 
-                                            data-options="title:'从本地上传tarball文件',
+                                            data-options="title:'从LocalUploadtarballDocumentation',
                                             onChange:function(checked){
                                                 if(checked){
                                                     $('.upload_image_file').show();
@@ -113,10 +113,10 @@ function buildImage(){
                                                     
                                                 }
                                             }
-                                            " value="file" label1="本地Tarball文件">
-                                        <span style='line-height: 30px;padding-right:0px' title="从本地上传tarball文件"><b>本地Tarball文件</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                            " value="file" label1="LocalTarballDocumentation">
+                                        <span style='line-height: 30px;padding-right:0px' title="从LocalUploadtarballDocumentation"><b>LocalTarballDocumentation</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         <input data-toggle="cubeui-radiobutton" name="mode"
-                                            data-options="title:'从远程URI上传tarball文件',
+                                            data-options="title:'从RemoteURIUploadtarballDocumentation',
                                             onChange:function(checked){
                                                 if(checked){
                                                     $('.upload_image_file').hide();
@@ -128,29 +128,29 @@ function buildImage(){
                                                 }
                                             }
                                             "
-                                        value="url" label1="远程URI">            
-                                        <span style='line-height: 30px;padding-right:0px' title="it存储库URI或HTTP/HTTPS上下文URI。如果URI指向单个文本文件，则该文件的内容将被放置到名为Dockerfile的文件中，并从该文件构建图像。如果URI指向tarball，则守护进程将下载该文件，其中的内容将用作构建的上下文。如果URI指向tarball，并且还指定了dockerfile参数，则tarball内必须有一个具有相应路径的文件"><b>远程URI</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>                        
+                                        value="url" label1="RemoteURI">            
+                                        <span style='line-height: 30px;padding-right:0px' title="itLibraryURI或HTTP/HTTPSContextURI。IfURIPoint单个文本Documentation，The contents of this file will be placed under the nameDockerfile_Other Organiser，and build images from this file。IfURIPointtarball，The daemon will download the file，其中的内容将用作构建的Context。IfURIPointtarball，And it\'s been assigneddockerfileParameters，则tarball内必须有一个具有相应Path的Documentation"><b>RemoteURI</b>&nbsp;&nbsp;&nbsp;&nbsp;</span>                        
                                     </div>
                                 </div>
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">Dockerfile路径:</label>
+                                    <label class="cubeui-form-label">DockerfilePath:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="dockerfile"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'生成上下文中Dockerfile的路径。默认为Dockerfile。'
+                                                        required:false,prompt:'Generate contextDockerfile的Path。Default asDockerfile。'
                                                         "
                                         >
                                     </div>
                                 </div>
                                              
                                 <div class="upload_image_file cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">构建镜像包:</label>
+                                    <label class="cubeui-form-label">构建Mirror包:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-filebox" id="import_file" data-options="
-                                            prompt:'必须是使用以下算法之一压缩的tar存档：identity（无压缩）、gzip、bzip2或xz。',
-                                            buttonText: '选择文件',
+                                            prompt:'必须是Use以下算法之一压缩的tarArchive：identity（No compression）、gzip、bzip2或xz。',
+                                            buttonText: 'Select File',
                                             required:true,
                                             accept:'.tar',
                                             " style="width:100%">  
@@ -158,10 +158,10 @@ function buildImage(){
                                 </div>        
                                    
                                 <div class="remote_image_url cubeui-col-sm12" style="margin-top: 5px;display:none">
-                                    <label class="cubeui-form-label">存储库URI:</label>
+                                    <label class="cubeui-form-label">LibraryURI:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-textbox" id="remote_uri" name="remote" data-options="
-                                            prompt:'Git存储库URI或HTTP/HTTPS上下文URI。如果URI指向单个文本文件，则该文件的内容将被放置到名为Dockerfile的文件中',                                            
+                                            prompt:'GitLibraryURI或HTTP/HTTPSContextURI。IfURIPoint单个文本Documentation，The contents of this file will be placed under the nameDockerfile_Other Organiser',                                            
                                             required:true,
                                             novalidate:true,
                                             " >  
@@ -169,24 +169,24 @@ function buildImage(){
                                 </div>  
                                                                           
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="以repos:tag格式应用于图像的名称和可选标记。如果省略标记，则假定为默认的最新值。">镜像标记:</label>
+                                    <label class="cubeui-form-label" title="以repos:tagFormat应用于图像的名称和可选Tag。If省略Tag，Assumes the default latest value。">MirrorTag:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="t"
                                                value=''
                                                data-options="
-                                                        required:true,prompt:'以repos:tag格式应用于图像的名称和可选标记。如果省略标记，则假定为默认的最新值。'
+                                                        required:true,prompt:'以repos:tagFormat应用于图像的名称和可选Tag。If省略Tag，Assumes the default latest value。'
                                                         "
                                         >
                                     </div>
                                 </div>   
                                        
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="要添加到/etc/hosts的额外主机">额外主机名:</label>
+                                    <label class="cubeui-form-label" title="要Add到/etc/hosts的额外Host">额外Host名:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="extrahosts"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'要添加到/etc/hosts的额外主机。'
+                                                        required:false,prompt:'要Add到/etc/hosts的额外Host。'
                                                         "
                                         >
                                     </div>
@@ -196,7 +196,7 @@ function buildImage(){
                             
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；详细生成输出；不选中；抑制详细生成输出">抑制详细:</label>
+                                    <label class="cubeui-form-label" title="If selected；Detailed Output Generation；Uncheck；抑制Detailed Output Generation">Depression Details:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked 
                                             name="q" value="1" data-options="onText:'',offText:'',width:60">
@@ -205,7 +205,7 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；生成镜像时使用缓存；不选中；生成镜像时不使用缓存">使用缓存:</label>
+                                    <label class="cubeui-form-label" title="If selected；生成Mirror时Use缓存；Uncheck；生成Mirror时不Use缓存">Use缓存:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked
                                             name="cache" value="1" data-options="onText:'',offText:'',width:60">
@@ -214,7 +214,7 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；成功生成后删除中间容器。">删除中间容器:</label>
+                                    <label class="cubeui-form-label" title="If selected；Success生成后Delete中间Containers。">Delete中间Containers:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton" checked
                                             name="rm" value="1" data-options="onText:'',offText:'',width:60">
@@ -223,7 +223,7 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm3">
-                                    <label class="cubeui-form-label" title="如果选中；即使发生故障，也应始终拆下中间容器。">强制删除:</label>
+                                    <label class="cubeui-form-label" title="If selected；Even if it doesn\'t work，也应始终拆下中间Containers。">强制Delete:</label>
                                     <div class="cubeui-input-block">
                                         <input data-toggle="cubeui-switchbutton"
                                             name="forcerm" value="1" data-options="onText:'',offText:'',width:60">
@@ -232,12 +232,12 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="要在镜像上上设置的任意键/值标签的元数据,格式为KEY1=VALUE1[ KEY2=VAVLUE2]">标签:</label>
+                                    <label class="cubeui-form-label" title="要在Mirror上上Settings的任意键/值Label的元Data,Format为KEY1=VALUE1[ KEY2=VAVLUE2]">Label:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-tagbox" name="labels"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'键/值标签的元数据,格式为KEY1=VALUE1[ KEY2=VAVLUE2]。'
+                                                        required:false,prompt:'键/值Label的元Data,Format为KEY1=VALUE1[ KEY2=VAVLUE2]。'
                                                         "
                                         >
                                     </div>
@@ -245,12 +245,12 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="生成时变量的字符串对。用户在构建时传递这些值。Docker将buildargs用作通过Dockerfile运行指令运行的命令的环境上下文，或用于其他Dockerfile指令中的变量扩展">构建期参数:</label>
+                                    <label class="cubeui-form-label" title="String pair of variables at generation。User transfers these values during build。Docker将buildargsUsed for adoptionDockerfileRun指令Run的命令的EnvironmentContext，or for other purposesDockerfileVariable Extension in Command">构建期Parameters:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-tagbox" name="buildargs"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'构建期参数,格式为KEY1=VALUE1[,KEY2=VAVLUE2]。例如，FOO=bar'
+                                                        required:false,prompt:'构建期Parameters,Format为KEY1=VALUE1[,KEY2=VAVLUE2]。For example:，FOO=bar'
                                                         "
                                         >
                                     </div>
@@ -258,12 +258,12 @@ function buildImage(){
                             </div> 
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label" title="目标构建阶段">目标构建阶段:</label>
+                                    <label class="cubeui-form-label" title="Target build phase">Target build phase:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="target"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'目标构建阶段。'
+                                                        required:false,prompt:'Target build phase。'
                                                         "
                                         >
                                     </div>
@@ -286,13 +286,13 @@ function buildImage(){
 
     let id = Math.uuid();
 
-    $.docker.utils.optionConfirm('上传构建包进行镜像构建', '选择构建包并使用构建包构建镜像？', import_html.format(id),
+    $.docker.utils.optionConfirm('Upload构建包进行Mirror构建', 'Selection构建包并Use构建包构建Mirror？', import_html.format(id),
         function(param, closeFn) {
 
             let data = {};
 
             if ($.extends.isEmpty(param.t)) {
-                $.app.show("需要填写构建镜像的镜像名称")
+                $.app.show("_Other Organiser构建Mirror的Mirror名称")
                 return false;
             }
 
@@ -328,8 +328,8 @@ function buildImage(){
             let buildFn = function(querydata, content){
 
                 $('.{0}-build-image-log'.format(id)).empty()
-                $('.{0}-build-image-log'.format(id)).append('<span>开始构建镜像{0}....</span>'.format(querydata.t));
-                $.app.showProgress('开始构建镜像{0}....'.format(querydata.t));
+                $('.{0}-build-image-log'.format(id)).append('<span>开始构建Mirror{0}....</span>'.format(querydata.t));
+                $.app.showProgress('开始构建Mirror{0}....'.format(querydata.t));
 
                 $.docker.request.image.build(function (json, xhr, state) {
                     console.log(json)
@@ -357,16 +357,16 @@ function buildImage(){
                     $.app.closeProgess();
 
                     if(xhr.status<400&&!this.ErrorMsg){
-                        $.app.show('构建包进行镜像构建{0}成功'.format(querydata.t.htmlEncode()));
+                        $.app.show('构建包进行Mirror构建{0}Success'.format(querydata.t.htmlEncode()));
                         reloadDg();
                     }else{
                         if(this.ErrorMsg){
-                            $.app.show('构建包进行镜像构建{0}失败:{1}'.format(querydata.t.htmlEncode(), this.ErrorMsg));
-                            $('.{0}-build-image-log'.format(id)).append('<br><font color="red">{0}</font>'.format('构建包进行镜像构建{0}失败:{1}'.format(querydata.t.htmlEncode(), this.ErrorMsg)));
+                            $.app.show('构建包进行Mirror构建{0}Failed:{1}'.format(querydata.t.htmlEncode(), this.ErrorMsg));
+                            $('.{0}-build-image-log'.format(id)).append('<br><font color="red">{0}</font>'.format('构建包进行Mirror构建{0}Failed:{1}'.format(querydata.t.htmlEncode(), this.ErrorMsg)));
                         }
                         else{
-                            $.app.show('构建包进行镜像构建{0}失败'.format(querydata.t.htmlEncode()));
-                            $('.{0}-build-image-log'.format(id)).append('<br><font color="red">{0}</font>'.format('构建包进行镜像构建{0}失败'.format(querydata.t.htmlEncode())));
+                            $.app.show('构建包进行Mirror构建{0}Failed'.format(querydata.t.htmlEncode()));
+                            $('.{0}-build-image-log'.format(id)).append('<br><font color="red">{0}</font>'.format('构建包进行Mirror构建{0}Failed'.format(querydata.t.htmlEncode())));
                         }
 
                     }
@@ -380,7 +380,7 @@ function buildImage(){
                 console.log(files)
 
                 if(files.length<1){
-                    $.app.show("需要选择进行上传的构建包进行镜像构建")
+                    $.app.show("需要Selection进行Upload的构建包进行Mirror构建")
                     return false;
                 }
 
@@ -401,7 +401,7 @@ function buildImage(){
                 }).readAsArrayBuffer(files[0])
             }else{
                 if($.extends.isEmpty(param.remote)){
-                    $.app.show("需要选择Git存储库URI或HTTP/HTTPS上下文URI")
+                    $.app.show("需要SelectionGitLibraryURI或HTTP/HTTPSContextURI")
                     return false;
                 }
 
@@ -418,7 +418,7 @@ function createContainerAtImage(){
 
     createContainer(function (response, data) {
         reloadDg();
-        $.app.confirm('创建容器成功, 是否跳转到容器管理模块，对新创建的容器进行管理？选择“是”，进行跳转，否则进行停留在当前页面', function () {
+        $.app.confirm('Create ContainerSuccess, 是否跳转到Container management模块，Management of newly created containers？Selection“是”，Jump，Otherwise stop on the current page', function () {
             // $('#layout').layout('collapse', 'east');
             triggerNavMenuClick('ALL', 'containers');
             $('#layout').layout('collapse', 'east');
@@ -435,22 +435,22 @@ function createAndStartContainerAtImage(){
 
         if($.extends.isEmpty(response.Warnings)){
 
-            $.app.show('创建容器{0}成功, 正在启动容器'.format(response.Id));
+            $.app.show('Create Container{0}Success, 正在启动Containers'.format(response.Id));
 
             $.docker.request.container.start(function(){
-                $.app.confirm('创建启动容器{0}成功, 是否跳转到容器管理模块，对新创建的容器进行管理？选择“是”，进行跳转，否则进行停留在当前页面'.format(response.Id), function () {
+                $.app.confirm('创建启动Containers{0}Success, 是否跳转到Container management模块，Management of newly created containers？Selection“是”，Jump，Otherwise stop on the current page'.format(response.Id), function () {
                     // $('#layout').layout('collapse', 'east');
                     triggerNavMenuClick('ALL', 'containers');
                     $('#layout').layout('collapse', 'east');
                 });
 
-                //$.app.show('容器{0}启动成功'.format(response.Id));
+                //$.app.show('Containers{0}启动Success'.format(response.Id));
                 //reloadDg();
                 //triggerNavMenuClick('ALL', 'containers');
                 //$('#layout').layout('collapse', 'east');
             }, node, response.Id);
         }else{
-            $.app.show('创建容器{0}成功, 出现警告信息，请手动启动容器，{0}'.format(response.Warnings.join(",").htmlEncode()))
+            $.app.show('Create Container{0}Success, Warning message appears，Please start the container manually，{0}'.format(response.Warnings.join(",").htmlEncode()))
         }
 
     });
@@ -474,7 +474,7 @@ function openCreateContainerFromImagePanel(rowData){
         iconCls:'fa fa-info-circle',
         collapsible:false,
         showHeader1:false,
-        titleformat:'创建容器', title:'创建容器',
+        titleformat:'Create Container', title:'Create Container',
         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
         footerHtml: $.templates(create_panel_buttons_html).render({Flag:flag,From:'image'}),
         render:function (panel, option) {
@@ -514,7 +514,7 @@ function createContainerFromImage(idx, id){
         let rows = $('#imagesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个镜像创建容器');
+            $.app.show('本Version仅支持Selection一个MirrorCreate Container');
             return ;
         }
 
@@ -574,7 +574,7 @@ function _tagLease(id, repo, tag, fn){
     }
 
     $.iDialog.openDialog({
-        title: '标记镜像',
+        title: 'TagMirror',
         minimizable:false,
         id:'tagImgDlg',
         iconCls: 'fa fa-headphones',
@@ -587,7 +587,7 @@ function _tagLease(id, repo, tag, fn){
             handler.render(row)
         },
         buttonsGroup: [{
-            text: '标记',
+            text: 'Tag',
             iconCls: 'fa fa-headphones',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -597,10 +597,10 @@ function _tagLease(id, repo, tag, fn){
                 o.ajaxData = $.extends.json.param2json(o.ajaxData);
                 let info = o.ajaxData;
 
-                $.app.confirm('确定标记当前镜像为{0}:{1}'.format(info.fromImage, info.tag), function () {
+                $.app.confirm('SureTag当前Mirror为{0}:{1}'.format(info.fromImage, info.tag), function () {
 
                     $.docker.request.image.tag(function (response) {
-                        $.app.show('标记当前镜像为{0}:{1}成功'.format(info.fromImage, info.tag))
+                        $.app.show('Tag当前Mirror为{0}:{1}Success'.format(info.fromImage, info.tag))
                         reloadDg()
 
                         if(fn)
@@ -628,9 +628,9 @@ function removeLease(leaseId) {
         let rows = $('#imagesDg').datagrid('getChecked');
 
         if(rows.length == 0) {
-            $.app.alert('请选择需要删除的镜像')
+            $.app.alert('请Selection需要Delete的Mirror')
         }else{
-            $.docker.utils.deleteConfirm('删除镜像', '您确认要删除当前想选择的镜像', function (param, closeFn){
+            $.docker.utils.deleteConfirm('DeleteMirror', '您确认要Delete当前想Selection的Mirror', function (param, closeFn){
 
                 let ids = $.extends.collect(rows, function(r){
                     if(r.ID=='<none>:<none>'||r.ID=='<none>@<none>')
@@ -642,9 +642,9 @@ function removeLease(leaseId) {
                 $.docker.request.image.deleteBulk(function(response){
                     let msg = '';
                     if(response.fail.length==0){
-                        msg = '删除成功，已经成功删除'+response.ok.length+'个镜像';
+                        msg = 'DeleteSuccess，已经SuccessDelete'+response.ok.length+'个Mirror';
                     }else{
-                        msg = '已经成功删除'+response.ok.length+'个镜像, 失败删除'+response.fail.length+'个镜像';
+                        msg = '已经SuccessDelete'+response.ok.length+'个Mirror, FailedDelete'+response.fail.length+'个Mirror';
                     }
 
                     reloadDg()
@@ -657,10 +657,10 @@ function removeLease(leaseId) {
         }
 
     }else{
-        $.docker.utils.deleteConfirm('删除镜像', '您确认要删除当前的镜像', function (param, closeFn){
+        $.docker.utils.deleteConfirm('DeleteMirror', '您确认要Delete当前的Mirror', function (param, closeFn){
             $.docker.request.image.delete(function(response){
 
-                let msg = '删除成功，已经成功删除'+response.length+'个镜像';
+                let msg = 'DeleteSuccess，已经SuccessDelete'+response.length+'个Mirror';
                 $.app.show(msg)
 
                 reloadDg()
@@ -682,7 +682,7 @@ function emptyLease(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>选项</legend>
+                        <legend>Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">      
                         <div class="cubeui-row">                              
@@ -690,24 +690,24 @@ function emptyLease(){
                             <span style='line-height: 30px;padding-right:0px'><b>Dangling</b></span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理指定镜像标签:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理指定MirrorLabel:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>label格式: label1=a,label2!=b(不等于),label!=...(没有标签)</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>labelFormat: label1=a,label2!=b(Not equal to),label!=...(没有Label)</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="labels"
-                                   value='' data-options="required:false,prompt:'label格式: label1=a,label2!=b,label!=...'">
+                                   value='' data-options="required:false,prompt:'labelFormat: label1=a,label2!=b,label!=...'">
                         </div>
                     </div>
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('清理镜像', '重要警告：确定要清空所有未使用的镜像，清理后数据卷数据将无法恢复', html,
+    $.docker.utils.optionConfirm('清理Mirror', 'Important Warning：Sure要清空所有未Use的Mirror，清理后Data卷Data将无法恢复', html,
         function(param, closeFn){
 
             $.docker.request.image.prune(function(response){
-                let msg = '成功清除{0}个镜像，回收空间{1}'.format(response.Count, response.Size)
+                let msg = 'Success清除{0}个Mirror，Recovery Space{1}'.format(response.Count, response.Size)
 
                 closeFn();
 
@@ -722,12 +722,12 @@ function pushImage(id){
         let rows = $('#imagesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个镜像推送至仓库');
+            $.app.show('本Version仅支持Selection一个Mirror推送至Warehouse');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个镜像推送至仓库');
+            $.app.show('请Selection一个Mirror推送至Warehouse');
             return;
         }else{
             id = rows[0].ID;
@@ -741,23 +741,23 @@ function pushImage(id){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>推送镜像至仓库选项</legend>
+                        <legend>推送Mirror至WarehouseOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">镜像名称:</label>
+                                    <label class="cubeui-form-label">Mirror名称:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="repos"
                                                value='{0}'
                                                data-options="
-                                                        required:true,prompt:'镜像名称，选择填写；比如joinsunsoft/docker-ui:latest'
+                                                        required:true,prompt:'Mirror名称，Select Fill；Like whatjoinsunsoft/docker-ui:latest'
                                                         "
                                         >
                                     </div>
                                 </div>
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">仓库地址:</label>
+                                    <label class="cubeui-form-label">WarehouseAddress:</label>
                                     <div class="cubeui-input-block">
                                     
                                         <input type="text" name="serveraddress" data-toggle="cubeui-combobox"
@@ -768,7 +768,7 @@ function pushImage(id){
                                                             $('#push_username').textbox('setValue', record.Username);
                                                             $('#push_password').passwordbox('setValue', record.Password);
                                                         },
-                                                        required:true,prompt:'镜像仓库地址，格式：https://index.docker.io/v1/ 如果不填写，为默认docker hub仓库',
+                                                        required:true,prompt:'MirrorWarehouseAddress，Format：https://index.docker.io/v1/ If不填写，As Defaultdocker hubWarehouse',
                                                         valueField:'ID',
                                                         textField:'Name',
                                                         data:$.docker.request.repos.getReposItem()
@@ -778,7 +778,7 @@ function pushImage(id){
                                         <input type="text" data-toggle="cubeui-textbox" name="serveraddress"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'镜像仓库地址，格式：https://index.docker.io/v1/ 如果不填写，为默认docker hub仓库'
+                                                        required:false,prompt:'MirrorWarehouseAddress，Format：https://index.docker.io/v1/ If不填写，As Defaultdocker hubWarehouse'
                                                         "
                                         >
                                         -->
@@ -786,24 +786,24 @@ function pushImage(id){
                                 </div>
                                 
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">用户名:</label>
+                                    <label class="cubeui-form-label">Username:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" id='push_username' name="username"
                                                value='{1}'
                                                data-options="
-                                                        required:false,prompt:'登录镜像仓库的用户名'
+                                                        required:false,prompt:'LoginMirrorWarehouse的Username'
                                                         "
                                         >
                                     </div>
                                 </div>
                                
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">密码:</label>
+                                    <label class="cubeui-form-label">Password:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-passwordbox" id='push_password' name="password"
                                                value='{2}'
                                                data-options="
-                                                        required:false,prompt:'登录镜像仓库的用户密码'
+                                                        required:false,prompt:'LoginMirrorWarehouse的用户Password'
                                                         "
                                         >
                                     </div>
@@ -819,25 +819,25 @@ function pushImage(id){
     $.docker.request.image.inspect(function (response){
 
         if($.extends.isEmpty(response.RepoTags)){
-            $.app.show("待推送镜像名称和标签不正确，请先给该镜像进行标签操作");
+            $.app.show("待推送Mirror名称和Label不正确，请先给该Mirror进行LabelOperation");
             return false;
         }
 
-        $.docker.utils.optionConfirm('推送至镜像仓库', '选择推送至镜像仓库的推送选项？',
+        $.docker.utils.optionConfirm('推送至MirrorWarehouse', 'Selection推送至MirrorWarehouse的推送Options？',
             import_html.format(response.RepoTags[0].htmlEncode(),username.htmlEncode(), password.htmlEncode()),
             function(param, closeFn){
 
                 console.log(param)
 
                 if($.extends.isEmpty(param.repos)){
-                    $.app.show("需要填写镜像名称及标签")
+                    $.app.show("_Other OrganiserMirror名称及Label")
                     return false;
                 }
 
                 let repos = $.docker.request.repos.getRepoById(node, param.serveraddress);
 
                 if(repos == null){
-                    $.app.show('没有找到对应的仓库信息');
+                    $.app.show('没有找到对应的Warehouse信息');
                     return false;
                 }
 
@@ -846,7 +846,7 @@ function pushImage(id){
                 $.docker.request.image.push(function (json, xhr, status) {
                     console.log(json)
                 }, node, param.repos, param.serveraddress, param.username, param.password, function () {
-                    $.app.show('镜像已经推送镜像仓库成功');
+                    $.app.show('Mirror已经推送MirrorWarehouseSuccess');
 
                     // let key = $.extends.isEmpty(param.serveraddress, "default");
 
@@ -869,7 +869,7 @@ function pullImage(){
     let node = local_node;
 
     $.iDialog.openDialog({
-        title: '拉取镜像',
+        title: 'PullMirror',
         minimizable:false,
         id:'pullImgDlg',
         width: 600,
@@ -881,7 +881,7 @@ function pullImage(){
             handler.render({})
         },
         leftButtonsGroup:[{
-            text: '搜索镜像',
+            text: '搜索Mirror',
             iconCls: 'fa fa-search',
             btnCls: 'cubeui-btn-blue',
             handler1:'ajaxForm',
@@ -891,7 +891,7 @@ function pullImage(){
                 let imageName = $(dlgObj).find("input[name='fromImage']").val()
 
                 $.iDialog.openDialog({
-                    title: '搜索镜像',
+                    title: '搜索Mirror',
                     minimizable:false,
                     id:'queryForm-search',
                     width: 1200,
@@ -952,7 +952,7 @@ function pullImage(){
             }
         }],
         buttonsGroup: [{
-            text: '拉取镜像',
+            text: 'PullMirror',
             iconCls: 'fa fa-plus-square-o',
             btnCls: 'cubeui-btn-orange',
             handler:'ajaxForm',
@@ -967,14 +967,14 @@ function pullImage(){
                 let repos = $.docker.request.repos.getRepoById(node, info.repo);
 
                 if(repos == null){
-                    $.app.show('没有找到对应的仓库信息');
+                    $.app.show('没有找到对应的Warehouse信息');
                     return false;
                 }
 
                 info.repo = repos.Endpoint;
 
                 $.docker.request.image.pull(function (response) {
-                    $.app.show('拉取镜像{0}:{1}成功'.format(info.fromImage, info.tag))
+                    $.app.show('PullMirror{0}:{1}Success'.format(info.fromImage, info.tag))
                     reloadDg()
                 }, node, info.repo, info.fromImage, info.tag, function(xhr, state){
                     console.log('onSend')
@@ -982,7 +982,7 @@ function pullImage(){
 
                     if(state==1){
                         console.log('onSendOver')
-                        $.app.show('pull镜像请求已经发送')
+                        $.app.show('pullMirrorRequest已经发送')
                         //$.iDialog.closeOutterDialog($(t))
                         //reloadDg()
                     }
@@ -1003,16 +1003,16 @@ function loadImage(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>加载选项</legend>
+                        <legend>加载Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">                                
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">镜像文件:</label>
+                                    <label class="cubeui-form-label">MirrorDocumentation:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-filebox" id="load_file" data-options="
-                                            prompt:'从本地文件系统选择已导出的镜像tar文件...',
-                                            buttonText: '选择文件',
+                                            prompt:'Select From Local File System已Export的MirrortarDocumentation...',
+                                            buttonText: 'Select File',
                                             accept:'.tar',
                                             " style="width:100%">  
                                     </div>
@@ -1022,7 +1022,7 @@ function loadImage(){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('导入', '选择镜像文件加载镜像？', load_html,
+    $.docker.utils.optionConfirm('Import', 'SelectionMirrorDocumentation加载Mirror？', load_html,
         function(param, closeFn){
             console.log(param)
 
@@ -1032,7 +1032,7 @@ function loadImage(){
                 $.docker.request.image.import2(function (response) {
                     console.log(response);
                 }, node, this.result, function(){
-                    $.app.show('加载成功');
+                    $.app.show('加载Success');
                     reloadDg()
                 });
             },function(e){
@@ -1059,17 +1059,17 @@ function importImage(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>导入选项</legend>
+                        <legend>ImportOptions</legend>
                     </fieldset>
                     <div style="margin-top:5px">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">镜像名称:</label>
+                                    <label class="cubeui-form-label">Mirror名称:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" id="fromImage" name="fromImage"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'镜像名称，选择填写；比如joinsunsoft/docker-ui'
+                                                        required:false,prompt:'Mirror名称，Select Fill；Like whatjoinsunsoft/docker-ui'
                                                         "
                                         >
                                     </div>
@@ -1080,28 +1080,28 @@ function importImage(){
                                         <input type="text" data-toggle="cubeui-textbox" name="tag"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'TAG，选择填写；为空使用默认latest'
+                                                        required:false,prompt:'TAG，Select Fill；为空Use默认latest'
                                                         "
                                         >
                                     </div>
                                 </div>
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">Tarball文件:</label>
+                                    <label class="cubeui-form-label">TarballDocumentation:</label>
                                     <div class="cubeui-input-block">
                                         <input  data-toggle="cubeui-filebox" id="import_file" data-options="
-                                            prompt:'从本地文件系统选择Tarball文件...',
-                                            buttonText: '选择文件',
+                                            prompt:'Select From Local File SystemTarballDocumentation...',
+                                            buttonText: 'Select File',
                                             accept:'.tar',
                                             " style="width:100%">  
                                     </div>
                                 </div>
                                 <div class="cubeui-col-sm12" style="margin-top: 5px">
-                                    <label class="cubeui-form-label">备注:</label>
+                                    <label class="cubeui-form-label">Remarks:</label>
                                     <div class="cubeui-input-block">
                                         <input type="text" data-toggle="cubeui-textbox" name="message"
                                                value=''
                                                data-options="
-                                                        required:false,prompt:'导入的备注信息'
+                                                        required:false,prompt:'Import的Remarks Information'
                                                         "
                                         >
                                     </div>
@@ -1111,14 +1111,14 @@ function importImage(){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('导入', '选择tarball文件导入镜像？', import_html,
+    $.docker.utils.optionConfirm('Import', 'SelectiontarballDocumentationImportMirror？', import_html,
         function(param, closeFn){
 
 
             console.log(param)
 
             if($.extends.isEmpty(param.fromImage)){
-                $.app.show("需要填写新镜像")
+                $.app.show("_Other Organiser新Mirror")
                 return false;
             }
 
@@ -1132,7 +1132,7 @@ function importImage(){
                 
                 $.docker.request.image.import(function (response) {
 
-                    $.app.show('导入成功');
+                    $.app.show('ImportSuccess');
                     //closeFn();
                     reloadDg()
 
@@ -1174,7 +1174,7 @@ function showImagePanel(index){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:'{0}-镜像信息'.format(row.Name, row.ID), title:'镜像',
+            titleformat:'{0}-Mirror信息'.format(row.Name, row.ID), title:'Mirror',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerHtml:`
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -1185,7 +1185,7 @@ function showImagePanel(index){
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-headphones'
-        }">标记</a>
+        }">Tag</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
                     pushImage('{0}');
@@ -1193,21 +1193,21 @@ function showImagePanel(index){
                 extend: '#imagesDg-toolbar',
                 btnCls: 'cubeui-btn-ivory',
                 iconCls: 'fa fa-arrow-circle-up'
-            }">推送镜像</a>
+            }">推送Mirror</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){                    
                     createContainerFromImage({3}, '{0}');
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-superpowers'
-        }">创建容器</a>
+        }">Create Container</a>
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     $('#layout').layout('collapse', 'east');
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
         `.format(row.ID, row.Repository, row.Tag, index),
             render:function (panel, option) {
                 let cnt = $($.templates(image_html_template).render(rowData));
@@ -1269,7 +1269,7 @@ function pullImgFromMenu(){
     let node = local_node;
 
     $.docker.request.image.pull(function (response) {
-        $.app.show('拉取镜像{0}:{1}成功'.format(row.name, 'latest'))
+        $.app.show('PullMirror{0}:{1}Success'.format(row.name, 'latest'))
         reloadDg()
     }, node, null, row.name, 'latest', function(xhr, state){
         console.log('onSend')
@@ -1277,7 +1277,7 @@ function pullImgFromMenu(){
 
         if(state==1){
             console.log('onSendOver')
-            $.app.show('pull镜像{0}:{1}请求已经发送'.format(row.name, 'latest'))
+            $.app.show('pullMirror{0}:{1}Request已经发送'.format(row.name, 'latest'))
         }
     })
 
@@ -1295,7 +1295,7 @@ function refreshSearch(p) {
     }
 
     if($.extends.isEmpty(p.term)){
-        $.app.show('没有输入过滤条件');
+        $.app.show('No filter conditions entered');
         return false;
     }
 
@@ -1319,14 +1319,14 @@ function refreshSearch(p) {
 
 let image_html_template = `
         <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="基础信息"
+            <div title="Basic information"
                  data-options="id:'eastTab0',iconCls:'fa fa-headphones'">                 
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>镜像信息</legend>
+                        <legend>Mirror信息</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -1498,14 +1498,14 @@ let image_html_template = `
                 </div>          
                  
             </div>
-            <div title="构建信息"
+            <div title="Build Information"
                  data-options="id:'eastTab1',iconCls:'fa fa-superpowers'">
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>构建信息</legend>
+                        <legend>Build Information</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -1731,10 +1731,10 @@ let image_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row" style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>源数据卷</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>源Data卷</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>目标</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Objective</span>
                                 </div>
                             </div>
                             {{for ContainerConfig.Volumes}}
@@ -1755,7 +1755,7 @@ let image_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Port</span>
                                 </div>
                             </div>
                             {{props ContainerConfig.ExposedPorts}}
@@ -1769,14 +1769,14 @@ let image_html_template = `
                     </div>
                 
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
                                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -1802,14 +1802,14 @@ let image_html_template = `
             </div>
             
             
-            <div title="配置信息" 
+            <div title="Configure信息" 
                  data-options="id:'eastTab2',iconCls:'fa fa-gear'">
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>构建信息</legend>
+                        <legend>Build Information</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -2034,10 +2034,10 @@ let image_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row" style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>源数据卷</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>源Data卷</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>目标</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Objective</span>
                                 </div>
                             </div>
                             {{if Config.Volumes}}
@@ -2060,7 +2060,7 @@ let image_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Port</span>
                                 </div>
                             </div>
                             {{props Config.ExposedPorts}}
@@ -2074,14 +2074,14 @@ let image_html_template = `
                     </div>
                 
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
                                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -2105,7 +2105,7 @@ let image_html_template = `
                  
             </div>
             
-            <div title="历史信息" 
+            <div title="Historical information" 
              data-options="id:'eastTab3',iconCls:'fa fa-history',fit:true, border:false">   
                 <table id="historysDg"></table>
             </div>

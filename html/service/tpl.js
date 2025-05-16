@@ -6,7 +6,7 @@ let service_panel_footer_html = `
             },
             btnCls: 'cubeui-btn-slateblue',
             iconCls: 'fa fa-tags'
-        }">编辑元数据</a>
+        }">Edit元Data</a>
         
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -14,7 +14,7 @@ let service_panel_footer_html = `
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-times'
-        }">删除</a>
+        }">Delete</a>
         {{else}}
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -23,7 +23,7 @@ let service_panel_footer_html = `
                 extend: '#servicesDg-toolbar',
                 btnCls: 'cubeui-btn-ivory',
                 iconCls: 'fa fa-spinner'
-            }">创建</a>
+            }">Create</a>
         {{/if}}
 <!--        <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -32,19 +32,19 @@ let service_panel_footer_html = `
                 extend: '#servicesDg-toolbar',
                 btnCls: 'cubeui-btn-ivory',
                 iconCls: 'fa fa-hand-o-up'
-            }">提升管理节点</a>
+            }">Raise管理Nodes</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     demoteLease('{{>ID}}', true);
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-hand-o-down'
-        }">降级工作节点</a>-->
+        }">Downgrade工作Nodes</a>-->
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     $('#layout').layout('collapse', 'east');
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
 `;

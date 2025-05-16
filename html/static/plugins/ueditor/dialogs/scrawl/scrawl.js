@@ -2,7 +2,7 @@
  * Created with JetBrains PhpStorm.
  * User: xuheng
  * Date: 12-5-22
- * Time: 上午11:38
+ * Time: a.m11:38
  * To change this template use File | Settings | File Templates.
  */
 var scrawl = function (options) {
@@ -11,44 +11,44 @@ var scrawl = function (options) {
 (function () {
     var canvas = $G("J_brushBoard"),
         context = canvas.getContext('2d'),
-        drawStep = [], //undo redo存储
-        drawStepIndex = 0; //undo redo指针
+        drawStep = [], //undo redoStorage
+        drawStepIndex = 0; //undo redoPointer
 
     scrawl.prototype = {
-        isScrawl:false, //是否涂鸦
-        brushWidth:-1, //画笔粗细
-        brushColor:"", //画笔颜色
+        isScrawl:false, //是否Doodles
+        brushWidth:-1, //Brush粗细
+        brushColor:"", //BrushColour
 
         initOptions:function (options) {
             var me = this;
-            me.originalState(options);//初始页面状态
-            me._buildToolbarColor(options.colorList);//动态生成颜色选择集合
+            me.originalState(options);//初始PageStatus
+            me._buildToolbarColor(options.colorList);//动态GenerateColourSelectionGather
 
-            me._addBoardListener(options.saveNum);//添加画板处理
-            me._addOPerateListener(options.saveNum);//添加undo redo clearBoard处理
-            me._addColorBarListener();//添加颜色选择处理
-            me._addBrushBarListener();//添加画笔大小处理
-            me._addEraserBarListener();//添加橡皮大小处理
-            me._addAddImgListener();//添加增添背景图片处理
-            me._addRemoveImgListenter();//删除背景图片处理
-            me._addScalePicListenter();//添加缩放处理
-            me._addClearSelectionListenter();//添加清楚选中状态处理
+            me._addBoardListener(options.saveNum);//Add画板Processing
+            me._addOPerateListener(options.saveNum);//Addundo redo clearBoardProcessing
+            me._addColorBarListener();//AddColourSelectionProcessing
+            me._addBrushBarListener();//AddBrush大小Processing
+            me._addEraserBarListener();//Add橡皮大小Processing
+            me._addAddImgListener();//Add增添BackgroundPictureProcessing
+            me._addRemoveImgListenter();//DeleteBackgroundPictureProcessing
+            me._addScalePicListenter();//Add缩放Processing
+            me._addClearSelectionListenter();//Add清楚SelectStatusProcessing
 
-            me._originalColorSelect(options.drawBrushColor);//初始化颜色选中
-            me._originalBrushSelect(options.drawBrushSize);//初始化画笔选中
-            me._clearSelection();//清楚选中状态
+            me._originalColorSelect(options.drawBrushColor);//InitializeColourSelect
+            me._originalBrushSelect(options.drawBrushSize);//InitializeBrushSelect
+            me._clearSelection();//清楚SelectStatus
         },
 
         originalState:function (options) {
             var me = this;
 
-            me.brushWidth = options.drawBrushSize;//同步画笔粗细
-            me.brushColor = options.drawBrushColor;//同步画笔颜色
+            me.brushWidth = options.drawBrushSize;//同步Brush粗细
+            me.brushColor = options.drawBrushColor;//同步BrushColour
 
-            context.lineWidth = me.brushWidth;//初始画笔大小
-            context.strokeStyle = me.brushColor;//初始画笔颜色
-            context.fillStyle = "transparent";//初始画布背景颜色
-            context.lineCap = "round";//去除锯齿
+            context.lineWidth = me.brushWidth;//初始Brush大小
+            context.strokeStyle = me.brushColor;//初始BrushColour
+            context.fillStyle = "transparent";//初始画布BackgroundColour
+            context.lineCap = "round";//Remove sawn teeth
             context.fill();
         },
         _buildToolbarColor:function (colorList) {
@@ -92,7 +92,7 @@ var scrawl = function (options) {
                         isMouseUp = false;
                         isMouseMove = false;
                         me.isScrawl = true;
-                        startX = e.clientX - margin;//10为外边距总和
+                        startX = e.clientX - margin;//10for the total margin
                         startY = e.clientY - margin;
                         context.beginPath();
                         break;
@@ -101,7 +101,7 @@ var scrawl = function (options) {
                             return;
                         }
                         if (!flag && button) {
-                            startX = e.clientX - margin;//10为外边距总和
+                            startX = e.clientX - margin;//10for the total margin
                             startY = e.clientY - margin;
                             context.beginPath();
                             flag = 1;
@@ -388,7 +388,7 @@ var scrawl = function (options) {
                 context.drawImage(img, x, y, img.width, img.height);
             } else {
                 context.globalCompositeOperation = "destination-atop";
-                context.fillStyle = "#fff";//重置画布背景白色
+                context.fillStyle = "#fff";//Reset画布Background白色
                 context.fillRect(0, 0, canvas.width, canvas.height);
             }
             try {
@@ -566,13 +566,13 @@ var ScaleBoy = function () {
     };
 })();
 
-//后台回调
+//后台Rewind
 function ue_callback(url, state) {
     var doc = document,
         picBorard = $G("J_picBoard"),
         img = doc.createElement("img");
 
-    //图片缩放
+    //Picture缩放
     function scale(img, max, oWidth, oHeight) {
         var width = 0, height = 0, percent, ow = img.width || oWidth, oh = img.height || oHeight;
         if (ow > max || oh > max) {
@@ -592,9 +592,9 @@ function ue_callback(url, state) {
         }
     }
 
-    //移除遮罩层
+    //Remove Mask
     removeMaskLayer();
-    //状态响应
+    //Status响应
     if (state == "SUCCESS") {
         picBorard.innerHTML = "";
         img.onload = function () {
@@ -611,21 +611,21 @@ function ue_callback(url, state) {
         alert(state);
     }
 }
-//去掉遮罩层
+//Get rid of it遮罩层
 function removeMaskLayer() {
     var maskLayer = $G("J_maskLayer");
     maskLayer.className = "maskLayerNull";
     maskLayer.innerHTML = "";
     dialog.buttons[0].setDisabled(false);
 }
-//添加遮罩层
+//Add遮罩层
 function addMaskLayer(html) {
     var maskLayer = $G("J_maskLayer");
     dialog.buttons[0].setDisabled(true);
     maskLayer.className = "maskLayer";
     maskLayer.innerHTML = html;
 }
-//执行确认按钮方法
+//ImplementationConfirmbuttonMethodology
 function exec(scrawlObj) {
     if (scrawlObj.isScrawl) {
         addMaskLayer(lang.scrawlUpLoading);

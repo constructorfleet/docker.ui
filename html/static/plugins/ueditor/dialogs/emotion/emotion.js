@@ -62,16 +62,16 @@ function switchTab( index ) {
         emotion.tabExist[index] = 1;
         createTab( 'tab' + index );
     }
-    //获取呈现元素句柄数组
+    //Access呈现ElementsThe handleArray
     var tabHeads = $G( "tabHeads" ).getElementsByTagName( "span" ),
             tabBodys = $G( "tabBodys" ).getElementsByTagName( "div" ),
             i = 0, L = tabHeads.length;
-    //隐藏所有呈现元素
+    //HideAll呈现Elements
     for ( ; i < L; i++ ) {
         tabHeads[i].className = "";
         tabBodys[i].style.display = "none";
     }
-    //显示对应呈现元素
+    //ShowCorrespond呈现Elements
     tabHeads[index].className = "focus";
     tabBodys[index].style.display = "block";
 }
@@ -115,12 +115,12 @@ function autoHeight( index ) {
 
 
 function createTab( tabName ) {
-    var faceVersion = "?v=1.1", //版本号
-            tab = $G( tabName ), //获取将要生成的Div句柄
-            imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //获取显示表情和预览表情的路径
-            positionLine = 11 / 2, //中间数
-            iWidth = iHeight = 35, //图片长宽
-            iColWidth = 3, //表格剩余空间的显示比例
+    var faceVersion = "?v=1.1", //Version号
+            tab = $G( tabName ), //Access将要Generate的DivThe handle
+            imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //AccessShowEmoticons和PreviewEmoticons的Path
+            positionLine = 11 / 2, //Middle
+            iWidth = iHeight = 35, //Picture长宽
+            iColWidth = 3, //Table剩余空间的Show比例
             tableCss = emotion.imageCss[tabName],
             cssOffset = emotion.imageCssOffset[tabName],
             textHTML = ['<table class="smileytable">'],

@@ -1,7 +1,7 @@
-var cpage = 1; // 当前页面号
-var tpage = 10;  // 总页面数
+var cpage = 1; // Current Page号
+var tpage = 10;  // Total number of pages
 
-// 获取新闻评论评论
+// Access to press reviews
 function showPageList(page,url,tableId,paginationId,rows) {
     $.ajax({
         type: "get",
@@ -9,7 +9,7 @@ function showPageList(page,url,tableId,paginationId,rows) {
         async: "false",
         url: url.replace("pageNum", page),
         success: function (info) {
-            changeModel(info); // 更新局部页面
+            changeModel(info); // Update局部页面
             var totalpage = Math.ceil(info.total/rows);
             if(totalpage == 0) totalpage = 1;
             var curtpage = page;
@@ -17,32 +17,32 @@ function showPageList(page,url,tableId,paginationId,rows) {
                 cpage = curtpage;
                 tpage = totalpage;
             }
-            showPagination(page, tpage, url, tableId, paginationId); //显示评论
+            showPagination(page, tpage, url, tableId, paginationId); //Show comments
         },
         error: function () {
-            alert("加载失败！请稍后重试！");
+            alert("加载Failed！Please try again later！");
         }
     });
 }
 
-/* curreentpage: 当前页面号； tpage: 总的页面数 */
-//显示新闻评论
+/* curreentpage: Current Page号； tpage: Total number of pages */
+//Show news review
 function showPagination(currentPage, totalPages, url, tableId, paginationId) {
     var options = {
         bootstrapMajorVersion: 3,
-        currentPage: currentPage, //当前页面
-        numberOfPages: 10,//一页显示几个按钮（在ul里面生成5个li）
-        totalPages: totalPages, //总页数
+        currentPage: currentPage, //Current Page
+        numberOfPages: 10,//One page shows a few buttons（在ulGenerate inside5个li）
+        totalPages: totalPages, //Total pages
         itemTexts: function (type, page, current) {
             switch (type) {
                 case "first":
-                    return "首页";
+                    return "Home Page";
                 case "prev":
-                    return "上一页";
+                    return "Previous Page";
                 case "next":
-                    return "下一页";
+                    return "Next Page";
                 case "last":
-                    return "末页";
+                    return "End Page";
                 case "page":
                     return page;
             }
@@ -57,7 +57,7 @@ function showPagination(currentPage, totalPages, url, tableId, paginationId) {
             //updatePagesInfo($("#totalRecord").val(), page);
         },
         pageUrl: function(type, page, current){
-            return tableId; //点击页码后，定位到锚点tableId的位置
+            return tableId; //After clicking Page Number，Position to anchortableIdLocation
             //return "#";
         }
     }

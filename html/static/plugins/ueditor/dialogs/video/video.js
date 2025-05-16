@@ -2,7 +2,7 @@
  * Created by JetBrains PhpStorm.
  * User: taoqili
  * Date: 12-2-20
- * Time: 上午11:19
+ * Time: a.m11:19
  * To change this template use File | Settings | File Templates.
  */
 
@@ -20,7 +20,7 @@
         initUpload();
     };
 
-    /* 初始化tab标签 */
+    /* InitializetabLabel */
     function initTabs(){
         var tabs = $G('tabHeads').children;
         for (var i = 0; i < tabs.length; i++) {
@@ -45,7 +45,7 @@
         addUrlChangeListener($G("videoUrl"));
         addOkListener();
 
-        //编辑视频时初始化相关信息
+        //EditVideo时Initialize相关Information
         (function(){
             var img = editor.selection.getRange().getClosedNode(),url;
             if(img && img.className){
@@ -68,7 +68,7 @@
     }
 
     /**
-     * 监听确认和取消两个按钮事件，用户执行插入或者清空正在播放的视频实例操作
+     * ListenConfirm和Cancel两个buttonEvents，UserImplementationInsertOr..Clear正在播放的VideoExampleOperation
      */
     function addOkListener(){
         dialog.onok = function(){
@@ -92,7 +92,7 @@
     }
 
     /**
-     * 依据传入的align值更新按钮信息
+     * BasisImport的align值UpdatebuttonInformation
      * @param align
      */
     function updateAlignButton( align ) {
@@ -111,7 +111,7 @@
     }
 
     /**
-     * 将单个视频信息插入编辑器中
+     * 将单个VideoInformationInsertEdit器中
      */
     function insertSingle(){
         var width = $G("videoWidth"),
@@ -129,7 +129,7 @@
     }
 
     /**
-     * 将元素id下的所有代表视频的图片插入编辑器中
+     * 将ElementsidDownAllRepresentativeVideo的PictureInsertEdit器中
      * @param id
      */
     function insertSearch(id){
@@ -149,7 +149,7 @@
     }
 
     /**
-     * 找到id下具有focus类的节点并返回该节点下的某个属性
+     * Found itidDown withfocus类的Nodes并Back该NodesDown某个Properties
      * @param id
      * @param returnProperty
      */
@@ -184,8 +184,8 @@
     }
 
     /**
-      * 检测传入的所有input框中输入的长宽是否是正数
-      * @param nodes input框集合，
+      * TestImport的Allinput框中输入的长宽Is it正数
+      * @param nodes input框Gather，
       */
      function checkNum( nodes ) {
          for ( var i = 0, ci; ci = nodes[i++]; ) {
@@ -201,7 +201,7 @@
      }
 
     /**
-     * 数字判断
+     * 数字Decision
      * @param value
      */
     function isNumber( value ) {
@@ -209,7 +209,7 @@
     }
 
     /**
-      * 创建图片浮动选择按钮
+      * CreatePicture浮动Selectionbutton
       * @param ids
       */
      function createAlignButton( ids ) {
@@ -229,7 +229,7 @@
      }
 
     /**
-     * 选择切换
+     * SelectionSwitch
      * @param selectParentId
      */
     function switchSelect( selectParentId ) {
@@ -246,7 +246,7 @@
     }
 
     /**
-     * 监听url改变事件
+     * ListenurlChangeEvents
      * @param url
      */
     function addUrlChangeListener(url){
@@ -262,7 +262,7 @@
     }
 
     /**
-     * 根据url生成视频预览
+     * Based onurlGenerateVideoPreview
      * @param url
      */
     function createPreviewVideo(url){
@@ -282,7 +282,7 @@
     }
 
 
-    /* 插入上传视频 */
+    /* InsertUploadVideo */
     function insertUpload(){
         var videoObjs=[],
             uploadDir = editor.getOpt('videoUrlPrefix'),
@@ -301,20 +301,20 @@
 
         var count = uploadFile.getQueueCount();
         if (count) {
-            $('.info', '#queueList').html('<span style="color:red;">' + '还有2个未上传文件'.replace(/[\d]/, count) + '</span>');
+            $('.info', '#queueList').html('<span style="color:red;">' + 'And..2个未UploadDocumentation'.replace(/[\d]/, count) + '</span>');
             return false;
         } else {
             editor.execCommand('insertvideo', videoObjs, 'upload');
         }
     }
 
-    /*初始化上传标签*/
+    /*InitializeUploadLabel*/
     function initUpload(){
         uploadFile = new UploadFile('queueList');
     }
 
 
-    /* 上传附件 */
+    /* UploadAnnex */
     function UploadFile(target) {
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
@@ -328,39 +328,39 @@
         initContainer: function () {
             this.$queue = this.$wrap.find('.filelist');
         },
-        /* 初始化容器 */
+        /* InitializeContainers */
         initUploader: function () {
             var _this = this,
                 $ = jQuery,    // just in case. Make sure it's not an other libaray.
                 $wrap = _this.$wrap,
-            // 图片容器
+            // PictureContainers
                 $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
+            // Status栏，包括进度和Controlbutton
                 $statusBar = $wrap.find('.statusBar'),
-            // 文件总体选择信息。
+            // Documentation总体SelectionInformation。
                 $info = $statusBar.find('.info'),
-            // 上传按钮
+            // Uploadbutton
                 $upload = $wrap.find('.uploadBtn'),
-            // 上传按钮
+            // Uploadbutton
                 $filePickerBtn = $wrap.find('.filePickerBtn'),
-            // 上传按钮
+            // Uploadbutton
                 $filePickerBlock = $wrap.find('.filePickerBlock'),
-            // 没选择文件之前的内容。
+            // 没Select FileBefore的Contents。
                 $placeHolder = $wrap.find('.placeholder'),
-            // 总体进度条
+            // Overall progress bar
                 $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
+            // Add的Documentation数量
                 fileCount = 0,
-            // 添加的文件总大小
+            // Add的Documentation总大小
                 fileSize = 0,
-            // 优化retina, 在retina下这个值是2
+            // Optimizationretina, 在retina下HereValue2
                 ratio = window.devicePixelRatio || 1,
-            // 缩略图大小
+            // Thumbnail Size
                 thumbnailWidth = 113 * ratio,
                 thumbnailHeight = 113 * ratio,
-            // 可能有pedding, ready, uploading, confirm, done.
+            // Maybepedding, ready, uploading, confirm, done.
                 state = '',
-            // 所有文件的进度信息，key为file id
+            // AllDocumentation的进度Information，key为file id
                 percentages = {},
                 supportTransition = (function () {
                     var s = document.createElement('p').style,
@@ -372,7 +372,7 @@
                     s = null;
                     return r;
                 })(),
-            // WebUploader实例
+            // WebUploaderExample
                 uploader,
                 actionUrl = editor.getActionUrl(editor.getOpt('videoActionName')),
                 fileMaxSize = editor.getOpt('videoMaxSize'),
@@ -408,7 +408,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            // 当有DocumentationAdd进来时Implementation，Responsibleview的Create
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -472,7 +472,7 @@
                     percentages[ file.id ] = [ file.size, 0 ];
                     file.rotation = 0;
 
-                    /* 检查文件格式 */
+                    /* InspectionDocumentationFormat */
                     if (!file.ext || acceptExtensions.indexOf(file.ext.toLowerCase()) == -1) {
                         showError('not_allow_type');
                         uploader.removeFile(file);
@@ -486,7 +486,7 @@
                         $li.off('mouseenter mouseleave');
                         $btns.remove();
                     }
-                    // 成功
+                    // Success
                     if (cur === 'error' || cur === 'invalid') {
                         showError(file.statusText);
                         percentages[ file.id ][ 1 ] = 1;
@@ -543,7 +543,7 @@
                 $li.insertBefore($filePickerBlock);
             }
 
-            // 负责view的销毁
+            // Responsibleview的Destruction
             function removeFile(file) {
                 var $li = $('#' + file.id);
                 delete percentages[ file.id ];
@@ -580,7 +580,7 @@
 
                     switch (val) {
 
-                        /* 未选择文件 */
+                        /* 未Select File */
                         case 'pedding':
                             $queue.addClass('element-invisible');
                             $statusBar.addClass('element-invisible');
@@ -589,7 +589,7 @@
                             uploader.refresh();
                             break;
 
-                        /* 可以开始上传 */
+                        /* YeahStartUpload */
                         case 'ready':
                             $placeHolder.addClass('element-invisible');
                             $queue.removeClass('element-invisible');
@@ -599,13 +599,13 @@
                             uploader.refresh();
                             break;
 
-                        /* 上传中 */
+                        /* Upload中 */
                         case 'uploading':
                             $progress.show(); $info.hide();
                             $upload.text(lang.uploadPause);
                             break;
 
-                        /* 暂停上传 */
+                        /* 暂停Upload */
                         case 'paused':
                             $progress.show(); $info.hide();
                             $upload.text(lang.uploadContinue);
@@ -702,7 +702,7 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
+                        /* Add额外的GETParameters */
                         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
                             url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
                         uploader.option('server', url);
@@ -715,7 +715,7 @@
             });
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+                //这里YeahPassdataObjectAddPOSTParameters
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 

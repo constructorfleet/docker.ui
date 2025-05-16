@@ -59,9 +59,9 @@
                             <div class="card-head">
                                 <!--<span class="card-head-icon"><svg t="1624610578335" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1065" width="100%" height="100%"><path d="M464.904 256.496L467.288 88H91.704v168.496h373.2z m0 0" fill="#76DA91" p-id="1066"></path><path d="M776.968 490.04l4.376-168.496H91.704v168.496h685.264z m0 0" fill="#76DA91" p-id="1067"></path><path d="M617.56 723.584l3.36-168.496H91.704v168.496h525.856z m0 0" fill="#76DA91" p-id="1068"></path><path d="M313.704 957.128l1.416-168.496H91.704v168.496h222z m0 0" fill="#76DA91" p-id="1069"></path><path d="M41.8 975.608V88.144H0V1024h1009.936v-48.392H41.8z m0 0" fill="#76DA91" p-id="1070"></path></svg></span>-->
                                 <span class="card-head-icon"><i class="fa fa-info-circle icon icon-blue"></i></span>
-                                <span>节点信息</span>
+                                <span>Nodes信息</span>
                                 <span style='float: right;position: absolute;right: 20px;height: 48px;'>
-                                自动刷新：<input id='refreshBtn' data-toggle="cubeui-switchbutton" style="height:30px" checked="true">
+                                自动Refresh：<input id='refreshBtn' data-toggle="cubeui-switchbutton" style="height:30px" checked="true">
                                 </span>
                             </div>
 
@@ -72,8 +72,8 @@
                                             <div class="panel layui-bg-number">
                                                 <div class="panel-body">
                                                     <div class="panel-title">
-                                                        <span class="label pull-right layui-bg-blue">实时</span>
-                                                        <h5>节点名称</h5>
+                                                        <span class="label pull-right layui-bg-blue">Real time</span>
+                                                        <h5>Node Name</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins overflow" title='{{>info.Name}}'>{{:info.Name}}</h1>
@@ -86,8 +86,8 @@
                                             <div class="panel layui-bg-number">
                                                 <div class="panel-body">
                                                     <div class="panel-title">
-                                                        <span class="label pull-right layui-bg-cyan">实时</span>
-                                                        <h5>操作系统</h5>
+                                                        <span class="label pull-right layui-bg-cyan">Real time</span>
+                                                        <h5>Operating systems</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins overflow" title='{{>info.OperatingSystem}}'>{{:info.OperatingSystem}}</h1>
@@ -102,8 +102,8 @@
                                             <div class="panel layui-bg-number">
                                                 <div class="panel-body">
                                                     <div class="panel-title">
-                                                        <span class="label pull-right layui-bg-orange">实时</span>
-                                                        <h5>Docker版本</h5>
+                                                        <span class="label pull-right layui-bg-orange">Real time</span>
+                                                        <h5>DockerVersion</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins overflow" title='{{>version.Version}}'>{{:version.Version}}</h1>
@@ -117,8 +117,8 @@
                                             <div class="panel layui-bg-number">
                                                 <div class="panel-body">
                                                     <div class="panel-title">
-                                                        <span class="label pull-right layui-bg-green">实时</span>
-                                                        <h5>Build版本</h5>
+                                                        <span class="label pull-right layui-bg-green">Real time</span>
+                                                        <h5>BuildVersion</h5>
                                                     </div>
                                                     <div class="panel-content">
                                                         <h1 class="no-margins overflow" title='{{>version.GoVersion}}'>{{:version.GoVersion}}</h1>
@@ -141,7 +141,7 @@
                         <div class="card card-hoverable">
                             <div class="card-head">
                                 <span class="card-head-icon"><i class="fa fa-server icon"></i></span>
-                                <span>快捷入口</span>
+                                <span>Shortcuts</span>
                                 <span style='float: right;position: absolute;right: 20px;height: 48px;'></span>
                             </div>
 
@@ -151,58 +151,58 @@
                                     <div class="layui-row layui-col-space10 layuimini-qiuck">
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'images')" title="镜像管理" data-icon="fa fa-window-maximize">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'images')" title="Mirror Management" data-icon="fa fa-window-maximize">
                                                 <i class="fa fa-window-maximize"></i>
-                                                <cite>镜像管理</cite>
+                                                <cite>Mirror Management</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'containers')" title="容器管理" data-icon="fa fa-gears">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'containers')" title="Container management" data-icon="fa fa-gears">
                                                 <i class="fa fa-gears"></i>
-                                                <cite>容器管理</cite>
+                                                <cite>Container management</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'volumes')" title="数据卷管理" data-icon="fa fa-file-text">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'volumes')" title="Data Volume Management" data-icon="fa fa-file-text">
                                                 <i class="fa fa-file-text"></i>
-                                                <cite>数据卷管理</cite>
+                                                <cite>Data Volume Management</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', '仓库')"  title="仓库管理" data-icon="fa fa-dot-circle-o">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'Warehouse')"  title="Warehouse管理" data-icon="fa fa-dot-circle-o">
                                                 <i class="fa fa-dot-circle-o"></i>
-                                                <cite>仓库管理</cite>
+                                                <cite>Warehouse管理</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'Swarm集群', '集群信息')" title="集群信息" data-icon="fa fa-calendar">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'SwarmCluster', 'Cluster Information')" title="Cluster Information" data-icon="fa fa-calendar">
                                                 <i class="fa fa-calendar"></i>
-                                                <cite>集群信息</cite>
+                                                <cite>Cluster Information</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'Swarm集群', '服务', null, null, {'hello':'1234'})" title="服务管理" data-icon="fa fa-hourglass-end">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'SwarmCluster', 'Services', null, null, {'hello':'1234'})" title="Service management" data-icon="fa fa-hourglass-end">
                                                 <i class="fa fa-hourglass-end"></i>
-                                                <cite>服务管理</cite>
+                                                <cite>Service management</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'Swarm集群', '配置')" title="配置管理" data-icon="fa fa-search">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'SwarmCluster', 'Configure')" title="Configure管理" data-icon="fa fa-search">
                                                 <i class="fa fa-search"></i>
-                                                <cite>配置管理</cite>
+                                                <cite>Configure管理</cite>
                                             </a>
                                         </div>
 
 										<div class="layui-col-md3 layuimini-qiuck-module">
-                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', '网络')" title="网络信息" data-icon="fa fa-snowflake-o">
+                                            <a href="#" onClick="javascript:triggerNavMenuClick('ALL', 'Network')" title="Network信息" data-icon="fa fa-snowflake-o">
                                                 <i class="fa fa-usb"></i>
-                                                <cite>网络信息</cite>
+                                                <cite>Network信息</cite>
                                             </a>
                                         </div>
 
@@ -222,40 +222,40 @@
                         <div class="card card-hoverable  layui-row layui-col-space10">
                             <div class="cardList-wrapper">
                                 <div class="card-item"  onclick="javascript:triggerNavMenuClick('ALL', 'images')">
-                                    <div class="card-title">镜像</div>
+                                    <div class="card-title">Mirror</div>
                                     <div class="all-count">
                                         <span id='imageCount'>5</span>
                                         <span class="suffix">个</span>
                                     </div>
                                 </div>
                                 <div class="card-item"  onclick="javascript:triggerNavMenuClick('ALL', 'containers')">
-                                    <div class="card-title">已启动容器</div>
+                                    <div class="card-title">Containment activated</div>
                                     <div class="all-count">
                                         <span id='startCount'>3</span>
                                         <span class="suffix">个</span>
                                     </div>
                                     <div class="card-info">
-                                        <span>容器总数：<t id='containerCount'>20</t>个</span>
+                                        <span>Total number of containers：<t id='containerCount'>20</t>个</span>
                                     </div>
                                 </div>
                                 <div class="card-item"  onclick="javascript:triggerNavMenuClick('ALL', 'volumes')">
-                                    <div class="card-title">本地数据卷</div>
+                                    <div class="card-title">Local Data Volume</div>
                                     <div class="all-count">
                                         <span id='volumeCount'>0</span>
                                         <span class="suffix">个</span>
                                     </div>
                                     <div class="card-info">
-                                        <span>总数据卷：<t id='volumeTotal'>0</t>个</span>
+                                        <span>Total data volume：<t id='volumeTotal'>0</t>个</span>
                                     </div>
                                 </div>
-                                    <div class="card-item" onclick="javascript:triggerNavMenuClick('ALL', 'Swarm集群', '节点')">
-                                        <div class="card-title">集群节点</div>
+                                    <div class="card-item" onclick="javascript:triggerNavMenuClick('ALL', 'SwarmCluster', 'Nodes')">
+                                        <div class="card-title">ClusterNodes</div>
                                         <div class="all-count">
                                             <span id='activeCount'>1</span>
                                             <span class="suffix">个</span>
                                         </div>
                                         <div class="card-info">
-                                            <span>管理结点：<t id='managerCount'>1</t></span>
+                                            <span>Manage Nodes：<t id='managerCount'>1</t></span>
                                         </div>
                                     </div>
                             </div>
@@ -269,13 +269,13 @@
                         <div class="card card-hoverable">
                             <div class="card-head">
                                 <span class="card-head-icon"><i class="fa fa-table icon"></i></span>
-                                <span>资源使用率</span>
+                                <span>资源Usage</span>
                                 <span style='float: right;position: absolute;right: 20px;height: 48px;'></span>
                             </div>
                             <div class="card-body padding-card-body" >
                                 <div class="nepadmin-pad-b20">
                                     <h2 class="nepadmin-pad-b10">
-                                      <t class='cpu-usages-value'>85%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">CPU使用率（<t class='cpu-usages-value'></t><span class="layui-edge layui-edge-top cpu-usages-value" lay-tips="增长" lay-offset="-15"></span>）</span>
+                                      <t class='cpu-usages-value'>85%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">CPUUsage（<t class='cpu-usages-value'></t><span class="layui-edge layui-edge-top cpu-usages-value" lay-tips="Growth" lay-offset="-15"></span>）</span>
                                     </h2>
                                     <div class="layui-progress">
                                       <div class="layui-progress-bar layui-bg-blue cpu-usages" style="width: 85%;"></div>
@@ -283,7 +283,7 @@
                               </div>
                               <div class="nepadmin-pad-b20">
                                     <h2 class="nepadmin-pad-b10">
-                                      <t class='memory-usages-value'>58%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">内存占用率（<t class='memory-usages-value'></t><span class="layui-edge layui-edge-bottom memory-usages-value" lay-tips="下降" lay-offset="-15"></span>）</span>
+                                      <t class='memory-usages-value'>58%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">Memory occupancy rate（<t class='memory-usages-value'></t><span class="layui-edge layui-edge-bottom memory-usages-value" lay-tips="Down" lay-offset="-15"></span>）</span>
                                     </h2>
                                     <div class="layui-progress">
                                       <div class="layui-progress-bar layui-bg-red  memory-usages" style="width: 58%;"></div>
@@ -291,7 +291,7 @@
                               </div>
                               <div class="nepadmin-pad-b20">
                                     <h2 class="nepadmin-pad-b10">
-                                      <t class='disk-usages-value'>92%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">磁盘占用率（<t class='disk-usages-value'></t><span class="layui-edge layui-edge-bottom disk-usages-value" lay-tips="下降" lay-offset="-15"></span>）</span>
+                                      <t class='disk-usages-value'>92%</t><span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr">Disk occupancy rate（<t class='disk-usages-value'></t><span class="layui-edge layui-edge-bottom disk-usages-value" lay-tips="Down" lay-offset="-15"></span>）</span>
                                     </h2>
                                     <div class="layui-progress">
                                       <div class="layui-progress-bar layui-bg-cyan  disk-usages" style="width: 92%;"></div>
@@ -316,7 +316,7 @@
                         <div class="card card-hoverable">
                             <div class="card-head">
                                 <span class="card-head-icon"><svg t="1624610578335" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1065" width="100%" height="100%"><path d="M464.904 256.496L467.288 88H91.704v168.496h373.2z m0 0" fill="#76DA91" p-id="1066"></path><path d="M776.968 490.04l4.376-168.496H91.704v168.496h685.264z m0 0" fill="#76DA91" p-id="1067"></path><path d="M617.56 723.584l3.36-168.496H91.704v168.496h525.856z m0 0" fill="#76DA91" p-id="1068"></path><path d="M313.704 957.128l1.416-168.496H91.704v168.496h222z m0 0" fill="#76DA91" p-id="1069"></path><path d="M41.8 975.608V88.144H0V1024h1009.936v-48.392H41.8z m0 0" fill="#76DA91" p-id="1070"></path></svg></span>
-                                <span>概览</span>
+                                <span>Overview</span>
                                 <span style='float: right;position: absolute;right: 20px;height: 48px;'></span>
                             </div>
                             <div class="card-body" >
@@ -327,23 +327,23 @@
                                     </colgroup>
                                     <tbody>
                                     <tr>
-                                        <td>节点名称</td>
+                                        <td>Node Name</td>
                                         <td>{{:info.Name}}</td>
                                     </tr>
                                     <tr>
-                                        <td>产品</td>
+                                        <td>Products</td>
                                         <td>{{:version.Platform.Name}}</td>
                                     </tr>
                                     <tr>
-                                        <td>版本</td>
+                                        <td>Version</td>
                                         <td>{{:version.Version}}</td>
                                     </tr>
                                     <tr>
-                                        <td>操作系统</td>
+                                        <td>Operating systems</td>
                                         <td>{{:info.OperatingSystem}}</td>
                                     </tr>
                                     <tr>
-                                        <td>系统内核</td>
+                                        <td>System</td>
                                         <td>{{:info.KernelVersion}}</td>
                                     </tr>
                                     <tr>
@@ -371,7 +371,7 @@
                                         <td>{{:info.DockerRootDir}}</td>
                                     </tr>
                                     <tr>
-                                        <td>仓库镜像</td>
+                                        <td>Warehouse mirror</td>
                                         <td>{{:info.Mirrors}}</td>
                                     </tr>
                                     <tr>
@@ -393,7 +393,7 @@
 
                                     <tr>
                                         <td>DOCKERUI</td>
-                                        <td>{{if info.DOCKERUI_MODE==1}}宿主机模式{{else}}独立运行模式{{/if}}</td>
+                                        <td>{{if info.DOCKERUI_MODE==1}}宿Host模式{{else}}Run independently{{/if}}</td>
                                     </tr>
 
                                     <tr>
@@ -434,7 +434,7 @@
             <div class="card card-hoverable">
                 <div class="card-head">
                     <span class="card-head-icon"><svg t="1624610578335" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1065" width="100%" height="100%"><path d="M464.904 256.496L467.288 88H91.704v168.496h373.2z m0 0" fill="#76DA91" p-id="1066"></path><path d="M776.968 490.04l4.376-168.496H91.704v168.496h685.264z m0 0" fill="#76DA91" p-id="1067"></path><path d="M617.56 723.584l3.36-168.496H91.704v168.496h525.856z m0 0" fill="#76DA91" p-id="1068"></path><path d="M313.704 957.128l1.416-168.496H91.704v168.496h222z m0 0" fill="#76DA91" p-id="1069"></path><path d="M41.8 975.608V88.144H0V1024h1009.936v-48.392H41.8z m0 0" fill="#76DA91" p-id="1070"></path></svg></span>
-                    <span>版本历史</span>
+                    <span>Version历史</span>
                     <span style='float: right;position: absolute;right: 20px;height: 48px;'></span>
                 </div>
                 <div class="card-body we-changelog" style="text-align: center;">
@@ -443,17 +443,17 @@
                           <i class="layui-icon layui-timeline-axis" style="color: #FF5722;"></i>
                           <div class="layui-timeline-content layui-text">
                             <div class="layui-timeline-title">
-                              <h3>Demo版本v1.0.0</h3>
+                              <h3>DemoVersionv1.0.0</h3>
                               <span class="layui-badge-rim">2022-08-01</span>
                             </div>
                             <blockquote class="layui-elem-quote">
-                              <a href="https://www.toutiao.com/video/7124566071683744264/?from_scene=video&log_from=d31dfcc5694cf_1659329164236">《爱上开源之最好的Docker管理工具》</a>这篇视频发布以后，受到广大朋友的关注和支持。 加快了demo版本的推出速度，demo在8月1日建军节日推出到docker的hub上，大家可以在docker上获取镜像，进行使用，欢迎交流~
+                              <a href="https://www.toutiao.com/video/7124566071683744264/?from_scene=video&log_from=d31dfcc5694cf_1659329164236">《In love with Open Source最好的DockerManagement tools》</a>After this video was released，With the attention and support of friends。 FasterdemoVersion的推出速度，demo在8月1It\'s the Japanese military holidaydocker的hub上，Everyone candocker上获取Mirror，进行Use，Welcome to the exchange~
                             </blockquote>
 
                             <ul>
-                              <li>加强了镜像管理，数据卷管理，容器管理的功能</li>
-                              <li>优化和重构swarm集群的管理功能，全面对swarm集群的节点，服务，任务，密码文件，配置文件管理的支持</li>
-                              <li>优化容器的启动，克隆以及日志功能</li>
+                              <li>加强了Mirror Management，Data Volume Management，Container management的功能</li>
+                              <li>Optimization and restructuringswarmCluster的管理功能，ComprehensiveswarmCluster的Nodes，Services，Tasks，Password文件，Configure文件管理的支持</li>
+                              <li>Optimizing container startup，Cloning and log functions</li>
                             </ul>
                           </div>
                         </li>
@@ -461,17 +461,17 @@
                           <i class="layui-icon layui-timeline-axis" style="color: #FF5722;"></i>
                           <div class="layui-timeline-content layui-text">
                             <div class="layui-timeline-title">
-                              <h3>内测版v0.9.0</h3>
+                              <h3>Internal Auditv0.9.0</h3>
                               <span class="layui-badge-rim">2022-07-22</span>
                             </div>
                             <blockquote class="layui-elem-quote">
-                              《爱上开源之boot4go-dockerui-剧透篇》这篇文章已经出品了就要快一个月了，这段时间一直在全面的进行代码整理和功能测试。老朋友可以clone一份参考使用，新朋友就随意啦。实操学习，欢迎交流~
+                              《In love with Open Sourceboot4go-dockerui-It\'s all over the show》It\'s almost a month since the article came out，这段时间一直在Complete code-keeping和功能测试。Old friends canclone一份参考Use，New friends are free。Practical learning，Welcome to the exchange~
                             </blockquote>
 
                             <ul>
-                              <li>全面的进行代码整理</li>
-                              <li>全面的进行功能测试</li>
-                              <li>新增的SWARM集群管理功能，入口以后会打开</li>
+                              <li>Complete code-keeping</li>
+                              <li>Comprehensive functional testing</li>
+                              <li>NewSWARMCluster管理功能，The entrance will open</li>
                             </ul>
                           </div>
                         </li>
@@ -479,14 +479,14 @@
                           <i class="layui-icon layui-timeline-axis" style="color: #FF5722;"></i>
                           <div class="layui-timeline-content layui-text">
                             <div class="layui-timeline-title">
-                              <h3>DockerUI项目正式启动V0.1.0</h3>
+                              <h3>DockerUIOfficial start of the projectV0.1.0</h3>
                               <span class="layui-badge-rim">2022-06-30</span>
                             </div>
                             <ul>
-                              <li>新增数据卷管理模块</li>
-                              <li>新增镜像管理模块</li>
-                              <li>新增容器管理模块</li>
-                              <li>新增网络管理模块</li>
+                              <li>新增Data Volume Management模块</li>
+                              <li>新增Mirror Management模块</li>
+                              <li>新增Container management模块</li>
+                              <li>新增Network管理模块</li>
                             </ul>
                           </div>
                         </li>
@@ -501,7 +501,7 @@
 <!--                <div class="card card-hoverable">-->
 <!--                    <div class="card-head">-->
 <!--                        <span class="card-head-icon"><svg t="1624610578335" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1065" width="100%" height="100%"><path d="M464.904 256.496L467.288 88H91.704v168.496h373.2z m0 0" fill="#76DA91" p-id="1066"></path><path d="M776.968 490.04l4.376-168.496H91.704v168.496h685.264z m0 0" fill="#76DA91" p-id="1067"></path><path d="M617.56 723.584l3.36-168.496H91.704v168.496h525.856z m0 0" fill="#76DA91" p-id="1068"></path><path d="M313.704 957.128l1.416-168.496H91.704v168.496h222z m0 0" fill="#76DA91" p-id="1069"></path><path d="M41.8 975.608V88.144H0V1024h1009.936v-48.392H41.8z m0 0" fill="#76DA91" p-id="1070"></path></svg></span>-->
-<!--                        <span>事件</span>-->
+<!--                        <span>Events</span>-->
 <!--                        <span style='float: right;position: absolute;right: 20px;height: 48px;'>-->
 <!--                    </div>-->
 <!--                    <div class="card-body" style="height:400px;width:100%;text-align: center">-->
@@ -517,24 +517,24 @@
             <div class="layui-col-md12">
                 <blockquote class="layui-elem-quote explain" style="border-left: 5px solid #598bfb;">
                     <p>
-                        锦翰科技（深圳）有限公司致力于打造既美观实用又能快速开发的后台管理前端框架，解决传统EasyUI的性能和功能问题！
-                        锦翰科技（深圳）有限公司，前身是卓尚软件工作室，组建于2008年11月，是针对大中小企业、政府机构提供信息化管理的咨询、开发、实施、服务为一体的企业管理信息化的高新技术企业。
+                        Jinghan Technologies（Shenzhen）Limited致力于打造既美观实用又能快速Development的后台管理前端框架，Addressing traditionsEasyUIand functional issues！
+                        Jinghan Technologies（Shenzhen）Limited，I\'m in front of Cheuk Sang\'s software studio，_Other Organiser2008年11月，It\'s for big SMEs、Advice from government agencies on information management、Development、Implementation、Services为一体的企业管理信息化的高新技术企业。
                     </p>
                     <p>
-                        基于成熟稳定的EasyUI框架开发，集丰富组件+强大功能+优异性能+精美界面+便捷开发于一身，适用于企业级信息管理系统或Web后台管理系统
+                        Based on mature stabilityEasyUI框架Development，Enrichment Component+Powerful function+Excellence+Nice Interface+便捷Development于一身，Applicable to enterprise-level information management systems orWebBackstage management system
                     </p>
                     <p>
 
                     <p>
-                        <span style="font-weight: bold;">联系我们：</span>
-                        <a href="http://www.zuoyoutech.com" target="_blank">锦翰科技（深圳）有限公司</a><br>
-                        <span style="font-weight: bold;">地址：</span>广东省深圳市龙岗区龙飞大道333号启迪协信科技园4号楼301<br>
+                        <span style="font-weight: bold;">Contact us：</span>
+                        <a href="http://www.zuoyoutech.com" target="_blank">Jinghan Technologies（Shenzhen）Limited</a><br>
+                        <span style="font-weight: bold;">Address：</span>广东省Shenzhen市龙岗区龙飞大道333No. No. No4Building301<br>
                         <span style="font-weight: bold;">Addr：</span>301, building 4, Qidi Xiexin science and Technology Park, 333 Longfei Avenue, Longgang District, Shenzhen City, Guangdong Province<br>
-                        <span style="font-weight: bold;">客服QQ：</span>793875613<br>
-                        <span style="font-weight: bold;">办公电话：</span>0755-89769403，13510831210<br>
-                        <span style="font-weight: bold;">电子邮箱：</span>service@ginghan.com
+                        <span style="font-weight: bold;">Customer serviceQQ：</span>793875613<br>
+                        <span style="font-weight: bold;">Office calls：</span>0755-89769403，13510831210<br>
+                        <span style="font-weight: bold;">E-mail：</span>service@ginghan.com
                         <a target=blank href="https://wpa.qq.com/msgrd?v=3&uin=793875613&site=qq&menu=yes">
-                            <img border="0" SRC='https://pub.idqqimg.com/qconn/wpa/button/button_old_11.gif' alt="点击这里给我发消息">
+                            <img border="0" SRC='https://pub.idqqimg.com/qconn/wpa/button/button_old_11.gif' alt="Just click here and text me">
                         </a><br>
                     </p>
 
@@ -550,8 +550,8 @@
 <!--                <div class="card card-hoverable  layui-row layui-col-space10">-->
 <!--                    <div class="card-body text-content-body">-->
 <!--                        <p>-->
-<!--                            <span style="font-weight: bold">在线演示：</span>-->
-<!--                            <a style="color: red" href="https://www.ginghan.com/#contact" target="_blank">联系我们</a>-->
+<!--                            <span style="font-weight: bold">Online Presentation：</span>-->
+<!--                            <a style="color: red" href="https://www.ginghan.com/#contact" target="_blank">Contact us</a>-->
 <!--                        </p>-->
 <!--                    </div>-->
 <!--                </div>-->

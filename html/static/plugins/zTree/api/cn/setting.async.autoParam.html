@@ -1,31 +1,31 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Array(String) / Function(treeId, treeNode)</span><span class="path">setting.async.</span>autoParam</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>异步加载时需要自动提交父节点属性的参数。<span class="highlight_red">[setting.async.enable = true 时生效]</span></p>
-			<p>默认值：[ ]</p>
+			<p>Step Load时YesAuto提交父NodesProperties的Parameters。<span class="highlight_red">[setting.async.enable = true Effective on time]</span></p>
+			<p>Default value：[ ]</p>
 		</div>
 	</div>
-	<h3>Array(String) 格式说明</h3>
+	<h3>Array(String) FormatAnnotations</h3>
 	<div class="desc">
-	<p>1、将需要作为参数提交的属性名称，制作成 Array 即可，例如：["id", "name"]</p>
-	<p>2、可以设置提交时的参数名称，例如 server 只接受 zId : ["id=zId"]</p>
+	<p>1、将Yes作为Parameters提交的Properties名称，Made Array Yeah，For example:：["id", "name"]</p>
+	<p>2、YeahSettings提交时的Parameters名称，For example: server 只Accept zId : ["id=zId"]</p>
 	</div>
-	<h3>Function 参数说明</h3>
+	<h3>Function ParametersAnnotations</h3>
 	<div class="desc">
 		<h4><b>treeId</b><span>String</span></h4>
-		<p>对应 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控</p>
+		<p>Correspond zTree 的 <b class="highlight_red">treeId</b>，便于User操控</p>
 		<h4 class="topLine"><b>treeNode</b><span>JSON</span></h4>
-		<p>需要异步加载子节点的的父节点 JSON 数据对象</p>
-		<p class="highlight_red">针对根进行异步加载时，treeNode = null</p>
-		<h4 class="topLine"><b>返回值</b><span>Array(String)</span></h4>
-		<p>返回值同 Array(String) 格式的数据</p>
+		<p>YesStep Load子Nodes的的父Nodes JSON DataObject</p>
+		<p class="highlight_red">针对根ConductStep Load时，treeNode = null</p>
+		<h4 class="topLine"><b>Back值</b><span>Array(String)</span></h4>
+		<p>Back值同 Array(String) Format的Data</p>
 	</div>
-	<h3>setting 举例</h3>
-	<h4>1. 设置 id 属性为自动提交的参数</h4>
+	<h3>setting Example</h3>
+	<h4>1. Settings id Properties为Auto提交的Parameters</h4>
 	<pre xmlns=""><code>var setting = {
 	async: {
 		enable: true,
@@ -33,9 +33,9 @@
 		autoParam: ["id"]
 	}
 };
-假设 异步加载 父节点(node = {id:1, name:"test"}) 的子节点时，将提交参数 id=1
+Assumptions Step Load 父Nodes(node = {id:1, name:"test"}) 的子Nodes时，将提交Parameters id=1
 ......</code></pre>
-	<h4>2. 设置 id 属性作为 zId 成为自动提交的参数</h4>
+	<h4>2. Settings id Properties作为 zId To becomeAuto提交的Parameters</h4>
 	<pre xmlns=""><code>var setting = {
 	async: {
 		enable: true,
@@ -43,7 +43,7 @@
 		autoParam: ["id=zId"]
 	}
 };
-假设 对父节点 node = {id:1, name:"test"}，进行异步加载时，将提交参数 zId=1
+Assumptions 对父Nodes node = {id:1, name:"test"}，ConductStep Load时，将提交Parameters zId=1
 ......</code></pre>
 </div>
 </div>

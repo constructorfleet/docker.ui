@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="orchestratorsDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="orchestratorsDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -35,7 +35,7 @@
                     },
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-plus'
-                }">编排任务</a>
+                }">编排Tasks</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -43,7 +43,7 @@
                 },
                 btnCls: 'cubeui-btn-slateblue',
                 iconCls: 'fa fa-tags'
-            }">编辑编排</a>
+            }">Edit编排</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -52,21 +52,21 @@
                     extend: '#orchestratorsDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-times'
-                }">删除编排</a>
+                }">Delete编排</a>
 
             <form id="queryForm" class="search-box">
             <input type="text" name="search_key" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){
                             console.log(111);
                             $('#searchbtn').trigger('click');
-                       }, prompt:'根据编排任务名称；进行查询',width:420">
+                       }, prompt:'Based on编排TasksName；ConductQuestion',width:420">
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'orchestratorsDg'}">查询</a>
+                   grid:{type:'datagrid','id':'orchestratorsDg'}">Question</a>
             </form>
         </div>
     </div>
@@ -79,58 +79,58 @@ console.log($(this).menu('options').node);
 $(this).menu('options').node=null;
 }
 ">
-    <div id="menuitem01" onclick="openClose()" data-options="iconCls:'fa fa-folder-open-o'">打开连接</div>
+    <div id="menuitem01" onclick="openClose()" data-options="iconCls:'fa fa-folder-open-o'">OpenConnection</div>
     <div class="menu-sep"></div>
-    <div data-options="iconCls:'fa fa-pencil'" onclick='openEtcd()'>编辑连接...</div>
+    <div data-options="iconCls:'fa fa-pencil'" onclick='openEtcd()'>EditConnection...</div>
     <div data-options="iconCls:'fa fa-plus'">
-        <span>新建连接</span>
+        <span>NewConnection</span>
         <div style="width:150px;">
-            <div data-options="iconCls:'fa fa-share-square-o'" onclick='importEtcd()'>导入...</div>
-            <div data-options="iconCls:'fa fa-floppy-o'" onclick='openEtcdAs()'>另存为...</div>
+            <div data-options="iconCls:'fa fa-share-square-o'" onclick='importEtcd()'>Import...</div>
+            <div data-options="iconCls:'fa fa-floppy-o'" onclick='openEtcdAs()'>Save As...</div>
             <div class="menu-sep"></div>
-            <div data-options="iconCls:'fa fa-html5'" onclick='createEtcd()'><b>Etcd数据库...</b></div>
+            <div data-options="iconCls:'fa fa-html5'" onclick='createEtcd()'><b>EtcdData库...</b></div>
             <div class="menu-sep"></div>
-            <div data-options="iconCls:'fa fa-print',disabled:true">打印</div>
+            <div data-options="iconCls:'fa fa-print',disabled:true">Print</div>
         </div>
     </div>
-    <div data-options="iconCls:'fa fa-trash'" onclick="deleteNode();">删除连接</div>
-    <div data-options="iconCls:'fa fa-clone'" onclick='openEtcdAs()'>复制连接...</div>
+    <div data-options="iconCls:'fa fa-trash'" onclick="deleteNode();">DeleteConnection</div>
+    <div data-options="iconCls:'fa fa-clone'" onclick='openEtcdAs()'>CopyConnection...</div>
 
-    <div data-options="iconCls:'fa fa-reply-all'" onclick="exportEtcd()">导出...</div>
+    <div data-options="iconCls:'fa fa-reply-all'" onclick="exportEtcd()">Export...</div>
     <div class="menu-sep"></div>
-    <div data-options="iconCls:'fa fa-refresh'" onclick="refreshNodes()">刷新</div>
+    <div data-options="iconCls:'fa fa-refresh'" onclick="refreshNodes()">Refresh</div>
     <div class="menu-sep"></div>
-    <div id="menuitem_snapshot" data-options="iconCls:'fa fa-camera',disabled:true" onclick="snapshot()">导出快照</div>
+    <div id="menuitem_snapshot" data-options="iconCls:'fa fa-camera',disabled:true" onclick="snapshot()">Export快照</div>
     <div class="menu-sep"></div>
-    <div id="menuitem_status" data-options="iconCls:'fa fa-server',disabled:true" onclick="showStatus()">服务器状况</div>
-    <div id="menuitem_version" data-options="iconCls:'fa fa-registered',disabled:true" onclick="showVersion()">版本信息</div>
+    <div id="menuitem_status" data-options="iconCls:'fa fa-server',disabled:true" onclick="showStatus()">Services器Status</div>
+    <div id="menuitem_version" data-options="iconCls:'fa fa-registered',disabled:true" onclick="showVersion()">VersionInformation</div>
 </div>
 
 
 <div id="rootMm" data-toggle="cubeui-menu" style="width:120px;display:none" data-options="">
     <div data-options="iconCls:'fa fa-plus'">
-        <span>新建</span>
+        <span>New</span>
         <div style="width:150px;">
-            <div id='menuitem_service' data-options="iconCls:'fa fa-spinner'" onclick='createService()'>服务</div>
+            <div id='menuitem_service' data-options="iconCls:'fa fa-spinner'" onclick='createService()'>Services</div>
             <div class="menu-sep"></div>
-            <div id='menuitem_network' data-options="iconCls:'fa fa-usb'" onclick='createNetwork()'>网络</div>
-            <div id='menuitem_volume' data-options="iconCls:'fa fa-database'" onclick='createVolume()'>数据卷</div>
+            <div id='menuitem_network' data-options="iconCls:'fa fa-usb'" onclick='createNetwork()'>Network</div>
+            <div id='menuitem_volume' data-options="iconCls:'fa fa-database'" onclick='createVolume()'>Data卷</div>
             <div class="menu-sep"></div>
-            <div id='menuitem_secret' data-options="iconCls:'fa fa-key'" onclick='createEtcd()'>密码文件</div>
-            <div id='menuitem_config' data-options="iconCls:'fa fa-gear'" onclick='createEtcd()'>配置文件</div>
+            <div id='menuitem_secret' data-options="iconCls:'fa fa-key'" onclick='createEtcd()'>PasswordDocumentation</div>
+            <div id='menuitem_config' data-options="iconCls:'fa fa-gear'" onclick='createEtcd()'>ConfigureDocumentation</div>
             <div class="menu-sep"></div>
-            <div id='menuitem_extra' data-options="iconCls:'fa fa-key'" onclick='createEtcd()'>其他项目</div>
+            <div id='menuitem_extra' data-options="iconCls:'fa fa-key'" onclick='createEtcd()'>Other项目</div>
             <div class="menu-sep"></div>
-            <div data-options="iconCls:'fa fa-print',disabled:true">打印</div>
+            <div data-options="iconCls:'fa fa-print',disabled:true">Print</div>
         </div>
     </div>
-    <div id='menuitem_rename' data-options="iconCls:'fa fa-pencil'" onclick='openEtcd()'>重命名...</div>
-    <div id='menuitem_empty' data-options="iconCls:'fa fa-trash-o'" onclick='openEtcd()'>清空</div>
+    <div id='menuitem_rename' data-options="iconCls:'fa fa-pencil'" onclick='openEtcd()'>Rename...</div>
+    <div id='menuitem_empty' data-options="iconCls:'fa fa-trash-o'" onclick='openEtcd()'>Clear</div>
 </div>
 
-<!-- 表格工具栏结束 -->
+<!-- End of Table Toolbar -->
 <div id="searchImageMm" data-toggle="cubeui-menu" style="width:120px;display:none" data-options="">
-    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">使用镜像</div>
+    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">UseMirror</div>
 </div>
 </script>
 

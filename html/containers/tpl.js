@@ -1,14 +1,14 @@
 
 let html_template = `
         <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="容器信息"
+            <div title="ContainersInformation"
                  data-options="id:'eastTab0',iconCls:'fa fa-headphones'">                 
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>容器信息</legend>
+                        <legend>ContainersInformation</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -224,7 +224,7 @@ let html_template = `
                             <div class="cubeui-input-block">
                                 
                                 <input type="text" data-toggle="cubeui-textbox" name="Driver" readonly
-                                       value='{{if Running==1}}{{>StartAt}}{{else}}未启动{{/if}}'
+                                       value='{{if Running==1}}{{>StartAt}}{{else}}未Start{{/if}}'
                                        data-options="
                                             "
                                 >
@@ -306,14 +306,14 @@ let html_template = `
                 </div>          
                  
             </div>
-            <div title="宿主配置信息"
+            <div title="宿主ConfigureInformation"
                  data-options="id:'eastTab1',iconCls:'fa fa-superpowers'">
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>宿主配置</legend>
+                        <legend>宿主Configure</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -358,7 +358,7 @@ let html_template = `
 						-->
 						<div class="cubeui-col-sm7">
                             <label class="cubeui-form-label" 
-                            title="容器退出时要应用的行为。默认情况下不会重新启动。每次重新启动前都会增加一个不断增加的延迟（是之前延迟的两倍，从100ms开始），以防止服务器被淹没。">重新策略:</label>
+                            title="ContainersExit时要Apply的行为。Default情况下不会重新Start。每次重新Start前都会Increase一个不断Increase的延迟（是Before延迟的两倍，从100msStart），以PreventionServices器被淹没。">Restrategize:</label>
                             <div class="cubeui-input-block">
                 
                                 <input readonly type="text" id='view_RestartPolicy' data-toggle="cubeui-combobox" name="RestartPolicy"
@@ -374,25 +374,25 @@ let html_template = `
                                                 $('#MaximumRetryCount').numberspinner('disable')
                                             }
                                        },                                                                              
-                                       prompt:'容器退出时要应用的行为。默认为不重新启动',
+                                       prompt:'ContainersExit时要Apply的行为。Default as不重新Start',
                                        required:false,
                                        valueField:'KEY',
                                        textField:'TEXT',
-                                       data:[{'KEY':'no','TEXT':'不重新启动'},{'KEY':'always','TEXT':'始终重新启动'},
-                                       {'KEY':'unless-stopped','TEXT':'除非用户手动停止容器，否则始终重新启动'},
-                                       {'KEY':'on-failure','TEXT':'仅当容器退出代码为非零时重新启动; 同时设置最大重试次数'}]
+                                       data:[{'KEY':'no','TEXT':'不重新Start'},{'KEY':'always','TEXT':'始终重新Start'},
+                                       {'KEY':'unless-stopped','TEXT':'除非User手动StopContainers，Otherwise..始终重新Start'},
+                                       {'KEY':'on-failure','TEXT':'仅当ContainersExitCodeNot零时重新Start; 同时SettingsMaximum number of retries'}]
                                             "
                                 >
                             </div>
                         </div>                        
                         <div class="cubeui-col-sm4">
-                            <label class="cubeui-form-label">最大重试次数:</label>
+                            <label class="cubeui-form-label">Maximum number of retries:</label>
                             <div class="cubeui-input-block">
                                 <input readonly type="text" id='MaximumRetryCount' data-toggle="cubeui-numberspinner" name="MaximumRetryCount"
                                        value='{{:HostConfig.RestartPolicy.MaximumRetryCount}}'
                                        data-options="     
                                        disabled:true,                                   
-                                       prompt:'仅当容器退出代码为非零时重新启动。最大重试次数',                                                                   
+                                       prompt:'仅当ContainersExitCodeNot零时重新Start。Maximum number of retries',                                                                   
                                        min:0,
                                        max:10000000,                                       
                                        required:false"
@@ -406,7 +406,7 @@ let html_template = `
 								},
 								btnCls: 'cubeui-btn-blue',
 								iconCls: 'fa fa-pencil-square-o'
-							}">修改</a>
+							}">Modify</a>
                         </div>
                     </div>
                     
@@ -659,10 +659,10 @@ let html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row" style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>源数据卷</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>源Data卷</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>目标</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Objective</span>
                                 </div>
                             </div>
                             {{if Mounts}}
@@ -689,7 +689,7 @@ let html_template = `
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm10 cubeui-col-sm-offset1">
                             <div class="cubeui-row">
-                                <span style='line-height: 20px;padding-right:0px;'>为容器的所有暴露端口分配临时主机端口</span>
+                                <span style='line-height: 20px;padding-right:0px;'>为Containers的AllExposurePort分配临时HostPort</span>
                             </div>
                         </div>
                     </div>
@@ -698,10 +698,10 @@ let html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Port</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>Publish端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>PublishPort</span>
                                 </div>
                             </div>
                             {{props HostConfig.BindingPortMap}}
@@ -719,14 +719,14 @@ let html_template = `
                     {{/if}}
                 
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
                                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -752,14 +752,14 @@ let html_template = `
             </div>
             
             
-            <div title="配置信息" 
+            <div title="ConfigureInformation" 
                  data-options="id:'eastTab2',iconCls:'fa fa-gear'">
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>构建信息</legend>
+                        <legend>Build Information</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -1022,10 +1022,10 @@ let html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row" style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>源数据卷</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>源Data卷</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>目标</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Objective</span>
                                 </div>
                             </div>
                             {{if Mounts}}
@@ -1051,10 +1051,10 @@ let html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Port</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>Publish端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>PublishPort</span>
                                 </div>
                             </div>
                             {{props PortMap}}
@@ -1071,14 +1071,14 @@ let html_template = `
                     </div>
                     
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
                                     <span style='line-height: 20px;padding-right:0px;'>值</span>
@@ -1099,7 +1099,7 @@ let html_template = `
                     
                     
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">启动命令</legend>
+                        <legend style="margin-bottom: 0px;">StartCommand</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -1153,7 +1153,7 @@ let panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-yellowgreen',
             iconCls: 'fa fa-play-circle'
-        }">启动</a>
+        }">Start</a>
            
         <a  href="javascript:void(0)"  id='tab_stop_btn'  data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -1161,88 +1161,88 @@ let panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-brown',
             iconCls: 'fa fa-stop-circle'
-        }">停止</a>        
+        }">Stop</a>        
         <a  href="javascript:void(0)"  id='tab_stop_btn'  data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     exportContainer('{0}');
             },
             btnCls: 'cubeui-btn-silver',
             iconCls: 'fa fa-sign-out'
-        }">导出</a>   
+        }">Export</a>   
         <a  href="javascript:void(0)"  id='tab_stop_btn'  data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     cloneContainer('{0}');
             },
             btnCls: 'cubeui-btn-pink',
             iconCls: 'fa fa-clone'
-        }">克隆</a>   
+        }">Cloning</a>   
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showLogTab('{0}')
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-history'
-        }">日志</a>       
+        }">Log</a>       
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showChangesTab('{0}')
             },
             btnCls: 'cubeui-btn-navy',
             iconCls: 'fa fa-random'
-        }">变更</a>        
+        }">Change</a>        
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showProcess('{0}')
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-spinner'
-        }">进程</a>
+        }">Process</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showUsage('{0}')
             },
             btnCls: 'cubeui-btn-yellowgreen',
             iconCls: 'fa fa-thermometer-half'
-        }">状况</a>
+        }">Status</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showExportFile('{0}')
             },
             btnCls: 'cubeui-btn-limegreen',
             iconCls: 'fa fa-sign-out'
-        }">归档文件</a>
+        }">ArchiveDocumentation</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showImportFile('{0}')
             },
             btnCls: 'cubeui-btn-dodgerblue',
             iconCls: 'fa fa-sign-in'
-        }">导入文件</a>
+        }">ImportDocumentation</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     showConsolePanel('{0}')
             },
             btnCls: 'cubeui-btn-DeepSkyBlue',
             iconCls: 'fa fa-terminal'
-        }">控制台</a>
+        }">Control台</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     lsContainer('{0}')
             },
             btnCls: 'cubeui-btn-BrightGold',
             iconCls: 'fa fa-clone'
-        }">文件系统</a>
+        }">DocumentationSystem</a>
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     $('#layout').layout('collapse', 'east');
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
 `;
 
 let processes_tab_html = `
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="processesDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -1256,7 +1256,7 @@ let processes_tab_html = `
                     extend: '#processesDg-toolbar',
                     btnCls: 'cubeui-btn-orange',
                     iconCls: 'fa fa-pause-circle-o'
-                }">暂停进程</a>
+                }">PauseProcess</a>
                 
                 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -1266,14 +1266,14 @@ let processes_tab_html = `
                     extend: '#processesDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-play-circle-o'
-                }">恢复进程</a>
+                }">RestoreProcess</a>
             <form class="search-box">    
             
-                <span style='line-height: 30px;padding-right:0px'>显示格式：</span>
+                <span style='line-height: 30px;padding-right:0px'>ShowFormat：</span>
                 <input type="text" value="aux" data-toggle="cubeui-combobox"
                        data-options="
                                 width:220,
-                                required:true,prompt:'结果显示格式，选择填写，默认aux',
+                                required:true,prompt:'ResultShowFormat，Select Fill，Defaultaux',
                                 valueField:'KEY',
                                 onSelect:function(record){
                                     try{
@@ -1288,13 +1288,13 @@ let processes_tab_html = `
                        ">
             </form>
         </div>
-        <!-- 表格工具栏结束 -->
+        <!-- End of Table Toolbar -->
         
     <table id="processesDg"></table>
 `;
 
 let changes_tab_html = `
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="changesDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -1308,23 +1308,23 @@ let changes_tab_html = `
                     extend: '#changesDg-toolbar',
                     btnCls: 'cubeui-btn-orange',
                     iconCls: 'fa fa-refresh'
-                }">刷新</a>
+                }">Refresh</a>
         
             <form id="changes_queryForm" class="search-box">            
                 <input type="text" id='path_key' name="path_key" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){                        
                             $('#changes_searchbtn').trigger('click');
-                       }, prompt:'查询条件；多条件逗号分隔；/etc/conf,/var/run',width:420">
+                       }, prompt:'Question条件；多条件逗No. Separate；/etc/conf,/var/run',width:420">
                 <a href="javascript:void(0)" id="changes_searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'changes_queryForm'},
-                   grid:{type:'datagrid','id':'changesDg'}">查询</a>
+                   grid:{type:'datagrid','id':'changesDg'}">Question</a>
             </form>
         </div>
-        <!-- 表格工具栏结束 -->
+        <!-- End of Table Toolbar -->
             
     <table id="changesDg"></table>
 `;
@@ -1337,7 +1337,7 @@ let usage_tab_html = `
                         <div class="card card-hoverable">
                             <div class="card-head">
                                 <span class="card-head-icon"><i class="fa fa-table icon"></i></span>
-                                <span>资源使用率</span>
+                                <span>资源Usage</span>
                                 <span style='float: right;position: absolute;right: 20px;height: 48px;'></span>
                             </div>
                             <div class="card-body padding-card-body" >
@@ -1347,8 +1347,8 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-blue">实时</span>
-                                                    <h5>CPU核数</h5>
+                                                    <span class="label pull-right layui-bg-blue">Real time</span>
+                                                    <h5>CPUNumerical</h5>
                                                 </div>
                                                 <div class="panel-content">
                                                     <h1 class="no-margins"><t class="online_cpus">3</t>&nbsp;</h1>
@@ -1361,8 +1361,8 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-cyan">实时</span>
-                                                    <h5>可用CPU</h5>
+                                                    <span class="label pull-right layui-bg-cyan">Real time</span>
+                                                    <h5>AvailableCPU</h5>
                                                 </div>
                                                 <div class="panel-content">
                                                     <h1 class="no-margins "><t class="system_cpu_delta"></t>&nbsp;</h1>
@@ -1377,8 +1377,8 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-orange">实时</span>
-                                                    <h5>可用内存</h5>
+                                                    <span class="label pull-right layui-bg-orange">Real time</span>
+                                                    <h5>AvailableMemory</h5>
                                                 </div>
                                                 <div class="panel-content">
                                                     <h1 class="no-margins "><t class="available_memory"></t>&nbsp;</h1>
@@ -1392,8 +1392,8 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-green">实时</span>
-                                                    <h5>可用文件数</h5>
+                                                    <span class="label pull-right layui-bg-green">Real time</span>
+                                                    <h5>AvailableDocumentation数</h5>
                                                 </div>
                                                 <div class="panel-content">
                                                     <h1 class="no-margins "><t class="limit"></t>&nbsp;</h1>
@@ -1407,7 +1407,7 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-red">实时</span>
+                                                    <span class="label pull-right layui-bg-red">Real time</span>
                                                     <h5>BLOCK IO</h5>
                                                 </div>
                                                 <div class="panel-content">
@@ -1422,7 +1422,7 @@ let usage_tab_html = `
                                         <div class="panel layui-bg-number">
                                             <div class="panel-body">
                                                 <div class="panel-title">
-                                                    <span class="label pull-right layui-bg-black">实时</span>
+                                                    <span class="label pull-right layui-bg-black">Real time</span>
                                                     <h5>NET IO</h5>
                                                 </div>
                                                 <div class="panel-content">
@@ -1439,7 +1439,7 @@ let usage_tab_html = `
                                     <div class="layui-col-md12" style="padding:10px">
                                          <div class="nepadmin-pad-b20">
                                                 <h2 class="nepadmin-pad-b10">
-                                                  CPU使用率<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='cpu-usages-1'></t> / <t class='cpu-usages-value'>85%</t>（<t class='cpu-usages-value-2'>15</t><span class="layui-edge layui-edge-top cpu-usages-value-3" lay-tips="增长" lay-offset="-15"></span>）</span>
+                                                  CPUUsage<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='cpu-usages-1'></t> / <t class='cpu-usages-value'>85%</t>（<t class='cpu-usages-value-2'>15</t><span class="layui-edge layui-edge-top cpu-usages-value-3" lay-tips="Growth" lay-offset="-15"></span>）</span>
                                                 </h2>
                                                 <div class="layui-progress">
                                                   <div class="layui-progress-bar layui-bg-blue cpu-usages" style="width: 85%;"></div>
@@ -1449,7 +1449,7 @@ let usage_tab_html = `
                                     <div class="layui-col-md12" style="padding:10px">
                                           <div class="nepadmin-pad-b20">
                                                 <h2 class="nepadmin-pad-b10">
-                                                  内存占用率<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='memory-usages-1'></t> / <t class='memory-usages-value'>58%</t>（<t class='memory-usages-value-2'></t><span class="layui-edge layui-edge-bottom memory-usages-value-3" lay-tips="下降" lay-offset="-15"></span>）</span>
+                                                  Memory occupancy rate<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='memory-usages-1'></t> / <t class='memory-usages-value'>58%</t>（<t class='memory-usages-value-2'></t><span class="layui-edge layui-edge-bottom memory-usages-value-3" lay-tips="Down" lay-offset="-15"></span>）</span>
                                                 </h2>
                                                 <div class="layui-progress">
                                                   <div class="layui-progress-bar layui-bg-red  memory-usages" style="width: 58%;"></div>
@@ -1459,7 +1459,7 @@ let usage_tab_html = `
                                     <div class="layui-col-md12" style="padding:10px">
                                           <div class="nepadmin-pad-b20">
                                                 <h2 class="nepadmin-pad-b10">
-                                                  文件句柄使用率<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='pid-usages-1'></t> / <t class='pid-usages-value'>58%</t>（<t class='pid-usages-value-2'></t><span class="layui-edge layui-edge-bottom pid-usages-value-3" lay-tips="下降" lay-offset="-15"></span>）</span>
+                                                  DocumentationThe handleUsage<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='pid-usages-1'></t> / <t class='pid-usages-value'>58%</t>（<t class='pid-usages-value-2'></t><span class="layui-edge layui-edge-bottom pid-usages-value-3" lay-tips="Down" lay-offset="-15"></span>）</span>
                                                 </h2>
                                                 <div class="layui-progress">
                                                   <div class="layui-progress-bar layui-bg-orange  pid-usages" style="width: 58%;"></div>
@@ -1503,7 +1503,7 @@ let log_tab_html = `
                         <table class="layui-table" style="margin: 0px 0;">
                             <thead>
                             <tr>
-                                <th colspan="6" style="text-align: center">{{:Name}} <t>{{if Running==1}}[已启动]{{else}}[已停止]{{/if}}</t> </th>
+                                <th colspan="6" style="text-align: center">{{:Name}} <t>{{if Running==1}}[Started]{{else}}[Stopped]{{/if}}</t> </th>
                             </tr>
                             </thead>
                             <tr>
@@ -1530,7 +1530,7 @@ let netio_div_html = `
                                     <div class="layui-col-md12" style="padding:10px">
                                               <div class="nepadmin-pad-b20">
                                                     <h2 class="nepadmin-pad-b10">
-                                                      {0}<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='{1}-usages-1'></t> / <t class='{1}-usages-value'>58%</t>（<t class='{1}-usages-value-2'></t><span class="layui-edge layui-edge-bottom {1}-usages-value-3" lay-tips="下降" lay-offset="-15"></span>）</span>
+                                                      {0}<span class="nepadmin-font-14 nepadmin-c-gray nepadmin-fr"><t class='{1}-usages-1'></t> / <t class='{1}-usages-value'>58%</t>（<t class='{1}-usages-value-2'></t><span class="layui-edge layui-edge-bottom {1}-usages-value-3" lay-tips="Down" lay-offset="-15"></span>）</span>
                                                     </h2>
                                                     <div class="layui-progress">
                                                       <div class="layui-progress-bar layui-bg-green  {1}-usages" style="width: 58%;"></div>
@@ -1542,27 +1542,27 @@ let netio_div_html = `
 
 let create_container_html = `
 <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="容器信息"
+            <div title="ContainersInformation"
                  data-options="id:'eastTab0',iconCls:'fa fa-headphones'">                 
                 <div style="margin: 0px;">
                 </div>
                 <form id='createContainerForm'>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>容器信息</legend>
+                        <legend>ContainersInformation</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <label class="cubeui-form-label" 
-                            title="将指定的名称分配给容器。必须匹配/？[a-zA-Z0-9][a-zA-Z0-9_-]+">NAME:</label>
+                            title="将AssignedName分配给Containers。必须Match/？[a-zA-Z0-9][a-zA-Z0-9_-]+">NAME:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Name"
                                         {{if Flag!='2'}}
                                        value='{{>Name}}'
                                        {{/if}}
                                        data-options="
-                                       prompt:'将指定的名称分配给容器',
+                                       prompt:'将AssignedName分配给Containers',
                                        required:false,
                                        ">
                             </div>
@@ -1572,13 +1572,13 @@ let create_container_html = `
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <label class="cubeui-form-label" 
-                            title="创建容器时要使用的图像的名称（或引用），或创建容器时使用的图像的名称（或引用）。">IMAGE:</label>
+                            title="Create Container时要Use的图像的Name（或References），或Create Container时Use的图像的Name（或References）。">IMAGE:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="Image"
                                        value='{{>Image}}'
                                        data-options="                                       
-                                       prompt:'创建容器时要使用的镜像的名称（或引用）',
+                                       prompt:'Create Container时要Use的Mirror的Name（或References）',
                                        required:true,
                                             "
                                 >
@@ -1588,12 +1588,12 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="运行命令的工作目录">工作目录:</label>
+                            <label class="cubeui-form-label" title="RunCommand的Working Directory">Working Directory:</label>
                             <div class="cubeui-input-block">                
                                 <input type="text" data-toggle="cubeui-textbox" name="WorkingDir"
                                        value='{{:Config.WorkingDir}}'
                                        data-options="                                       
-                                       prompt:'运行命令的工作目录',
+                                       prompt:'RunCommand的Working Directory',
                                        required:false,
                                             "
                                 >
@@ -1604,7 +1604,7 @@ let create_container_html = `
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm7">
                             <label class="cubeui-form-label" 
-                            title="容器退出时要应用的行为。默认情况下不会重新启动。每次重新启动前都会增加一个不断增加的延迟（是之前延迟的两倍，从100ms开始），以防止服务器被淹没。">重新策略:</label>
+                            title="ContainersExit时要Apply的行为。Default情况下不会重新Start。每次重新Start前都会Increase一个不断Increase的延迟（是Before延迟的两倍，从100msStart），以PreventionServices器被淹没。">Restrategize:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" id='create_RestartPolicy' data-toggle="cubeui-combobox" name="RestartPolicy"
@@ -1620,25 +1620,25 @@ let create_container_html = `
                                                 $('#MaximumRetryCount').numberspinner('disable')
                                             }
                                        },                                                                              
-                                       prompt:'容器退出时要应用的行为。默认为不重新启动',
+                                       prompt:'ContainersExit时要Apply的行为。Default as不重新Start',
                                        required:false,
                                        valueField:'KEY',
                                        textField:'TEXT',
-                                       data:[{'KEY':'no','TEXT':'不重新启动'},{'KEY':'always','TEXT':'始终重新启动'},
-                                       {'KEY':'unless-stopped','TEXT':'除非用户手动停止容器，否则始终重新启动'},
-                                       {'KEY':'on-failure','TEXT':'仅当容器退出代码为非零时重新启动; 同时设置最大重试次数'}]
+                                       data:[{'KEY':'no','TEXT':'不重新Start'},{'KEY':'always','TEXT':'始终重新Start'},
+                                       {'KEY':'unless-stopped','TEXT':'除非User手动StopContainers，Otherwise..始终重新Start'},
+                                       {'KEY':'on-failure','TEXT':'仅当ContainersExitCodeNot零时重新Start; 同时SettingsMaximum number of retries'}]
                                             "
                                 >
                             </div>
                         </div>                        
                         <div class="cubeui-col-sm5">
-                            <label class="cubeui-form-label">最大重试次数:</label>
+                            <label class="cubeui-form-label">Maximum number of retries:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" id='MaximumRetryCount' data-toggle="cubeui-numberspinner" name="MaximumRetryCount"
                                        value='{{:HostConfig.RestartPolicy.MaximumRetryCount}}'
                                        data-options="     
                                        disabled:true,                                   
-                                       prompt:'仅当容器退出代码为非零时重新启动。最大重试次数',                                                                   
+                                       prompt:'仅当ContainersExitCodeNot零时重新Start。Maximum number of retries',                                                                   
                                        min:0,
                                        max:10000000,                                       
                                        required:false"
@@ -1649,12 +1649,12 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="用于容器的主机名，作为有效的RFC 1123主机名。">主机名:</label>
+                            <label class="cubeui-form-label" title="ForContainers的Host名，As effectiveRFC 1123Host名。">Host名:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Hostname"
                                        value='{{>Hostname}}'
                                        data-options="
-                                       prompt:'用于容器的主机名，作为有效的RFC 1123主机名。',
+                                       prompt:'ForContainers的Host名，As effectiveRFC 1123Host名。',
                                        
                                             "
                                 >
@@ -1664,12 +1664,12 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="用于容器的域名。">容器域名:</label>
+                            <label class="cubeui-form-label" title="ForContainers的域名。">Containers域名:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Domainname"
                                        value='{{>Domainname}}'
                                        data-options="
-                                       prompt:'用于容器的域名。',
+                                       prompt:'ForContainers的域名。',
                                        
                                             "
                                 >
@@ -1679,12 +1679,12 @@ let create_container_html = `
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="在容器内运行命令的用户。">用户:</label>
+                            <label class="cubeui-form-label" title="在Containers内RunCommand的User。">User:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="User"
                                        value='{{>User}}'
                                        data-options="
-                                       prompt:'在容器内运行命令的用户。',
+                                       prompt:'在Containers内RunCommand的User。',
                                        
                                             "
                                 >
@@ -1694,12 +1694,12 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="用于此容器的网络模式。支持的标准值为：: bridge, host, none, and container:：<name | id>。任何其他值都被视为此容器应连接到的自定义网络的名称。">网络模式:</label>
+                            <label class="cubeui-form-label" title="For此Containers的NetworkMode。Support的StandardValue as：: bridge, host, none, and container:：<name | id>。任何Other值都被视为此Containers应Connection到的自DefinitionsNetwork的Name。">NetworkMode:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="HostConfig.NetworkMode"
                                        value='{{>HostConfig.NetworkMode}}'
                                        data-options="
-                                       prompt:'用于此容器的网络模式。bridge, host, none, and container:：<name | id>, 其他值都被视为此容器应连接到的自定义网络',
+                                       prompt:'For此Containers的NetworkMode。bridge, host, none, and container:：<name | id>, Other值都被视为此Containers应Connection到的自DefinitionsNetwork',
                                        
                                             "
                                 >
@@ -1709,7 +1709,7 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="禁用容器的网络">禁用容器网络:</label>
+                            <label class="cubeui-form-label" title="DisableContainers的Network">DisableContainersNetwork:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                     name="NetworkDisabled" value="1" data-options="onText:'',offText:'',width:60">
@@ -1719,7 +1719,7 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="当容器的进程退出时自动删除容器。如果设置了RestartPolicy，则此操作无效。">自动删除:</label>
+                            <label class="cubeui-form-label" title="当Containers的ProcessExit时AutoDeleteContainers。IfSettings了RestartPolicy，则此Operation无效。">AutoDelete:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if HostConfig.AutoRemove}}checked{{/if}} 
@@ -1730,7 +1730,7 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="授予容器对主机的完全访问权限">授予完全权限:</label>
+                            <label class="cubeui-form-label" title="授予Containers对Host的完全Visits权限">Grant full authority:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if HostConfig.Privileged}}checked{{/if}} 
@@ -1741,12 +1741,12 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="容器运行命令">容器运行命令:</label>
+                            <label class="cubeui-form-label" title="ContainersRunCommand">ContainersRunCommand:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Cmd"
                                        value='{{>Config.CmdStr}}'
                                        data-options="
-                                       prompt:'容器运行命令',
+                                       prompt:'ContainersRunCommand',
                                        
                                             "
                                 >
@@ -1756,31 +1756,31 @@ let create_container_html = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label"  title="如果由空字符串组成，则入口点重置为系统默认值（即docker在Dockerfile中没有入口点指令时使用的入口点）。">容器入口点:</label>
+                            <label class="cubeui-form-label"  title="If由空Character串组成，则Entry pointReset为SystemDefault value（即docker在Dockerfile中NothingEntry point指令时Use的Entry point）。">ContainersEntry point:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Entrypoint"
                                        value='{{>Config.EntrypointStr}}'
                                        data-options="
-                                       prompt:'如果由空字符串组成，则入口点重置为系统默认值（即docker在Dockerfile中没有入口点指令时使用的入口点）',
+                                       prompt:'If由空Character串组成，则Entry pointReset为SystemDefault value（即docker在Dockerfile中NothingEntry point指令时Use的Entry point）',
                                             "
                                 >
                             </div>
                         </div>
                     </div>
                     
-                    <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="指定用于根据此规范创建的任务的日志驱动程序。如果不存在，则将使用swarm的默认驱动程序，如果未指定，则最终返回到引擎默认驱动程序。">
-                        <legend style="margin-bottom: 0px;">日志驱动</legend>
+                    <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="AssignForBased on此规范Create的Tasks的LogDriver程序。Ifdoes not exist，则将Useswarm的DefaultDriver程序，If not specified，则最终Back到EngineDefaultDriver程序。">
+                        <legend style="margin-bottom: 0px;">LogDriver</legend>
                     </fieldset>
         
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm6" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="创建的任务的日志驱动程序">Log Driver:</label>
+                            <label class="cubeui-form-label" title="Create的Tasks的LogDriver程序">Log Driver:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" name="HostConfig.LogConfig.Type" 
                                 value="{{>HostConfig.LogConfig.Type}}" data-toggle="cubeui-combobox"
                                        data-options="
                                         required:false,
-                                        prompt:'创建的任务的日志驱动程序，默认为swarm的默认驱动程序',
+                                        prompt:'Create的Tasks的LogDriver程序，Default asswarm的DefaultDriver程序',
                                         valueField:'KEY',
                                         textField:'TEXT',
                                         data:$.docker.utils.getLocalLog()
@@ -1793,10 +1793,10 @@ let create_container_html = `
                         <div class="cubeui-col-sm12 add-opt-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>配置项</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Configure项</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>配置值</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Configure值</span>
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                             <span style='line-height: 20px;padding-right:0px;'>
@@ -1809,11 +1809,11 @@ let create_container_html = `
                                 <div class="cubeui-row">
                                     <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                                         <input type="text" data-toggle="cubeui-textbox" value="{1}"
-                                               name='cnt-log-driver-name' data-options="required:false,prompt:'日志驱动配置项，比如：max-log-count '">
+                                               name='cnt-log-driver-name' data-options="required:false,prompt:'LogDriverConfigure项，Like what：max-log-count '">
                                     </div>
                                     <div class="cubeui-col-sm5">
                                         <input type="text" data-toggle="cubeui-textbox" value="{2}"
-                                               name='cnt-log-driver-value' data-options="required:false,prompt:'日志驱动配置值，比如：10 '">
+                                               name='cnt-log-driver-value' data-options="required:false,prompt:'LogDriverConfigure值，Like what：10 '">
                                     </div>
                                     <div class="cubeui-col-sm1" style="text-align: center">
                                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1825,70 +1825,70 @@ let create_container_html = `
                         </div>
                     </div>
                     
-                    <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="健康测试策略(用于检查容器是否健康的测试)">
-                        <legend style="margin-bottom: 10px;">健康测试策略(用于检查容器是否健康的测试)</legend>
+                    <fieldset  style="margin-top: 20px!important;margin-bottom1: 10px;" title="Health testing strategy(ForInspectionContainersWhether or not健康的测试)">
+                        <legend style="margin-bottom: 10px;">Health testing strategy(ForInspectionContainersWhether or not健康的测试)</legend>
                     </fieldset>
         
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="要执行的测试。可能的值为:空值从映像或父映像继承healthcheck; NONE禁用healthcheck;
-                                    CMD args直接执行参数;CMD-SHELL command使用系统的默认SHELL运行命令">Test:</label>
+                            <label class="cubeui-form-label" title="要Implemented测试。Possible value为:空值从映像或父映像Successionhealthcheck; NONEDisablehealthcheck;
+                                    CMD args直接ImplementationParameters;CMD-SHELL commandUseSystem的DefaultSHELLRunCommand">Test:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="Healthcheck.Test"
                                        value='{{>Healthcheck.Test}}'
                                        data-options="
-                                               prompt:'要执行的测试。可能的值为:为空从映像或父映像继承healthcheck; NONE禁用healthcheck;CMD args直接执行参数;CMD-SHELL command使用系统的默认SHELL运行命令；使用空格分隔'
+                                               prompt:'要Implemented测试。Possible value为:Empty从映像或父映像Successionhealthcheck; NONEDisablehealthcheck;CMD args直接ImplementationParameters;CMD-SHELL commandUseSystem的DefaultSHELLRunCommand；UseSpaceSeparate'
                                                     "
                                 >
                             </div>
                         </div>
                         <div class="cubeui-col-sm6" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="检查之间的等待时间（纳秒）。它应为0或至少1000000（1毫秒）。
-                                    0表示继承。">Interval(ns):</label>
+                            <label class="cubeui-form-label" title="InspectionBetween的等待Time（nanoseconds）。It should read0Or at least1000000（1milliseconds）。
+                                    0OrganisationSuccession。">Interval(ns):</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-numberspinner" name="Healthcheck.Interval"
                                        value='{{>Healthcheck.Interval}}'
                                        data-options="
-                                       prompt:'检查之间的等待时间（纳秒）。它应为0或至少1000000（1毫秒）。0表示继承。',
+                                       prompt:'InspectionBetween的等待Time（nanoseconds）。It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。',
                                        min:0
                                                     "
                                 >
                             </div>
                         </div>
                         <div class="cubeui-col-sm6" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="在检查认为为已挂时的等待时间。
-                                    它应为0或至少1000000（1毫秒）。0表示继承。">Timeout(ns):</label>
+                            <label class="cubeui-form-label" title="在Inspection认为为已挂时的等待Time。
+                                    It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。">Timeout(ns):</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-numberspinner" name="Healthcheck.Timeout"
                                        value='{{>Healthcheck.Timeout}}'
                                        data-options="
-                                       prompt:'在检查认为为已挂时的等待时间。它应为0或至少1000000（1毫秒）。0表示继承。',
+                                       prompt:'在Inspection认为为已挂时的等待Time。It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。',
                                        min:0
                                                     "
                                 >
                             </div>
                         </div>
                         <div class="cubeui-col-sm6" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="认为容器不健康所需的连续故障数。
-                                    0表示继承。">Retries:</label>
+                            <label class="cubeui-form-label" title="认为Containers不健康所需的连续故障数。
+                                    0OrganisationSuccession。">Retries:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-numberspinner" name="Healthcheck.HealthCheck."
                                        value='{{>Healthcheck.Retries}}'
                                        data-options="
-                                       prompt:'认为容器不健康所需的连续故障数。0表示继承。',
+                                       prompt:'认为Containers不健康所需的连续故障数。0OrganisationSuccession。',
                                        min:0
                                                     "
                                 >
                             </div>
                         </div>
                         <div class="cubeui-col-sm6" style="margin-top: 2px">
-                            <label class="cubeui-form-label" title="容器初始化后开始运行健康检查的开始时间（纳秒）。
-                                    它应为0或至少1000000（1毫秒）。0表示继承。">StartPeriod(ns):</label>
+                            <label class="cubeui-form-label" title="ContainersInitialize后StartRun健康Inspection的StartTime（nanoseconds）。
+                                    It should read0Or at least1000000（1milliseconds）。0OrganisationSuccession。">StartPeriod(ns):</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-numberspinner" name="Healthcheck.StartPeriod"
                                        value='{{>Healthcheck.StartPeriod}}'
                                        data-options="
-                                       prompt:'容器初始化后开始运行健康检查的开始时间（纳秒）',
+                                       prompt:'ContainersInitialize后StartRun健康Inspection的StartTime（nanoseconds）',
                                        min:0
                                                     "
                                 >
@@ -1896,11 +1896,11 @@ let create_container_html = `
                         </div>
                     </div>
                     
-                    <div style="padding-top: 10px;" class="cubeui-row" title="容器端口到主机端口的映射，使用容器的端口号和协议作为密钥，格式为<port>/<protocol>，例如80/udp。如果为多个协议映射了容器的端口，则会向映射表中添加单独的条目。">
+                    <div style="padding-top: 10px;" class="cubeui-row" title="ContainersPort到HostPort的Map，UseContainers的Port号和Agreements作为密钥，Format为<port>/<protocol>，For example:80/udp。If为MultipleAgreementsMap了Containers的Port，则会向Map表中Add单独的条目。">
                         <fieldset >
                             <legend style="margin-bottom: 0px;">
-                            容器端口发布到主机
-                                        <span style='line-height: 20px;padding-right:0px'><b>&nbsp;&nbsp;&nbsp;&nbsp;分配临时主机端口</b></span>
+                            ContainersPortRelease到Host
+                                        <span style='line-height: 20px;padding-right:0px'><b>&nbsp;&nbsp;&nbsp;&nbsp;分配临时HostPort</b></span>
                                      <input data-toggle="cubeui-checkbox"
                                      
                                 {{if HostConfig.PublishAllPorts}}checked{{/if}} 
@@ -1924,11 +1924,11 @@ let create_container_html = `
                         <div class="cubeui-col-sm12 add-opt-div"  id="publish-ports-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>容器端口</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>ContainersPort</span>
                                     
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>主机</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Host</span>
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -1944,11 +1944,11 @@ let create_container_html = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{:key}}"
-                                           name='PortBindings-name' data-options="required:false,prompt:'使用端口号和协议，例如80/tcp, 80/udp'">
+                                           name='PortBindings-name' data-options="required:false,prompt:'UsePort号和Agreements，For example:80/tcp, 80/udp'">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{:prop}}"
-                                           name='PortBindings-value' data-options="required:false,prompt:'主机映射端口, 格式[ip:]port, 例如192.168.56.101:9999, 9999'">
+                                           name='PortBindings-value' data-options="required:false,prompt:'HostMapPort, Format[ip:]port, For example:192.168.56.101:9999, 9999'">
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1961,18 +1961,18 @@ let create_container_html = `
                         </div>                      
                     </div>
                     
-                    <div class="cubeui-row" title="容器的卷绑定列表">
+                    <div class="cubeui-row" title="Containers的卷TieList">
                         <fieldset>
-                            <legend style="margin-bottom: 0px;">容器的卷绑定列表</legend>
+                            <legend style="margin-bottom: 0px;">Containers的卷TieList</legend>
                         </fieldset>
                                         
                         <div class="cubeui-col-sm12 add-opt-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>主机路径或者数据卷</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>HostPathOr..Data卷</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>容器目标路径</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>ContainersObjectivePath</span>
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -1986,16 +1986,16 @@ let create_container_html = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset2" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>Source}}" 
-                                           name='volume-name' data-options="required:false,prompt:'绑定的主机路径或者数据卷, 主机路径必须是绝对路径'">
+                                           name='volume-name' data-options="required:false,prompt:'Tie的HostPathOr..Data卷, HostPathMust be绝对Path'">
                                 </div>
                                 <div class="cubeui-col-sm3">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>Destination}}" 
-                                           name='volume-value' data-options="required:false,prompt:'绑定容器目标路径, 目标路径必须是绝对路径'">
+                                           name='volume-value' data-options="required:false,prompt:'TieContainersObjectivePath, ObjectivePathMust be绝对Path'">
                                 </div>
                                 
                                 <div class="cubeui-col-sm2">
                                         <span style='line-height: 30px;padding-left:5px' title='
-                                         禁用将数据从容器路径自动复制到卷,仅适用于卷
+                                         Disable将Data从ContainersPathAutoCopy到卷,仅适For卷
                                          ' ><b >nc</b></span>
                                         <input {{if Propagation=='rprivate'}}value="0"{{else}}value="1"{{/if}} type="hidden" name="nocopy" class="nocopy">       
                                          <input {{if Propagation=='rprivate'}}{{else}}checked{{/if}} data-toggle="cubeui-checkbox" name="volume-nocopy-opt" value="1" label="" data-options="
@@ -2010,7 +2010,7 @@ let create_container_html = `
                                              }
                                          ">
                                          <span style='line-height: 30px;padding-left:5px' title='
-                                         只读或读写方式装入卷。如果勾选为rw，卷将以读写方式装入
+                                         只读或读写Modalities装入卷。IfCheck为rw，卷将以读写Modalities装入
                                          ' ><b >RW</b></span>
                                         <input {{if RW}}value="1"{{else}}value="0"{{/if}} type="hidden" name="rw"  class="rw" >       
                                          <input {{if RW}}checked{{/if}} data-toggle="cubeui-checkbox"                                     
@@ -2026,7 +2026,7 @@ let create_container_html = `
                                              }
                                          ">                             
                                          <span style='line-height: 30px;padding-left:5px' title='
-                                         应用SELinux以允许或拒绝多个容器对同一卷进行读写, 勾选表示为共享方式，否则私有方式
+                                         ApplySELinux以Allow或RejectMultipleContainers对同一卷Conduct读写, CheckOrganisation为共享Modalities，Otherwise..私有Modalities
                                          ' ><b >S</b></span>
                                         <input  {{if Mode=='z'}}value="1"{{else}}value="0"{{/if}} type="hidden" name="z"  class="z">       
                                          <input {{if Mode=='z'}}checked{{/if}} data-toggle="cubeui-checkbox" name="volume-z-opt" value="1" label="" data-options="
@@ -2051,9 +2051,9 @@ let create_container_html = `
                         
                     </div>
                     
-                    <div class="cubeui-row" title="用户定义的键/值元数据">
+                    <div class="cubeui-row" title="User definition的键/值元Data">
                         <fieldset>
-                            <legend style="margin-bottom: 0px;">用户定义的键/值元数据</legend>
+                            <legend style="margin-bottom: 0px;">User definition的键/值元Data</legend>
                         </fieldset>
                                         
                         <div class="cubeui-col-sm12 add-opt-div">
@@ -2076,11 +2076,11 @@ let create_container_html = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -2094,18 +2094,18 @@ let create_container_html = `
                         
                     </div>
                     
-                    <div class="cubeui-row" title="要在容器内设置的环境变量列表，格式为[“VAR=value”，…]。不带=的变量将从环境中删除，而不是具有空值">
+                    <div class="cubeui-row" title="YesContainers内Settings的EnvironmentVariablesList，Format为[“VAR=value”，…]。Not=的Variables将从Environment中Delete，Not具有空值">
                         <fieldset>
-                            <legend style="margin-bottom: 0px;">容器内的环境变量</legend>
+                            <legend style="margin-bottom: 0px;">Containers内的EnvironmentVariables</legend>
                         </fieldset>
                                         
                         <div class="cubeui-col-sm12 add-opt-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>变量名</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Variables名</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>变量值</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Variables值</span>
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -2121,11 +2121,11 @@ let create_container_html = `
                             
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='Env-name' data-options="required:false,prompt:'变量名，比如：profile '">
+                                           name='Env-name' data-options="required:false,prompt:'Variables名，Like what：profile '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='Env-value' data-options="required:false,prompt:'变量值，比如：production '">
+                                           name='Env-value' data-options="required:false,prompt:'Variables值，Like what：production '">
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -2140,18 +2140,18 @@ let create_container_html = `
                         
                     </div>
                     
-                    <div class="cubeui-row" title="容器链接列表">
+                    <div class="cubeui-row" title="ContainersLinkList">
                         <fieldset>
-                            <legend style="margin-bottom: 0px;">容器链接</legend>
+                            <legend style="margin-bottom: 0px;">ContainersLink</legend>
                         </fieldset>
                                         
                         <div class="cubeui-col-sm12 add-opt-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>目标容器名</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>ObjectiveContainers名</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>链接别名</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Link alias</span>
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -2166,11 +2166,11 @@ let create_container_html = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}" 
-                                           name='Links-name' data-options="required:false,prompt:'目标容器名，比如：mysql-001 '">
+                                           name='Links-name' data-options="required:false,prompt:'ObjectiveContainers名，Like what：mysql-001 '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='Links-value' data-options="required:false,prompt:'链接别名，比如：mysqldb '">
+                                           name='Links-value' data-options="required:false,prompt:'Link alias，Like what：mysqldb '">
                                 </div>
                                 <div class="cubeui-col-sm1" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -2187,14 +2187,14 @@ let create_container_html = `
                 </form> 
             </div>
             
-            <div title="高级设置"
+            <div title="AdvancedSettings"
                  data-options="id:'eastTab1',iconCls:'fa fa-cogs'">
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>宿主配置</legend>
+                        <legend>宿主Configure</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -2228,7 +2228,7 @@ let create_panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-headphones'
-        }">创建</a>
+        }">Create</a>
         <a  href="javascript:void(0)" id='tab_start_btn' data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
             
@@ -2241,7 +2241,7 @@ let create_panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-yellowgreen',
             iconCls: 'fa fa-play-circle'
-        }">创建&启动</a>
+        }">Create&Start</a>
         {{/if}}
         {{if Flag==2}}
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -2250,7 +2250,7 @@ let create_panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-olive',
             iconCls: 'fa fa-play-circle-o'
-        }">运行</a>
+        }">Run</a>
         {{/if}}
         
         {{if Flag==3}}
@@ -2260,7 +2260,7 @@ let create_panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-pink',
             iconCls: 'fa fa-random'
-        }">执行</a>
+        }">Implementation</a>
         {{/if}}
         <a  href="javascript:void(0)" id='tab_start_btn' data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){                    
@@ -2269,14 +2269,14 @@ let create_panel_buttons_html = `
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-cogs'
-        }">高级设置</a>                  
+        }">AdvancedSettings</a>                  
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     $('#layout').layout('collapse', 'east');
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
 `;
 
 
@@ -2458,7 +2458,7 @@ function createContainer(fn){
             if(fn){
                 fn.call(info, response, data)
             }else{
-                $.app.show('创建容器{0}成功'.format(info.Name));
+                $.app.show('Create Container{0}Success'.format(info.Name));
                 reloadDg();
                 //$('#layout').layout('collapse', 'east');
             }
@@ -2475,17 +2475,17 @@ function createAndStartContainer(){
 
         if($.extends.isEmpty(response.Warnings)){
 
-            $.app.show('创建容器{0}成功, 正在启动容器'.format(info.Name));
+            $.app.show('Create Container{0}Success, 正在StartContainers'.format(info.Name));
 
             $.docker.request.container.start(function(){
                 showLog(response.Id)
-                $.app.show('容器{0}启动成功'.format(info.Name));
+                $.app.show('Containers{0}StartSuccess'.format(info.Name));
                 reloadDg();
                 //triggerNavMenuClick('ALL', 'containers');
                 //$('#layout').layout('collapse', 'east');
             }, node, response.Id);
         }else{
-            $.app.show('创建容器{0}成功, 出现警告信息，请手动启动容器，{0}'.format(response.Warnings.join(",").htmlEncode()))
+            $.app.show('Create Container{0}Success, Warning message appears，Please start the container manually，{0}'.format(response.Warnings.join(",").htmlEncode()))
         }
 
     });
@@ -2493,7 +2493,7 @@ function createAndStartContainer(){
 }
 
 let dir_tab_html = `
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="dirDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -2507,7 +2507,7 @@ let dir_tab_html = `
                     extend: '#dirDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-level-up'
-                }">上级目录</a>
+                }">上级Contents</a>
                              
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -2516,7 +2516,7 @@ let dir_tab_html = `
                     extend: '#dirDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-refresh'
-                }">刷新</a>
+                }">Refresh</a>
                 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -2524,7 +2524,7 @@ let dir_tab_html = `
                 },
                 btnCls: 'cubeui-btn-limegreen',
                 iconCls: 'fa fa-sign-out'
-            }">导出</a>
+            }">Export</a>
             
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
@@ -2532,7 +2532,7 @@ let dir_tab_html = `
                 },
                 btnCls: 'cubeui-btn-dodgerblue',
                 iconCls: 'fa fa-sign-in'
-            }">导入</a>
+            }">Import</a>
                 
                 
 <!--            <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{-->
@@ -2542,16 +2542,16 @@ let dir_tab_html = `
 <!--                    extend: '#processesDg-toolbar',-->
 <!--                    btnCls: 'cubeui-btn-blue',-->
 <!--                    iconCls: 'fa fa-play-circle-o'-->
-<!--                }">恢复进程</a>-->
+<!--                }">RestoreProcess</a>-->
                 
             <form class="search-box-2">                
-                <span style='line-height: 30px;padding-right:10px;padding-left:10px;'>当前路径：</span>
+                <span style='line-height: 30px;padding-right:10px;padding-left:10px;'>CurrentPath：</span>
                 <input type="text" id='search_dir' name="search_dir" value="/" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){
                             console.log(111);
                             $('#search-dirbtn').trigger('click');
                        },width:320,                        
-                       prompt:'当前路径'">
+                       prompt:'CurrentPath'">
                 <a href="javascript:void(0)" id="search-dirbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
@@ -2561,10 +2561,10 @@ let dir_tab_html = `
                         ls(path, null);
                    },
                    iconCls:'fa fa-folder-open',
-                   btnCls:'cubeui-btn-orange',">查看</a>
+                   btnCls:'cubeui-btn-orange',">View</a>
             </form>
         </div>
-        <!-- 表格工具栏结束 -->
+        <!-- End of Table Toolbar -->
         
     <table id="dirDg"></table>
 `;

@@ -3,37 +3,37 @@
 
 <div class="cubeui-fluid">
     <fieldset>
-        <legend>仓库信息</legend>
+        <legend>Warehouse信息</legend>
     </fieldset>
     <div class="cubeui-row">
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">仓库名字:</label>
+            <label class="cubeui-form-label">Warehouse名字:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" name="Name"
                        value='{{:Name}}'
                        {{if ID=="Default"}}disabled{{/if}}
                        data-options="
-                                required:false,prompt:'仓库名字'
+                                required:false,prompt:'Warehouse名字'
                                 "
                 >
             </div>
         </div>
 
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">仓库地址:</label>
+            <label class="cubeui-form-label">WarehouseAddress:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" name="Endpoint"
                        {{if ID=="Default"}}disabled{{/if}}
                        value='{{:Endpoint}}'
                        data-options="
-                                required:false,prompt:'仓库地址，选择填写；为空默认为官方镜像地址https://index.docker.io/v1/'
+                                required:false,prompt:'WarehouseAddress，Select Fill；为空默认为官方镜像Addresshttps://index.docker.io/v1/'
                                 "
                 >
             </div>
         </div>
 
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">备注:</label>
+            <label class="cubeui-form-label">Remarks:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" name="Description"
                        {{if ID=="Default"}}disabled{{/if}}
@@ -41,31 +41,31 @@
                        data-options="
                                 multiline:true,
                                 height:60,
-                                required:false,prompt:'仓库备注，选择填写'
+                                required:false,prompt:'WarehouseRemarks，Select Fill'
                                 "
                 >
             </div>
         </div>
 
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">用户名:</label>
+            <label class="cubeui-form-label">Username:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-textbox" name="Username"
                        value='{{:Username}}'
                        data-options="
-                                                        required:false,prompt:'登录镜像仓库的用户名'
+                                                        required:false,prompt:'Login镜像Warehouse的Username'
                                                         "
                 >
             </div>
         </div>
 
         <div class="cubeui-col-sm12" style="margin-top: 5px">
-            <label class="cubeui-form-label">密码:</label>
+            <label class="cubeui-form-label">Password:</label>
             <div class="cubeui-input-block">
                 <input type="text" data-toggle="cubeui-passwordbox" name="Password"
                        value='{{:Password}}'
                        data-options="
-                                                        required:false,prompt:'登录镜像仓库的用户密码'
+                                                        required:false,prompt:'Login镜像Warehouse的用户Password'
                                                         "
                 >
             </div>

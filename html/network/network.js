@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all1:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 100, formatter:leaseOperateFormatter},
                 {field: 'Id', title: 'ID', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -55,9 +55,9 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectNetwork(\'' + row.ID + '\')">查看</button>';
-    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="cloneLease(\'' + row.ID + '\')">克隆网络</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectNetwork(\'' + row.ID + '\')">View</button>';
+    htmlstr += '<button class="layui-btn-blue layui-btn layui-btn-xs" onclick="cloneLease(\'' + row.ID + '\')">CloningNetwork</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete</button>';
     return htmlstr;
 }
 
@@ -98,40 +98,40 @@ function pruneLease(){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>选项</legend>
+                        <legend>Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">     
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理指定网络标签:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理指定NetworkLabel:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>label格式: label1=a,label2!=b(不等于),label!=...(没有标签)</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>labelFormat: label1=a,label2!=b(Not equal to),label!=...(没有Label)</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="labels"
-                                   value='' data-options="required:false,prompt:'label格式: label1=a,label2!=b,label!=...'">
+                                   value='' data-options="required:false,prompt:'labelFormat: label1=a,label2!=b,label!=...'">
                         </div>
                     </div>
                     <div style="margin-top:5px">     
                         <div class="cubeui-row">
-                            <span style='line-height: 30px;padding-right:0px'><b>清理在此时间戳之前创建的网络:</b>(默认清理全部)</span>
+                            <span style='line-height: 30px;padding-right:0px'><b>清理在此Timetamp之前创建的Network:</b>(Default Clean All)</span>
                         </div>
                         <div class="cubeui-row">
-                            <span style='line-height: 20px;padding-right:0px;color: red'>值可以是Unix时间戳、日期格式的时间戳或Go持续时间字符串（例如10m、1h30m）格式:10m,1h30m</span>
+                            <span style='line-height: 20px;padding-right:0px;color: red'>值It could beUnixTimetamp、日期Format的Timetamp或GoString for duration（For example:10m、1h30m）Format:10m,1h30m</span>
                         </div>
                         <div class="cubeui-row">
                             <input type="text" data-toggle="cubeui-textbox" name="untils"
-                                   value='' data-options="required:false,prompt:'格式: 10m,1h30m'">
+                                   value='' data-options="required:false,prompt:'Format: 10m,1h30m'">
                         </div>
                     </div>
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('清理网络', '重要警告：确定要清空所有未使用的网络，清理后数据将无法恢复', html,
+    $.docker.utils.optionConfirm('清理Network', 'Important Warning：Sure要清空All未Use的Network，清理后Data将无法恢复', html,
         function(param, closeFn){
 
             $.docker.request.network.prune(function(response){
-                let msg = '成功清除{0}个网络'.format(response.Count)
+                let msg = 'Success清除{0}个Network'.format(response.Count)
 
                 closeFn();
 
@@ -158,23 +158,23 @@ function removeLease(id, closePanel) {
         let rows = $('#networksDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个网络删除');
+            $.app.show('本Version仅支持Selection一个NetworkDelete');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个网络删除');
+            $.app.show('请Selection一个NetworkDelete');
             return;
         }else{
             id = rows[0].ID;
         }
     }
 
-    $.app.confirm('您确认要删除当前网络',function (){
+    $.app.confirm('您确认要Delete当前Network',function (){
 
         let node = local_node;
         $.docker.request.network.delete(function(response){
-            $.app.show("删除网络成功".format(""));
+            $.app.show("DeleteNetworkSuccess".format(""));
             reloadDg();
 
             if(closePanel){
@@ -216,7 +216,7 @@ function showNetworkPanel(rowData){
         iconCls:'fa fa-gear',
         collapsible:false,
         showHeader1:false,
-        titleformat:'网络信息-{0}'.format($.extends.isEmpty(rowData.Name, '新建')), title:'网络信息',
+        titleformat:'Network信息-{0}'.format($.extends.isEmpty(rowData.Name, 'New')), title:'Network信息',
         headerCls:'border_right',bodyCls:'border_right',collapsible:true,
         footerHtml:$.templates(footer_html_template).render(rowData),
         render:function (panel, option) {
@@ -253,7 +253,7 @@ function showNetworkPanel(rowData){
                         }, node, id);
                     },
                     frozenColumns:[[
-                        {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                        {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                             width1: 300, formatter:createRelatedContainerOperateFormatter(rowData.ID)},
                         {field: 'ID', title: 'ID', sortable: true,
                             formatter:$.iGrid.tooltipformatter(),width: 400},
@@ -287,7 +287,7 @@ function createRelatedContainerOperateFormatter(id){
         let htmlstr = "";
 
         //superpowers
-        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="disConnectContainer(\''+id+'\', \'' + row.ID + '\')">中断网络</button>';
+        htmlstr += '<button class="layui-btn-brown layui-btn layui-btn-xs" onclick="disConnectContainer(\''+id+'\', \'' + row.ID + '\')">中断Network</button>';
         return htmlstr;
     }
 }
@@ -301,22 +301,22 @@ function disConnectContainer(id, containerId){
                 </div>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>选项</legend>
+                        <legend>Options</legend>
                     </fieldset>
                     <div style="margin-top:5px">      
                         <div class="cubeui-row">                              
                             <input data-toggle="cubeui-checkbox" name="force" value="1" label="">
-                            <span style='line-height: 30px;padding-right:0px'><b>强制中断连接</b></span>
+                            <span style='line-height: 30px;padding-right:0px'><b>强制中断Connection</b></span>
                         </div>
                     </div>
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('中断容器网络连接', '重要警告：中断连接后，容器可能出现不位置的网络问题或故障', html,
+    $.docker.utils.optionConfirm('中断ContainersNetworkConnection', 'Important Warning：中断Connection后，Containers可能出现不位置的Network问题或故障', html,
         function(param, closeFn){
 
             $.docker.request.network.disconnect(function(response){
-                let msg = '成功中断容器网络连接，如果需要该容器网络，可以手动连接容器至当前网络'.format(response.Count, response.Size)
+                let msg = 'Success中断ContainersNetworkConnection，If需要该ContainersNetwork，可以手动ConnectionContainers至当前Network'.format(response.Count, response.Size)
                 closeFn();
                 $.app.show(msg)
                 refreshConnectedContainers();
@@ -336,7 +336,7 @@ function connectContainerDlg(id){
                     <div style="margin-top:15px">
                         
                         <div id='dg_header' style="display1:none;margin-bottom1:15px">
-                                <span style='line-height: 30px;padding-right:0px'>所有容器：</span>
+                                <span style='line-height: 30px;padding-right:0px'>AllContainers：</span>
                                 <input id='container_search_all' value='1' data-toggle="cubeui-switchbutton" style="width:50px;height1:30px" checked="true"
                                     data-options="
                                     onText:'',offText:'',
@@ -350,7 +350,7 @@ function connectContainerDlg(id){
                                 <input type="text" id='container_search_type' value="name" data-toggle="cubeui-combobox"
                                        data-options="
                                                 width:120,
-                                                required:true,prompt:'查询方式，必须填写',
+                                                required:true,prompt:'QuestionModalities，_Other Organiser',
                                                 valueField:'KEY',
                                                 textField:'TEXT',
                                                 data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'Label'},{'KEY':'before','TEXT':'Before'},
@@ -360,7 +360,7 @@ function connectContainerDlg(id){
                                 <input type="text" id='container_search_key' data-toggle="cubeui-textbox"
                                        data-options="onClear:function(){
                                             $('#container_searchbtn').trigger('click');
-                                       }, prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:320">
+                                       }, prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:320">
                                 <a href="javascript:void(0)" id="container_searchbtn"
                                    data-toggle="cubeui-menubutton"
                                    data-options="
@@ -377,17 +377,17 @@ function connectContainerDlg(id){
                                         
                                         $('#selectContainerDg').combogrid('grid').datagrid('reload',param)                                 
                                    }                                   
-                                   ">查询</a>
+                                   ">Question</a>
                         </div>
                          
                         <div class="cubeui-row">                            
                             <div class="cubeui-col-sm12">
-                                <label class="cubeui-form-label">目标容器:</label>
+                                <label class="cubeui-form-label">ObjectiveContainers:</label>
                                 <div class="cubeui-input-block">
                                     <input id="selectContainerDg" type="text" data-toggle="cubeui-combogrid" name="Name"
                                            value=''
                                            data-options="                                           
-                                           prompt:'容器名称，必填项目',
+                                           prompt:'Containers名称，Required项目',
                                            required:true,
                                            reversed:true,
                                            editable:false,
@@ -419,17 +419,17 @@ function connectContainerDlg(id){
                     </div>   
                     
                     <fieldset>
-                        <legend>连接容器选项</legend>
+                        <legend>ConnectionContainersOptions</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="Add network-scoped alias for the container">连接别名:</label>
+                            <label class="cubeui-form-label" title="Add network-scoped alias for the container">Connection别名:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-tagbox" name="Aliases"
                                        value=''
                                        data-options="                               
-                                           prompt:'连接别名，选择填写项目',
+                                           prompt:'Connection别名，Select Fill项目',
                                             "
                                 >
                             </div>
@@ -438,12 +438,12 @@ function connectContainerDlg(id){
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="IPv4 address (e.g., 192.168.11.1)，根据网络设置信息进行填写">IPv4地址:</label>
+                            <label class="cubeui-form-label" title="IPv4 address (e.g., 192.168.11.1)，根据NetworkSettings信息进行填写">IPv4Address:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="IPAddress"
                                        value=''
                                        data-options="           
-                                           prompt:'IP4的地址，IPv4 address (e.g., 192.168.11.1)，根据网络设置信息进行填写',
+                                           prompt:'IP4的Address，IPv4 address (e.g., 192.168.11.1)，根据NetworkSettings信息进行填写',
                                             "
                                 >
                             </div>
@@ -452,12 +452,12 @@ function connectContainerDlg(id){
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="Global IPv6 address (e.g., 2001:db8::33)，根据网络设置信息进行填写">IPv6地址:</label>
+                            <label class="cubeui-form-label" title="Global IPv6 address (e.g., 2001:db8::33)，根据NetworkSettings信息进行填写">IPv6Address:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" data-toggle="cubeui-textbox" name="GlobalIPv6Address"
                                        value=''
                                        data-options="           
-                                           prompt:'IP6的地址，IPv6 address (e.g., 2001:db8::33)，根据网络设置信息进行填写',
+                                           prompt:'IP6的Address，IPv6 address (e.g., 2001:db8::33)，根据NetworkSettings信息进行填写',
                                             "
                                 >
                             </div>
@@ -465,7 +465,7 @@ function connectContainerDlg(id){
                     </div>
                     
                     <fieldset  style="margin-top: 10px;">
-                        <legend style="margin-bottom: 0px;">驱动选项</legend>
+                        <legend style="margin-bottom: 0px;">DriverOptions</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">                            
@@ -487,11 +487,11 @@ function connectContainerDlg(id){
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value=""
-                                           name='connect-driver-opt-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='connect-driver-opt-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value=""
-                                           name='connect-driver-opt-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='connect-driver-opt-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -502,17 +502,17 @@ function connectContainerDlg(id){
                     </div>
                                         
                     <fieldset style="margin-top:10px">
-                        <legend style="margin-bottom: 0px;">容器链接</legend>
+                        <legend style="margin-bottom: 0px;">Containers链接</legend>
                     </fieldset>
                         
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12 add-opt-div">
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>目标容器名</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>ObjectiveContainers名</span>
                                 </div>
                                 <div class="cubeui-col-sm5" >
-                                    <span style='line-height: 20px;padding-right:0px;'>链接别名</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Link alias</span>
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 20px;padding-right:0px;'>
@@ -524,11 +524,11 @@ function connectContainerDlg(id){
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="" 
-                                           name='connect-Links-name' data-options="required:false,prompt:'目标容器名，比如：mysql-001 '">
+                                           name='connect-Links-name' data-options="required:false,prompt:'ObjectiveContainers名，Like what：mysql-001 '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value=""
-                                           name='connect-Links-value' data-options="required:false,prompt:'链接别名，比如：mysqldb '">
+                                           name='connect-Links-value' data-options="required:false,prompt:'Link alias，Like what：mysqldb '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -541,18 +541,18 @@ function connectContainerDlg(id){
                 </div>
         `;
 
-    $.docker.utils.optionConfirm('连接容器在当前网络设置', null, html,
+    $.docker.utils.optionConfirm('ConnectionContainers在当前NetworkSettings', null, html,
         function(param, closeFn){
 
             if($.extends.isEmpty(param.Name)){
-                $.app.show("必须选择需要连接的目标容器");
+                $.app.show("必须Selection需要Connection的ObjectiveContainers");
                 return false;
             }
 
             console.log(param);
             param = $.extend({}, param);
 
-            $.app.confirm("确定连接容器在当前网络设置", function () {
+            $.app.confirm("SureConnectionContainers在当前NetworkSettings", function () {
 
                 let config = {};
                 param.Aliases = $.docker.utils.convert2ListParamValue(param.Aliases)
@@ -587,7 +587,7 @@ function connectContainerDlg(id){
 
                 console.log(config);
                 $.docker.request.network.connect(function (response) {
-                    $.app.show("连接容器在当前网络设置成功");
+                    $.app.show("ConnectionContainers在当前NetworkSettingsSuccess");
                     closeFn();
                     refreshConnectedContainers();
                 }, node, id, param.Name, config);
@@ -678,12 +678,12 @@ function saveNetwork(fn){
         data.IPAM.Config = info['network'];
 
         let doFn = function (row) {
-            $.app.confirm("您确定新建当前网络配置信息？", function () {
+            $.app.confirm("您SureNew当前NetworkConfigure信息？", function () {
                 $.docker.request.network.create(function (response) {
                     if (fn) {
                         fn.call(row, response, row)
                     } else {
-                        $.app.show('创建配置信息{0}成功'.format(row.Name));
+                        $.app.show('创建Configure信息{0}Success'.format(row.Name));
                         reloadDg();
                         removePanel();
                         //$('#layout').layout('collapse', 'east');
@@ -704,14 +704,14 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-slateblue',
             iconCls: 'fa fa-ticket'
-        }">克隆</a>
+        }">Cloning</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                 removeLease('{{:ID}}', true);
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-times'
-        }">删除</a>
+        }">Delete</a>
         {{else}}   
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -719,7 +719,7 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-plus'
-        }">添加</a>
+        }">Add</a>
         {{/if}}
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
@@ -727,12 +727,12 @@ let footer_html_template = `
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
 `;
 
 let network_html_template = `
         <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="基础信息"
+            <div title="Basic information"
                  data-options="id:'eastTab0',iconCls:'fa fa-info-circle'">                 
                 <div style="margin: 0px;">
                 </div>
@@ -740,7 +740,7 @@ let network_html_template = `
                 <form id='createNetworkForm1'>
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>基础信息</legend>
+                        <legend>Basic information</legend>
                     </fieldset>
                     
                     {{if updated}}
@@ -814,7 +814,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="在网络上启用IPv6">EnableIPv6:</label>
+                            <label class="cubeui-form-label" title="在Network上启用IPv6">EnableIPv6:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -828,7 +828,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="限制对网络的外部访问">Internal:</label>
+                            <label class="cubeui-form-label" title="限制对Network的外部访问">Internal:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -842,7 +842,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="在swarm模式下，全局范围的网络可由工作人员的常规容器手动连接">Attachable:</label>
+                            <label class="cubeui-form-label" title="在swarmMode，全局Scope的Network可由工作人员的常规Containers手动Connection">Attachable:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -856,7 +856,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="入口网络是以swarm模式提供路由网格的网络">Ingress:</label>
+                            <label class="cubeui-form-label" title="入口Network是以swarm模式提供路由网格的Network">Ingress:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="Ingress" readonly
@@ -876,7 +876,7 @@ let network_html_template = `
                                 <input type="text" data-toggle="cubeui-textbox" name="Name"
                                        value='{{>Name}}'
                                        data-options="
-                                       prompt:'网络名称，必填项目',
+                                       prompt:'Network名称，Required项目',
                                        required:true,
                                             "
                                 >
@@ -886,12 +886,12 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="要使用的网络驱动程序插件的名称。默认值：桥接">Driver:</label>
+                            <label class="cubeui-form-label" title="要Use的NetworkDriver程序插件的名称。Default value：Bridge">Driver:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" name="Driver" value='{{>Driver}}' 
                                 data-toggle="cubeui-combobox"
                                    data-options="
-                                            required:false,prompt:'为空，使用默认值：桥接',
+                                            required:false,prompt:'Empty，UseDefault value：Bridge',
                                             valueField:'KEY',
                                             textField:'TEXT',
                                             data:$.docker.driver.network.getNetworkObjectList()
@@ -902,12 +902,12 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="范围描述网络存在的级别（例如，集群范围的“swarm”或机器级别的“local”）">Scope:</label>
+                            <label class="cubeui-form-label" title="Scope描述Network存在的级别（For example:，ClusterScope的“swarm”Or machine level“local”）">Scope:</label>
                             <div class="cubeui-input-block">
                                 <input type="text" name="Scope" value='{{>Scope}}' 
                                 data-toggle="cubeui-combobox"
                                    data-options="
-                                            required:false,prompt:'为空，使用默认值：local',
+                                            required:false,prompt:'Empty，UseDefault value：local',
                                             valueField:'KEY',
                                             textField:'TEXT',
                                             data:[{'KEY':'','TEXT':''},{'KEY':'local','TEXT':'local'},{'KEY':'swarm','TEXT':'swarm'},{'KEY':'global','TEXT':'global'}]
@@ -918,8 +918,8 @@ let network_html_template = `
                                         
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label" title="检查名称重复的网络。由于网络主要基于随机ID而不是名称设置密钥，并且网络名称严格来说是使用ID唯一标识的网络的用户友好别名，因此无法保证检查重复项。CheckDuplicate提供了对具有相同名称但不能保证捕获所有名称冲突的任何网络的最大努力检查。">
-                            检查名称重复:</label>
+                            <label class="cubeui-form-label" title="Check duplicate name的Network。由于Network主要基于随机ID而不是名称Settings密钥，并且Network名称严格来说是UseID唯一标识的Network的用户友好别名，There is therefore no guarantee of double-checking。CheckDuplicate提供了对具有相同名称但不能保证捕获All名称冲突的任何Network的最大努力检查。">
+                            Check duplicate name:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if CheckDuplicate}}checked{{/if}} 
@@ -930,7 +930,7 @@ let network_html_template = `
                        
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="在网络上启用IPv6">EnableIPv6:</label>
+                            <label class="cubeui-form-label" title="在Network上启用IPv6">EnableIPv6:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if EnableIPv6}}checked{{/if}} 
@@ -941,7 +941,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="限制对网络的外部访问">Internal:</label>
+                            <label class="cubeui-form-label" title="限制对Network的外部访问">Internal:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if Internal}}checked{{/if}} 
@@ -952,7 +952,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="在swarm模式下，全局范围的网络可由工作人员的常规容器手动连接">Attachable:</label>
+                            <label class="cubeui-form-label" title="在swarmMode，全局Scope的Network可由工作人员的常规Containers手动Connection">Attachable:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if Attachable}}checked{{/if}} 
@@ -963,7 +963,7 @@ let network_html_template = `
                     
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm3">
-                            <label class="cubeui-form-label" title="入口网络是以swarm模式提供路由网格的网络">Ingress:</label>
+                            <label class="cubeui-form-label" title="入口Network是以swarm模式提供路由网格的Network">Ingress:</label>
                             <div class="cubeui-input-block">
                                 <input data-toggle="cubeui-switchbutton" 
                                 {{if Ingress}}checked{{/if}} 
@@ -976,14 +976,14 @@ let network_html_template = `
                     
                              
                     <fieldset  style="margin-top: 10px;">
-                        <legend style="margin-bottom: 0px;">驱动选项</legend>
+                        <legend style="margin-bottom: 0px;">DriverOptions</legend>
                     </fieldset>
                     {{if updated}}
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm1">
                                     <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -1032,11 +1032,11 @@ let network_html_template = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='driver-opt-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='driver-opt-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='driver-opt-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='driver-opt-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1050,7 +1050,7 @@ let network_html_template = `
                     {{/if}}
                                     
                     <fieldset  style="margin-top: 20px;">
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                                 
                     {{if updated}}
@@ -1058,7 +1058,7 @@ let network_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm1">
                                     <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -1107,11 +1107,11 @@ let network_html_template = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1128,7 +1128,7 @@ let network_html_template = `
             </div>
             
             
-            <div title="IPAM设置"
+            <div title="IPAMSettings"
                  data-options="id:'eastTab1',iconCls:'fa fa-usb'">
                 <div style="margin: 0px;">
                 </div>
@@ -1139,7 +1139,7 @@ let network_html_template = `
                     {{if updated}}
                     
                     <fieldset>
-                        <legend>IPAM设置</legend>
+                        <legend>IPAMSettings</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -1185,7 +1185,7 @@ let network_html_template = `
                     
                     
                     <fieldset  style="margin-top: 10px;">
-                        <legend style="margin-bottom: 0px;">IPAM参数选项</legend>
+                        <legend style="margin-bottom: 0px;">IPAMParametersOptions</legend>
                     </fieldset>
                     
                     {{if updated}}
@@ -1193,7 +1193,7 @@ let network_html_template = `
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm1">
                                     <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -1242,11 +1242,11 @@ let network_html_template = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                           name='ipam-opt-name' data-options="required:false,prompt:'名字，比如：group '">
+                                           name='ipam-opt-name' data-options="required:false,prompt:'Name，Like what：group '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                           name='ipam-opt-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                           name='ipam-opt-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1261,7 +1261,7 @@ let network_html_template = `
                     
                      
                     <fieldset  style="margin-top: 20px;">
-                        <legend style="margin-bottom: 0px;">网络设置</legend>
+                        <legend style="margin-bottom: 0px;">NetworkSettings</legend>
                     </fieldset>
                                 
                     {{if updated}}
@@ -1318,11 +1318,11 @@ let network_html_template = `
                             <div class="cubeui-row">
                                 <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>Subnet}}"
-                                           name='network-name' data-options="required:false,prompt:'Subnet，比如：172.17.0.0/16 '">
+                                           name='network-name' data-options="required:false,prompt:'Subnet，Like what：172.17.0.0/16 '">
                                 </div>
                                 <div class="cubeui-col-sm5">
                                     <input type="text" data-toggle="cubeui-textbox" value="{{>Gateway}}"
-                                           name='network-value' data-options="required:false,prompt:'Gateway，比如：172.17.0.1  '">
+                                           name='network-value' data-options="required:false,prompt:'Gateway，Like what：172.17.0.1  '">
                                 </div>
                                 <div class="cubeui-col-sm2" style="text-align: center">
                                     <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -1340,7 +1340,7 @@ let network_html_template = `
             </div>
             
             {{if updated}}
-            <div title="活动容器"
+            <div title="活动Containers"
                  data-options="id:'eastTab1',iconCls:'fa fa-superpowers'">
                 <div style="margin: 0px;">
                 </div>
@@ -1358,7 +1358,7 @@ let network_html_template = `
                             extend: '#relatedContainersDg-toolbar',
                             btnCls: 'cubeui-btn-orange',
                             iconCls: 'fa fa-refresh'
-                        }">刷新</a>
+                        }">Refresh</a>
         
                     <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                             onClick:function(){
@@ -1367,9 +1367,9 @@ let network_html_template = `
                             extend: '#relatedContainersDg-toolbar',
                             btnCls: 'cubeui-btn-blue',
                             iconCls: 'fa fa-link'
-                        }">连接容器</a>
+                        }">ConnectionContainers</a>
                 </div>
-                <!-- 表格工具栏结束 -->
+                <!-- End of Table Toolbar -->
                 
                 <table id="relatedContainersDg"></table>
                 

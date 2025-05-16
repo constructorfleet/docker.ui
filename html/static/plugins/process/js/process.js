@@ -1,28 +1,28 @@
 var property={
-    initLabelText: "在线流程图",
+    initLabelText: "OnlineFlowchart",
     width1:1200,
     heigh1t:600,
     toolBtns:["start","end","task","node","chat","state","plug","join","fork","complex"],
     haveHead:true,
-    headBtns:["new","open","save","undo","redo","reload"],//如果haveHead=true，则定义HEAD区的按钮
+    headBtns:["new","open","save","undo","redo","reload"],//IfhaveHead=true，DefinitionsHEADSector button
     haveTool:true,
     haveGroup:true,
     useOperStack:true
 };
 var remark={
-    cursor:"选择指针",
-    direct:"转换连线",
-    start:"开始结点",
-    end:"结束结点",
-    task:"任务结点",
-    node:"自动结点",
-    chat:"决策结点",
-    state:"状态结点",
-    plug:"附加插件",
-    join:"联合结点",
-    fork:"分支结点",
-    complex:"复合结点",
-    group:"组织划分框编辑开关"
+    cursor:"SelectionPointer",
+    direct:"Convert connection",
+    start:"Start Node",
+    end:"End Node",
+    task:"TasksNode",
+    node:"AutoNode",
+    chat:"Decision Node",
+    state:"Status Node",
+    plug:"Attach Plugin",
+    join:"Joint Node",
+    fork:"Branch Node",
+    complex:"Composite Node",
+    group:"Organisation Box Edit Switches"
 };
 var process;
 $(document).ready(function(){

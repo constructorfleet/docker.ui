@@ -61,9 +61,9 @@
 		}
 
 		var zNodes =[
-			{ id:1, pId:0, name:"半勾选 1", halfCheck:true, isParent:true},
-			{ id:2, pId:0, name:"半勾选 2", halfCheck:true, checked:true, isParent:true},
-			{ id:3, pId:0, name:"随意勾选 3", checked:true, isParent:true}
+			{ id:1, pId:0, name:"半Check 1", halfCheck:true, isParent:true},
+			{ id:2, pId:0, name:"半Check 2", halfCheck:true, checked:true, isParent:true},
+			{ id:3, pId:0, name:"随意Check 3", checked:true, isParent:true}
 		];
 
 		$(document).ready(function(){
@@ -74,31 +74,31 @@
 </HEAD>
 
 <BODY>
-<h1>Checkbox halfCheck 演示</h1>
-<h6>[ 文件路径: excheck/checkbox_halfCheck.html ]</h6>
+<h1>Checkbox halfCheck Presentation</h1>
+<h6>[ DocumentationPath: excheck/checkbox_halfCheck.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、演示说明</h2>
+			<li class="title"><h2>1、Presentation说明</h2>
 				<ul class="list">
-				<li>这个演示式实现了 异步加载模式 下简单的勾选操作</li>
-				<li class="highlight_red">1)、加载子节点后，父节点的 halfCheck 立刻失效</li>
-				<li class="highlight_red">2)、勾选父节点，可以影响之后加载的子节点的勾选状态</li>
-				<li class="highlight_red">3)、勾选父节点，可以让其子节点的 halfCheck 属性失效</li>
+				<li>HerePresentation式Achieved了 Step Load模式 下Simple的CheckOperation</li>
+				<li class="highlight_red">1)、加载子Nodes后，父Nodes的 halfCheck It\'s not working</li>
+				<li class="highlight_red">2)、Check父Nodes，可以影响之后加载的子Nodes的Check状态</li>
+				<li class="highlight_red">3)、Check父Nodes，可以让其子Nodes的 halfCheck Properties失效</li>
 				</ul>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li>实现半勾选功能，不需要配置任何参数。但半勾选功能属于辅助功能，无法单独使用，因此也需要根据自己的需求配置特定参数。</li>
+				<li>Achieved半CheckFunctions，No needConfigure任何Parameters。但半CheckFunctions属于辅助Functions，无法单独Use，因此也需要Based on自己的需求Configure特定Parameters。</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li class="highlight_red">1)、请在节点初始化之前，设置 treeNode.halfCheck 属性，详细请参见 API 文档中的相关内容</li>
-				<li>2)、其他请参考 ‘Checkbox 勾选操作’</li>
+				<li class="highlight_red">1)、请在NodesInitialize之前，Settings treeNode.halfCheck Properties，For more details, please see API in document的相关Contents</li>
+				<li>2)、OtherPlease ‘Checkbox CheckOperation’</li>
 				</ul>
 			</li>
 		</ul>

@@ -1,8 +1,8 @@
 (function () {
     var parent = window.parent;
-    //dialog对象
+    //dialogObject
     dialog = parent.$EDITORUI[window.frameElement.id.replace( /_iframe$/, '' )];
-    //当前打开dialog的编辑器实例
+    //Current打开dialog的Edit器Example
     editor = dialog.editor;
 
     UE = parent.UE;
@@ -18,7 +18,7 @@
     $G = function ( id ) {
         return document.getElementById( id )
     };
-    //focus元素
+    //focusElements
     $focus = function ( node ) {
         setTimeout( function () {
             if ( browser.ie ) {
@@ -41,7 +41,7 @@
         domUtils.on(window,'load',function () {
 
             var langImgPath = editor.options.langPath + editor.options.lang + "/images/";
-            //针对静态资源
+            //Targeted静态资源
             for ( var i in lang["static"] ) {
                 var dom = $G( i );
                 if(!dom) continue;

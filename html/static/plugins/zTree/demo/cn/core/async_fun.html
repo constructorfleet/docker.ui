@@ -39,7 +39,7 @@
 		}
 		function beforeClick(treeId, treeNode) {
 			if (!treeNode.isParent) {
-				alert("请选择父节点");
+				alert("请Selection父Nodes");
 				return false;
 			} else {
 				return true;
@@ -80,7 +80,7 @@
 			silent = e.data.silent,
 			nodes = zTree.getSelectedNodes();
 			if (nodes.length == 0) {
-				alert("请先选择一个父节点");
+				alert("请先Selection一个父Nodes");
 			}
 			for (var i=0, l=nodes.length; i<l; i++) {
 				zTree.reAsyncChildNodes(nodes[i], type, silent);
@@ -101,40 +101,40 @@
 </HEAD>
 
 <BODY>
-<h1>用 zTree 方法异步加载节点数据</h1>
-<h6>[ 文件路径: core/async_fun.html ]</h6>
+<h1>用 zTree MethodologyStep LoadNodesData</h1>
+<h6>[ DocumentationPath: core/async_fun.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>1、reAsyncChildNodes 方法操作说明</h2>
+			<li class="title"><h2>1、reAsyncChildNodes MethodologyOperation说明</h2>
 				<ul class="list">
-				<li class="highlight_red">使用 zTreeObj.reAsyncChildNodes 方法，详细请参见 API 文档中的相关内容</li>
-				<li><p>此 Demo 只能同时选中一个父节点<br/>
-					试试看：[ <a id="refreshNode" href="#" onclick="return false;">重新加载</a> ]&nbsp;&nbsp;&nbsp;&nbsp;[ <a id="addNode" href="#" onclick="return false;">追加</a> ]</p>
+				<li class="highlight_red">Use zTreeObj.reAsyncChildNodes Methodology，For more details, please see API in document的相关Contents</li>
+				<li><p>此 Demo 只能同时选中一个父Nodes<br/>
+					Try it：[ <a id="refreshNode" href="#" onclick="return false;">Reload</a> ]&nbsp;&nbsp;&nbsp;&nbsp;[ <a id="addNode" href="#" onclick="return false;">Append</a> ]</p>
 				</li>
-				<li><p><span class="highlight_red">“悄悄地”操作只能针对 折叠状态 的父节点</span><br/>
-					试试看：[ <a id="refreshNodeSilent" href="#" onclick="return false;">悄悄地 重新加载</a> ]&nbsp;&nbsp;&nbsp;&nbsp;[ <a id="addNodeSilent" href="#" onclick="return false;">悄悄地 追加</a> ]<br/>
+				<li><p><span class="highlight_red">“Quietly”Operation只能针对 Collapse状态 的父Nodes</span><br/>
+					Try it：[ <a id="refreshNodeSilent" href="#" onclick="return false;">Quietly Reload</a> ]&nbsp;&nbsp;&nbsp;&nbsp;[ <a id="addNodeSilent" href="#" onclick="return false;">Quietly Append</a> ]<br/>
 					async log:<br/>
 					<ul id="log" class="log"></ul></p>
 				</li>
 				</ul>
 			</li>
-			<li class="title"><h2>2、setting 配置信息说明</h2>
+			<li class="title"><h2>2、setting Configure信息说明</h2>
 				<ul class="list">
-				<li class="highlight_red">使用 zTree 提供的 reAsyncChildNodes 方法也必须设置 setting.async 中的各个属性，详细请参见 API 文档中的相关内容</li>
+				<li class="highlight_red">Use zTree Provided reAsyncChildNodes Methodology也必须Settings setting.async 中的各个Properties，For more details, please see API in document的相关Contents</li>
 				</ul>
 			</li>
-			<li class="title"><h2>3、treeNode 节点数据说明</h2>
+			<li class="title"><h2>3、treeNode NodesData说明</h2>
 				<ul class="list">
-				<li>同 "异步加载 节点数据" 中的说明</li>
+				<li>同 "Step Load NodesData" Note in</li>
 				</ul>
 			</li>
-			<li class="title"><h2>4、其他说明</h2>
+			<li class="title"><h2>4、Other说明</h2>
 				<ul class="list">
-				<li>同 "异步加载 节点数据" 中的说明</li>
+				<li>同 "Step Load NodesData" Note in</li>
 				</ul>
 			</li>
 		</ul>

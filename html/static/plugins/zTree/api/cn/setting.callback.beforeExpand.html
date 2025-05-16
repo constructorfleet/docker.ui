@@ -1,26 +1,26 @@
 <div class="apiDetail">
 <div>
 	<h2><span>Function(treeId, treeNode)</span><span class="path">setting.callback.</span>beforeExpand</h2>
-	<h3>概述<span class="h3_info">[ 依赖 <span class="highlight_green">jquery.ztree.core</span> 核心 js ]</span></h3>
+	<h3>Overview<span class="h3_info">[ Dependency <span class="highlight_green">jquery.ztree.core</span> Core js ]</span></h3>
 	<div class="desc">
 		<p></p>
 		<div class="longdesc">
-			<p>用于捕获父节点展开之前的事件回调函数，并且根据返回值确定是否允许展开操作</p>
-			<p>默认值：null</p>
+			<p>For capture父NodesExpand之前的EventsRevert function，并且Based onBack值Sure是否AllowExpandOperation</p>
+			<p>Default value：null</p>
 		</div>
 	</div>
-	<h3>Function 参数说明</h3>
+	<h3>Function Parameters说明</h3>
 	<div class="desc">
 	<h4><b>treeId</b><span>String</span></h4>
-	<p>对应 zTree 的 <b class="highlight_red">treeId</b>，便于用户操控</p>
+	<p>Correspond zTree 的 <b class="highlight_red">treeId</b>，便于User操控</p>
 	<h4 class="topLine"><b>treeNode</b><span>JSON</span></h4>
-	<p>要展开的父节点 JSON 数据对象</p>
-	<h4 class="topLine"><b>返回值</b><span>Boolean</span></h4>
-	<p>返回值是 true / false</p>
-	<p class="highlight_red">如果返回 false，zTree 将不会展开节点，也无法触发 onExpand 事件回调函数</p>
+	<p>要Expand的父Nodes JSON DataObject</p>
+	<h4 class="topLine"><b>Back值</b><span>Boolean</span></h4>
+	<p>Back值是 true / false</p>
+	<p class="highlight_red">IfBack false，zTree 将不会ExpandNodes，也无法Trigger onExpand EventsRevert function</p>
 	</div>
-	<h3>setting & function 举例</h3>
-	<h4>1. 禁止所有已折叠的父节点展开</h4>
+	<h3>setting & function Example</h3>
+	<h4>1. BanAll已Collapse的父NodesExpand</h4>
 	<pre xmlns=""><code>function zTreeBeforeExpand(treeId, treeNode) {
     return false;
 };

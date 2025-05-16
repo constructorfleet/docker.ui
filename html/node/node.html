@@ -21,7 +21,7 @@
     headerCls:'border_right',bodyCls:'border_right'">
 
         <table id="nodesDg"></table>
-        <!-- 表格工具栏开始 -->
+        <!-- Table Toolbar Start -->
         <div id="nodesDg-toolbar" class="cubeui-toolbar"
              data-options="grid:{
                    type:'datagrid',
@@ -34,7 +34,7 @@
                 },
                 btnCls: 'cubeui-btn-slateblue',
                 iconCls: 'fa fa-tags'
-            }">编辑元数据</a>
+            }">Edit元Data</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     method1: 'openDialog',
@@ -44,7 +44,7 @@
                     extend: '#nodesDg-toolbar',
                     btnCls: 'cubeui-btn-blue',
                     iconCls: 'fa fa-hand-o-up'
-                }">提升管理节点</a>
+                }">提升管理Nodes</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -53,7 +53,7 @@
                     extend: '#nodesDg-toolbar',
                     btnCls: 'cubeui-btn-orange',
                     iconCls: 'fa fa-hand-o-down'
-                }">降级工作节点</a>
+                }">降级工作Nodes</a>
 
             <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                     onClick:function(){
@@ -62,31 +62,31 @@
                     extend: '#nodesDg-toolbar',
                     btnCls: 'cubeui-btn-red',
                     iconCls: 'fa fa-times'
-                }">删除节点</a>
+                }">DeleteNodes</a>
 
             <form id="queryForm" class="search-box">
 
 <!--                <input data-toggle="cubeui-checkbox" name="dangling" value="1" label="">-->
-<!--                <span style='line-height: 30px;padding-right:0px'>管理节点</span>-->
+<!--                <span style='line-height: 30px;padding-right:0px'>管理Nodes</span>-->
 
-                <span style='line-height: 30px;padding-right:0px'>节点角色：</span>
+                <span style='line-height: 30px;padding-right:0px'>Nodes角色：</span>
                 <input type="text" name="role" value="" data-toggle="cubeui-combobox"
                        data-options="
                                 width:160,
-                                required:false,prompt:'为空，查询所有',
+                                required:false,prompt:'Empty，QuestionAll',
                                 valueField:'KEY',
                                 textField:'TEXT',
-                                data:[{'KEY':'all','TEXT':'所有'},{'KEY':'manager','TEXT':'管理节点'},{'KEY':'worker','TEXT':'工作节点'}]
+                                data:[{'KEY':'all','TEXT':'All'},{'KEY':'manager','TEXT':'管理Nodes'},{'KEY':'worker','TEXT':'工作Nodes'}]
                        ">
 
-                <span style='line-height: 30px;padding-right:0px'>成员身份：</span>
+                <span style='line-height: 30px;padding-right:0px'>Membership：</span>
                 <input type="text" name="membership" value="" data-toggle="cubeui-combobox"
                        data-options="
                                 width:160,
-                                required:false,prompt:'为空，查询所有',
+                                required:false,prompt:'Empty，QuestionAll',
                                 valueField:'KEY',
                                 textField:'TEXT',
-                                data:[{'KEY':'all','TEXT':'所有'},{'KEY':'accepted','TEXT':'已经接受'},{'KEY':'pending','TEXT':'待定中'}]
+                                data:[{'KEY':'all','TEXT':'All'},{'KEY':'accepted','TEXT':'已经Accept'},{'KEY':'pending','TEXT':'To be determined中'}]
                        ">
 
                 <span style='line-height: 30px;padding-left:2px;padding-right:10px'></span>
@@ -94,31 +94,31 @@
                 <input type="text" id='search_type' name="search_type" value="name" data-toggle="cubeui-combobox"
                        data-options="
                                 width:120,
-                                required:true,prompt:'查询方式，必须填写',
+                                required:true,prompt:'QuestionModalities，_Other Organiser',
                                 valueField:'KEY',
                                 textField:'TEXT',
-                                data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'引擎Label'},{'KEY':'node.label','TEXT':'节点Label'},
+                                data:[{'KEY':'name','TEXT':'Name'},{'KEY':'label','TEXT':'EngineLabel'},{'KEY':'node.label','TEXT':'NodesLabel'},
                                 {'KEY':'id','TEXT':'ID'}]
                        ">
                 <input type="text" id='search_key' name="search_key" data-toggle="cubeui-textbox"
                        data-options="onClear:function(){
                             $('#searchbtn').trigger('click');
-                       }, mask:'{{:~js(prefix)}}', prompt:'查询条件, 多条件逗号分隔；label方式 label1=a,label2=b',width:420">
+                       }, mask:'{{:~js(prefix)}}', prompt:'Question条件, 多条件逗No. Separate；labelModalities label1=a,label2=b',width:420">
                 <a href="javascript:void(0)" id="searchbtn"
                    data-toggle="cubeui-menubutton"
                    data-options="method:'query',
                    iconCls:'fa fa-search',
                    btnCls:'cubeui-btn-blue',
                    form:{id:'queryForm'},
-                   grid:{type:'datagrid','id':'nodesDg'}">查询</a>
+                   grid:{type:'datagrid','id':'nodesDg'}">Question</a>
             </form>
         </div>
     </div>
 </div>
-<!-- 表格工具栏结束 -->
+<!-- End of Table Toolbar -->
 <div id="searchImageMm" data-toggle="cubeui-menu" style="width:120px;display:none" data-options="">
-    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">拉取latest镜像</div>
-    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">指定镜像Tag</div>
+    <div onclick="pullImgFromMenu()" data-options="iconCls:'fa fa-download'">PulllatestMirror</div>
+    <div onclick="setImgFromMenu()" data-options="iconCls:'fa fa-check-square-o'">AssignMirrorTag</div>
 </div>
 </script>
 

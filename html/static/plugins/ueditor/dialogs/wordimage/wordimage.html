@@ -38,69 +38,69 @@
             maxImageSideLength:900
         });
 
-            //全局变量
-        var imageUrls = [],          //用于保存从服务器返回的图片信息数组
-            selectedImageCount = 0,  //当前已选择的但未上传的图片数量
+            //全局Variables
+        var imageUrls = [],          //ForSave从Services器Back的PictureInformationArray
+            selectedImageCount = 0,  //Current已Selection的但未Upload的Picture数量
             optImageUrl = editor.getActionUrl(editor.getOpt('imageActionName')),
             optImageFieldName = editor.getOpt('imageFieldName'),
             optImageCompressBorder = editor.getOpt('imageCompressEnable') ? editor.getOpt('imageCompressBorder'):null,
             maxSize = editor.getOpt('imageMaxSize') / 1024,
             extension = editor.getOpt('imageAllowFiles').join(';').replace(/\./g, '*.');
 
-        /* 添加额外的GET参数 */
+        /* Add额外的GETParameters */
         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
             urlWidthParams = optImageUrl + (optImageUrl.indexOf('?') == -1 ? '?':'&') + params;
 
         utils.domReady(function(){
-            //创建Flash相关的参数集合
+            //CreateFlashRelevantParametersGather
             var flashOptions = {
-                container:"flashContainer",                                                    //flash容器id
-                url:urlWidthParams,                                           // 上传处理页面的url地址
-                ext:editor.queryCommandValue('serverParam') || {},                                 //可向服务器提交的自定义参数列表
-                fileType:'{"description":"'+lang.fileType+'", "extension":"' + extension + '"}',     //上传文件格式限制
-                flashUrl:'imageUploader.swf',                                                  //上传用的flash组件地址
-                width:600,          //flash的宽度
-                height:272,         //flash的高度
-                gridWidth:120,     // 每一个预览图片所占的宽度
-                gridHeight:120,    // 每一个预览图片所占的高度
-                picWidth:100,      // 单张预览图片的宽度
-                picHeight:100,     // 单张预览图片的高度
-                uploadDataFieldName: optImageFieldName,    // POST请求中图片数据的key
-                picDescFieldName:'pictitle',      // POST请求中图片描述的key
-                maxSize: maxSize,                         // 文件的最大体积,单位M
-                compressSize:1,                   // 上传前如果图片体积超过该值，会先压缩,单位M
-                maxNum:32,                         // 单次最大可上传多少个文件
-                compressSide: 0,                 //等比压缩的基准，0为按照最长边，1为按照宽度，2为按照高度
-                compressLength: optImageCompressBorder        //能接受的最大边长，超过该值Flash会自动等比压缩
+                container:"flashContainer",                                                    //flashContainersid
+                url:urlWidthParams,                                           // UploadProcessingPage的urlAddress
+                ext:editor.queryCommandValue('serverParam') || {},                                 //可向Services器提交的自DefinitionsParametersList
+                fileType:'{"description":"'+lang.fileType+'", "extension":"' + extension + '"}',     //UploadDocumentationFormat限制
+                flashUrl:'imageUploader.swf',                                                  //Upload用的flashComponentAddress
+                width:600,          //flash的Width
+                height:272,         //flash的Height
+                gridWidth:120,     // 每一个PreviewPicture所占的Width
+                gridHeight:120,    // 每一个PreviewPicture所占的Height
+                picWidth:100,      // 单张PreviewPicture的Width
+                picHeight:100,     // 单张PreviewPicture的Height
+                uploadDataFieldName: optImageFieldName,    // POSTRequest中PictureData的key
+                picDescFieldName:'pictitle',      // POSTRequest中PictureDescription的key
+                maxSize: maxSize,                         // Documentation的最大体积,UnitsM
+                compressSize:1,                   // Upload前IfPicture体积Over该值，It\'ll compress first,UnitsM
+                maxNum:32,                         // 单次最大可Upload多少个Documentation
+                compressSide: 0,                 //Paradigms，0为According to最长边，1为According toWidth，2为According toHeight
+                compressLength: optImageCompressBorder        //能Accept的最大边长，Over该值Flash会Auto等比压缩
             };
-            //回调函数集合，支持传递函数名的字符串、函数句柄以及函数本身三种类型
+            //Revert functionGather，Support传递Functions名的Character串、Functions句柄andFunctions本身三种Type
             var callbacks={
-                selectFileCallback: function(selectFiles){                // 选择文件的回调
+                selectFileCallback: function(selectFiles){                // Select File的Rewind
                     selectedImageCount += selectFiles.length;
                     if(selectedImageCount) baidu.g("upload").style.display = "";
-                    dialog.buttons[0].setDisabled(true); //初始化时置灰确定按钮
+                    dialog.buttons[0].setDisabled(true); //Initialize时置灰Surebutton
                 },
-                deleteFileCallback: function(delFiles){                 // 删除文件的回调
+                deleteFileCallback: function(delFiles){                 // DeleteDocumentation的Rewind
                     selectedImageCount -= delFiles.length;
                     if (!selectedImageCount) {
                         baidu.g("upload").style.display = "none";
-                        dialog.buttons[0].setDisabled(false);         //没有选择图片时重新点亮按钮
+                        dialog.buttons[0].setDisabled(false);         //NothingSelectionPicture时重新点亮button
                     }
                 },
-                uploadCompleteCallback: function(data){               // 单个文件上传完成的回调
+                uploadCompleteCallback: function(data){               // 单个DocumentationUpload完成的Rewind
                     try{var info = eval("(" + data.info + ")");
                     info && imageUrls.push(info);
                     selectedImageCount--;
                     }catch(e){}
                 },
-                uploadErrorCallback: function (data){         // 单个文件上传失败的回调,
+                uploadErrorCallback: function (data){         // 单个DocumentationUploadFailed的Rewind,
                     console && console.log(data);
                 },
-                allCompleteCallback: function(){              // 全部上传完成时的回调
-                    dialog.buttons[0].setDisabled(false);    //上传完毕后点亮按钮
+                allCompleteCallback: function(){              // AllUpload完成时的Rewind
+                    dialog.buttons[0].setDisabled(false);    //UploadOver后点亮button
                 }
-                //exceedFileCallback: 'exceedFileCallback',   // 文件超出限制的最大体积时的回调
-                //startUploadCallback: startUploadCallback    // 开始上传某个文件时的回调
+                //exceedFileCallback: 'exceedFileCallback',   // Documentation超出限制的最大体积时的Rewind
+                //startUploadCallback: startUploadCallback    // StartUpload某个Documentation时的Rewind
             };
             wordImage.init(flashOptions,callbacks);
         });

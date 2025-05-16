@@ -12,7 +12,7 @@ function loadLease(){
             queryParams:{all1:1},
             frozenColumns:[[
                 {field: 'ID', title: '', checkbox: true},
-                {field: 'op', title: '操作', sortable: false, halign:'center',align:'left',
+                {field: 'op', title: 'Operation', sortable: false, halign:'center',align:'left',
                     width1: 300, formatter:leaseOperateFormatter},
                 {field: 'Hostname', title: 'NODE', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),
@@ -48,13 +48,13 @@ function loadLease(){
                     width: 170},
                 {field: 'Platform', title: 'OS', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 120},
-                {field: 'EVersion', title: '版本', sortable: true,
+                {field: 'EVersion', title: 'Version', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 100},
                 {field: 'CPUs', title: 'CPUS', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 60},
-                {field: 'MemoryBytes', title: '内存', sortable: true,
+                {field: 'MemoryBytes', title: 'Memory', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 80},
-                {field: 'SVersion', title: '节点版本', sortable: true,
+                {field: 'SVersion', title: 'NodesVersion', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 80},
                 {field: 'LabelStr', title: 'LABELS', sortable: true,
                     formatter:$.iGrid.tooltipformatter(),width: 900}
@@ -71,21 +71,21 @@ function loadLease(){
 
 function leaseOperateFormatter(value, row, index) {
     let htmlstr = "";
-    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectNode(\'' + row.ID + '\')">查看</button>';
-    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">删除</button>';
-    htmlstr += '<button title="提升为管理节点" class="layui-btn-blue layui-btn layui-btn-xs" onclick="promoteLease(\'' + row.ID + '\')">提升</button>';
-    htmlstr += '<button title="降级为工作节点"  class="layui-btn-red layui-btn layui-btn-xs" onclick="demoteLease(\'' + row.ID + '\')">降级</button>';
+    htmlstr += '<button class="layui-btn-yellowgreen layui-btn layui-btn-xs" onclick="inspectNode(\'' + row.ID + '\')">View</button>';
+    htmlstr += '<button class="layui-btn-gray layui-btn layui-btn-xs" onclick="removeLease(\'' + row.ID + '\')">Delete</button>';
+    htmlstr += '<button title="Raise为管理Nodes" class="layui-btn-blue layui-btn layui-btn-xs" onclick="promoteLease(\'' + row.ID + '\')">Raise</button>';
+    htmlstr += '<button title="Downgrade为工作Nodes"  class="layui-btn-red layui-btn layui-btn-xs" onclick="demoteLease(\'' + row.ID + '\')">Downgrade</button>';
 
     if(row.Status.State == 'ready' && row.LeaderStr != "Leader"){
         if(row.Spec.Availability == 'active'){
-            htmlstr += '<button title="作为污点节点排空"  class="layui-btn-orange layui-btn layui-btn-xs" onclick="drainLease(\'' + row.ID + '\')">污点</button>';
-            htmlstr += '<button title="暂停节点服务"  class="layui-btn-brown layui-btn layui-btn-xs" onclick="pauseLease(\'' + row.ID + '\')">暂停</button>';
+            htmlstr += '<button title="作为DustNodes排空"  class="layui-btn-orange layui-btn layui-btn-xs" onclick="drainLease(\'' + row.ID + '\')">Dust</button>';
+            htmlstr += '<button title="PauseNodesServices"  class="layui-btn-brown layui-btn layui-btn-xs" onclick="pauseLease(\'' + row.ID + '\')">Pause</button>';
         }else if(row.Spec.Availability == 'pause'){
-            htmlstr += '<button title="作为污点节点排空"  class="layui-btn-orange layui-btn layui-btn-xs" onclick="drainLease(\'' + row.ID + '\')">污点</button>';
-            htmlstr += '<button title="激活节点"  class="layui-btn-slateblue layui-btn layui-btn-xs" onclick="activeLease(\'' + row.ID + '\')">激活</button>';
+            htmlstr += '<button title="作为DustNodes排空"  class="layui-btn-orange layui-btn layui-btn-xs" onclick="drainLease(\'' + row.ID + '\')">Dust</button>';
+            htmlstr += '<button title="ActivateNodes"  class="layui-btn-slateblue layui-btn layui-btn-xs" onclick="activeLease(\'' + row.ID + '\')">Activate</button>';
         }else if(row.Spec.Availability == 'drain'){
-            htmlstr += '<button title="暂停节点服务"  class="layui-btn-brown layui-btn layui-btn-xs" onclick="pauseLease(\'' + row.ID + '\')">暂停</button>';
-            htmlstr += '<button title="激活节点"  class="layui-btn-slateblue layui-btn layui-btn-xs" onclick="activeLease(\'' + row.ID + '\')">激活</button>';
+            htmlstr += '<button title="PauseNodesServices"  class="layui-btn-brown layui-btn layui-btn-xs" onclick="pauseLease(\'' + row.ID + '\')">Pause</button>';
+            htmlstr += '<button title="ActivateNodes"  class="layui-btn-slateblue layui-btn layui-btn-xs" onclick="activeLease(\'' + row.ID + '\')">Activate</button>';
         }
     }
 
@@ -97,12 +97,12 @@ function drainLease(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点作为污点节点排空');
+            $.app.show('本Version仅SupportSelection一个Nodes作为DustNodes排空');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点作为污点节点排空');
+            $.app.show('请Selection一个Nodes作为DustNodes排空');
             return;
         }else{
             id = rows[0].ID;
@@ -110,13 +110,13 @@ function drainLease(id, inspect){
     }
 
 
-    $.app.confirm("作为污点节点排空","确定将当前节点作为污点节点排空？", function (){
+    $.app.confirm("作为DustNodes排空","Sure将CurrentNodes作为DustNodes排空？", function (){
 
         let node = local_node;
 
         $.docker.request.node.drain(function (response) {
-            $.app.show("节点{0}作为污点节点排空成功".format(response.Info.Description.Hostname));
-            $.app.showProgress("重新获取节点{0}信息".format(response.Info.Description.Hostname));
+            $.app.show("Nodes{0}作为DustNodes排空Success".format(response.Info.Description.Hostname));
+            $.app.showProgress("重新AccessNodes{0}Information".format(response.Info.Description.Hostname));
 
             $.easyui.thread.sleep(function () {
                 reloadDg();
@@ -135,12 +135,12 @@ function pauseLease(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点暂停');
+            $.app.show('本Version仅SupportSelection一个NodesPause');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点暂停');
+            $.app.show('请Selection一个NodesPause');
             return;
         }else{
             id = rows[0].ID;
@@ -148,13 +148,13 @@ function pauseLease(id, inspect){
     }
 
 
-    $.app.confirm("暂停节点","确定将当前节点暂停？", function (){
+    $.app.confirm("PauseNodes","Sure将CurrentNodesPause？", function (){
 
         let node = local_node;
 
         $.docker.request.node.pause(function (response) {
-            $.app.show("节点{0}暂停成功".format(response.Info.Description.Hostname));
-            $.app.showProgress("重新获取节点{0}信息".format(response.Info.Description.Hostname));
+            $.app.show("Nodes{0}PauseSuccess".format(response.Info.Description.Hostname));
+            $.app.showProgress("重新AccessNodes{0}Information".format(response.Info.Description.Hostname));
 
             $.easyui.thread.sleep(function () {
                 reloadDg();
@@ -173,12 +173,12 @@ function activeLease(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点激活');
+            $.app.show('本Version仅SupportSelection一个NodesActivate');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点激活');
+            $.app.show('请Selection一个NodesActivate');
             return;
         }else{
             id = rows[0].ID;
@@ -186,13 +186,13 @@ function activeLease(id, inspect){
     }
 
 
-    $.app.confirm("激活节点","确定将当前节点激活？", function (){
+    $.app.confirm("ActivateNodes","Sure将CurrentNodesActivate？", function (){
 
         let node = local_node;
 
         $.docker.request.node.active(function (response) {
-            $.app.show("节点{0}激活成功".format(response.Info.Description.Hostname));
-            $.app.showProgress("重新获取节点{0}信息".format(response.Info.Description.Hostname));
+            $.app.show("Nodes{0}ActivateSuccess".format(response.Info.Description.Hostname));
+            $.app.showProgress("重新AccessNodes{0}Information".format(response.Info.Description.Hostname));
 
             $.easyui.thread.sleep(function () {
                 reloadDg();
@@ -211,23 +211,23 @@ function promoteLease(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点提升为管理节点');
+            $.app.show('本Version仅SupportSelection一个NodesRaise为管理Nodes');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点提升为管理节点');
+            $.app.show('请Selection一个NodesRaise为管理Nodes');
             return;
         }else{
             id = rows[0].ID;
         }
     }
 
-    $.app.confirm("提升节点","确定提升当前节点为管理节点？", function (){
+    $.app.confirm("RaiseNodes","SureRaiseCurrentNodes为管理Nodes？", function (){
         let node = local_node;
         $.docker.request.node.promote(function(response){
-            $.app.show("节点{0}提升为管理节点成功".format(response.Info.Description.Hostname));
-            $.app.showProgress("重新获取节点{0}信息".format(response.Info.Description.Hostname));
+            $.app.show("Nodes{0}Raise为管理NodesSuccess".format(response.Info.Description.Hostname));
+            $.app.showProgress("重新AccessNodes{0}Information".format(response.Info.Description.Hostname));
 
             $.easyui.thread.sleep(function () {
 
@@ -248,24 +248,24 @@ function demoteLease(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点降级当前节点为工作节点');
+            $.app.show('本Version仅SupportSelection一个NodesDowngradeCurrentNodes为工作Nodes');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点降级当前节点为工作节点');
+            $.app.show('请Selection一个NodesDowngradeCurrentNodes为工作Nodes');
             return;
         }else{
             id = rows[0].ID;
         }
     }
 
-    $.app.confirm("降级节点","确定降级当前节点为工作节点？", function (){
+    $.app.confirm("DowngradeNodes","SureDowngradeCurrentNodes为工作Nodes？", function (){
         let node = local_node;
         $.docker.request.node.demote(function(response){
-            $.app.show("节点{0}降级为为工作节点成功".format(response.Info.Description.Hostname));
+            $.app.show("Nodes{0}Downgrade为为工作NodesSuccess".format(response.Info.Description.Hostname));
 
-            $.app.showProgress("重新获取节点{0}信息".format(response.Info.Description.Hostname));
+            $.app.showProgress("重新AccessNodes{0}Information".format(response.Info.Description.Hostname));
             $.easyui.thread.sleep(function () {
 
                 reloadDg();
@@ -307,12 +307,12 @@ function removeLease(id, closePanel) {
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点从SWARM集群里删除');
+            $.app.show('本Version仅SupportSelection一个Nodes从SWARMCluster里Delete');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点从SWARM集群里删除');
+            $.app.show('请Selection一个Nodes从SWARMCluster里Delete');
             return;
         }else{
             id = rows[0].ID;
@@ -321,11 +321,11 @@ function removeLease(id, closePanel) {
 
     let node = local_node;
 
-    $.docker.utils.deleteConfirm('从SWARM集群里删除节点', '您确认要从SWARM集群里删除当前节点', function (param, closeFn){
+    $.docker.utils.deleteConfirm('从SWARMCluster里DeleteNodes', '您Confirm要从SWARMCluster里DeleteCurrentNodes', function (param, closeFn){
 
         let node = local_node;
         $.docker.request.node.delete(function(response){
-            $.app.show("从SWARM集群里删除节点成功".format(""));
+            $.app.show("从SWARMCluster里DeleteNodesSuccess".format(""));
             reloadDg();
             closeFn();
 
@@ -363,7 +363,7 @@ function showNodePanel(id){
             iconCls:'fa fa-info-circle',
             collapsible:false,
             showHeader1:false,
-            titleformat:'SWARM节点信息-{0}'.format($.extends.isEmpty(rowData.Description.Hostname, rowData.ID)), title:'节点信息',
+            titleformat:'SWARMNodesInformation-{0}'.format($.extends.isEmpty(rowData.Description.Hostname, rowData.ID)), title:'NodesInformation',
             headerCls:'border_right',bodyCls:'border_right',collapsible:true,
             footerHtml:`
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
@@ -372,14 +372,14 @@ function showNodePanel(id){
             },
             btnCls: 'cubeui-btn-slateblue',
             iconCls: 'fa fa-tags'
-        }">编辑元数据</a>
+        }">Edit元Data</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                 removeLease('{0}', true);
             },
             btnCls: 'cubeui-btn-orange',
             iconCls: 'fa fa-times'
-        }">删除</a>
+        }">Delete</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
                 onClick:function(){
                     promoteLease('{0}', true);
@@ -387,21 +387,21 @@ function showNodePanel(id){
                 extend: '#nodesDg-toolbar',
                 btnCls: 'cubeui-btn-ivory',
                 iconCls: 'fa fa-hand-o-up'
-            }">提升管理节点</a>
+            }">Raise管理Nodes</a>
         <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){                    
                     demoteLease('{0}', true);
             },
             btnCls: 'cubeui-btn-blue',
             iconCls: 'fa fa-hand-o-down'
-        }">降级工作节点</a>
+        }">Downgrade工作Nodes</a>
          <a  href="javascript:void(0)" data-toggle='cubeui-menubutton' data-options="{
             onClick:function(){
                     $('#layout').layout('collapse', 'east');
             },
             btnCls: 'cubeui-btn-red',
             iconCls: 'fa fa-close'
-        }">关闭</a>
+        }">Close</a>
         `.format(rowData.ID),
             render:function (panel, option) {
 
@@ -431,14 +431,14 @@ function showNodePanel(id){
 
 let node_html_template = `
         <div data-toggle="cubeui-tabs" id='eastTabs'>
-            <div title="节点信息"
+            <div title="NodesInformation"
                  data-options="id:'eastTab0',iconCls:'fa fa-info-circle'">                 
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>基础信息</legend>
+                        <legend>Basic information</legend>
                     </fieldset>
                     
                     <div class="cubeui-row">
@@ -472,7 +472,7 @@ let node_html_template = `
 								},
 								btnCls: 'cubeui-btn-blue',
 								iconCls: 'fa fa-pencil-square-o'
-							}">修改</a>
+							}">Modify</a>
                         </div>
                     </div>
                     
@@ -658,14 +658,14 @@ let node_html_template = `
                     </div>
                                         
                     <fieldset>
-                        <legend style="margin-bottom: 0px;">标签选项</legend>
+                        <legend style="margin-bottom: 0px;">LabelOptions</legend>
                     </fieldset>
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
                             <div class="cubeui-row"  style="margin-top: 0px;">
                                 <div class="cubeui-col-sm5 cubeui-col-sm-offset1" style="padding-right: 5px">
-                                    <span style='line-height: 20px;padding-right:0px;'>标签</span>
+                                    <span style='line-height: 20px;padding-right:0px;'>Label</span>
                                 </div>
                                 <div class="cubeui-col-sm1">
                                     <span style='line-height: 20px;padding-right:0px;'>&nbsp;</span>
@@ -695,14 +695,14 @@ let node_html_template = `
                 
             </div>
             
-            <div title="管理节点信息"
+            <div title="管理NodesInformation"
                  data-options="id:'eastTab1',iconCls:'fa fa-sitemap',disabled:{{if Role == 'manager'}}false{{else}}true{{/if}}">                 
                 <div style="margin: 0px;">
                 </div>
                 
                 <div class="cubeui-fluid">
                     <fieldset>
-                        <legend>管理信息</legend>
+                        <legend>管理Information</legend>
                     </fieldset>             
                     
                     <div class="cubeui-row">
@@ -776,7 +776,7 @@ let node_html_template = `
                 
                     <div class="cubeui-row">
                         <div class="cubeui-col-sm12">
-                            <label class="cubeui-form-label">管理节点角色:</label>
+                            <label class="cubeui-form-label">管理Nodes角色:</label>
                             <div class="cubeui-input-block">
                 
                                 <input type="text" data-toggle="cubeui-textbox" name="CreateAt" readonly
@@ -817,12 +817,12 @@ function updateTags(id, inspect){
         let rows = $('#nodesDg').datagrid('getChecked');
 
         if(rows.length>1){
-            $.app.show('本版本仅支持选择一个节点编辑元数据');
+            $.app.show('本Version仅SupportSelection一个NodesEdit元Data');
             return ;
         }
 
         if(rows.length==0){
-            $.app.show('请选择一个节点降级当前节点编辑元数据');
+            $.app.show('请Selection一个NodesDowngradeCurrentNodesEdit元Data');
             return;
         }else{
             id = rows[0].ID;
@@ -838,9 +838,9 @@ function updateTags(id, inspect){
                 </div>
                 <div class="cubeui-fluid">
                     <div style="margin-top:5px">      
-                        <div class="cubeui-row" title="用户定义的节点键/值元数据">
+                        <div class="cubeui-row" title="User definition的Nodes键/值元Data">
                             <fieldset>
-                                <legend style="margin-bottom: 0px;">用户定义的节点键/值元数据</legend>
+                                <legend style="margin-bottom: 0px;">User definition的Nodes键/值元Data</legend>
                             </fieldset>
                                             
                             <div class="cubeui-col-sm12 add-opt-div">
@@ -863,11 +863,11 @@ function updateTags(id, inspect){
                                 <div class="cubeui-row">
                                     <div class="cubeui-col-sm4 cubeui-col-sm-offset1" style="padding-right: 5px">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>key}}"
-                                               name='Labels-name' data-options="required:false,prompt:'名字，比如：group '">
+                                               name='Labels-name' data-options="required:false,prompt:'Name，Like what：group '">
                                     </div>
                                     <div class="cubeui-col-sm5">
                                         <input type="text" data-toggle="cubeui-textbox" value="{{>prop}}"
-                                               name='Labels-value' data-options="required:false,prompt:'对应值，比如：db '">
+                                               name='Labels-value' data-options="required:false,prompt:'Corresponding value，Like what：db '">
                                     </div>
                                     <div class="cubeui-col-sm2" style="text-align: center">
                                         <span style='line-height: 30px;padding-right:0px;'><span onClick="$.docker.utils.ui.removeOpt(this)"  class="ops-fa-icon fa fa-close" style="font-size:14px!important;">&nbsp;</span></span>
@@ -886,12 +886,12 @@ function updateTags(id, inspect){
 
         html = $.templates(html).render(response)
 
-        $.docker.utils.optionConfirm('修改节点键/值标签的元数据', null, html,
+        $.docker.utils.optionConfirm('ModifyNodes键/值Label的元Data', null, html,
             function(param, closeFn){
                 let labels = $.docker.utils.buildOptsData(param['Labels-name'],param['Labels-value']);
 
                 $.docker.request.node.update_labels(function (response) {
-                    $.app.show("节点{0}节点键/值标签的元数据修改成功".format(response.Info.Description.Hostname));
+                    $.app.show("Nodes{0}Nodes键/值Label的元DataModifySuccess".format(response.Info.Description.Hostname));
 
                     reloadDg();
                     if(inspect){
@@ -912,15 +912,15 @@ function updateName(btn, id){
 
     if(opts.flag==2){
 
-        $.app.confirm("确定修改节点名称？", function(){
+        $.app.confirm("SureModifyNode Name？", function(){
 
             let name = $('#Nodename').textbox('getValue');
 
             $.docker.request.node.update_name(function (response) {
-                $.app.show('修改节点名称已经完成');
+                $.app.show('ModifyNode Name已经完成');
                 opts.flag = 1;
                 $(btn).linkbutton({
-                    text:'修改',
+                    text:'Modify',
                     iconCls: 'fa fa-pencil-square-o'
                 });
 
@@ -935,7 +935,7 @@ function updateName(btn, id){
         opts.flag = 2;
         $('#Nodename').textbox('readonly', false);
         $(btn).linkbutton({
-            text:'确定',
+            text:'Sure',
             iconCls: 'fa fa-check-square-o'
         });
     }

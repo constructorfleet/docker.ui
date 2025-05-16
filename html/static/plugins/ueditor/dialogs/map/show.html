@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具"/>
-    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图"/>
-    <title>百度地图API自定义地图</title>
-    <!--引用百度地图API-->
+    <meta name="keywords" content="100 degreesMaps,100 degreesMapsAPI，100 degreesMaps自DefinitionsTools，100 degreesMaps所见即所得Tools"/>
+    <meta name="description" content="100 degreesMapsAPI自DefinitionsMaps，HelpUser在可视化Operation下Generate100 degreesMaps"/>
+    <title>100 degreesMapsAPI自DefinitionsMaps</title>
+    <!--References100 degreesMapsAPI-->
     <style type="text/css">
         html, body {
             margin: 0;
@@ -18,7 +18,7 @@
 </head>
 
 <body onload="initMap();">
-<!--百度地图容器-->
+<!--100 degreesMapsContainers-->
 <div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
 </body>
 <script type="text/javascript">
@@ -33,9 +33,9 @@
     var markersParam = getParam('markers');
     var markerStylesParam = getParam('markerStyles');
 
-    //创建和初始化地图函数：
+    //Create和InitializeMapsFunctions：
     function initMap() {
-        // [FF]切换模式后报错
+        // [FF]SwitchMode后Wrong
         if (!window.BMap) {
             return;
         }
@@ -43,47 +43,47 @@
         dituContent.style.width = widthParam + 'px';
         dituContent.style.height = heightParam + 'px';
 
-        createMap();//创建地图
-        setMapEvent();//设置地图事件
-        addMapControl();//向地图添加控件
+        createMap();//CreateMaps
+        setMapEvent();//SettingsMapsEvents
+        addMapControl();//向MapsAddControls
 
-        // 创建标注
+        // Create标注
         var markersArr = markersParam.split(',');
         var point = new BMap.Point(markersArr[0], markersArr[1]);
         marker = new BMap.Marker(point);
         marker.enableDragging();
-        map.addOverlay(marker); // 将标注添加到地图中
+        map.addOverlay(marker); // 将标注Add到Maps中
 
-        if(parent.editor && parent.document.body.contentEditable=="true") { //在编辑状态下
-            setMapListener();//地图改变修改外层的iframe标签src属性
+        if(parent.editor && parent.document.body.contentEditable=="true") { //在EditStatus下
+            setMapListener();//MapsChangeModify外层的iframeLabelsrcProperties
         }
     }
 
-    //创建地图函数：
+    //CreateMapsFunctions：
     function createMap() {
-        map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        map = new BMap.Map("dituContent");//在100 degreesMapsContainers中Create一个Maps
         var centerArr = centerParam.split(',');
-        var point = new BMap.Point(parseFloat(centerArr[0]), parseFloat(centerArr[1]));//定义一个中心点坐标
-        map.centerAndZoom(point, parseInt(zoomParam));//设定地图的中心点和坐标并将地图显示在地图容器中
+        var point = new BMap.Point(parseFloat(centerArr[0]), parseFloat(centerArr[1]));//Definitions一个中心点Coordinates
+        map.centerAndZoom(point, parseInt(zoomParam));//设定Maps的中心点和Coordinates并将MapsShow在MapsContainers中
     }
 
-    //地图事件设置函数：
+    //MapsEventsSettingsFunctions：
     function setMapEvent() {
-        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
-        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
-        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
-        map.enableKeyboard();//启用键盘上下左右键移动地图
+        map.enableDragging();//启用MapsDragEvents，Default启用(You don\'t)
+        map.enableScrollWheelZoom();//启用Maps滚轮Zoom InZoom Out
+        map.enableDoubleClickZoom();//启用Mouse双击Zoom In，Default启用(You don\'t)
+        map.enableKeyboard();//启用键盘上下左RightMoveMaps
     }
 
-    //地图控件添加函数：
+    //MapsControlsAddFunctions：
     function addMapControl() {
-        //向地图中添加缩放控件
+        //向Maps中Add缩放Controls
         var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
         map.addControl(ctrl_nav);
-        //向地图中添加缩略图控件
+        //向Maps中Add缩略图Controls
         var ctrl_ove = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1});
         map.addControl(ctrl_ove);
-        //向地图中添加比例尺控件
+        //向Maps中Add比例尺Controls
         var ctrl_sca = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
         map.addControl(ctrl_sca);
     }

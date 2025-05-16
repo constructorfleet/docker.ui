@@ -12,11 +12,11 @@
 	<SCRIPT type="text/javascript">
 		<!--
 		var demoMsg = {
-			async:"正在进行异步加载，请等一会儿再点击...",
-			expandAllOver: "全部展开完毕",
-			asyncAllOver: "后台异步加载完毕",
-			asyncAll: "已经异步加载完毕，不再重新加载",
-			expandAll: "已经异步加载完毕，使用 expandAll 方法"
+			async:"正在进行Step Load，Please click later...",
+			expandAllOver: "全部ExpandOver",
+			asyncAllOver: "后台Step LoadOver",
+			asyncAll: "已经Step LoadOver，不再Reload",
+			expandAll: "已经Step LoadOver，Use expandAll Methodology"
 		}
 		var setting = {
 			async: {
@@ -162,23 +162,23 @@
 </HEAD>
 
 <BODY>
-<h1>异步加载模式下全部展开</h1>
-<h6>[ 文件路径: super/asyncForAll.html ]</h6>
+<h1>Step LoadMode全部Expand</h1>
+<h6>[ DocumentationPath: super/asyncForAll.html ]</h6>
 <div class="content_wrap">
 	<div class="zTreeDemoBackground left">
 		<ul id="treeDemo" class="ztree"></ul>
 	</div>
 	<div class="right">
 		<ul class="info">
-			<li class="title"><h2>实现方法说明</h2>
+			<li class="title"><h2>AchievedMethodology说明</h2>
 				<ul class="list">
-				<li>利用 onAsyncSuccess / onAsyncError 回调函数 和 reAsyncChildNodes 或 expandNode 方法可以实现全部功能。</li>
-				<li class="highlight_red">如果父节点数量很大，请注意利用延时进行控制，避免异步进程过多。</li>
-				<li class="highlight_red">建议：演示时请利用调试工具查看 network 的 ajax 加载过程。</li>
-				<li>演示操作
+				<li>Utilization onAsyncSuccess / onAsyncError Revert function 和 reAsyncChildNodes 或 expandNode Methodology可以Achieved全部Functions。</li>
+				<li class="highlight_red">If父Nodes数量很大，请AttentionUtilization延时进行Control，Avoiding too many steps。</li>
+				<li class="highlight_red">Recommendations：Presentation时请Utilization调试工具View network 的 ajax Loading process。</li>
+				<li>PresentationOperation
 					<br/><br/>
-				[ <a id="expandAllBtn" href="#" onclick="return false;">全部展开</a> ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				[ <a id="asyncAllBtn" href="#" onclick="return false;">后台自动全部加载</a> ]<br/><br/>
+				[ <a id="expandAllBtn" href="#" onclick="return false;">全部Expand</a> ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				[ <a id="asyncAllBtn" href="#" onclick="return false;">后台Auto全部加载</a> ]<br/><br/>
 				[ <a id="resetBtn" href="#" onclick="return false;">Reset zTree</a> ]<br/><br/>
 				<p class="highlight_red" id="demoMsg"></p>
 				</li>
